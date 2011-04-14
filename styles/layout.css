@@ -1,0 +1,51 @@
+@charset "utf-8";
+@import url(style.css);
+html, body, div {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+	min-width:822px;
+	min-height:500px;
+}
+
+* html body {
+	width:expression(document.documentElement.clientWidth < 822 ? '822px' : '100%');
+	height:expression(document.documentElement.clientHeight < 500 ? '500px' : '100%');
+	text-align:center;
+}
+
+#container {
+	width:822px;
+	min-height:500px;
+	margin:0 auto;
+	text-align: left;
+}
+
+#wrapper {
+	width:100%;
+	position:relative;
+}
+
+#footer {
+	height:62px;
+	width:822px;
+	position: relative;
+	margin: 0 auto;
+}
+
+.clearer {
+	display:block;
+	float:none !important;
+	clear: both;
+	width:0; height:0;
+	margin:0; padding:0;
+	line-height:0;
+	font-size:0;
+	visibility:hidden;
+}
+
+* html .clearer { display:inline; }

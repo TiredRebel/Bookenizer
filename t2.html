@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Bookinizer: Hotel Search</title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="/styles/layout.css" medvia="all">
+    <link rel="stylesheet" type="text/css" href="/styles/print.css" media="print">
+
+</head>
+<body class="popular">
+<div id="ltemplate"></div>
+<div id="container">
+    <div id="wrapper">
+        <div id="content">
+
+            <div id="head">
+
+                <div id="topbar">
+
+                </div>
+
+                <div class="close-full"></div>
+
+                <div id="logobar" class="vcard"></div>
+            </div>
+
+            <span id="searchbar_ph"></span>
+
+            <div id="main">
+                <div class="opener"></div>
+
+                <div id="sidebar">
+                    <span id="topdestblock" class="template_emb"></span>
+                    <div class="hr"></div>
+                    <span id="statistics" class="template_emb"></span>
+                </div>
+                <div id="mainbar">
+                    <span id="hotelslist" class="template_emb"></span>
+                </div>
+                <div class="closer"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<script type="text/javascript" src="/scripts/debug/json2.js"></script>
+<script type="text/javascript" src="/scripts/jquery-1.5.2.min.js"></script>
+<script type="text/javascript" src="/scripts/debug/underscore.js"></script>
+<script type="text/javascript" src="/scripts/debug/backbone.js"></script>
+<script type="text/javascript" src="/scripts/debug/mustache.js"></script>
+<script type="text/javascript" src="/scripts/debug/ICanHaz.js"></script>
+<script type="text/javascript" src="/scripts/debug/jquery.jstore-all.js"></script>
+<script type="text/javascript">
+    (function() {
+
+        this.getTemplate=function(tmplName, isPartial,custom){
+            var tmplContent;
+            //debugger;
+            if(_.isString(custom)){
+                 tmplContent=custom;
+            }else{
+                 tmplContent=$("#".concat(tmplName)).text();
+            }
+            if(_.isBoolean(isPartial) && isPartial){
+                ich.addPartial(tmplName,tmplContent);
+            }else{
+               ich.addTemplate(tmplName,tmplContent);
+            }
+        };
+
+        var TopDestination=Backbone.Model.extend({});
+        var Statistic=Backbone.Model.extend({});
+
+        var TopDestinations=Backbone.Collection.extend({
+            model:TopDestination
+        });
+
+        var Statistics=Backbone.Collection.extend({
+            model:Statistic
+        });
+
+        this.fetch_TopDestinations=function(lang){
+            return $.ajax({
+                    async:false,
+                    url:'/bookenizer-stubs/hms-services/location/top/'.concat(lang),
+                    dataType:'json',
+                    contentType:'application/json; charset=utf-8'
+                });
+            }
+
+        this.fetch_Statistics=function(){
+            return $.ajax({
+                url:'/bookenizer-stubs/hms-services/statistics/',
+                dataType:'json',
+                contentType:'application/json; charset=utf-8'
+            });
+
+        }
+
+        var Language = Backbone.Model.extend();
+
+        var Configuration=Backbone.Model.extend({
+            defaults:{
+                async:false,
+                "lang":"ru",
+                "searchType":"quick",
+                "statistics":new Statistics(),
+                "topDestinations":new TopDestinations()
+            },
+            mainTemplateUrl:function(){
+                return "/Locales/".concat(this.get("lang"),"/main.html");
+            },
+            initialize:function(){
+                var self=this;
+                console.log("Configuration initialize "+ this.get("lang"));
+                debugger;
+                fetch_TopDestinations(this.get("lang")).success(function(topdests){
+                        self.set({topDestinations:topdests.locationList});
+                        fetch_Statistics().success(function(stat){
+                            self.set({statistics:stat[0]});
+                            $.jStore.set("topdest_".concat(self.get("lang")),JSON.stringify(self.get("topDestinations")));
+                            $.jStore.set("statistics",JSON.stringify(self.get("statistics")));
+                        });
+                }).fail(function(){
+                        alert("Server is unavailable");
+                    });
+            },
+            update:function(){
+                var self=this;
+                $.when(fetch_TopDestinations(this.get("lang")),fetch_Statistics()).then(
+                    function(topdests,stat){
+                        self.set({topDestinations:topdests[0].locationList});
+                        self.set({statistics:stat[0]});
+
+                    }).fail(function(){
+                        alert("Server is unavailable");
+                    });
+               /* var td=$.jStore.get("topdest_".concat(self.get("lang")));
+                //var td;
+                var sts=$.jStore.get("statistics");
+                if(td===null || td===undefined){
+                    $.when(fetch_TopDestinations(this.get("lang"))).then(
+                    function(topdests){
+                        self.set({topDestinations:topdests.locationList});
+                        $.jStore.set("topdest_".concat(self.get("lang")),JSON.stringify(self.get("topDestinations")));
+                        if(sts===null){
+                              $.when(fetch_Statistics()).then(
+                                    function(stat){
+                                         self.set({statistics:stat});
+                                         $.jStore.set("statistics",JSON.stringify(self.get("statistics")));
+                                    },function(){
+                                        alert("Server is unavailable");
+                                    });
+                        }
+                    },function(){
+                        alert("Server is unavailable");
+                    });
+                }else{
+                      self.set({topDestinations:td});
+                      self.set({statistics:sts});
+                }*/
+            }
+        });
+
+        var langCollection = Backbone.Collection.extend({
+            model:Language
+        });
+
+        var LogobarView = Backbone.View.extend({
+            el:$("#logobar"),
+            render:function() {
+                getTemplate("logobar_tmpl");
+                this.el.html(ich.logobar_tmpl());
+                return this;
+            }
+        });
+
+        var SearchView=Backbone.View.extend({
+            el:$("#searchbar_ph"),
+            render:function(){
+                getTemplate("searchbar_tmpl");
+                getTemplate("searchform_tmpl",true);
+                this.el.html(ich.searchbar_tmpl());
+                return this;
+            }
+        });
+
+        var FooterView = Backbone.View.extend({
+            el:$("#footer"),
+            render:function() {
+                getTemplate("footer_tmpl");
+                this.el.html(ich.footer_tmpl());
+                return this;
+            }
+        });
+
+        var LocationsView=Backbone.View.extend({
+            el:$("#topdestblock"),
+            render:function(){
+                var self=this;
+                //debugger;
+                getTemplate('top_dest_block_tmpl');
+                getTemplate('tdb_location_item',false,'<li><a href="#">{{city}}</a>,{{country}}</li>');
+                self.el.html(ich.top_dest_block_tmpl());
+                var locations=self.el.find('#locationsList');
+                _(self.model).each(function(location){
+                    locations.append(ich.tdb_location_item(location));
+                });
+            }
+        });
+
+        var TopMenuView = Backbone.View.extend({
+            el:$('#topbar'),
+            render:function() {
+                var self = this;
+                getTemplate("langmenu");
+                getTemplate("topbar_menu_tmpl",true);
+                getTemplate("langMenu_item",false,'<li><a href="#lang/{{id}}" class="lang" id="{{id}}" title="{{title}}">{{title}}</a> /</li>');
+                self.el.html(ich.langmenu());
+                var langdiv = self.el.find("#languageSwitcher");
+                _(this.model.toJSON()).each(function(langItem) {
+                    langdiv.append(ich.langMenu_item(langItem));
+                });
+                return this;
+            }
+        });
+
+
+        var iApp = Backbone.Controller.extend({
+            _index:null,
+            _languages:null,
+            _logoBar:null,
+            _searchForm:null,
+            _topDestinations:null,
+            _footer:null,
+            _configuration:null,
+            routes: {
+                "": "index",
+                "lang/:id":"language",
+                "selected":"card"
+            },
+            renderIndex:function(){
+                _index.render();
+                _logoBar.render();
+                _topDestinations.render();
+                _searchForm.render();
+                _footer.render();
+            },
+            drawTemplates:function(_configuration,isRepaint){
+                    if(!isRepaint){
+                        _languages = function() {
+                        var lc = new langCollection();
+                        lc.add(new Language({id:"ru",url:"/Locales/ru/",title:"Русский"}));
+                        lc.add(new Language({id:"en",url:"/Locales/en/",title:"English"}));
+                        lc.add(new Language({id:"de",url:"/Locales/de/",title:"Deutsch"}));
+                        return lc;
+                    };
+                        debugger;
+                    _index = new TopMenuView({model:_languages()});
+                    _logoBar = new LogobarView();
+                    _searchForm=new SearchView();
+                    _topDestinations=new LocationsView({model:_configuration.get("topDestinations")});
+                    _footer = new FooterView();
+                     this.renderIndex();
+                }else{
+                  $("#ltemplate").load(_configuration.mainTemplateUrl(),function(){
+                      ich.clearAll();
+                      _topDestinations.model=_configuration.get("topDestinations");
+                      //this.renderIndex();
+                      _index.render();
+                      _logoBar.render();
+
+                      _topDestinations.render();
+                      _searchForm.render();
+                      _footer.render();
+                 });
+                }
+            },
+            initialize:function() {
+                var self=this;
+                _configuration=new Configuration();
+                _configuration.bind("change:lang",function(model,name){
+                    //todo move data retrieve here
+                    fetch_TopDestinations(this.get("lang")).success(function(topdests){
+                        _configuration.set({topDestinations:topdests.locationList});
+                        fetch_Statistics().success(function(stat){
+                            _configuration.set({statistics:stat[0]});
+                        }).fail(function(){
+                            //todo handle empty or error
+                        });
+                        self.drawTemplates(_configuration, true);
+                        $.jStore.set("topdest_".concat(self.get("lang")),JSON.stringify(self.get("topDestinations")));
+                        $.jStore.set("statistics",JSON.stringify(self.get("statistics")));
+
+                    }).fail(function(){
+                        alert("Server is unavailable");
+                    });
+                });
+                $("#ltemplate").load(_configuration.mainTemplateUrl());
+                this.drawTemplates(_configuration, false);
+                debugger;
+                return this;
+            },
+            card:function(){
+                debugger;
+            },
+            language:function(lang){
+                _configuration.set({lang:lang});
+                this.drawTemplates(_configuration, true);
+            },
+            index:function() {
+               this.renderIndex();
+            }
+        });
+
+        $(document).ready(function() {
+            $.extend(jQuery.jStore.defaults, {
+                project: 'bookenizer1',
+                engine: 'flash',
+                flash: '/scripts/jStore.Flash.html'
+            });
+
+            $.jStore.load();
+            //var config=new Configuration();
+            //$("#ltemplate").load(config.mainTemplateUrl(),function(){
+                //new iApp().initialize();
+                new iApp();
+                Backbone.history.start();
+            //});
+        });
+    }).call(this);
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<form class="searchform quick" action="/bookenizer-stubs/hms-services/hotel/search" method="post"
+      enctype="application/x-www-form-urlencoded" ng:hide="quickSearchView('advanced')">
+    <input type="hidden" name="cityId" value="0"/>
+
+    <div class="label">
+        <span class="label">1</span>
+				<span class="host"><input type="text" name="city" class="dest" value="Город" defValue="Город"
+                                          suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
+					<span class="diags">Sorry, we have no offers for this city</span>
+				</span>
+    </div>
+
+    <div class="label before-last">
+        <span class="label">2</span>
+        <label>from <input type="text" name="dateFrom" id="dateFrom" class="date" value="22.10.2008"
+                           onchange="/*fixDate(this)*/"/></label>
+        <label>to <input type="text" name="dateTo" id="dateTo" class="date" value="24.10.2008"
+                         onchange="/*fixDate(this)*/"/></label>
+        <span class="search_nights_num">2</span> <span class="search_nights_word">ночи(-ей)</span>
+    </div>
+
+    <script type="text/javascript">
+        //Calendar.setup({ inputField : "dateFrom", ifFormat : dformat, firstDay :    0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate });
+        //Calendar.setup({ inputField : "dateTo", ifFormat : dformat, firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate });
+    </script>
+
+    <div class="label last">
+        <span class="label">3</span><input type="submit" name="find" value="Найти отели" class="submit"/>
+    </div>
+
+    <div class="clearer"></div>
+</form>
+
+
+<form class="searchform advanced" action="/bookenizer-stubs/hms-services/hotel/search" method="post"
+      enctype="application/x-www-form-urlencoded" ng:show="quickSearchView('advanced')">
+    <input type="hidden" name="cityId" value="0"/>
+
+    <div class="label">
+        <span class="label">Город</span>
+				<span class="host"><input type="text" name="city" class="dest" value="City" defValue="City"
+                                          suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
+				<span class="diags">Sorry, we have no offers for this city</span>
+				</span>
+    </div>
+
+    <div class="label">
+        <span class="label">Даты</span>
+        <label>с <input type="text" name="advDateFrom" id="advDateFrom" class="date" value="22.10.2008"
+                           onchange="fixDate(this)"/></label>
+        <label>по <input type="text" name="advDateTo" id="advDateTo" class="date" value="24.10.2008"
+                         onchange="fixDate(this)"/></label>
+        на <span class="search_nights_num">2</span> <span class="search_nights_word">ночи(-ей)</span>
+    </div>
+
+    <script type="text/javascript">
+        Calendar.setup({ inputField : "advDateFrom", ifFormat : dformat, firstDay :    0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate });
+        Calendar.setup({ inputField : "advDateTo", ifFormat : dformat, firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate });
+    </script>
+
+    <div class="label">
+        <span class="label">Кол-во человек</span>
+        <input type="text" name="numberOfPersons" class="numberOfPersons" value="2"/>
+    </div>
+
+    <div class="label">
+        <span class="label">Тип помещения</span>
+        <label><input type="checkbox" name="lodgingTypeRoom" value="1"/> Комната</label>
+        <label><input type="checkbox" name="lodgingTypeApart" value="1"/> Аппартаменты</label>
+    </div>
+
+    <div class="label">
+        <span class="label">Категория(звезд)</span>
+        <label><input type="checkbox" name="stars2" value="1"/> 2</label>
+        <label><input type="checkbox" name="stars3" value="1"/> 3</label>
+        <label><input type="checkbox" name="stars4" value="1"/> 4</label>
+        <label><input type="checkbox" name="stars5" value="1"/> 5</label>
+    </div>
+
+    <div class="label">
+        <span class="label">Питание</span>
+        <label><input type="checkbox" name="mealsFull" value="1"/> Полный пансион</label>
+        <label><input type="checkbox" name="mealsHalf" value="1"/> Полупансион</label>
+        <label><input type="checkbox" name="mealsNo" value="1"/> Без питанияя</label>
+    </div>
+
+    <div class="label">
+        <span class="label">Цена за ночь</span>
+        <label>от <input type="text" name="pricePerNightLow" class="price_per_night_low" value=""/></label>
+        <label>до <input type="text" name="pricePerNightHigh" class="price_per_night_high" value=""/></label>
+    </div>
+
+    <div class="label">
+        <span class="label">Дополнительно</span>
+        <label><input type="checkbox" name="facilities1" value="1"/> Паркинг</label>
+        <label><input type="checkbox" name="facilities2" value="1"/> Интернет</label>
+        <label><input type="checkbox" name="facilities3" value="1"/> Конференц-зал</label>
+    </div>
+
+    <div class="label last">
+        <span class="label">Отели</span><input type="submit" name="submit" value="Find" class="submit"/>
+    </div>
+
+    <div class="clearer"></div>
+</form>
