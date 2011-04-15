@@ -59,11 +59,10 @@
 
         this.getTemplate=function(tmplName, isPartial,custom){
             var tmplContent;
-            //debugger;
             if(_.isString(custom)){
                  tmplContent=custom;
             }else{
-                 tmplContent=$("#".concat(tmplName)).text();
+                 tmplContent=$("#".concat(tmplName)).html();
             }
             if(_.isBoolean(isPartial) && isPartial){
                 ich.addPartial(tmplName,tmplContent);
@@ -117,15 +116,14 @@
             initialize:function(){
                 var self=this;
                 console.log("Configuration initialize "+ this.get("lang"));
-                debugger;
-                fetch_TopDestinations(this.get("lang")).success(function(topdests){
-                        self.set({topDestinations:topdests.locationList});
-                        fetch_Statistics().success(function(stat){
-                            self.set({statistics:stat[0]});
-                            $.jStore.set("topdest_".concat(self.get("lang")),JSON.stringify(self.get("topDestinations")));
-                            $.jStore.set("statistics",JSON.stringify(self.get("statistics")));
-                        });
-                }).fail(function(){
+                $.when(fetch_TopDestinations(this.get("lang")),fetch_Statistics()).then(
+                    function(topdests,stat){
+                        //debugger;
+                        self.set({topDestinations:topdests[0].locationList});
+                        self.set({statistics:stat[0]});
+                        //$.jStore.set("topdest_".concat(self.get("lang")),JSON.stringify(self.get("topDestinations")));
+                        //$.jStore.set("statistics",JSON.stringify(self.get("statistics")));
+                    }).fail(function(){
                         alert("Server is unavailable");
                     });
             },
@@ -217,9 +215,10 @@
             el:$('#topbar'),
             render:function() {
                 var self = this;
-                getTemplate("langmenu");
+                getTemplate.call(this,"langmenu");
                 getTemplate("topbar_menu_tmpl",true);
                 getTemplate("langMenu_item",false,'<li><a href="#lang/{{id}}" class="lang" id="{{id}}" title="{{title}}">{{title}}</a> /</li>');
+                console.log("langmenu " );
                 self.el.html(ich.langmenu());
                 var langdiv = self.el.find("#languageSwitcher");
                 _(this.model.toJSON()).each(function(langItem) {
@@ -239,7 +238,6 @@
             _footer:null,
             _configuration:null,
             routes: {
-                "": "index",
                 "lang/:id":"language",
                 "selected":"card"
             },
@@ -251,21 +249,22 @@
                 _footer.render();
             },
             drawTemplates:function(_configuration,isRepaint){
-                    if(!isRepaint){
-                        _languages = function() {
-                        var lc = new langCollection();
-                        lc.add(new Language({id:"ru",url:"/Locales/ru/",title:"Русский"}));
-                        lc.add(new Language({id:"en",url:"/Locales/en/",title:"English"}));
-                        lc.add(new Language({id:"de",url:"/Locales/de/",title:"Deutsch"}));
-                        return lc;
-                    };
-                        debugger;
-                    _index = new TopMenuView({model:_languages()});
-                    _logoBar = new LogobarView();
-                    _searchForm=new SearchView();
-                    _topDestinations=new LocationsView({model:_configuration.get("topDestinations")});
-                    _footer = new FooterView();
-                     this.renderIndex();
+                //debugger;
+                if(!isRepaint){
+                    _languages = function() {
+                    var lc = new langCollection();
+                    lc.add(new Language({id:"ru",url:"/Locales/ru/",title:"Русский"}));
+                    lc.add(new Language({id:"en",url:"/Locales/en/",title:"English"}));
+                    lc.add(new Language({id:"de",url:"/Locales/de/",title:"Deutsch"}));
+                    return lc;
+                };
+                _index = new TopMenuView({model:_languages()});
+                _logoBar = new LogobarView();
+                _searchForm=new SearchView();
+                _topDestinations=new LocationsView({model:_configuration.get("topDestinations")});
+                _footer = new FooterView();
+                 //   debugger;
+                 this.renderIndex();
                 }else{
                   $("#ltemplate").load(_configuration.mainTemplateUrl(),function(){
                       ich.clearAll();
@@ -280,29 +279,27 @@
                  });
                 }
             },
-            initialize:function() {
+            initialize:function(spec) {
                 var self=this;
-                _configuration=new Configuration();
+                //_configuration=new Configuration();
+                _configuration=spec;
+                //debugger;
                 _configuration.bind("change:lang",function(model,name){
                     //todo move data retrieve here
-                    fetch_TopDestinations(this.get("lang")).success(function(topdests){
-                        _configuration.set({topDestinations:topdests.locationList});
-                        fetch_Statistics().success(function(stat){
-                            _configuration.set({statistics:stat[0]});
-                        }).fail(function(){
-                            //todo handle empty or error
-                        });
-                        self.drawTemplates(_configuration, true);
-                        $.jStore.set("topdest_".concat(self.get("lang")),JSON.stringify(self.get("topDestinations")));
-                        $.jStore.set("statistics",JSON.stringify(self.get("statistics")));
-
+                     //alert(name);
+                    $.when(fetch_TopDestinations(this.get("lang")),fetch_Statistics()).then(
+                    function(topdests,stat){
+                        //debugger;
+                        _configuration.set({topDestinations:topdests[0].locationList});
+                        _configuration.set({statistics:stat[0]});
+                        //$.jStore.set("topdest_".concat(self.get("lang")),JSON.stringify(self.get("topDestinations")));
+                        //$.jStore.set("statistics",JSON.stringify(self.get("statistics")));
+                         self.drawTemplates(_configuration, true);
                     }).fail(function(){
                         alert("Server is unavailable");
                     });
                 });
-                $("#ltemplate").load(_configuration.mainTemplateUrl());
-                this.drawTemplates(_configuration, false);
-                debugger;
+                 self.drawTemplates(_configuration, false);
                 return this;
             },
             card:function(){
@@ -311,9 +308,6 @@
             language:function(lang){
                 _configuration.set({lang:lang});
                 this.drawTemplates(_configuration, true);
-            },
-            index:function() {
-               this.renderIndex();
             }
         });
 
@@ -325,15 +319,14 @@
             });
 
             $.jStore.load();
-            //var config=new Configuration();
-            //$("#ltemplate").load(config.mainTemplateUrl(),function(){
+            var config=new Configuration();
+            $("#ltemplate").load(config.mainTemplateUrl(),function(){
                 //new iApp().initialize();
-                new iApp();
+                new iApp(config);
                 Backbone.history.start();
-            //});
+            });
         });
     }).call(this);
-
 </script>
 </body>
 </html>
