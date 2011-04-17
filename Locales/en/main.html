@@ -87,20 +87,26 @@
         <div id="searchbar" class="open-full">
             <div class="container">
             <h2>Search</h2>
-                <ul class="switcher">
-                    <li>quick</li>
-                    <li><a href="#search/advanced" class="noreload"  title="More search parameters">advanced</a></li>
-                </ul>
+                <ul id="srchMenu" class="switcher">
+                 </ul>
                 {{>searchform_tmpl}}
            </div>
         </div>
+    </script>
+    <script type="text/html" id="searchType_switcher_quick">
+        <li class="search">quick</li>
+		<li><a href="#search/advanced" class="noreload search" title="More search parameters">advanced</a></li>
+    </script>
+    <script type="text/html" id="searchType_switcher_advanced">
+		<li><a href="#search/quick" class="noreload search" title="More search parameters">quick</a></li>
+        <li class="search">advanced</li>
     </script>
     <script type="text/html" id="searchform_tmpl" class="partial">
     <form class="searchform quick" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="cityId" value="0"/>
     <div class="label">
         <span class="label">1</span>
-        <span class="host"><input type="text" name="city" class="dest" value="City" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
+        <span class="host"><input type="text" name="city" class="dest" value="City" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine",countryId:1}]' nosubmit/>
             <span class="diags">Sorry, we have no offers for this city</span>
         </span>
     </div>
@@ -125,7 +131,7 @@
 
     <div class="label">
         <span class="label">Destination</span>
-        <span class="host"><input type="text" name="city" class="dest" value="City" defValue="City" suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
+        <span class="host"><input type="text" name="city" class="dest" value="City" defValue="City" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country: "Ukraine"}]' nosubmit/>
         <span class="diags">Sorry, we have no offers for this city</span>
 	    </span>
     </div>

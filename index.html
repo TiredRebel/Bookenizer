@@ -55,6 +55,8 @@
 <script type="text/javascript" src="/scripts/debug/ICanHaz.js"></script>
 <script type="text/javascript" src="/scripts/debug/class.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.jstore.js"></script>
+<script type="text/javascript" src="/scripts/debug/gsuggest.js"></script>
+
 <script type="text/javascript">
     (function() {
 
@@ -76,12 +78,18 @@
 
         var Statistic=Backbone.Model.extend({});
 
+        var SearchLocation=Backbone.Model.extend({});
+
         var TopDestinations=Backbone.Collection.extend({
             model:TopDestination
         });
 
         var Statistics=Backbone.Collection.extend({
             model:Statistic
+        });
+
+        var SearchLocations=Backbone.Collection.extend({
+            model:SearchLocation
         });
 
 
@@ -96,6 +104,7 @@
 
         this.fetch_Statistics=function(){
             return $.ajax({
+                async:false,
                 url:'/bookenizer-stubs/hms-services/statistics/',
                 dataType:'json',
                 contentType:'application/json; charset=utf-8'
@@ -103,8 +112,13 @@
 
         };
 
-        this.fetch_Locations=function(){
-
+        this.fetch_Locations=function(lang){
+              return $.ajax({
+                  async:false,
+                  url:'/bookenizer-stubs/hms-services/location/all/'.concat(lang),
+                  dataType:'json',
+                  contentType:'application/json; charset=utf-8'
+              });
         };
 
         var Language = Backbone.Model.extend();
@@ -115,7 +129,8 @@
                 "lang":"ru",
                 "searchType":"quick",
                 "statistics":new Statistics(),
-                "topDestinations":new TopDestinations()
+                "topDestinations":new TopDestinations(),
+                "srchLocations":new SearchLocations()
             },
             mainTemplateUrl:function(){
                 return "/Locales/".concat(this.get("lang"),"/main.html");
@@ -123,12 +138,16 @@
             initialize:function(){
                 var self=this;
                 console.log("Configuration initialize "+ this.get("lang"));
-                fetch_TopDestinations(this.get("lang")).success(function(topdests){
+                fetch_TopDestinations(self.get("lang")).success(function(topdests){
                     self.set({topDestinations:topdests.locationList});
                     $.jStore.set("topdest_".concat(self.get("lang")),self.get("topDestinations"));
                     fetch_Statistics().success(function(stat){
                         self.set({statistics:stat});
                         $.jStore.set("statistics",self.get("statistics"));
+                    });
+                    fetch_Locations(self.get("lang")).success(function(locations){
+                        self.set({srchLocations:locations.locationList});
+                        $.jStore.set("srchLocations_".concat(self.get("lang")),self.get("srchLocations"));
                     });
                 });
             }
@@ -150,9 +169,15 @@
         var SearchView=Backbone.View.extend({
             el:$("#searchbar_ph"),
             render:function(){
+                var self=this;
                 getTemplate("searchbar_tmpl");
                 getTemplate("searchform_tmpl",true);
+                getTemplate("searchType_switcher_quick");
+                getTemplate("searchType_switcher_advanced");
                 this.el.html(ich.searchbar_tmpl());
+                //debugger;
+                $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(window._configuration.get("searchType"))]);
+                $("form.searchform .dest").attr("suggest_value", JSON.stringify(self.model));
                 return this;
             }
         });
@@ -246,7 +271,7 @@
                     };
                     _index = new TopMenuView({model:_languages()});
                     _logoBar = new LogobarView();
-                    _searchForm=new SearchView();
+                    _searchForm=new SearchView({model:_configuration.get("srchLocations")});
                     _topDestinations=new LocationsView({model:_configuration.get("topDestinations")});
                     _statistics=new StatisticsView({model:_configuration.get("statistics")});
                     _footer = new FooterView();
@@ -258,6 +283,7 @@
                       ich.clearAll();
                       _topDestinations.model=_configuration.get("topDestinations");
                       _statistics.model=_configuration.get("statistics");
+                      _searchForm.model=_configuration.get("srchLocations");
                       _index.render();
                       _logoBar.render();
 
@@ -275,11 +301,14 @@
                 //$.jStore.remove("topdest_ru");
                 //$.jStore.remove("topdest_en");
                 _configuration.bind("change:searchType",function(model,name){
+                    //alert(name);
                     var st=$.jStore.get("locations_".concat(_configuration.get("lang")));
-                    alert(name);
+                    /*alert(name);
                     if(st===null || st===undefined){
 
-                    }
+                    }*/
+                    //debugger;
+                    $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(name)]);
                     self.drawTemplates(_configuration, false);
                     return this;
                 });
@@ -337,6 +366,12 @@
                 $("#ltemplate").load(config.mainTemplateUrl(),function(){
                         new iApp(config);
                         Backbone.history.start();
+                        $.gsuggest({
+                            debug:true,
+                            inlineText: function(data) { return data.city + ", " + data.country },
+		                    inlineId: function(data) { return data.cityId },
+		                    dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); }
+                        });
                     });
                 });
         });

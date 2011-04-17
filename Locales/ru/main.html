@@ -82,23 +82,31 @@
         <a id="contactus" href="#" title="Contact Us">Контакты</a>
         <strong class="note">Система Он-Лайн бронирования</strong>
     </script>
+    <script type="text/html" id="searchType_switcher_quick">
+        <li class="search">быстрый</li>
+		<li><a href="#search/advanced" class="noreload search" title="More search parameters">расширеный</a></li>
+    </script>
+    <script type="text/html" id="searchType_switcher_advanced">
+		<li><a href="#search/quick" class="noreload search" title="More search parameters">быстрый</a></li>
+        <li class="search">расширеный</li>
+    </script>
     <script type="text/html" id="searchbar_tmpl">
     <div id="searchbar" class="open-full"><div class="container">
         <h2>Поиск</h2>
         <ul id="srchMenu" class="switcher">
-            <li class="search">быстрый</li>
-			<li><a href="#search/advanced" class="noreload search" title="More search parameters">расширеный</a></li>
+
         </ul>
         {{>searchform_tmpl}}
      </div></div>
     </script>
+
     <script type="text/html" id="searchform_tmpl" class="partial">
     <form class="searchform quick" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded" >
     <input type="hidden" name="cityId" value="0"/>
 
     <div class="label">
         <span class="label">1</span>
-        <span class="host"><input type="text" name="city" class="dest" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
+        <span class="host"><input type="text" name="city" class="dest" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine", countryId:1}]' nosubmit/>
         <span class="diags">Sorry, we have no offers for this city</span>
         </span>
     </div>
@@ -117,8 +125,7 @@
     <div class="clearer"></div>
 </form>
 
- <form class="searchform advanced" action="/bookenizer-stubs/hms-services/hotel/search" method="post"
-      enctype="application/x-www-form-urlencoded">
+ <form class="searchform advanced" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="cityId" value="0"/>
 
     <div class="label">
