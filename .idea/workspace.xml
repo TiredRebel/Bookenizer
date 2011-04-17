@@ -2,36 +2,63 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\.name" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\footer.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\logobar.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\searchform.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\statistics.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\topblock.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\topdestblock.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\footer.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\logobar.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\searchbar.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\statistics.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\topblock.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\topdestblock.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\README" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\ind.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\debug\jquery.jstore-all.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\jStore.Flash.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\jStore.swf" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\jquery.jstore-all-min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\jquery.jstore-min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\test.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/debug/jStore.swf" afterPath="$PROJECT_DIR$/scripts/debug/jStore.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/debug/jStore.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/jStore.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/de/footer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/de/hotelslist.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/de/logobar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/de/searchbar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/de/searchform.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/de/statistics.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/de/topblock.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/de/topdestblock.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/en/footer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/en/hotelslist.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/en/logobar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/en/main.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/en/searchbar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/en/searchform.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/en/statistics.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/en/topblock.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/en/topdestblock.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/ru/footer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/ru/hotelslist.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/ru/logobar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/ru/main.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/ru/searchbar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/ru/searchform.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/ru/statistics.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/ru/topblock.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/Locales/ru/topdestblock.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/ind.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/ICanHaz.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/backbone-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/debug/ICanHaz.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/debug/backbone.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/debug/jStore.Flash.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/debug/jquery-1.5.2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/debug/jquery.address-1.3.2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/debug/jquery.jstore-all.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/debug/jquery.jstore.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/debug/json2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/debug/mustache.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/debug/underscore.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/engines/jStore.Dom-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/engines/jStore.Flash-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/engines/jStore.Gears-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/engines/jStore.Html5-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/engines/jStore.IE-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/jStore.Flash.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/jquery-1.5.2.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/jquery.address-1.3.2.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/jquery.jstore-all-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/jquery.jstore-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/scripts/underscore-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deprecated/test.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/debug/browser.json.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/debug/class.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/en/main.html" afterPath="$PROJECT_DIR$/Locales/en/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/ru/main.html" afterPath="$PROJECT_DIR$/Locales/ru/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/debug/jStore.Flash.html" afterPath="$PROJECT_DIR$/scripts/debug/jStore.Flash.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/debug/jquery.jstore.js" afterPath="$PROJECT_DIR$/scripts/debug/jquery.jstore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/t2.html" afterPath="$PROJECT_DIR$/t2.html" />
     </list>
     <ignored path="bookenizer.c.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -210,6 +237,7 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -222,7 +250,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297619" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -243,7 +270,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменена последовательность событий при инициализации. Убран рут на корень" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some clean up performed. Statistics added. Search type switcher routes. New version(2.0) of jStore library implemented" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -257,6 +284,7 @@
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Изменена последовательность событий при инициализации. Убран рут на корень" />
+    <MESSAGE value="Some clean up performed. Statistics added. Search type switcher routes. New version(2.0) of jStore library implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
