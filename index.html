@@ -188,6 +188,7 @@
                 $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(window._configuration.get("searchType"))]);
                 $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(window._configuration.get("searchType"))]);
                 $("form.searchform."+window._configuration.get("searchType")+" .dest").attr("suggest_value", JSON.stringify(self.model));
+                suggestor();
                 return this;
             }
         });
@@ -265,6 +266,7 @@
                 _statistics.render();
                 _searchForm.render();
                 _footer.render();
+
             },
             drawTemplates:function(_configuration,isRepaint){
                 //debugger;
@@ -285,13 +287,14 @@
                     _topDestinations=new LocationsView({model:_configuration.get("topDestinations")});
                     _statistics=new StatisticsView({model:_configuration.get("statistics")});
                     _footer = new FooterView();
-                     //   debugger;
+                        //debugger;
                      this.renderIndex();
+                    //suggestor();
                 }else{
                     //debugger;
                   $("#ltemplate").load(_configuration.mainTemplateUrl(),function(){
                       ich.clearAll();
-                      _topDestinations.model=_configuration.get("topDestinations");
+                       _topDestinations.model=_configuration.get("topDestinations");
                       _statistics.model=_configuration.get("statistics");
                       _searchForm.model=_configuration.get("srchLocations");
                       _index.render();
@@ -321,11 +324,9 @@
                     //todo save city, dates values while form switching
                     $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(name)]);
                     $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(_configuration.get("searchType"))]);
-                    //debugger;
-                    suggestor();
                     $("form.searchform."+_configuration.get("searchType")+" .dest").attr("suggest_value", JSON.stringify(_configuration.get("srchLocations")));
+                    suggestor();
                     self.drawTemplates(_configuration, false);
-                    return this;
                 });
                 _configuration.bind("change:lang",function(model,name){
                     //todo move data retrieve here
@@ -353,7 +354,7 @@
                               _configuration.set({statistics:sts});
                         }
                 });
-                 self.drawTemplates(_configuration, false);
+                self.drawTemplates(_configuration, false);
                 return this;
             },
             card:function(){
@@ -381,7 +382,7 @@
                 $("#ltemplate").load(config.mainTemplateUrl(),function(){
                         new iApp(config);
                         Backbone.history.start();
-                        suggestor();
+                        //suggestor();
                     });
                 });
         });
