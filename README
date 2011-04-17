@@ -1,1 +1,5 @@
 Bookenizer project
+17.04.2011
+- Fixed hashchanged issue in Safari 5 browser
+- Implemented new jstore engine v2
+- Application refactored
