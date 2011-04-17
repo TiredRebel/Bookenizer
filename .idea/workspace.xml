@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Support/bookenizer-stubs.war" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Support/httpd-vhosts.conf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Support/tomcat-server.conf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/bookenizer.c.iml" afterPath="$PROJECT_DIR$/.idea/bookenizer.c.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -286,7 +289,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="t2 - &gt; renamed to index.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Examples configuration files for catalina and xammp added. Idea project tuning." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -304,6 +307,7 @@
     <MESSAGE value="README added" />
     <MESSAGE value="ignore rules fo deprecated" />
     <MESSAGE value="t2 - &gt; renamed to index.html" />
+    <MESSAGE value="Examples configuration files for catalina and xammp added. Idea project tuning." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
