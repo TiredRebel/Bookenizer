@@ -2,8 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\.name" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\footer.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\logobar.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\searchform.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\statistics.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\topblock.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\topdestblock.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\footer.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\logobar.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\searchbar.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\statistics.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\topblock.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\topdestblock.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\README" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\ind.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\index.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\debug\jquery.jstore-all.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\jStore.Flash.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\jStore.swf" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\jquery.jstore-all-min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\jquery.jstore-min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\test.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/debug/jStore.swf" afterPath="$PROJECT_DIR$/scripts/debug/jStore.swf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/en/main.html" afterPath="$PROJECT_DIR$/Locales/en/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/ru/main.html" afterPath="$PROJECT_DIR$/Locales/ru/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/debug/jStore.Flash.html" afterPath="$PROJECT_DIR$/scripts/debug/jStore.Flash.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/debug/jquery.jstore.js" afterPath="$PROJECT_DIR$/scripts/debug/jquery.jstore.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/t2.html" afterPath="$PROJECT_DIR$/t2.html" />
     </list>
     <ignored path="bookenizer.c.iws" />
@@ -30,7 +57,7 @@
       <file leaf-file-name="t2.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/t2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="681" selection-end="681" vertical-scroll-proportion="0.46875">
+            <state line="23" column="0" selection-start="705" selection-end="705" vertical-scroll-proportion="0.039443154">
               <folding />
             </state>
           </provider>
@@ -39,25 +66,7 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="180" column="9" selection-start="8488" selection-end="8735" vertical-scroll-proportion="-27.958334">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="24" selection-start="3908" selection-end="3924" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ind.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ind.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="188" column="9" selection-start="9291" selection-end="9300" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -108,6 +117,27 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Favorites" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -122,85 +152,14 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookenizer.c" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookenizer.c" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookenizer.c" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookenizer.c" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookenizer.c" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Locales" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookenizer.c" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookenizer.c" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Locales" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="en" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookenizer.c" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookenizer.c" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Locales" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="de" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="web-ide.project.structure" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
@@ -235,25 +194,35 @@
       <created>1302786609950</created>
       <updated>1302786609950</updated>
     </task>
-    <servers />
+    <servers>
+      <GitHub shared="false">
+        <password>dfe9dfcedfdedfc4dfccdf98df9adf9adf92</password>
+        <option name="repoAuthor" value="TiredRebel" />
+        <option name="repoName" value="Bookenizer" />
+        <option name="url" value="https://github.com" />
+        <option name="useHttpAuthentication" value="false" />
+        <option name="useProxy" value="false" />
+        <username>TiredRebel</username>
+      </GitHub>
+    </servers>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="36" width="1682" height="989" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32936978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297619" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19142511" sideWeight="0.6706302" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1913815" sideWeight="0.67128986" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297619" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -293,30 +262,16 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="24" selection-start="3908" selection-end="3924" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ind.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="9" selection-start="8488" selection-end="8735" vertical-scroll-proportion="-27.958334">
+        <state line="188" column="9" selection-start="9291" selection-end="9300" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/t2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="681" selection-end="681" vertical-scroll-proportion="0.46875">
+        <state line="23" column="0" selection-start="705" selection-end="705" vertical-scroll-proportion="0.039443154">
           <folding />
         </state>
       </provider>

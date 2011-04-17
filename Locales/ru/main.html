@@ -10,6 +10,14 @@
             </ul>
         </div>
     </script>
+    <script type="text/html" id="stats_block_tmpl">
+       <div id="statsblock" class="container">
+            <h2>Статистика</h2>
+            <p><strong>{{hotels}}</strong> отелей</p>
+            <p><strong>{{offers}}</strong> предложений</p>
+            <p><strong>{{booked}}</strong> заказов</p>
+        </div>
+    </script>
     <script type="text/html" id="topbar_menu_tmpl" class="partial">
         <ul class="topblock right">
             <li class="selected"><a href="#selected" title="Выбранные отели" id="lbl_Selected"
@@ -79,30 +87,26 @@
         <h2>Поиск</h2>
         <ul id="srchMenu" class="switcher">
             <li class="search">быстрый</li>
-			<li><a href="#" class="noreload search" onclick="return switchSearchtype()" title="More search parameters">расширеный</a></li>
+			<li><a href="#search/advanced" class="noreload search" title="More search parameters">расширеный</a></li>
         </ul>
         {{>searchform_tmpl}}
      </div></div>
     </script>
-    <!--<li><a href="#" class="noreload" id="{{id}}" title="More search parameters">{{mnemonic}}</a></li>-->
     <script type="text/html" id="searchform_tmpl" class="partial">
     <form class="searchform quick" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded" >
     <input type="hidden" name="cityId" value="0"/>
 
     <div class="label">
         <span class="label">1</span>
-				<span class="host"><input type="text" name="city" class="dest" value="Город" defValue="Город"
-                                          suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
-					<span class="diags">Sorry, we have no offers for this city</span>
-				</span>
+        <span class="host"><input type="text" name="city" class="dest" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
+        <span class="diags">Sorry, we have no offers for this city</span>
+        </span>
     </div>
 
     <div class="label before-last">
         <span class="label">2</span>
-        <label>from <input type="text" name="dateFrom" id="dateFrom" class="date" value="22.10.2008"
-                           onchange="/*fixDate(this)*/"/></label>
-        <label>to <input type="text" name="dateTo" id="dateTo" class="date" value="24.10.2008"
-                         onchange="/*fixDate(this)*/"/></label>
+        <label>from <input type="text" name="dateFrom" id="dateFrom" class="date" value="22.10.2008" onchange="/*fixDate(this)*/"/></label>
+        <label>to <input type="text" name="dateTo" id="dateTo" class="date" value="24.10.2008" onchange="/*fixDate(this)*/"/></label>
         <span class="search_nights_num">2</span> <span class="search_nights_word">ночи(-ей)</span>
     </div>
 
@@ -112,24 +116,22 @@
 
     <div class="clearer"></div>
 </form>
+
  <form class="searchform advanced" action="/bookenizer-stubs/hms-services/hotel/search" method="post"
       enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="cityId" value="0"/>
 
     <div class="label">
         <span class="label">Город</span>
-				<span class="host"><input type="text" name="city" class="dest" value="City" defValue="City"
-                                          suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
-				<span class="diags">Sorry, we have no offers for this city</span>
-				</span>
+        <span class="host"><input type="text" name="city" class="dest" value="City" defValue="City" suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
+            <span class="diags">Sorry, we have no offers for this city</span>
+        </span>
     </div>
 
     <div class="label">
         <span class="label">Даты</span>
-        <label>с <input type="text" name="advDateFrom" id="advDateFrom" class="date" value="22.10.2008"
-                           onchange="fixDate(this)"/></label>
-        <label>по <input type="text" name="advDateTo" id="advDateTo" class="date" value="24.10.2008"
-                         onchange="fixDate(this)"/></label>
+        <label>с <input type="text" name="advDateFrom" id="advDateFrom" class="date" value="22.10.2008" onchange="fixDate(this)"/></label>
+        <label>по <input type="text" name="advDateTo" id="advDateTo" class="date" value="24.10.2008" onchange="fixDate(this)"/></label>
         на <span class="search_nights_num">2</span> <span class="search_nights_word">ночи(-ей)</span>
     </div>
 
