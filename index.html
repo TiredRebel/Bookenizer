@@ -171,12 +171,14 @@
             render:function(){
                 var self=this;
                 getTemplate("searchbar_tmpl");
-                getTemplate("searchform_tmpl",true);
+                getTemplate("searchform_tmpl_quick");
+                getTemplate("searchform_tmpl_advanced");
                 getTemplate("searchType_switcher_quick");
                 getTemplate("searchType_switcher_advanced");
                 this.el.html(ich.searchbar_tmpl());
                 //debugger;
                 $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(window._configuration.get("searchType"))]);
+                $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(window._configuration.get("searchType"))]);
                 $("form.searchform .dest").attr("suggest_value", JSON.stringify(self.model));
                 return this;
             }
@@ -309,6 +311,7 @@
                     }*/
                     //debugger;
                     $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(name)]);
+                    $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(_configuration.get("searchType"))]);
                     self.drawTemplates(_configuration, false);
                     return this;
                 });

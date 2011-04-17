@@ -446,7 +446,7 @@ form.searchform {
 	z-index:200;
 }
 
-form.advanced { display:none }
+/*form.advanced { display:none }*/
 
 form.searchform div.label {
 	float:left;

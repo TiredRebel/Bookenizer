@@ -6,8 +6,7 @@
     <script type="text/html" id="top_dest_block_tmpl">
         <div id="topdestblock" class="container">
             <h2>Топ городов</h2>
-            <ul id="locationsList">
-            </ul>
+            <ul id="locationsList"></ul>
         </div>
     </script>
     <script type="text/html" id="stats_block_tmpl">
@@ -91,16 +90,16 @@
         <li class="search">расширеный</li>
     </script>
     <script type="text/html" id="searchbar_tmpl">
-    <div id="searchbar" class="open-full"><div class="container">
-        <h2>Поиск</h2>
-        <ul id="srchMenu" class="switcher">
-
-        </ul>
-        {{>searchform_tmpl}}
-     </div></div>
+    <div id="searchbar" class="open-full">
+        <div class="container">
+            <h2>Поиск</h2>
+            <ul id="srchMenu" class="switcher"></ul>
+        </div>
+        <span id="srchFrm"></span>
+    </div>
     </script>
 
-    <script type="text/html" id="searchform_tmpl" class="partial">
+ <script type="text/html" id="searchform_tmpl_quick">
     <form class="searchform quick" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded" >
     <input type="hidden" name="cityId" value="0"/>
 
@@ -123,9 +122,11 @@
     </div>
 
     <div class="clearer"></div>
-</form>
+    </form>
+</script>
 
- <form class="searchform advanced" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded">
+<script type="text/html" id="searchform_tmpl_advanced">
+<form class="searchform advanced" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="cityId" value="0"/>
 
     <div class="label">
@@ -141,8 +142,6 @@
         <label>по <input type="text" name="advDateTo" id="advDateTo" class="date" value="24.10.2008" onchange="fixDate(this)"/></label>
         на <span class="search_nights_num">2</span> <span class="search_nights_word">ночи(-ей)</span>
     </div>
-
-
 
     <div class="label">
         <span class="label">Кол-во человек</span>
@@ -189,9 +188,7 @@
 
     <div class="clearer"></div>
 </form>
-
-
-    </script>
+</script>
     <script type = "text/html" id = "footer_tmpl" >
         <p>© 2011 Bookinizer Inc.All rights reserved <span class = "noprint"> / <a href="#">Условия использования</a> / <a href="#">Защита данных</a> / <a href="#">О сервисе Bookinizer.com</a></span></p>
     </script>
