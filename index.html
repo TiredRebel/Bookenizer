@@ -59,6 +59,14 @@
 
 <script type="text/javascript">
     (function() {
+        var suggestor=function(){
+            $.gsuggest({
+                            //debug:true,
+                            inlineText: function(data) { return data.city + ", " + data.country },
+		                    inlineId: function(data) { return data.cityId },
+		                    dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); }
+            });
+        };
 
         this.getTemplate=function(tmplName, isPartial,custom){
             var tmplContent;
@@ -179,7 +187,7 @@
                 //debugger;
                 $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(window._configuration.get("searchType"))]);
                 $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(window._configuration.get("searchType"))]);
-                $("form.searchform .dest").attr("suggest_value", JSON.stringify(self.model));
+                $("form.searchform."+window._configuration.get("searchType")+" .dest").attr("suggest_value", JSON.stringify(self.model));
                 return this;
             }
         });
@@ -305,13 +313,17 @@
                 _configuration.bind("change:searchType",function(model,name){
                     //alert(name);
                     var st=$.jStore.get("locations_".concat(_configuration.get("lang")));
+                    //todo get cached data from jstore
                     /*alert(name);
                     if(st===null || st===undefined){
 
                     }*/
-                    //debugger;
+                    //todo save city, dates values while form switching
                     $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(name)]);
                     $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(_configuration.get("searchType"))]);
+                    //debugger;
+                    suggestor();
+                    $("form.searchform."+_configuration.get("searchType")+" .dest").attr("suggest_value", JSON.stringify(_configuration.get("srchLocations")));
                     self.drawTemplates(_configuration, false);
                     return this;
                 });
@@ -369,12 +381,7 @@
                 $("#ltemplate").load(config.mainTemplateUrl(),function(){
                         new iApp(config);
                         Backbone.history.start();
-                        $.gsuggest({
-                            debug:true,
-                            inlineText: function(data) { return data.city + ", " + data.country },
-		                    inlineId: function(data) { return data.cityId },
-		                    dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); }
-                        });
+                        suggestor();
                     });
                 });
         });

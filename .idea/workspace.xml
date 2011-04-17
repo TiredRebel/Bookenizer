@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/debug/gsuggest.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/en/main.html" afterPath="$PROJECT_DIR$/Locales/en/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/ru/main.html" afterPath="$PROJECT_DIR$/Locales/ru/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/debug/gsuggest.js" afterPath="$PROJECT_DIR$/scripts/debug/gsuggest.js" />
     </list>
     <ignored path="bookenizer.c.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,46 +31,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="25" selection-start="4997" selection-end="5010" vertical-scroll-proportion="-13.423077">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="20" selection-start="4535" selection-end="4535" vertical-scroll-proportion="-9.153846">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="311" column="0" selection-start="11854" selection-end="11854" vertical-scroll-proportion="0.65384614">
+            <state line="315" column="54" selection-start="12301" selection-end="12301" vertical-scroll-proportion="0.875">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/styles/style.css">
+      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="511" column="22" selection-start="7776" selection-end="7776" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gsuggest.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/debug/gsuggest.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="53" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
+            <state line="124" column="101" selection-start="6382" selection-end="6382" vertical-scroll-proportion="-12.923077">
               <folding />
             </state>
           </provider>
@@ -95,9 +68,10 @@
         <option value="$PROJECT_DIR$/Support/tomcat-server.conf" />
         <option value="$PROJECT_DIR$/Support/httpd-vhosts.conf" />
         <option value="$PROJECT_DIR$/README" />
-        <option value="$PROJECT_DIR$/scripts/debug/gsuggest.js" />
-        <option value="$PROJECT_DIR$/Locales/ru/main.html" />
+        <option value="$PROJECT_DIR$/styles/style.css" />
         <option value="$PROJECT_DIR$/Locales/en/main.html" />
+        <option value="$PROJECT_DIR$/Locales/ru/main.html" />
+        <option value="$PROJECT_DIR$/scripts/debug/gsuggest.js" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
@@ -157,6 +131,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="styles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="debug" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -366,7 +372,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Examples configuration files for catalina and xammp added. Idea project tuning. see README" />
+    <option name="LAST_COMMIT_MESSAGE" value="Search menu switcher added and state saving" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -386,6 +392,7 @@
     <MESSAGE value="t2 - &gt; renamed to index.html" />
     <MESSAGE value="Examples configuration files for catalina and xammp added. Idea project tuning." />
     <MESSAGE value="Examples configuration files for catalina and xammp added. Idea project tuning. see README" />
+    <MESSAGE value="Search menu switcher added and state saving" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -412,20 +419,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/styles/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="511" column="22" selection-start="7776" selection-end="7776" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/debug/gsuggest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="53" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="37" selection-start="135" selection-end="135" vertical-scroll-proportion="0.09798271">
@@ -433,23 +426,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
+    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="25" selection-start="4997" selection-end="5010" vertical-scroll-proportion="-13.423077">
+        <state line="91" column="40" selection-start="4630" selection-end="4630" vertical-scroll-proportion="0.259542">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
+    <entry file="file://$PROJECT_DIR$/styles/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="20" selection-start="4535" selection-end="4535" vertical-scroll-proportion="-9.153846">
+        <state line="450" column="162" selection-start="6671" selection-end="6671" vertical-scroll-proportion="0.08789625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="101" selection-start="6382" selection-end="6382" vertical-scroll-proportion="-12.923077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/debug/gsuggest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="99" selection-end="99" vertical-scroll-proportion="0.02496329">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="311" column="0" selection-start="11854" selection-end="11854" vertical-scroll-proportion="0.65384614">
+        <state line="315" column="54" selection-start="12301" selection-end="12301" vertical-scroll-proportion="0.875">
           <folding />
         </state>
       </provider>

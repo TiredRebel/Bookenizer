@@ -3,7 +3,7 @@ $.gsuggest = function(settings){
 
 $.gsuggest.config = {
 	'debug': false,
-	'url': '/suggest.cfc',
+	'url': '/',
 	'size': 10,
 	'cacheenabled': false,
 	'cacheaggressive': false,
