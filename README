@@ -1,4 +1,7 @@
 Bookenizer project
+18.04.2011
+- 1st stage completed. Sites engine, localization, autocomplete etc.
+- under Support folder added sample config files for linux's apache2 server
 17.04.2011
 - Fixed hashchanged issue in Safari 5 browser
 - Implemented new jstore engine v2
