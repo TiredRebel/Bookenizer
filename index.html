@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="/styles/layout.css" medvia="all">
     <link rel="stylesheet" type="text/css" href="/styles/print.css" media="print">
-
+    <link rel="stylesheet" type="text/css" href="/styles/calendar-ho.css" media="all">
 </head>
 <body class="popular">
 <div id="ltemplate"></div>
@@ -47,6 +47,10 @@
     </div>
 </div>
 <div id="footer"></div>
+<script type="text/javascript" src="/scripts/debug/calendar.js"></script>
+<script type="text/javascript" src="/scripts/lang/calendar-en.js"></script>
+<script type="text/javascript" src="/scripts/debug/calendar-setup.js"></script>
+<script type="text/javascript" src="/scripts/debug/xdate.js"></script>
 <script type="text/javascript" src="/scripts/debug/json2.js"></script>
 <script type="text/javascript" src="/scripts/jquery-1.5.2.min.js"></script>
 <script type="text/javascript" src="/scripts/debug/underscore.js"></script>
@@ -66,6 +70,11 @@
 		                    inlineId: function(data) { return data.cityId },
 		                    dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); }
             });
+        };
+
+        var calendarSetup=function(){
+                Calendar.setup({ inputField : "dateFrom", ifFormat : dformat, firstDay :	0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate });
+                Calendar.setup({ inputField : "dateTo", ifFormat : dformat, firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate });
         };
 
         this.getTemplate=function(tmplName, isPartial,custom){
@@ -185,10 +194,12 @@
                 getTemplate("searchType_switcher_advanced");
                 this.el.html(ich.searchbar_tmpl());
                 //debugger;
-                $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(window._configuration.get("searchType"))]);
-                $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(window._configuration.get("searchType"))]);
-                $("form.searchform."+window._configuration.get("searchType")+" .dest").attr("suggest_value", JSON.stringify(self.model));
+                var searchType=window._configuration.get("searchType");
+                $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(searchType)]);
+                $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(searchType)]);
+                $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(self.model));
                 suggestor();
+                calendarSetup();
                 return this;
             }
         });
@@ -315,17 +326,25 @@
                 //$.jStore.remove("topdest_en");
                 _configuration.bind("change:searchType",function(model,name){
                     //alert(name);
-                    var st=$.jStore.get("locations_".concat(_configuration.get("lang")));
+                    var st, searchType, city, defCity, dateFrom,dateTo;
+                    st=$.jStore.get("locations_".concat(_configuration.get("lang")));
+                    searchType=_configuration.get("searchType");
                     //todo get cached data from jstore
                     /*alert(name);
                     if(st===null || st===undefined){
 
                     }*/
                     //todo save city, dates values while form switching
+                    debugger;
+                    city=$("#city").val();
+                    dateFrom=$("#dateFrom").val();
+                    dateTo=$("#dateTo").val();
+
                     $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(name)]);
-                    $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(_configuration.get("searchType"))]);
-                    $("form.searchform."+_configuration.get("searchType")+" .dest").attr("suggest_value", JSON.stringify(_configuration.get("srchLocations")));
+                    $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(searchType)]);
+                    $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(_configuration.get("srchLocations")));
                     suggestor();
+                    calendarSetup();
                     self.drawTemplates(_configuration, false);
                 });
                 _configuration.bind("change:lang",function(model,name){

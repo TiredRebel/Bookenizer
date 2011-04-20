@@ -105,15 +105,15 @@
 
     <div class="label">
         <span class="label">1</span>
-        <span class="host"><input type="text" name="city" class="dest" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine", countryId:1}]' nosubmit/>
+        <span class="host"><input type="text" id="city" name="city" class="dest" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine", countryId:1}]' nosubmit/>
         <span class="diags">Sorry, we have no offers for this city</span>
         </span>
     </div>
 
     <div class="label before-last">
         <span class="label">2</span>
-        <label>from <input type="text" name="dateFrom" id="dateFrom" class="date" value="22.10.2008" onchange="/*fixDate(this)*/"/></label>
-        <label>to <input type="text" name="dateTo" id="dateTo" class="date" value="24.10.2008" onchange="/*fixDate(this)*/"/></label>
+        <label>from <input type="text" name="dateFrom" id="dateFrom" class="date" value="22.04.2011" onchange="fixDate(this)"/></label>
+        <label>to <input type="text" name="dateTo" id="dateTo" class="date" value="24.04.2011" onchange="fixDate(this)"/></label>
         <span class="search_nights_num">2</span> <span class="search_nights_word">ночи(-ей)</span>
     </div>
 
@@ -131,15 +131,15 @@
 
     <div class="label">
         <span class="label">Город</span>
-        <span class="host"><input type="text" name="city" class="dest" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
+        <span class="host"><input type="text" id="city" name="city" class="dest" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
             <span class="diags">Sorry, we have no offers for this city</span>
         </span>
     </div>
 
     <div class="label">
         <span class="label">Даты</span>
-        <label>с <input type="text" name="advDateFrom" id="advDateFrom" class="date" value="22.10.2008" onchange="fixDate(this)"/></label>
-        <label>по <input type="text" name="advDateTo" id="advDateTo" class="date" value="24.10.2008" onchange="fixDate(this)"/></label>
+        <label>с <input type="text" name="dateFrom" id="dateFrom" class="date" value="22.04.2011" onchange="fixDate(this)"/></label>
+        <label>по <input type="text" name="dateTo" id="dateTo" class="date" value="22.04.2011" onchange="fixDate(this)" /></label>
         на <span class="search_nights_num">2</span> <span class="search_nights_word">ночи(-ей)</span>
     </div>
 
