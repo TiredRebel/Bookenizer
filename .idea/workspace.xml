@@ -1,58 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="Calendar added">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/debug/calendar-setup.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/debug/calendar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/debug/xdate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-af.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-al.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-bg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-big5-utf8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-big5.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-br.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-ca.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-cs-utf8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-cs-win.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-da.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-du.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-el.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-en.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-es.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-fi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-fr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-he-utf8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-hr-utf8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-hr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-hu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-it.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-jp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-ko-utf8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-ko.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-lt-utf8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-lt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-lv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-nl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-no.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-pl-utf8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-pl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-pt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-ro.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-ru.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-ru_win_.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-si.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-sk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-sp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-sv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-tr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/calendar-zh.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/cn_utf8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/styles/calendar-ho.css" />
+    <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/en/main.html" afterPath="$PROJECT_DIR$/Locales/en/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/ru/main.html" afterPath="$PROJECT_DIR$/Locales/ru/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README" afterPath="$PROJECT_DIR$/README" />
     </list>
     <ignored path="bookenizer.c.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,7 +31,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="346" column="36" selection-start="14049" selection-end="14049" vertical-scroll-proportion="-19.26923">
+            <state line="346" column="36" selection-start="14049" selection-end="14049" vertical-scroll-proportion="-0.65384614">
               <folding />
             </state>
           </provider>
@@ -89,7 +40,16 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="120" selection-start="7317" selection-end="7317" vertical-scroll-proportion="-12.5">
+            <state line="141" column="85" selection-start="7282" selection-end="7282" vertical-scroll-proportion="-12.423077">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="37" selection-start="67" selection-end="67" vertical-scroll-proportion="0.10059172">
               <folding />
             </state>
           </provider>
@@ -98,16 +58,7 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="76" selection-start="6435" selection-end="6435" vertical-scroll-proportion="-3.2307692">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="xdate.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/scripts/debug/xdate.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="422" selection-end="422" vertical-scroll-proportion="0.70414203">
+            <state line="116" column="85" selection-start="6030" selection-end="6030" vertical-scroll-proportion="-13.076923">
               <folding />
             </state>
           </provider>
@@ -131,13 +82,13 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Support/tomcat-server.conf" />
         <option value="$PROJECT_DIR$/Support/httpd-vhosts.conf" />
-        <option value="$PROJECT_DIR$/README" />
         <option value="$PROJECT_DIR$/styles/style.css" />
         <option value="$PROJECT_DIR$/scripts/debug/gsuggest.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/Locales/ru/main.html" />
-        <option value="$PROJECT_DIR$/Locales/en/main.html" />
         <option value="$PROJECT_DIR$/scripts/debug/xdate.js" />
+        <option value="$PROJECT_DIR$/Locales/en/main.html" />
+        <option value="$PROJECT_DIR$/Locales/ru/main.html" />
+        <option value="$PROJECT_DIR$/README" />
       </list>
     </option>
   </component>
@@ -167,123 +118,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="debug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Locales" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Locales" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="en" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bookenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Locales" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Favorites" />
       <pane id="Scope">
         <subPane />
         <subPane subId="Non-Project Files" />
@@ -320,15 +154,50 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
     <property name="options.lastSelected" value="web-ide.project.structure" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -405,9 +274,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.49375868" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.49375868" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1913815" sideWeight="0.24410541" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -419,7 +289,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297619" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -440,7 +309,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Forms switch which depends from search type and language. Suggest plugin initialization fixed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Calendar fields initial values" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -462,6 +331,7 @@
     <MESSAGE value="Examples configuration files for catalina and xammp added. Idea project tuning. see README" />
     <MESSAGE value="Search menu switcher added and state saving" />
     <MESSAGE value="Forms switch which depends from search type and language. Suggest plugin initialization fixed." />
+    <MESSAGE value="Calendar fields initial values" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -482,11 +352,6 @@
         <state line="2" column="37" selection-start="121" selection-end="121" vertical-scroll-proportion="0.048991356" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="37" selection-start="135" selection-end="135" vertical-scroll-proportion="0.09798271" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/styles/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="450" column="162" selection-start="6671" selection-end="6671" vertical-scroll-proportion="0.08789625" />
@@ -499,9 +364,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/styles/calendar-ho.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/debug/calendar.js">
@@ -527,28 +390,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="346" column="36" selection-start="14049" selection-end="14049" vertical-scroll-proportion="-19.26923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="120" selection-start="7317" selection-end="7317" vertical-scroll-proportion="-12.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="76" selection-start="6435" selection-end="6435" vertical-scroll-proportion="-3.2307692">
+        <state line="346" column="36" selection-start="14049" selection-end="14049" vertical-scroll-proportion="-0.65384614">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/debug/xdate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="422" selection-end="422" vertical-scroll-proportion="0.70414203">
+        <state line="29" column="67" selection-start="830" selection-end="830" vertical-scroll-proportion="0.39193085">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="85" selection-start="6030" selection-end="6030" vertical-scroll-proportion="-13.076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="85" selection-start="7282" selection-end="7282" vertical-scroll-proportion="-12.423077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="37" selection-start="67" selection-end="67" vertical-scroll-proportion="0.10059172">
           <folding />
         </state>
       </provider>
