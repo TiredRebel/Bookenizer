@@ -219,7 +219,7 @@
                 var self=this;
                 //debugger;
                 getTemplate('top_dest_block_tmpl');
-                getTemplate('tdb_location_item',false,'<li><a href="#">{{city}}</a>,{{country}}</li>');
+                getTemplate('tdb_location_item',false,'<li><a href="#">{{city}}</a>,&nbsp;{{country}}</li>');
                 self.el.html(ich.top_dest_block_tmpl());
                 var locations=self.el.find('#locationsList');
                 _(self.model).each(function(location){
