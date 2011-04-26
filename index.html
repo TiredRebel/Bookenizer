@@ -53,6 +53,7 @@
 <script type="text/javascript" src="/scripts/debug/xdate.js"></script>
 <script type="text/javascript" src="/scripts/debug/json2.js"></script>
 <script type="text/javascript" src="/scripts/jquery-1.5.2.min.js"></script>
+<script type="text/javascript" src="/scripts/debug/jquery.ajaxqueue.js"></script>
 <script type="text/javascript" src="/scripts/debug/underscore.js"></script>
 <script type="text/javascript" src="/scripts/debug/backbone.js"></script>
 <script type="text/javascript" src="/scripts/debug/mustache.js"></script>
@@ -61,14 +62,14 @@
 <script type="text/javascript" src="/scripts/debug/jquery.jstore.js"></script>
 <script type="text/javascript" src="/scripts/debug/gsuggest.js"></script>
 
+
 <script type="text/javascript">
-    (function() {
+    (function(defLanguage) {
         var suggestor=function(){
             $.gsuggest({
-                            //debug:true,
-                            inlineText: function(data) { return data.city + ", " + data.country },
-		                    inlineId: function(data) { return data.cityId },
-		                    dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); }
+                inlineText: function(data) { return data.city + ", " + data.country },
+                inlineId: function(data) { return data.cityId },
+                dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); }
             });
         };
 
@@ -76,6 +77,7 @@
                 Calendar.setup({ inputField : "dateFrom", ifFormat : dformat, firstDay :	0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate });
                 Calendar.setup({ inputField : "dateTo", ifFormat : dformat, firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate });
         };
+
 
         this.getTemplate=function(tmplName, isPartial,custom){
             var tmplContent;
@@ -91,60 +93,62 @@
             }
         };
 
+
         var TopDestination=Backbone.Model.extend({});
-
         var Statistic=Backbone.Model.extend({});
-
         var SearchLocation=Backbone.Model.extend({});
+        var Language = Backbone.Model.extend();
 
         var TopDestinations=Backbone.Collection.extend({
-            model:TopDestination
+            model:TopDestination,
+            url:'location/top/',
+            fetchData:function(service,lang){
+                var self=this;
+                $.ajaxQueue({
+                        url:service.concat(self.url,lang),
+                        success:function(topdests){
+                           self.refresh(topdests.locationList);
+                        }
+                    });
+            }
         });
 
         var Statistics=Backbone.Collection.extend({
-            model:Statistic
+            model:Statistic,
+            url:'statistics/',
+            fetchData:function(service){
+                var self=this;
+                $.ajaxQueue({
+                        url:service.concat(self.url),
+                        success:function(stat){
+                           self.refresh(stat);
+                        }
+                    });
+            }
         });
 
         var SearchLocations=Backbone.Collection.extend({
-            model:SearchLocation
+            model:SearchLocation,
+            url:'location/all/',
+            fetchData:function(service,lang){
+                var self=this;
+                $.ajaxQueue({
+                        url:service.concat(self.url,lang),
+                        success:function(locations){
+                           self.refresh(locations.locationList);
+                        }
+                    });
+            }
         });
 
 
-        this.fetch_TopDestinations=function(lang){
-            return $.ajax({
-                    async:false,
-                    url:'/bookenizer-stubs/hms-services/location/top/'.concat(lang),
-                    dataType:'json',
-                    contentType:'application/json; charset=utf-8'
-                });
-            };
-
-        this.fetch_Statistics=function(){
-            return $.ajax({
-                async:false,
-                url:'/bookenizer-stubs/hms-services/statistics/',
-                dataType:'json',
-                contentType:'application/json; charset=utf-8'
-            });
-
-        };
-
-        this.fetch_Locations=function(lang){
-              return $.ajax({
-                  async:false,
-                  url:'/bookenizer-stubs/hms-services/location/all/'.concat(lang),
-                  dataType:'json',
-                  contentType:'application/json; charset=utf-8'
-              });
-        };
-
-        var Language = Backbone.Model.extend();
-
         var Configuration=Backbone.Model.extend({
             defaults:{
-                async:false,
-                "lang":"ru",
+                "ajaxMode":true,
+                "serviceUrl":"/bookenizer-stubs/hms-services/",
+                "lang":defLanguage,
                 "searchType":"quick",
+                "use_jStoreCache":true,
                 "statistics":new Statistics(),
                 "topDestinations":new TopDestinations(),
                 "srchLocations":new SearchLocations()
@@ -154,19 +158,27 @@
             },
             initialize:function(){
                 var self=this;
-                console.log("Configuration initialize "+ this.get("lang"));
-                fetch_TopDestinations(self.get("lang")).success(function(topdests){
-                    self.set({topDestinations:topdests.locationList});
-                    $.jStore.set("topdest_".concat(self.get("lang")),self.get("topDestinations"));
-                    fetch_Statistics().success(function(stat){
-                        self.set({statistics:stat});
-                        $.jStore.set("statistics",self.get("statistics"));
-                    });
-                    fetch_Locations(self.get("lang")).success(function(locations){
-                        self.set({srchLocations:locations.locationList});
-                        $.jStore.set("srchLocations_".concat(self.get("lang")),self.get("srchLocations"));
-                    });
+                console.log("Configuration initialize "+ self.get("lang"));
+                $.ajaxSetup({
+                    async:self.get('ajaxMode'),
+                    dataType:'json',
+                    contentTpe:'application/json; charset=utf-8'
                 });
+                self.get('statistics').fetchData(self.get('serviceUrl'));
+                self.get('topDestinations').fetchData(self.get('serviceUrl'),self.get("lang"));
+                self.get('srchLocations').fetchData(self.get('serviceUrl'),self.get("lang"));
+                do{
+                  setTimeout('console.log("timeut")',10);
+                    //debugger;
+                }while($.ajaxQueue.length>1);
+                debugger;
+                //console.log($.ajaxQueue())
+            },
+            refreshData:function(){
+                var self=this;
+                self.get('statistics').fetchData(self.get('serviceUrl'));
+                self.get('topDestinations').fetchData(self.get('serviceUrl'),self.get("lang"));
+                self.get('srchLocations').fetchData(self.get('serviceUrl'),self.get("lang"));
             }
         });
 
@@ -222,7 +234,7 @@
                 getTemplate('tdb_location_item',false,'<li><a href="#">{{city}}</a>,&nbsp;{{country}}</li>');
                 self.el.html(ich.top_dest_block_tmpl());
                 var locations=self.el.find('#locationsList');
-                _(self.model).each(function(location){
+                _(self.model.toJSON()).each(function(location){
                     locations.append(ich.tdb_location_item(location));
                 });
             }
@@ -233,8 +245,7 @@
             render:function(){
                var self=this;
                getTemplate('stats_block_tmpl');
-               //debugger;
-               self.el.html(ich.stats_block_tmpl(self.model));
+               self.el.html(ich.stats_block_tmpl(self.model.toJSON()[0]));
             }
         });
 
@@ -298,7 +309,7 @@
                     _topDestinations=new LocationsView({model:_configuration.get("topDestinations")});
                     _statistics=new StatisticsView({model:_configuration.get("statistics")});
                     _footer = new FooterView();
-                        //debugger;
+                     //debugger;
                      this.renderIndex();
                     //suggestor();
                 }else{
@@ -325,7 +336,6 @@
                 //$.jStore.remove("topdest_ru");
                 //$.jStore.remove("topdest_en");
                 _configuration.bind("change:searchType",function(model,name){
-                    //alert(name);
                     var st, searchType, city, defCity, dateFrom,dateTo;
                     st=$.jStore.get("locations_".concat(_configuration.get("lang")));
                     searchType=_configuration.get("searchType");
@@ -335,7 +345,7 @@
 
                     }*/
                     //todo save city, dates values while form switching
-                    debugger;
+                    //debugger;
                     city=$("#city").val();
                     dateFrom=$("#dateFrom").val();
                     dateTo=$("#dateTo").val();
@@ -348,30 +358,9 @@
                     self.drawTemplates(_configuration, false);
                 });
                 _configuration.bind("change:lang",function(model,name){
-                    //todo move data retrieve here
-                        var td=$.jStore.get("topdest_".concat(name));
-                        var sts=$.jStore.get("statistics");
-                        if(td===null || td===undefined){
-                            $.when(fetch_TopDestinations(name)).then(
-                                function(topdests){
-                                    _configuration.set({topDestinations:topdests.locationList});
-                                    $.jStore.set("topdest_".concat(name),_configuration.get("topDestinations"));
-                                    if(sts===null){
-                                          $.when(fetch_Statistics()).then(
-                                                function(stat){
-                                                    _configuration.set({statistics:stat});
-                                                    $.jStore.set("statistics",_configuration.get("statistics"));
-                                                },function(){
-                                                    alert("Server is unavailable");
-                                                });
-                                    }
-                                },function(){
-                                    alert("Server is unavailable");
-                                });
-                        }else{
-                              _configuration.set({topDestinations:td});
-                              _configuration.set({statistics:sts});
-                        }
+                //todo move data retrieve here
+                    //debugger;
+                   _configuration.refreshData();
                 });
                 self.drawTemplates(_configuration, false);
                 return this;
@@ -398,6 +387,7 @@
 
             jStore.init('bookenizer', jStoreConfig, jStore.flavors.flash).engineReady(function (engine){
                 var config=new Configuration();
+
                 $("#ltemplate").load(config.mainTemplateUrl(),function(){
                         new iApp(config);
                         Backbone.history.start();
@@ -405,7 +395,7 @@
                     });
                 });
         });
-    }).call(this);
+    }).call(this,'ru');
 </script>
 </body>
 </html>
