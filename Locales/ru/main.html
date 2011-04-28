@@ -14,7 +14,7 @@
             <h2>Статистика</h2>
             <p><strong>{{hotels}}</strong> отелей</p>
             <p><strong>{{offers}}</strong> предложений</p>
-            <p><strong>{{booked}}</strong> заказов</p>
+            <p><strong>{{booked}}</strong> бронирований</p>
         </div>
     </script>
     <script type="text/html" id="topbar_menu_tmpl" class="partial">
@@ -22,10 +22,10 @@
             <li class="selected"><a href="#selected" title="Выбранные отели" id="lbl_Selected"
                                     class="noreload">Выбрано(9)</a> /
             </li>
-            <li><a href="#" title="FAQ and more" id="lbl_Help">Помощь</a> /</li>
+            <li><a href="#" title="FAQ и более" id="lbl_Help">Помощь</a> /</li>
             <li class="switch">
                 <a href="#" id="bt_login" title="Добро пожаловать в систему" class="noreload">Войти</a>
-                            <span id="block_register"> or <a href="#" id="bt_register"
+                            <span id="block_register"> или <a href="#" id="bt_register"
                                                              title="Зарегистрируйтесь, чтобы использовать все функции сайта"
                                                              class="noreload">Регистрация</a></span>
 
@@ -34,36 +34,34 @@
                         <input type="text" id="mail" name="mail" class="login" value="E-mail"
                                defvalue="E-mail"/>
                         <input type="text" id="pass_open" name="pass_open" class="login" value="Password"
-                               defvalue="Password"/>
+                               defvalue="Пароль"/>
                         <input type="password" id="pass" name="pass" class="login" value=""/>
 
                         <div class="diags">
 
-                            <p id="lp_def"><a href="#" id="forgot" title="Get a new password on your e-mail">Forgot
-                                password?</a></p>
+                            <p id="lp_def"><a href="#" id="forgot" title="Получить новый пароль на e-mail">Забыли
+                                пароль?</a></p>
 
-                            <p id="lp_bad_mail">The specified e-mail is not registered in the system. You
-                                may try another one or <a href="#">create a new account</a>.</p>
+                            <p id="lp_bad_mail">Указанный e-mail не зарегистрирован в системе. Попробуйте
+                                другой или <a href="#">создайте нового пользователя</a>.</p>
 
-                            <p id="lp_bad_pass">Password does not match. You may try another one or <a
-                                    href="#">Reset your password</a>.</p>
+                            <p id="lp_bad_pass">Пароль неверен. Попробуйте ещё раз или <a
+                                    href="#">переустановите пароль</a>.</p>
 
-                            <p id="lp_no_mail_to_reset">Please enter the e-mail you registered with. We will
-                                send you a password reset letter.</p>
+                            <p id="lp_no_mail_to_reset">Пожалуйста, введите Ваш регистрационный e-mail. Мы вышлем
+                                вам новый пароль.</p>
 
-                            <p id="lp_reset_pass_sent">A password reset letter has been sent to e-mail
-                                address you specified.</p>
+                            <p id="lp_reset_pass_sent">Письмо с новым паролем выслано на указанный Вами e-mail.</p>
 
-                            <p id="lp_no_mail_to_register">Please enter the valid e-mail you you wish to be
-                                registered with. We will send you a link to continue the registration.</p>
+                            <p id="lp_no_mail_to_register">Пожалуйста, введите корректный e-mail для регистрации.
+                                Мы вышлем Вам письмо со ссылкой на продолжение регистрации.</p>
 
-                            <p id="lp_already_registered">This e-mail is already registered in the system.
-                                You can <a href="#" title="Get a new password on your e-mail">reset
-                                    password</a> or enter another one and <a href="#">register a new account</a>.</p>
+                            <p id="lp_already_registered">Этот e-mail уже используется. Если Вы забыли пароль
+                                вы можете <a href="#" title="Получить новый пароль на Ваш e-mail">переустановить
+                                    пароль</a> или ввести другой e-mail и <a href="#">создать нового пользователя</a>.</p>
 
-                            <p id="lp_do_register"><strong>Congratulations!</strong><br/>A validation letter
-                                has been sent to e-mail address you specified. Use it to complete your
-                                registration.</p>
+                            <p id="lp_do_register"><strong>Поздравляем!</strong><br/>Подтверждающее письмо выслано
+                                на e-mail который Вы указали. Используйте данные в нём для продолжения регистрации.</p>
                         </div>
 
                         <div class="clearer"></div>
@@ -77,17 +75,17 @@
         </ul>
     </script>
     <script type="text/html" id="logobar_tmpl">
-        <h1><span class="org">Bookinizer</span></h1>
+        <h1><span class="org">Bookenizer</span></h1>
         <a id="contactus" href="#" title="Contact Us">Контакты</a>
         <strong class="note">Система Он-Лайн бронирования</strong>
     </script>
     <script type="text/html" id="searchType_switcher_quick">
         <li class="search">быстрый</li>
-		<li><a href="#search/advanced" class="noreload search" title="More search parameters">расширеный</a></li>
+		<li><a href="#search/advanced" class="noreload search" title="More search parameters">расширенный</a></li>
     </script>
     <script type="text/html" id="searchType_switcher_advanced">
 		<li><a href="#search/quick" class="noreload search" title="More search parameters">быстрый</a></li>
-        <li class="search">расширеный</li>
+        <li class="search">расширенный</li>
     </script>
     <script type="text/html" id="searchbar_tmpl">
     <div id="searchbar" class="open-full">
@@ -106,19 +104,19 @@
     <div class="label">
         <span class="label">1</span>
         <span class="host"><input type="text" id="city" name="city" class="dest" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine", countryId:1}]' nosubmit/>
-        <span class="diags">Sorry, we have no offers for this city</span>
+        <span class="diags">Извините, у нас нет предложений для этого города</span>
         </span>
     </div>
 
     <div class="label before-last">
         <span class="label">2</span>
-        <label>from <input type="text" name="dateFrom" id="dateFrom" class="date" value="22.04.2011" onchange="fixDate(this)"/></label>
-        <label>to <input type="text" name="dateTo" id="dateTo" class="date" value="24.04.2011" onchange="fixDate(this)"/></label>
+        <label>с <input type="text" name="dateFrom" id="dateFrom" class="date" value="22.04.2011" onchange="fixDate(this)"/></label>
+        <label>по <input type="text" name="dateTo" id="dateTo" class="date" value="24.04.2011" onchange="fixDate(this)"/></label>
         <span class="search_nights_num">2</span> <span class="search_nights_word">ночи(-ей)</span>
     </div>
 
     <div class="label last">
-        <span class="label">3</span><input type="submit" name="find" value="Найти отели" class="submit"/>
+        <span class="label">3</span><input type="submit" name="find" value="Найти" class="submit"/>
     </div>
 
     <div class="clearer"></div>
@@ -132,7 +130,7 @@
     <div class="label">
         <span class="label">Город</span>
         <span class="host"><input type="text" id="city" name="city" class="dest" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
-            <span class="diags">Sorry, we have no offers for this city</span>
+            <span class="diags">Извините, у нас нет предложений для этого города</span>
         </span>
     </div>
 
@@ -149,13 +147,13 @@
     </div>
 
     <div class="label">
-        <span class="label">Тип помещения</span>
+        <span class="label">Тип номера</span>
         <label><input type="checkbox" name="lodgingTypeRoom" value="1"/> Комната</label>
-        <label><input type="checkbox" name="lodgingTypeApart" value="1"/> Аппартаменты</label>
+        <label><input type="checkbox" name="lodgingTypeApart" value="1"/> Апартаменты</label>
     </div>
 
     <div class="label">
-        <span class="label">Категория(звезд)</span>
+        <span class="label">Кол-во звёзд</span>
         <label><input type="checkbox" name="stars2" value="1"/> 2</label>
         <label><input type="checkbox" name="stars3" value="1"/> 3</label>
         <label><input type="checkbox" name="stars4" value="1"/> 4</label>
@@ -195,6 +193,6 @@
 </form>
 </script>
     <script type = "text/html" id = "footer_tmpl" >
-        <p>© 2011 Bookinizer Inc.All rights reserved <span class = "noprint"> / <a href="#">Условия использования</a> / <a href="#">Защита данных</a> / <a href="#">О сервисе Bookinizer.com</a></span></p>
+        <p>© 2011 Bookenizer Inc. Все права защищены <span class = "noprint"> / <a href="#">Условия использования</a> / <a href="#">Конфиденциальность</a> / <a href="#">О сервисе Bookenizer.com</a></span></p>
     </script>
 </head>
