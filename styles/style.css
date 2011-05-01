@@ -347,37 +347,35 @@ form div.last {
 
 #logobar {
 	background:#f2f2f2;
-	height:35px;
+	height:52px;
 	text-align:center;
 	zoom:1;
 }
 
-#logobar h1 {
-	font-size:28px;
-	line-height:28px;
-	margin:0 0 0 22px;
-	float:left;
-	display:inline;
-	color:#000;
-}
-
 #logobar strong {
 	font-size:28px;
-	font-weight:normal;
 	line-height:28px;
-	width:100%;
-	text-align:center;
-	clear:none;
+    font-weight:normal;
+	margin:16px 0 0 62px;
+	float:left;
+	display:inline;
 	color:#000;
 }
 
 #logobar a#contactus {
 	font-size:28px;
 	line-height:28px;
-	margin:0 22px 0 0;
+	margin:16px 22px 0 0;
 	float:right;
 	display:inline;
 	height:1em;
+}
+
+#logobar a#logo {
+	margin:0 0 0 22px;
+	float:left;
+	display:inline;
+	background:none;
 }
 
 /* textbar */
