@@ -175,9 +175,14 @@
 
     <div class="label">
         <span class="label">Дополнительно</span>
-        <label><input type="checkbox" name="facilities1" value="1"/> Паркинг</label>
-        <label><input type="checkbox" name="facilities2" value="1"/> Интернет</label>
-        <label><input type="checkbox" name="facilities3" value="1"/> Конференц-зал</label>
+        <select id="facilities" name="facilities" multiple="multiple">
+            <option value="PARKING"> Паркинг</option>
+            <option value="INTERNET"> Интернет</option>
+            <option value="CONFERENCE_HALL"> Конференц-зал</option>
+            <option value="POOL"> Бассейн</option>
+            <option value="SKI_RENTAL"> Ski Rental</option>
+            <option value="PETS_ALLOWED"> Животные</option>
+        </select>
     </div>
 
     <div class="label last">

@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/layout.css" medvia="all">
     <link rel="stylesheet" type="text/css" href="/styles/print.css" media="print">
     <link rel="stylesheet" type="text/css" href="/styles/calendar-ho.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/styles/jquery.multiSelect.css" media="screen">
 </head>
 <body class="popular">
 <div id="ltemplate"></div>
@@ -53,6 +54,9 @@
 <script type="text/javascript" src="/scripts/debug/xdate.js"></script>
 <script type="text/javascript" src="/scripts/debug/json2.js"></script>
 <script type="text/javascript" src="/scripts/jquery-1.5.2.min.js"></script>
+<script type="text/javascript" src="/scripts/debug/jquery.form.js"></script>
+<script type="text/javascript" src="/scripts/debug/jquery.bgiframe.min.js"></script>
+<script type="text/javascript" src="/scripts/debug/jquery.multiSelect.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.ajaxqueue.js"></script>
 <script type="text/javascript" src="/scripts/debug/underscore.js"></script>
 <script type="text/javascript" src="/scripts/debug/backbone.js"></script>
@@ -93,6 +97,13 @@
             }
         };
 
+        this.checkIsPreviouslyCached=function(key){
+            var result=$.jStore.get(key);
+            if(result===undefined || result===null){
+                result=null;
+            }
+            return result;
+        }
 
         var TopDestination=Backbone.Model.extend({});
         var Statistic=Backbone.Model.extend({});
@@ -107,6 +118,7 @@
                 $.ajaxQueue({
                         url:service.concat(self.url,lang),
                         success:function(topdests){
+                           $.jStore.set('topDestinations_'.concat(lang),topdests.locationList);
                            self.refresh(topdests.locationList);
                         }
                     });
@@ -121,6 +133,7 @@
                 $.ajaxQueue({
                         url:service.concat(self.url),
                         success:function(stat){
+                           $.jStore.set('statistics',stat);
                            self.refresh(stat);
                         }
                     });
@@ -135,6 +148,7 @@
                 $.ajaxQueue({
                         url:service.concat(self.url,lang),
                         success:function(locations){
+                           $.jStore.set('srchLocations'.concat(lang),locations.locationList);
                            self.refresh(locations.locationList);
                         }
                     });
@@ -144,7 +158,7 @@
 
         var Configuration=Backbone.Model.extend({
             defaults:{
-                "ajaxMode":true,
+                "ajaxMode":false,
                 "serviceUrl":"/bookenizer-stubs/hms-services/",
                 "lang":defLanguage,
                 "searchType":"quick",
@@ -159,19 +173,38 @@
             initialize:function(){
                 var self=this;
                 console.log("Configuration initialize "+ self.get("lang"));
+
                 $.ajaxSetup({
                     async:self.get('ajaxMode'),
                     dataType:'json',
                     contentTpe:'application/json; charset=utf-8'
                 });
+                var dsStat,dsTopDest,dsSrcLoc;
+                dsStat=checkIsPreviouslyCached('statistics');
+                dsTopDest=checkIsPreviouslyCached('topDestinations_'.concat(self.get("lang")));
+                dsSrcLoc=checkIsPreviouslyCached('srchLocations_'.concat(self.get("lang")));
                 self.get('statistics').fetchData(self.get('serviceUrl'));
                 self.get('topDestinations').fetchData(self.get('serviceUrl'),self.get("lang"));
                 self.get('srchLocations').fetchData(self.get('serviceUrl'),self.get("lang"));
-                do{
-                  setTimeout('console.log("timeut")',10);
-                    //debugger;
-                }while($.ajaxQueue.length>1);
+                //debugger;
+               /* if(dsStat===null){
+                    self.get('statistics').fetchData(self.get('serviceUrl'));
+                }else{
+                    self.get('statistics').model=dsStat;
+                }
                 debugger;
+                if(dsTopDest===null){
+                    self.get('topDestinations').fetchData(self.get('serviceUrl'),self.get("lang"));
+                }else{
+                   self.get('topDestinations').model=dsTopDest;
+                }
+                if(dsSrcLoc===null){
+                    self.get('srchLocations').fetchData(self.get('serviceUrl'),self.get("lang"));
+                }else{
+                    self.get('srchLocations').model=dsSrcLoc;
+                }*/
+
+                //debugger;
                 //console.log($.ajaxQueue())
             },
             refreshData:function(){
@@ -212,6 +245,9 @@
                 $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(self.model));
                 suggestor();
                 calendarSetup();
+                if(searchType!=='quick'){
+                    $('#facilities').multiSelect();
+                }
                 return this;
             }
         });
@@ -355,6 +391,9 @@
                     $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(_configuration.get("srchLocations")));
                     suggestor();
                     calendarSetup();
+                    if(searchType!=='quick'){
+                       $('#facilities').multiSelect();
+                    }
                     self.drawTemplates(_configuration, false);
                 });
                 _configuration.bind("change:lang",function(model,name){
