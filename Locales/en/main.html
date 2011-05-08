@@ -117,8 +117,8 @@
         <span class="search_nights_num">2</span> <span class="search_nights_word">night(s)</span>
     </div>
 
-   <div class="label last">
-        <span class="label">3</span><input type="submit" name="find" value="Найти отели" class="submit"/>
+    <div class="label last">
+        <span class="label">Hotels</span><input type="button" id="mkSearch" name="mkSearch" value="Find" class="submit"/>
     </div>
 
     <div class="clearer"></div>
@@ -144,39 +144,39 @@
 
     <div class="label">
         <span class="label">Number of Persons</span>
-        <input type="text" name="numberOfPersons" class="numberOfPersons" value="2"/>
+        <input type="text" name="numberOfPersons" id="numberOfPersons" class="numberOfPersons" value="2"/>
     </div>
 
     <div class="label">
         <span class="label">Lodging Type</span>
-        <label><input type="checkbox" name="lodgingTypeRoom" value="1"/> Room</label>
-        <label><input type="checkbox" name="lodgingTypeApart" value="1"/> Apartments</label>
+        <label><input type="checkbox" name="lodgingTypeRoom" id="lodgingTypeRoom" value="1"/> Room</label>
+        <label><input type="checkbox" name="lodgingTypeApart" id="lodgingTypeRoom" value="1"/> Apartments</label>
     </div>
 
     <div class="label">
         <span class="label">Stars</span>
-        <label><input type="checkbox" name="stars2" value="1"/> 2</label>
-        <label><input type="checkbox" name="stars3" value="1"/> 3</label>
-        <label><input type="checkbox" name="stars4" value="1"/> 4</label>
-        <label><input type="checkbox" name="stars5" value="1"/> 5</label>
+        <label><input type="checkbox" name="stars2" id="stars2" value="1"/> 2</label>
+        <label><input type="checkbox" name="stars3" id="stars3" value="1"/> 3</label>
+        <label><input type="checkbox" name="stars4" id="stars4"  value="1"/> 4</label>
+        <label><input type="checkbox" name="stars5" id="stars5" value="1"/> 5</label>
     </div>
 
     <div class="label">
         <span class="label">Meals</span>
-        <label><input type="checkbox" name="mealsFull" value="1"/> Full Board</label>
-        <label><input type="checkbox" name="mealsHalf" value="1"/> Half Board</label>
-        <label><input type="checkbox" name="mealsNo" value="1"/> No Board</label>
+        <label><input type="checkbox" name="mealsFull" id="mealsFull" value="1"/> Full Board</label>
+        <label><input type="checkbox" name="mealsHalf" id="mealsHalf" value="1"/> Half Board</label>
+        <label><input type="checkbox" name="mealsNo" id="mealsNo" value="1"/> No Board</label>
     </div>
 
     <div class="label">
         <span class="label">Price per night</span>
-        <label>from <input type="text" name="pricePerNightLow" class="price_per_night_low" value=""/></label>
-        <label>to <input type="text" name="pricePerNightHigh" class="price_per_night_high" value=""/></label>
+        <label>from <input type="text" name="pricePerNightLow" id="pricePerNightLow" class="price_per_night_low" value=""/></label>
+        <label>to <input type="text" name="pricePerNightHigh" id="pricePerNightHigh" class="price_per_night_high" value=""/></label>
     </div>
 
     <div class="label">
         <span class="label">Facilities</span>
-        <select id="facilities" name="facilities">
+        <select id="facilities" id="facilities" name="facilities">
             <option value="PARKING"> Parking</option>
             <option value="INTERNET"> Internet</option>
             <option value="CONFERENCE_HALL"> Conference Hall</option>
@@ -185,11 +185,9 @@
             <option value="PETS_ALLOWED"> Pets Allowed</option>
         </select>
     </div>
-
     <div class="label last">
-        <span class="label">Hotels</span><input type="submit" name="submit" value="Find" class="submit"/>
+        <span class="label">Hotels</span><input type="button" id="mkSearch" name="mkSearch" value="Find" class="submit"/>
     </div>
-
     <div class="clearer"></div>
 </form>
     </script>

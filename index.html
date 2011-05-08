@@ -69,18 +69,40 @@
 
 <script type="text/javascript">
     (function(defLanguage) {
+
+        var search=function(){
+            var formToProcess=$("#searchform_".concat(window._configuration.get("searchType"))).ajaxForm();
+            debugger;
+            if(window._configuration.get("searchType")==="quick"){
+                  formToProcess.ajaxSubmit();
+            }
+            else{
+                  var strQuery=formToProcess.serialize();
+                debugger;
+            }
+            return false;
+        }
+
         var suggestor=function(){
             $.gsuggest({
                 inlineText: function(data) { return data.city + ", " + data.country },
                 inlineId: function(data) { return data.cityId },
                 dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); }
             });
+            Calendar.setup({ inputField : "dateFrom", ifFormat : dformat, firstDay :	0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate });
+            Calendar.setup({ inputField : "dateTo", ifFormat : dformat, firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate });
+            if(window._configuration.get("searchType")!=='quick'){
+                $('#facilities').multiSelect();
+            }
+            $("#mkSearch").bind("click",function(){
+                            search();
+                        });
         };
 
-        var calendarSetup=function(){
+       /* var calendarSetup=function(){
                 Calendar.setup({ inputField : "dateFrom", ifFormat : dformat, firstDay :	0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate });
                 Calendar.setup({ inputField : "dateTo", ifFormat : dformat, firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate });
-        };
+        };*/
 
 
         this.getTemplate=function(tmplName, isPartial,custom){
@@ -105,9 +127,9 @@
             return result;
         }
 
-        var TopDestination=Backbone.Model.extend({});
-        var Statistic=Backbone.Model.extend({});
-        var SearchLocation=Backbone.Model.extend({});
+        var TopDestination=Backbone.Model.extend();
+        var Statistic=Backbone.Model.extend();
+        var SearchLocation=Backbone.Model.extend();
         var Language = Backbone.Model.extend();
 
         var TopDestinations=Backbone.Collection.extend({
@@ -244,10 +266,7 @@
                 $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(searchType)]);
                 $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(self.model));
                 suggestor();
-                calendarSetup();
-                if(searchType!=='quick'){
-                    $('#facilities').multiSelect();
-                }
+                //calendarSetup();
                 return this;
             }
         });
@@ -390,10 +409,10 @@
                     $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(searchType)]);
                     $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(_configuration.get("srchLocations")));
                     suggestor();
-                    calendarSetup();
-                    if(searchType!=='quick'){
+                    //calendarSetup();
+                    /*if(searchType!=='quick'){
                        $('#facilities').multiSelect();
-                    }
+                    }*/
                     self.drawTemplates(_configuration, false);
                 });
                 _configuration.bind("change:lang",function(model,name){
@@ -430,7 +449,6 @@
                 $("#ltemplate").load(config.mainTemplateUrl(),function(){
                         new iApp(config);
                         Backbone.history.start();
-                        //suggestor();
                     });
                 });
         });
