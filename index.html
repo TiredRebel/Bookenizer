@@ -53,7 +53,7 @@
 <script type="text/javascript" src="/scripts/debug/calendar-setup.js"></script>
 <script type="text/javascript" src="/scripts/debug/xdate.js"></script>
 <script type="text/javascript" src="/scripts/debug/json2.js"></script>
-<script type="text/javascript" src="/scripts/jquery-1.5.2.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery-1.6.min.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.form.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.bgiframe.min.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.multiSelect.js"></script>
@@ -66,7 +66,6 @@
 <script type="text/javascript" src="/scripts/debug/jquery.jstore.js"></script>
 <script type="text/javascript" src="/scripts/debug/gsuggest.js"></script>
 
-
 <script type="text/javascript">
     (function(defLanguage) {
 
@@ -77,7 +76,7 @@
                   formToProcess.ajaxSubmit();
             }
             else{
-                  var strQuery=formToProcess.serialize();
+                  var strQuery=formToProcess.serializeArray();
                 debugger;
             }
             return false;
@@ -99,13 +98,7 @@
                         });
         };
 
-       /* var calendarSetup=function(){
-                Calendar.setup({ inputField : "dateFrom", ifFormat : dformat, firstDay :	0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate });
-                Calendar.setup({ inputField : "dateTo", ifFormat : dformat, firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate });
-        };*/
-
-
-        this.getTemplate=function(tmplName, isPartial,custom){
+       this.getTemplate=function(tmplName, isPartial,custom){
             var tmplContent;
             if(_.isString(custom)){
                  tmplContent=custom;
@@ -113,13 +106,18 @@
                  tmplContent=$("#".concat(tmplName)).html();
             }
             if(_.isBoolean(isPartial) && isPartial){
-                ich.addPartial(tmplName,tmplContent);
+                try{
+                    ich.addPartial(tmplName,tmplContent);
+                }
+                    catch(e){console.log(e)}
             }else{
-               ich.addTemplate(tmplName,tmplContent);
+                try{
+                    ich.addTemplate(tmplName,tmplContent);
+                }catch(e){console.log("Error template: "+e)}
             }
         };
 
-        this.checkIsPreviouslyCached=function(key){
+        this.tryGetFromCache=function(key){
             var result=$.jStore.get(key);
             if(result===undefined || result===null){
                 result=null;
@@ -135,56 +133,90 @@
         var TopDestinations=Backbone.Collection.extend({
             model:TopDestination,
             url:'location/top/',
-            fetchData:function(service,lang){
+            fetchData:function(service,lang,useCache){
                 var self=this;
-                $.ajaxQueue({
+                return $.ajax({
                         url:service.concat(self.url,lang),
                         success:function(topdests){
-                           $.jStore.set('topDestinations_'.concat(lang),topdests.locationList);
-                           self.refresh(topdests.locationList);
+                            //console.log('top destinations done');
+                           if(useCache){
+                                $.jStore.set('topDestinations_'.concat(lang),topdests.locationList);
+                                self.refresh($.jStore.get('topDestinations_'.concat(lang)));
+                           }else{
+                               self.refresh(topdests.locationList);
+                           }
                         }
                     });
+            },
+            set:function(data){
+              this.refresh(data);
+              return true;
             }
         });
 
         var Statistics=Backbone.Collection.extend({
             model:Statistic,
             url:'statistics/',
-            fetchData:function(service){
+            fetchData:function(service,useCache){
                 var self=this;
-                $.ajaxQueue({
+                return $.ajax({
                         url:service.concat(self.url),
                         success:function(stat){
-                           $.jStore.set('statistics',stat);
-                           self.refresh(stat);
+                           //console.log('done statistics');
+                           if(useCache){
+                                $.jStore.set('statistics',stat);
+                                self.refresh($.jStore.get('statistics'));
+                           }else{
+                                self.refresh(stat);
+                           }
                         }
-                    });
+                });
+            },
+            set:function(data){
+              this.refresh(data);
+              return true;
             }
         });
 
         var SearchLocations=Backbone.Collection.extend({
             model:SearchLocation,
             url:'location/all/',
-            fetchData:function(service,lang){
+            fetchData:function(service,lang,useCache){
                 var self=this;
-                $.ajaxQueue({
+                return $.ajax({
                         url:service.concat(self.url,lang),
                         success:function(locations){
-                           $.jStore.set('srchLocations'.concat(lang),locations.locationList);
-                           self.refresh(locations.locationList);
+                           //console.log('done searchLocations');
+                           if(useCache){
+                                $.jStore.set('srchLocations'.concat(lang),locations.locationList);
+                                self.refresh($.jStore.get('srchLocations'.concat(lang)));
+                           }else{
+                              self.refresh(locations.locationList);
+                           }
                         }
                     });
+            },
+            set:function(data){
+                this.refresh(data);
+                return true;
             }
         });
 
+        this.initApplication=function(config){
+          $("#ltemplate").load(config.mainTemplateUrl(),function(){
+                console.log("iApp init begins");
+                new iApp(config);
+                Backbone.history.start();
+            });
+        };
 
         var Configuration=Backbone.Model.extend({
             defaults:{
-                "ajaxMode":false,
+                "ajaxMode":true,
                 "serviceUrl":"/bookenizer-stubs/hms-services/",
                 "lang":defLanguage,
                 "searchType":"quick",
-                "use_jStoreCache":true,
+                "use_jStoreCache":false,
                 "statistics":new Statistics(),
                 "topDestinations":new TopDestinations(),
                 "srchLocations":new SearchLocations()
@@ -192,48 +224,73 @@
             mainTemplateUrl:function(){
                 return "/Locales/".concat(this.get("lang"),"/main.html");
             },
-            initialize:function(){
+            initData:function(isRefresh,lang){
                 var self=this;
-                console.log("Configuration initialize "+ self.get("lang"));
 
                 $.ajaxSetup({
-                    async:self.get('ajaxMode'),
-                    dataType:'json',
-                    contentTpe:'application/json; charset=utf-8'
-                });
-                var dsStat,dsTopDest,dsSrcLoc;
-                dsStat=checkIsPreviouslyCached('statistics');
-                dsTopDest=checkIsPreviouslyCached('topDestinations_'.concat(self.get("lang")));
-                dsSrcLoc=checkIsPreviouslyCached('srchLocations_'.concat(self.get("lang")));
-                self.get('statistics').fetchData(self.get('serviceUrl'));
-                self.get('topDestinations').fetchData(self.get('serviceUrl'),self.get("lang"));
-                self.get('srchLocations').fetchData(self.get('serviceUrl'),self.get("lang"));
-                //debugger;
-               /* if(dsStat===null){
-                    self.get('statistics').fetchData(self.get('serviceUrl'));
+                        async:self.get('ajaxMode'),
+                        dataType:'json',
+                        contentTpe:'application/json; charset=utf-8'
+                    });
+                var svcUrl, curLang, useInternalCache;
+                if(lang!==undefined && lang!==""){
+                   curLang=lang;
                 }else{
-                    self.get('statistics').model=dsStat;
+                  curLang=self.get("lang");
                 }
-                debugger;
-                if(dsTopDest===null){
-                    self.get('topDestinations').fetchData(self.get('serviceUrl'),self.get("lang"));
+                console.log("Configuration initData refresh "+ isRefresh + " lang "+  curLang);
+                svcUrl=self.get('serviceUrl');
+                useInternalCache=self.get('use_jStoreCache');
+                if(useInternalCache){
+                    var dsStat,dsTopDest,dsSrcLoc;
+                    dsStat=tryGetFromCache('statistics');
+                    dsTopDest=tryGetFromCache('topDestinations_'.concat(curLang));
+                    dsSrcLoc=tryGetFromCache('srchLocations'.concat(curLang));
+                    if(dsStat!==null && dsTopDest !==null && dsSrcLoc!==null){
+                       self.get('statistics').set(dsStat);
+                       self.get('topDestinations').set(dsTopDest);
+                       self.get('srchLocations').set(dsSrcLoc);
+                        if(!isRefresh){
+                            initApplication(self);
+                        }else{
+                           self.set({lang:curLang});
+                        };
+                    }else{
+                        $.when(
+                            self.get('statistics').fetchData(svcUrl,useInternalCache),
+                            self.get('topDestinations').fetchData(svcUrl,curLang,useInternalCache),
+                            self.get('srchLocations').fetchData(svcUrl,curLang,useInternalCache)
+                        ).done(function(){
+                            if(!isRefresh){
+                                initApplication(self);
+                            }else{
+                                self.set({lang:curLang});
+                            };
+                        });
+                    }
                 }else{
-                   self.get('topDestinations').model=dsTopDest;
+                    $.when(
+                        self.get('statistics').fetchData(svcUrl,useInternalCache),
+                        self.get('topDestinations').fetchData(svcUrl,curLang,useInternalCache),
+                        self.get('srchLocations').fetchData(svcUrl,curLang,useInternalCache)
+                    ).done(function(){
+                        console.log("deferred done");
+                        if(!isRefresh){
+                           initApplication(self);
+                        }else{
+                           self.set({lang:curLang});
+                        };
+                    });
                 }
-                if(dsSrcLoc===null){
-                    self.get('srchLocations').fetchData(self.get('serviceUrl'),self.get("lang"));
-                }else{
-                    self.get('srchLocations').model=dsSrcLoc;
-                }*/
-
-                //debugger;
-                //console.log($.ajaxQueue())
             },
-            refreshData:function(){
+            initialize:function(){
                 var self=this;
-                self.get('statistics').fetchData(self.get('serviceUrl'));
-                self.get('topDestinations').fetchData(self.get('serviceUrl'),self.get("lang"));
-                self.get('srchLocations').fetchData(self.get('serviceUrl'),self.get("lang"));
+                self.initData(false);
+            },
+            refreshData:function(lang){
+                var self=this;
+                var svcUrl, curLang, useInternalCache;
+                self.initData(true,lang);
             }
         });
 
@@ -260,14 +317,12 @@
                 getTemplate("searchType_switcher_quick");
                 getTemplate("searchType_switcher_advanced");
                 this.el.html(ich.searchbar_tmpl());
-                //debugger;
                 var searchType=window._configuration.get("searchType");
                 $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(searchType)]);
                 $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(searchType)]);
                 $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(self.model));
                 suggestor();
-                //calendarSetup();
-                return this;
+                return self;
             }
         });
 
@@ -284,14 +339,17 @@
             el:$("#topdestblock"),
             render:function(){
                 var self=this;
-                //debugger;
                 getTemplate('top_dest_block_tmpl');
-                getTemplate('tdb_location_item',false,'<li><a href="#">{{city}}</a>,&nbsp;{{country}}</li>');
+                getTemplate('tdb_location_item',false,'<li><a href="#!/">{{city}}</a>,&nbsp;{{country}}</li>');
                 self.el.html(ich.top_dest_block_tmpl());
                 var locations=self.el.find('#locationsList');
+                console.log("locations view");
+                //debugger;
                 _(self.model.toJSON()).each(function(location){
+                    console.log("city "+location.city);
                     locations.append(ich.tdb_location_item(location));
                 });
+                return self;
             }
         });
 
@@ -301,6 +359,7 @@
                var self=this;
                getTemplate('stats_block_tmpl');
                self.el.html(ich.stats_block_tmpl(self.model.toJSON()[0]));
+                return self;
             }
         });
 
@@ -308,16 +367,15 @@
             el:$('#topbar'),
             render:function() {
                 var self = this;
-                getTemplate.call(this,"langmenu");
+                getTemplate("langmenu");
                 getTemplate("topbar_menu_tmpl",true);
-                getTemplate("langMenu_item",false,'<li><a href="#lang/{{id}}" class="lang" id="{{id}}" title="{{title}}">{{title}}</a> /</li>');
-                console.log("langmenu " );
+                getTemplate("langMenu_item",false,'<li><a href="#!/lang/{{id}}" class="lang" id="{{id}}" title="{{title}}">{{title}}</a> /</li>');
                 self.el.html(ich.langmenu());
                 var langdiv = self.el.find("#languageSwitcher");
                 _(this.model.toJSON()).each(function(langItem) {
                     langdiv.append(ich.langMenu_item(langItem));
                 });
-                return this;
+                return self;
             }
         });
 
@@ -332,9 +390,9 @@
             _configuration:null,
             _statistics:null,
             routes: {
-                "lang/:id":"language",
-                "search/:type":"search",
-                "selected":"card"
+                "!/lang/:id":"language",
+                "!/search/:type":"search",
+                "!/selected":"card"
             },
             renderIndex:function(){
                 _index.render();
@@ -345,12 +403,13 @@
                 _footer.render();
 
             },
-            drawTemplates:function(_configuration,isRepaint){
+            drawTemplates:function(isRepaint){
                 //debugger;
                 if(isRepaint===undefined){
                     isRepaint=false;
                 }
                 if(!isRepaint){
+                    //debugger;
                     _languages = function() {
                         var lc = new langCollection();
                         lc.add(new Language({id:"ru",url:"/Locales/ru/",title:"Русский"}));
@@ -360,6 +419,7 @@
                     };
                     _index = new TopMenuView({model:_languages()});
                     _logoBar = new LogobarView();
+
                     _searchForm=new SearchView({model:_configuration.get("srchLocations")});
                     _topDestinations=new LocationsView({model:_configuration.get("topDestinations")});
                     _statistics=new StatisticsView({model:_configuration.get("statistics")});
@@ -371,18 +431,27 @@
                     //debugger;
                   $("#ltemplate").load(_configuration.mainTemplateUrl(),function(){
                       ich.clearAll();
-                       _topDestinations.model=_configuration.get("topDestinations");
-                      _statistics.model=_configuration.get("statistics");
-                      _searchForm.model=_configuration.get("srchLocations");
+                      //debugger;
+                       //_topDestinations.model=_configuration.get("topDestinations");
+                      //_statistics.model=_configuration.get("statistics");
+                      //_searchForm.model=_configuration.get("srchLocations");
+                      //debugger;
                       _index.render();
                       _logoBar.render();
 
                       _topDestinations.render();
+                      //debugger;
                       _statistics.render();
                       _searchForm.render();
                       _footer.render();
                  });
                 }
+            },
+            initMain:function(){
+                  console.log('init main');
+                  //self.drawTemplates(_configuration, false);
+                  this.drawTemplates(false);
+                  return true;
             },
             initialize:function(spec) {
                 var self=this;
@@ -390,9 +459,10 @@
                 console.log("initialized "+_configuration);
                 //$.jStore.remove("topdest_ru");
                 //$.jStore.remove("topdest_en");
+
                 _configuration.bind("change:searchType",function(model,name){
                     var st, searchType, city, defCity, dateFrom,dateTo;
-                    st=$.jStore.get("locations_".concat(_configuration.get("lang")));
+                    //st=$.jStore.get("locations_".concat(_configuration.get("lang")));
                     searchType=_configuration.get("searchType");
                     //todo get cached data from jstore
                     /*alert(name);
@@ -413,26 +483,30 @@
                     /*if(searchType!=='quick'){
                        $('#facilities').multiSelect();
                     }*/
-                    self.drawTemplates(_configuration, false);
+                    //self.drawTemplates(_configuration, true);
+                    self.drawTemplates(true);
+                    return true;
                 });
                 _configuration.bind("change:lang",function(model,name){
                 //todo move data retrieve here
                     //debugger;
-                   _configuration.refreshData();
+                    console.log('lang changed handler');
+
+                    console.log("draw templates after data resolved");
+                    self.drawTemplates(true);
+                    return true;
                 });
-                self.drawTemplates(_configuration, false);
-                return this;
+                this.initMain();
             },
             card:function(){
                 debugger;
             },
             language:function(lang){
-                _configuration.set({lang:lang});
-                this.drawTemplates(_configuration, true);
+                 _configuration.refreshData(lang);
             },
             search:function(srcType){
+                //ich.refresh();
                 _configuration.set({searchType:srcType});
-                this.drawTemplates(_configuration,false);
             }
         });
 
@@ -445,12 +519,7 @@
 
             jStore.init('bookenizer', jStoreConfig, jStore.flavors.flash).engineReady(function (engine){
                 var config=new Configuration();
-
-                $("#ltemplate").load(config.mainTemplateUrl(),function(){
-                        new iApp(config);
-                        Backbone.history.start();
-                    });
-                });
+            });
         });
     }).call(this,'ru');
 </script>
