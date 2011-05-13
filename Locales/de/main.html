@@ -1,0 +1,194 @@
+ <script type="text/html" id="langmenu">
+        <ul id="languageSwitcher" class="topblock menu">
+        </ul>
+        {{>topbar_menu_tmpl}}
+    </script>
+   <script type="text/html" id="top_dest_block_tmpl">
+        <div id="topdestblock" class="container">
+            <h2>Top Reiseziele</h2>
+            <ul id="locationsList">
+            </ul>
+        </div>
+    </script>
+    <script type="text/html" id="stats_block_tmpl">
+       <div id="statsblock" class="container">
+            <h2>Statistiken</h2>
+            <p><strong>{{hotels}}</strong> hotels</p>
+            <p><strong>{{offers}}</strong> angebote</p>
+            <p><strong>{{booked}}</strong> gebuchten</p>
+        </div>
+    </script>
+    <script type="text/html" id="topbar_menu_tmpl" class="partial">
+        <ul class="topblock right">
+    <li class="selected"><a href="#selected" title="Zeigen Sie Ihre Selected Hotels" id="lbl_Selected"
+                            class="noreload">Ausgewählt(9)</a>
+    /</li>
+    <li><a href="#" title="FAQ und mehr" id="lbl_Help">Hilfe</a> /</li>
+   <li class="switch">
+        <a href="#" id="bt_login" title="Willkommen in vollem Funktionsumfang System" class="noreload">Log-in</a>
+                            <span id="block_register"> oder <a href="#" id="bt_register"
+                                                             title="Registrieren Sie erhalten Zugang zu allen Funktionen Website"
+                                                             class="noreload">Registrieren</a></span>
+
+                <form id="loginform" action="">
+                    <div class="container">
+                        <input type="text" id="mail" name="mail" class="login" value="E-mail"
+                               defvalue="E-mail"/>
+                        <input type="text" id="pass_open" name="pass_open" class="login" value="Password"
+                            defvalue="Passwort"/>
+                        <input type="password" id="pass" name="pass" class="login" value=""/>
+
+                        <div class="diags">
+
+                            <p id="lp_def"><a href="#" id="forgot" title="Holen Sie sich ein neues Passwort an Ihre E-Mail">Passwort
+                                vergessen?</a></p>
+
+                            <p id="lp_bad_mail">Die angegebene E-Mail ist nicht im System registriert. Sie können versuchen ein anderes
+                                oder <a href="#">ein neues Konto erstellen</a>.</p>
+
+                            <p id="lp_bad_pass">Passwort stimmt nicht überein. Sie können versuchen ein anderes oder <a
+                                    href="#">Ihr Passwort zurücksetzen</a>.</p>
+
+                            <p id="lp_no_mail_to_reset">Bitte geben Sie die E-Mail mit der Sie registriert. Wir schicken
+                                    Ihnen ein Passwort-Reset Brief.</p>
+
+                            <p id="lp_reset_pass_sent">Ein Passwort-Reset Brief ging nach E-Mail von Ihnen angegebene Adresse.</p>
+
+                            <p id="lp_no_mail_to_register">Bitte geben Sie eine gültige E-Mail Sie möchten registriert werden.
+                                         Wir senden Ihnen dann einen Link zu der Registrierung fortzufahren.</p>
+
+                            <p id="lp_already_registered">Diese E-Mail ist bereits im System registriert.
+                                Sie können <a href="#" title="Holen Sie sich ein neues Passwort an Ihre E-Mail">Zurücksetzen
+                                    von Passwörtern</a> der geben Sie eine andere und <a href="#">ein neues Konto registrieren</a>.</p>
+
+                            <p id="lp_do_register"><strong>Herzlichen Glückwunsch!</strong><br/>Eine Validierung Brief ging nach
+                                 E-Mail von Ihnen angegebene Adresse. Verwenden Sie es um die Registrierung abzuschließen.</p>
+                        </div>
+
+                        <div class="clearer"></div>
+                        <a href="#" id="bt_login_action" class="important"
+                           title="Holen Sie sich den Zugriff auf alle Funktionen Website.">Log-in</a>
+
+                        <div class="clearer"></div>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </script>
+    <script type="text/html" id="logobar_tmpl">
+        <a id="logo" href="http://bookenizer.com"><img src="/img/logo.png" alt="Bookenizer"/></a>
+        <a id="contactus" href="#" title="Kontakt Mit Uns">Kontakt Mit Uns</a>
+        <strong>Online Reservierungsservice</strong>
+    <script type="text/html" id="searchbar_tmpl">
+        <div id="searchbar" class="open-full">
+            <div class="container">
+            <h2>Suchen</h2>
+                <ul id="srchMenu" class="switcher">
+                 </ul>
+                <div id="srchFrm"></div>
+           </div>
+        </div>
+    </script>
+    <script type="text/html" id="searchType_switcher_quick">
+        <li class="search">schnelle</li>
+		<li><a href="#!/search/advanced" class="noreload search" title="Weniger Suchkriterien">erweiterte</a></li>
+    </script>
+    <script type="text/html" id="searchType_switcher_advanced">
+		<li><a href="#!/search/quick" class="noreload search" title="Weitere Suchkriterien">schnelle</a></li>
+        <li class="search">erweiterte</li>
+    </script>
+    <script type="text/html" id="searchform_tmpl_quick">
+    <form class="searchform quick" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="cityId" value="0"/>
+    <div class="label">
+        <span class="label">1</span>
+        <span class="host"><input type="text" name="city" class="dest" value="City" defValue="Stadt" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine",countryId:1}]' nosubmit/>
+            <span class="diags">Leider haben wir keine Angebote für diese Stadt</span>
+        </span>
+    </div>
+
+    <div class="label before-last">
+        <span class="label">2</span>
+        <label>aus <input type="text" name="dateFrom" id="dateFrom" class="date" value="22.04.2011" onchange="fixDate(this)"/></label>
+        <label>bis <input type="text" name="dateTo" id="dateTo" class="date" value="24.04.2011" onchange="fixDate(this)"/></label>
+        für <span class="search_nights_num">2</span> <span class="search_nights_word">nacht(e)</span>
+    </div>
+
+    <div class="label last">
+        <span class="label">Hotels</span><input type="button" id="mkSearch" name="mkSearch" value="Suche" class="submit"/>
+    </div>
+
+    <div class="clearer"></div>
+</form>
+</script>
+ <script type="text/html" id="searchform_tmpl_advanced">
+<form class="searchform advanced" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="cityId" value="0"/>
+
+    <div class="label">
+        <span class="label">Reiseziel</span>
+        <span class="host"><input type="text" name="city" class="dest" value="City" defValue="Stadt" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country: "Ukraine"}]' nosubmit/>
+        <span class="diags">Leider haben wir keine Angebote für diese Stadt</span>
+	    </span>
+    </div>
+
+    <div class="label">
+        <span class="label">Termine</span>
+        <label>aus <input type="text" name="dateFrom" id="dateFrom" class="date" value="22.04.2011" onchange="fixDate(this)"/></label>
+        <label>bis <input type="text" name="dateTo" id="dateTo" class="date" value="24.04.2011" onchange="fixDate(this)"/></label>
+        für <span class="search_nights_num">2</span> <span class="search_nights_word">nacht(e)</span>
+    </div>
+
+    <div class="label">
+        <span class="label">Anzahl der Personen</span>
+        <input type="text" name="numberOfPersons" id="numberOfPersons" class="numberOfPersons" value="2"/>
+    </div>
+
+    <div class="label">
+        <span class="label">Art des Zimmers</span>
+        <label><input type="checkbox" name="lodgingTypeRoom" id="lodgingTypeRoom" value="1"/> Zimmer</label>
+        <label><input type="checkbox" name="lodgingTypeApart" id="lodgingTypeRoom" value="1"/> Wohnungen</label>
+    </div>
+
+    <div class="label">
+        <span class="label">Sternen</span>
+        <label><input type="checkbox" name="stars2" id="stars2" value="1"/> 2</label>
+        <label><input type="checkbox" name="stars3" id="stars3" value="1"/> 3</label>
+        <label><input type="checkbox" name="stars4" id="stars4"  value="1"/> 4</label>
+        <label><input type="checkbox" name="stars5" id="stars5" value="1"/> 5</label>
+    </div>
+
+    <div class="label">
+        <span class="label">Mahlzeiten</span>
+        <label><input type="checkbox" name="mealsFull" id="mealsFull" value="1"/> Vollpension</label>
+        <label><input type="checkbox" name="mealsHalf" id="mealsHalf" value="1"/> Halbpension</label>
+        <label><input type="checkbox" name="mealsNo" id="mealsNo" value="1"/> Kein Board</label>
+    </div>
+
+    <div class="label">
+        <span class="label">Preis pro Nacht</span>
+        <label>from <input type="text" name="pricePerNightLow" id="pricePerNightLow" class="price_per_night_low" value=""/></label>
+        <label>to <input type="text" name="pricePerNightHigh" id="pricePerNightHigh" class="price_per_night_high" value=""/></label>
+    </div>
+
+    <div class="label">
+        <span class="label">Einrichtungen</span>
+        <select id="facilities" id="facilities" name="facilities">
+            <option value="PARKING"> Parken</option>
+            <option value="INTERNET"> Internet</option>
+            <option value="CONFERENCE_HALL"> Kongressräume</option>
+            <option value="POOL"> Pool</option>
+            <option value="SKI_RENTAL"> Skiverleih</option>
+            <option value="PETS_ALLOWED"> Haustiere erlaubt</option>
+        </select>
+    </div>
+    <div class="label last">
+        <span class="label">Hotels</span><input type="button" id="mkSearch" name="mkSearch" value="Suche" class="submit"/>
+    </div>
+    <div class="clearer"></div>
+</form>
+    </script>
+    <script type = "text/html" id = "footer_tmpl" >
+         <p>© 2011 Bookenizer Inc. Alle Rechte vorbehalten <span class="noprint">/ <a href="#">Nutzungsvertrag</a> / <a href="#">Datenschutz</a> / <a href="#">Über Bookenizer.com</a></span></p>
+    </script>
+</head>
