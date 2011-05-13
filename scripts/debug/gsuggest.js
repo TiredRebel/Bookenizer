@@ -200,7 +200,7 @@ $.gsuggest.keyup =
 
     $("input[suggest=yes]").each(function(i){
         if (this.id == null || this.id == '')
-            $(this).attr("id", "_g§µggк§†_"+i)
+            $(this).attr("id", "_gsuggest_"+i)
             
         Init("#" + this.id)}
     );

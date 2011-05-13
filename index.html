@@ -57,7 +57,6 @@
 <script type="text/javascript" src="/scripts/debug/jquery.form.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.bgiframe.min.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.multiSelect.js"></script>
-<script type="text/javascript" src="/scripts/debug/jquery.ajaxqueue.js"></script>
 <script type="text/javascript" src="/scripts/debug/underscore.js"></script>
 <script type="text/javascript" src="/scripts/debug/backbone.js"></script>
 <script type="text/javascript" src="/scripts/debug/mustache.js"></script>
@@ -346,7 +345,7 @@
                 console.log("locations view");
                 //debugger;
                 _(self.model.toJSON()).each(function(location){
-                    console.log("city "+location.city);
+                    //console.log("city "+location.city);
                     locations.append(ich.tdb_location_item(location));
                 });
                 return self;

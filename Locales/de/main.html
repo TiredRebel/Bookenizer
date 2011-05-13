@@ -98,11 +98,11 @@
         <li class="search">erweiterte</li>
     </script>
     <script type="text/html" id="searchform_tmpl_quick">
-    <form class="searchform quick" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded">
+    <form  class="searchform quick" id="searchform_quick" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="cityId" value="0"/>
     <div class="label">
         <span class="label">1</span>
-        <span class="host"><input type="text" name="city" class="dest" value="City" defValue="Stadt" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine",countryId:1}]' nosubmit/>
+        <span class="host"><input type="text" id="city" name="city" class="dest" value="Stadt" defValue="Stadt" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine",countryId:1}]' nosubmit/>
             <span class="diags">Leider haben wir keine Angebote für diese Stadt</span>
         </span>
     </div>
@@ -122,12 +122,12 @@
 </form>
 </script>
  <script type="text/html" id="searchform_tmpl_advanced">
-<form class="searchform advanced" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded">
+<form class="searchform advanced"  id="searchform_advanced" action="/bookenizer-stubs/hms-services/hotel/search" method="post" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="cityId" value="0"/>
 
     <div class="label">
         <span class="label">Reiseziel</span>
-        <span class="host"><input type="text" name="city" class="dest" value="City" defValue="Stadt" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country: "Ukraine"}]' nosubmit/>
+        <span class="host"><input type="text" id="city" name="city" class="dest" value="Stadt" defValue="Stadt" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country: "Ukraine"}]' nosubmit/>
         <span class="diags">Leider haben wir keine Angebote für diese Stadt</span>
 	    </span>
     </div>
