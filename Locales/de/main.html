@@ -18,6 +18,36 @@
             <p><strong>{{booked}}</strong> gebuchten</p>
         </div>
     </script>
+    <script type="text/html" id="hotellist_tmpl">
+         <div class="container">
+			<h2>Hotels</h2>
+            <ul id="hotellistSwitcher" class="switcher">
+              <li class="popular">beliebt</li>
+              <li class="selected noprint"><a href="#" class="noreload" onclick="return switchHotellist()" title="Hotels haben Sie früher gewählt">ausgewählt</a></li>
+          </ul>
+            <div id="hotellist" class="popular">
+                <div class="wrapper">
+                    <div class="opener"></div>
+                    <div id="hotellist_holder"></div>
+                </div>
+            </div>
+          </div>
+    </script>
+    <script type="text/html" id="hotellist_item_tmpl">
+        <div class="hotel"><div class="opener"></div><div class="container">
+            <a href="#" title="Mega Nippel Beach hotel description"><img src="files/hotels/1-small.jpg" alt="Mega Nippel Beach" /></a>
+            <div class="hoteldescr">
+                <h3>Mega Nippel Beach</h3>
+                <div class="stars stars-5"><span>*****</span></div>
+                <p class="info"><a href="#" title="More hotels in Amsterdam">Amsterdam</a>, Holland</p>
+                <p class="info">from <strong>EUR 564</strong></p>
+                <p class="descr">Located on the El Camino Real, the Hotel is easily accessible to Hwy 101, I-280, Hwy 85 and the San Jose International Airport. Just minutes from Silicon Valley's prime destinations.</p>
+                <p class="noprint"><a href="main-hotelcard.html" title="Read more about this hotel" target="_blank">Read more</a> / <a href="#" title="Remove hotel from your Selected">Add to Selected</a></p>
+            </div>
+            </div>
+            <div class="closer"></div>
+        </div>
+    </script>
     <script type="text/html" id="topbar_menu_tmpl" class="partial">
         <ul class="topblock right">
     <li class="selected"><a href="#selected" title="Zeigen Sie Ihre Selected Hotels" id="lbl_Selected"
@@ -187,8 +217,7 @@
     </div>
     <div class="clearer"></div>
 </form>
-    </script>
-    <script type = "text/html" id = "footer_tmpl" >
-         <p>© 2011 Bookenizer Inc. Alle Rechte vorbehalten <span class="noprint">/ <a href="#">Nutzungsvertrag</a> / <a href="#">Datenschutz</a> / <a href="#">Über Bookenizer.com</a></span></p>
-    </script>
-</head>
+</script>
+<script type = "text/html" id = "footer_tmpl" >
+     <p>© 2011 Bookenizer Inc. Alle Rechte vorbehalten <span class="noprint">/ <a href="#">Nutzungsvertrag</a> / <a href="#">Datenschutz</a> / <a href="#">Über Bookenizer.com</a></span></p>
+</script>

@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="/styles/layout.css" medvia="all">
     <link rel="stylesheet" type="text/css" href="/styles/print.css" media="print">
-    <link rel="stylesheet" type="text/css" href="/styles/calendar-ho.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/styles/jscal2.css" media="all">
     <link rel="stylesheet" type="text/css" href="/styles/jquery.multiSelect.css" media="screen">
 </head>
 <body class="popular">
@@ -48,12 +48,14 @@
     </div>
 </div>
 <div id="footer"></div>
-<script type="text/javascript" src="/scripts/debug/calendar.js"></script>
-<script type="text/javascript" src="/scripts/lang/calendar-en.js"></script>
-<script type="text/javascript" src="/scripts/debug/calendar-setup.js"></script>
+
 <script type="text/javascript" src="/scripts/debug/xdate.js"></script>
+<script type="text/javascript" src="/scripts/debug/jscal2.js"></script>
+<script type="text/javascript" src="/scripts/lang/en.js"></script>
+<script type="text/javascript" src="/scripts/lang/ru.js"></script>
+<script type="text/javascript" src="/scripts/lang/de.js"></script>
 <script type="text/javascript" src="/scripts/debug/json2.js"></script>
-<script type="text/javascript" src="/scripts/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery-1.6.1.min.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.form.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.bgiframe.min.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.multiSelect.js"></script>
@@ -64,6 +66,8 @@
 <script type="text/javascript" src="/scripts/debug/class.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.jstore.js"></script>
 <script type="text/javascript" src="/scripts/debug/gsuggest.js"></script>
+<script type="text/javascript" src="/scripts/models.js"></script>
+
 
 <script type="text/javascript">
     (function(defLanguage) {
@@ -72,7 +76,8 @@
             var formToProcess=$("#searchform_".concat(window._configuration.get("searchType"))).ajaxForm();
             debugger;
             if(window._configuration.get("searchType")==="quick"){
-                  formToProcess.ajaxSubmit();
+                  var strQuery=formToProcess.serializeArray();
+                  //formToProcess.ajaxSubmit();
             }
             else{
                   var strQuery=formToProcess.serializeArray();
@@ -82,13 +87,16 @@
         }
 
         var suggestor=function(){
+            var curLang=window._configuration.get("lang");
             $.gsuggest({
                 inlineText: function(data) { return data.city + ", " + data.country },
                 inlineId: function(data) { return data.cityId },
                 dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); }
             });
-            Calendar.setup({ inputField : "dateFrom", ifFormat : dformat, firstDay :	0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate });
-            Calendar.setup({ inputField : "dateTo", ifFormat : dformat, firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate });
+            debugger;
+            //Calendar.setup({ inputField : "dateFrom", trigger: "dateFrom"});
+            Calendar.setup({ inputField : "dateFrom", trigger: "dateFrom", firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate }).setLanguage(curLang);
+            Calendar.setup({ inputField : "dateTo", trigger: "dateTo", firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate }).setLanguage(curLang);
             if(window._configuration.get("searchType")!=='quick'){
                 $('#facilities').multiSelect();
             }
@@ -124,10 +132,26 @@
             return result;
         }
 
-        var TopDestination=Backbone.Model.extend();
-        var Statistic=Backbone.Model.extend();
-        var SearchLocation=Backbone.Model.extend();
-        var Language = Backbone.Model.extend();
+        var HotelsList=Backbone.Collection.extend({
+            model:Hotel,
+            url:'hotel/random',
+            fetchData:function(service,lang,count,useCache){
+                var self=this;
+                //data:{count:count}
+                return $.ajax({
+                    url:service.concat(self.url),
+                    data:{count:count,language:lang},
+                    success:function(hotels){
+                       if(useCache){
+                            $.jStore.set('hotelsList_'.concat(lang),hotels.hotelList);
+                            self.refresh($.jStore.get('hotelsList_'.concat(lang)));
+                       }else{
+                           self.refresh(hotels.hotelList);
+                       }
+                    }
+                });
+            }
+        });
 
         var TopDestinations=Backbone.Collection.extend({
             model:TopDestination,
@@ -215,10 +239,12 @@
                 "serviceUrl":"/bookenizer-stubs/hms-services/",
                 "lang":defLanguage,
                 "searchType":"quick",
+                "hotelsCount":10,
                 "use_jStoreCache":false,
                 "statistics":new Statistics(),
                 "topDestinations":new TopDestinations(),
-                "srchLocations":new SearchLocations()
+                "srchLocations":new SearchLocations(),
+                "hotels":new HotelsList()
             },
             mainTemplateUrl:function(){
                 return "/Locales/".concat(this.get("lang"),"/main.html");
@@ -241,14 +267,17 @@
                 svcUrl=self.get('serviceUrl');
                 useInternalCache=self.get('use_jStoreCache');
                 if(useInternalCache){
-                    var dsStat,dsTopDest,dsSrcLoc;
+                    var dsStat,dsTopDest,dsSrcLoc,dsHotels;
                     dsStat=tryGetFromCache('statistics');
                     dsTopDest=tryGetFromCache('topDestinations_'.concat(curLang));
                     dsSrcLoc=tryGetFromCache('srchLocations'.concat(curLang));
-                    if(dsStat!==null && dsTopDest !==null && dsSrcLoc!==null){
+                    dsHotels=tryGetFromCache('hotelsList_'.concat(curLang))
+                    if(dsStat!==null && dsTopDest !==null && dsSrcLoc!==null && dsHotels!==null){
                        self.get('statistics').set(dsStat);
                        self.get('topDestinations').set(dsTopDest);
                        self.get('srchLocations').set(dsSrcLoc);
+                       self.get('hotels').set(dsHotels);
+                       self
                         if(!isRefresh){
                             initApplication(self);
                         }else{
@@ -258,7 +287,8 @@
                         $.when(
                             self.get('statistics').fetchData(svcUrl,useInternalCache),
                             self.get('topDestinations').fetchData(svcUrl,curLang,useInternalCache),
-                            self.get('srchLocations').fetchData(svcUrl,curLang,useInternalCache)
+                            self.get('srchLocations').fetchData(svcUrl,curLang,useInternalCache),
+                            self.get('hotels').fetchData(svcUrl,curLang,self.get('hotelsCount'),useInternalCache)
                         ).done(function(){
                             if(!isRefresh){
                                 initApplication(self);
@@ -271,7 +301,8 @@
                     $.when(
                         self.get('statistics').fetchData(svcUrl,useInternalCache),
                         self.get('topDestinations').fetchData(svcUrl,curLang,useInternalCache),
-                        self.get('srchLocations').fetchData(svcUrl,curLang,useInternalCache)
+                        self.get('srchLocations').fetchData(svcUrl,curLang,useInternalCache),
+                        self.get('hotels').fetchData(svcUrl,curLang,self.get('hotelsCount'),useInternalCache)
                     ).done(function(){
                         console.log("deferred done");
                         if(!isRefresh){
@@ -378,6 +409,17 @@
             }
         });
 
+        var HotelsView = Backbone.View.extend(
+        {
+         el:$('#hotelslist'),
+         render:function(){
+             var self=this;
+             getTemplate("hotellist_tmpl");
+             debugger;
+             self.el.html(ich.hotellist_tmpl());
+             return self;
+         }
+        });
 
         var iApp = Backbone.Controller.extend({
             _index:null,
@@ -388,6 +430,7 @@
             _footer:null,
             _configuration:null,
             _statistics:null,
+            _hotelsList:null,
             routes: {
                 "!/lang/:id":"language",
                 "!/search/:type":"search",
@@ -399,6 +442,7 @@
                 _topDestinations.render();
                 _statistics.render();
                 _searchForm.render();
+                _hotelsList.render();
                 _footer.render();
 
             },
@@ -422,6 +466,7 @@
                     _searchForm=new SearchView({model:_configuration.get("srchLocations")});
                     _topDestinations=new LocationsView({model:_configuration.get("topDestinations")});
                     _statistics=new StatisticsView({model:_configuration.get("statistics")});
+                    _hotelsList=new HotelsView({model:_configuration.get('hotels')});
                     _footer = new FooterView();
                      //debugger;
                      this.renderIndex();
@@ -441,6 +486,7 @@
                       _topDestinations.render();
                       //debugger;
                       _statistics.render();
+                      _hotelsList.render();
                       _searchForm.render();
                       _footer.render();
                  });

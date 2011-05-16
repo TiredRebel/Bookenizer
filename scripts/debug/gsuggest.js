@@ -50,29 +50,28 @@ $.gsuggest.keydown =
     function(obj, e){ 
 		clearTimeout($.gsuggest.suggestDelay);
 		var $obj = $(obj);
-
         if (e.which == 38 || e.which == 40){
-            $obj.next().children("div:eq("+$obj.attr("suggestPos")+")").focusout();
+            $obj.next().children("div:eq("+$obj.prop("suggestPos")+")").focusout();
         
             switch (e.which){
                 case 38: //up
-                    if (parseInt($obj.attr("suggestPos"))-1 < -1)
-                        $obj.attr("suggestPos", $obj.attr("suggestTtl"));
+                    if (parseInt($obj.prop("suggestPos"))-1 < -1)
+                        $obj.prop("suggestPos", $obj.prop("suggestTtl"));
                     else
-                        $obj.attr("suggestPos", Math.max(-2, parseInt($obj.attr("suggestPos"))-1));
+                        $obj.prop("suggestPos", Math.max(-2, parseInt($obj.prop("suggestPos"))-1));
                     break;
                     
                 case 40: //down
-                     if (parseInt($obj.attr("suggestPos"))+1 > parseInt($obj.attr("suggestTtl")))
-                        $obj.attr("suggestPos", "-1");
+                     if (parseInt($obj.prop("suggestPos"))+1 > parseInt($obj.prop("suggestTtl")))
+                        $obj.prop("suggestPos", "-1");
                      else   
-                        $obj.attr("suggestPos", Math.min($obj.attr("suggestTtl"), parseInt($obj.attr("suggestPos"))+1));
+                        $obj.prop("suggestPos", Math.min($obj.prop("suggestTtl"), parseInt($obj.prop("suggestPos"))+1));
         
                      break;
             }
         
             $.gsuggest.synctext = true;        
-            $obj.next().children("div:eq("+$obj.attr("suggestPos")+")").focusin();
+            $obj.next().children("div:eq("+$obj.prop("suggestPos")+")").focusin();
 				
 				e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
 				e.preventDefault ? e.preventDefault() : e.returnValue = false;
@@ -82,7 +81,7 @@ $.gsuggest.keydown =
 			  
 				if ($obj.next().css("display") == "block") { // do something if the suggestions are shown
 	
-					var id = $obj.next().children("div:eq("+$obj.attr("suggestPos")+")").attr("data-id");
+					var id = $obj.next().children("div:eq("+$obj.prop("suggestPos")+")").prop("data-id");
 //					if (id == undefined) id = -1;
 					
 					$.gsuggest.config.callback({id:id});
@@ -98,7 +97,6 @@ $.gsuggest.keyup =
 
 	   //console.dir($.gsuggest.cachedata);
 	   if ($.gsuggest.config.debug)timerstart = new Date().getTime();
-	  
        if (objval == $(obj).attr("suggestLast")) return;
 
 	   if (objval.length == 0){
@@ -145,7 +143,7 @@ $.gsuggest.keyup =
        }
        		
 	   //cache roll back -force cache forward if ttl suggest items less than max
-		if (objval.indexOf($.gsuggest.cachekey) != 0 || (!$.gsuggest.config.cacheforward && !($(obj).attr("suggestTtl") < $.gsuggest.config.size))){ 
+		if (objval.indexOf($.gsuggest.cachekey) != 0 || (!$.gsuggest.config.cacheforward && !($(obj).attr("suggestTtl") < $.gsuggest.config.size))){
 	   	   $.gsuggest.cachekey = $.gsuggest.setcase(objval);
 	   }
 	   //console.log("key: " + $.gsuggest.cachekey);
@@ -235,7 +233,6 @@ $.gsuggest.keyup =
 				$(this).css("color", "#000");
 				if ($(this).val() == $(this).attr("defValue")) $(this).val('');
 			});
-		  
         $(id).attr("suggestPos", "-1");
         $(id).attr("data-suggested", "-1");
         $(id).keydown(function(e){return $.gsuggest.keydown(this, e)});
@@ -244,8 +241,8 @@ $.gsuggest.keyup =
 			$(suggest_idChildren).live("mouseover", function(e){
 				if (!$.gsuggest.mouseoverok) return false; 
 //console.log("children mouseover: " + $(this).text());																		
-				$(this).parent().children("div:eq("+$(this).parent().prev().attr("suggestPos")+")").focusout(); 
-				$(this).parent().prev().attr("suggestPos", $(this).prevAll().length); 
+				$(this).parent().children("div:eq("+$(this).parent().prev().attr("suggestPos")+")").focusout();
+				$(this).parent().prev().attr("suggestPos", $(this).prevAll().length);
 				$(this).focusin(); 
 				$.gsuggest.synctext=true; 
 				return false
@@ -257,7 +254,7 @@ $.gsuggest.keyup =
 //console.log("children focus: " + $(this).text());																		
 				$(this).addClass("focus"); 
 				$.gsuggest.childHovered	= true;
-				if($.gsuggest.synctext)	$(this).parent().prev().attr("value", $(this).text());
+				if($.gsuggest.synctext)	$(this).parent().prev().prop("value", $(this).text());
 				return false;
 			});
 
@@ -265,27 +262,20 @@ $.gsuggest.keyup =
 //console.log("children blur: " + $(this).text());
 				$(this).removeClass("focus"); 
 				$.gsuggest.childHovered	= false;
-				$(this).parent().prev().attr("value", $(this).parent().prev().attr("suggestLast")); 
+				$(this).parent().prev().prop("value", $(this).parent().prev().attr("suggestLast"));
 				return false;
 			});
 			
 			$(suggest_idChildren).live("click", function(){
 //console.log("children click: " + $(this).text());																		
-				$(this).parent().prev().attr("suggestLast", $(this).text()); 
+				$(this).parent().prev().attr("suggestLast", $(this).text());
 				$(this).focusout(); $(this).parent().hide(); $(this).parent().prev().focus(); 
-				
 				$.gsuggest.config.callback({id: $(this).attr("data-id")});
 				return false;
 			});
     
         //create suggest-box, set width, and position
         $(id).after("<div id=\""+suggest_id+"\" style=\"display:none\" class=\"suggestion\"></div>");
-//		$(id).next().css($.gsuggest.config.css0);
-//        $(id).next().css($.gsuggest.config.css);
-//        $(id).next().width($(id).width());
-//		  var o = $(id).offsetParent().offset();
-//debug(o);		  
-//        $(id).next().css({ top: $(id).height() - 1 });
     };
 };
 })(jQuery);
@@ -299,13 +289,3 @@ jQuery(document).ready(function(){
 	  $.gsuggest.mousepos = e.pageX+'-'+e.pageY;
    }); 
 })
-
-//init
-//jQuery(document).ready(function(){jQuery.gsuggest({'debug':true})});
-//requires cache sets to be tied to attributes
-
-
-/*
-I have not decided if I want to add text-range support for autocomplete; my intent
-was to memic the behavior of googles suggest and I feel that I have done this. However
-I may decided to implement this as an optional setting in the future... */
