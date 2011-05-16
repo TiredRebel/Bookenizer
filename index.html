@@ -93,7 +93,7 @@
                 inlineId: function(data) { return data.cityId },
                 dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); }
             });
-            debugger;
+            //debugger;
             //Calendar.setup({ inputField : "dateFrom", trigger: "dateFrom"});
             Calendar.setup({ inputField : "dateFrom", trigger: "dateFrom", firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate }).setLanguage(curLang);
             Calendar.setup({ inputField : "dateTo", trigger: "dateTo", firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate }).setLanguage(curLang);
@@ -251,7 +251,7 @@
             },
             initData:function(isRefresh,lang){
                 var self=this;
-		debugger;
+		//debugger;
                 $.ajaxSetup({
                         async:self.get('ajaxMode'),
                         dataType:'json',
@@ -415,7 +415,7 @@
          render:function(){
              var self=this;
              getTemplate("hotellist_tmpl");
-             debugger;
+             //debugger;
              self.el.html(ich.hotellist_tmpl());
              return self;
          }
