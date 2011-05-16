@@ -1,63 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/debug/jscal2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/en.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/lang/ru.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/models.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/styles/jscal2.css" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-af.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-al.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-bg.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-big5-utf8.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-big5.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-br.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-ca.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-cs-utf8.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-cs-win.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-da.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-de.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-du.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-el.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-en.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-es.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-fi.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-fr.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-he-utf8.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-hr-utf8.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-hr.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-hu.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-it.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-jp.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-ko-utf8.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-ko.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-lt-utf8.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-lt.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-lv.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-nl.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-no.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-pl-utf8.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-pl.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-pt.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-ro.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-ru.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-ru_win_.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-si.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-sk.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-sp.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-sv.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-tr.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\calendar-zh.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\scripts\lang\cn_utf8.js" afterPath="" />
+    <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="Jquery 1.6.1 added">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/jquery-1.6.1.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/de/main.html" afterPath="$PROJECT_DIR$/Locales/de/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/en/main.html" afterPath="$PROJECT_DIR$/Locales/en/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/ru/main.html" afterPath="$PROJECT_DIR$/Locales/ru/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/debug/gsuggest.js" afterPath="$PROJECT_DIR$/scripts/debug/gsuggest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/style.css" afterPath="$PROJECT_DIR$/styles/style.css" />
     </list>
     <list id="4bdcc2f4-00d6-40ee-b450-34d69268308a" name="On master: Uncommitted changes before update operation at 23.04.11 21:06(cherry picked from commit a54405b3371eb181076ef0b1b00a85e6f0cc83ed)" comment="" />
     <list id="f8743774-3083-4128-93cb-73ea72964036" name="Issue #1 resolved(cherry picked from commit b98609113446ae548597b1d8aadba447885a6ecc)" comment="" />
@@ -87,7 +33,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="0" selection-start="4385" selection-end="4385" vertical-scroll-proportion="0.52422905">
+            <state line="86" column="84" selection-start="3530" selection-end="3530" vertical-scroll-proportion="0.66132724">
               <folding />
             </state>
           </provider>
@@ -120,7 +66,7 @@
   </component>
   <component name="Git.Settings">
     <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
-    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
+    <option name="UPDATE_CHANGES_POLICY" value="SHELVE" />
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="IdeDocumentHistory">
@@ -336,6 +282,111 @@
       <recent name="C:\my_projects\Bookenizer\Support" />
     </key>
   </component>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/index.html</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
       <JSDebuggerConfigurationSettings>
@@ -405,21 +456,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4923717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1913815" sideWeight="0.24410541" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21546261" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21546261" sideWeight="0.6733601" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32732317" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3266399" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24951768" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -440,7 +491,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="German localization issues fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jquery 1.6.1 added" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -467,6 +518,8 @@
     <MESSAGE value="Issue #2 resolved. Ugly bug with mutiple ajax requests fixed. Performance dramatically improved. &#10;TODO: new suggestor component still required because after upgrade jquery to 1.6 version old one became unusable." />
     <MESSAGE value="German localization added" />
     <MESSAGE value="German localization issues fixed" />
+    <MESSAGE value="New version of js calendar added. Search almost finished" />
+    <MESSAGE value="Jquery 1.6.1 added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -569,7 +622,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="0" selection-start="4385" selection-end="4385" vertical-scroll-proportion="0.52422905">
+        <state line="86" column="84" selection-start="3530" selection-end="3530" vertical-scroll-proportion="0.66132724">
           <folding />
         </state>
       </provider>
