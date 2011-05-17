@@ -71,7 +71,9 @@
 
 <script type="text/javascript">
     (function(defLanguage) {
-
+        var nightsCount=function(elem){
+                    debugger;
+        };
         var search=function(){
             var formToProcess=$("#searchform_".concat(window._configuration.get("searchType"))).ajaxForm();
             debugger;
@@ -88,15 +90,21 @@
 
         var suggestor=function(){
             var curLang=window._configuration.get("lang");
+            var self=this;
             $.gsuggest({
                 inlineText: function(data) { return data.city + ", " + data.country },
                 inlineId: function(data) { return data.cityId },
                 dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); }
             });
             //debugger;
-            //Calendar.setup({ inputField : "dateFrom", trigger: "dateFrom"});
-            Calendar.setup({ inputField : "dateFrom", trigger: "dateFrom", firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate }).setLanguage(curLang);
-            Calendar.setup({ inputField : "dateTo", trigger: "dateTo", firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate }).setLanguage(curLang);
+            var cal=Calendar.setup( {selectionType : Calendar.SEL_MULTIPLE, timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){fixDate(this.inputField.id)}});
+            cal.manageFields("dateFrom", "dateFrom", "%d.%m.%Y");
+            cal.manageFields("dateTo", "dateTo", "%d.%m.%Y");
+            cal.setLanguage(curLang);
+            //cal.addEventListener("onChange",fixDate(cal));
+            //Calendar.setup( {inputField : "dateFrom", trigger: "dateFrom", dateFormat:"%d.%m.%Y", timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){this.hide(); fixDate(this);}}).setLanguage(curLang);
+            //Calendar.setup( {inputField : "dateTo", trigger: "dateTo", dateFormat:"%d.%m.%Y", timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){this.hide(); fixDate("dateTo");}}).setLanguage(curLang);
+
             if(window._configuration.get("searchType")!=='quick'){
                 $('#facilities').multiSelect();
             }
@@ -134,13 +142,14 @@
 
         var HotelsList=Backbone.Collection.extend({
             model:Hotel,
-            url:'hotel/random',
+            url:'hotel/search',
             fetchData:function(service,lang,count,useCache){
                 var self=this;
                 //data:{count:count}
                 return $.ajax({
                     url:service.concat(self.url),
-                    data:{count:count,language:lang},
+                    data:{limit:count, language:lang, searchType:"QUICK",sortType:"POPULARITY", sortDirection:"DESC"},
+                    type:"POST",
                     success:function(hotels){
                        if(useCache){
                             $.jStore.set('hotelsList_'.concat(lang),hotels.hotelList);

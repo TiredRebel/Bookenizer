@@ -26,36 +26,38 @@ function checkDate(f) {
 
 function fixDate(field) {
 	var dfrom, dto;
-
+    debugger;
 	var el = (typeof(field) == "string") ? document.getElementById(field) : field;
-
+    var dayConst=1000*60*60*24;
 	switch (field.id || field) {
 
 		case 'dateFrom':
 		
 			if (!(dfrom = checkDate(field)) || (dfrom.getTime() < today.getTime())) 
 				dfrom = today;
-
-			el.value = dfrom.print(dformat);
+                debugger;
+             //el.value=Calendar.printDate(dfrom,dformat);
+			//el.value = dfrom.print(dformat);
 	
-			if (!(dto = checkDate("dateTo")) || (dto.getTime() < dfrom.getTime() + Date.DAY)) {
-				dto = new Date(dfrom.getTime() + Date.DAY);
+			if (!(dto = checkDate("dateTo")) || (dto.getTime() < dfrom.getTime() + dayConst)) {
+				dto = new Date(dfrom.getTime() + dayConst);
 			}
-			document.getElementById("dateTo").value = dto.print(dformat);
+            document.getElementById("dateTo").value = Calendar.printDate(dto,dformat);
+			//document.getElementById("dateTo").value = dto.print(dformat);
 			
 			break;
 
 		case 'dateTo':
 		
-			if (!(dto = checkDate(field)) || (dto.getTime() < today.getTime() + Date.DAY)) 
-				dto = new Date(today.getTime() + Date.DAY);
+			if (!(dto = checkDate(field)) || (dto.getTime() < today.getTime() + dayConst))
+				dto = new Date(today.getTime() + dayConst);
 
-			el.value = dto.print(dformat);
+			//el.value = dto.print(dformat);
 	
-			if (!(dfrom = checkDate("dateFrom")) || (dfrom.getTime() > dto.getTime() - Date.DAY)) {
-				dfrom = new Date(dto.getTime() - Date.DAY);
+			if (!(dfrom = checkDate("dateFrom")) || (dfrom.getTime() > dto.getTime() - dayConst)) {
+				dfrom = new Date(dto.getTime() - dayConst);
 			}
-			document.getElementById("dateFrom").value = dfrom.print(dformat);
+			//document.getElementById("dateFrom").value = dfrom.print(dformat);
 			
 			break;
 
@@ -66,8 +68,8 @@ function fixDate(field) {
 
 			el.value = dfrom.print(dformat);
 	
-			if (!(dto = checkDate("order_to")) || (dto.getTime() < dfrom.getTime() + Date.DAY)) {
-				dto = new Date(dfrom.getTime() + Date.DAY);
+			if (!(dto = checkDate("order_to")) || (dto.getTime() < dfrom.getTime() + Calendar.Date.DAY)) {
+				dto = new Date(dfrom.getTime() + Calendar.Date.DAY);
 			}
 			document.getElementById("order_to").value = dto.print(dformat);
 			
@@ -75,13 +77,13 @@ function fixDate(field) {
 
 		case 'order_to':
 		
-			if (!(dto = checkDate(field)) || (dto.getTime() < today.getTime() + Date.DAY)) 
-				dto = new Date(today.getTime() + Date.DAY);
+			if (!(dto = checkDate(field)) || (dto.getTime() < today.getTime() + Calendar.Date.DAY))
+				dto = new Date(today.getTime() + Calendar.Date.DAY);
 
 			el.value = dto.print(dformat);
 	
-			if (!(dfrom = checkDate("order_from")) || (dfrom.getTime() > dto.getTime() - Date.DAY)) {
-				dfrom = new Date(dto.getTime() - Date.DAY);
+			if (!(dfrom = checkDate("order_from")) || (dfrom.getTime() > dto.getTime() - Calendar.Date.DAY)) {
+				dfrom = new Date(dto.getTime() - Calendar.Date.DAY);
 			}
 			document.getElementById("order_from").value = dfrom.print(dformat);
 			
@@ -89,8 +91,8 @@ function fixDate(field) {
 
 	}
 	
-	nights = Math.floor((dto.getTime() - dfrom.getTime()) / Date.DAY);
-	var lang = (window.xApp != undefined) ? window.xApp.state.language : "en";
+	nights = Math.floor((dto.getTime() - dfrom.getTime()) / dayConst);
+	//var lang = (window.xApp != undefined) ? window.xApp.state.language : "en";
 	
 	
 	var form = $(el).parents("form");
