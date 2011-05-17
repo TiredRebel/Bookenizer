@@ -26,7 +26,6 @@ function checkDate(f) {
 
 function fixDate(field) {
 	var dfrom, dto;
-    debugger;
 	var el = (typeof(field) == "string") ? document.getElementById(field) : field;
     var dayConst=1000*60*60*24;
 	switch (field.id || field) {
@@ -35,16 +34,11 @@ function fixDate(field) {
 		
 			if (!(dfrom = checkDate(field)) || (dfrom.getTime() < today.getTime())) 
 				dfrom = today;
-                debugger;
-             //el.value=Calendar.printDate(dfrom,dformat);
-			//el.value = dfrom.print(dformat);
-	
+
 			if (!(dto = checkDate("dateTo")) || (dto.getTime() < dfrom.getTime() + dayConst)) {
 				dto = new Date(dfrom.getTime() + dayConst);
 			}
             document.getElementById("dateTo").value = Calendar.printDate(dto,dformat);
-			//document.getElementById("dateTo").value = dto.print(dformat);
-			
 			break;
 
 		case 'dateTo':
@@ -52,13 +46,11 @@ function fixDate(field) {
 			if (!(dto = checkDate(field)) || (dto.getTime() < today.getTime() + dayConst))
 				dto = new Date(today.getTime() + dayConst);
 
-			//el.value = dto.print(dformat);
-	
 			if (!(dfrom = checkDate("dateFrom")) || (dfrom.getTime() > dto.getTime() - dayConst)) {
 				dfrom = new Date(dto.getTime() - dayConst);
 			}
+            document.getElementById("dateFrom").value=Calendar.printDate(dfrom,dformat);
 			//document.getElementById("dateFrom").value = dfrom.print(dformat);
-			
 			break;
 
 		case 'order_from':

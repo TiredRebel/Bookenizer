@@ -96,12 +96,10 @@
                 inlineId: function(data) { return data.cityId },
                 dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); }
             });
-            //debugger;
-            var cal=Calendar.setup( {selectionType : Calendar.SEL_MULTIPLE, timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){fixDate(this.inputField.id)}});
+            var cal=Calendar.setup( {selectionType : Calendar.SEL_MULTIPLE, timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){fixDate(this.inputField.id);this.hide();}});
             cal.manageFields("dateFrom", "dateFrom", "%d.%m.%Y");
             cal.manageFields("dateTo", "dateTo", "%d.%m.%Y");
             cal.setLanguage(curLang);
-            //cal.addEventListener("onChange",fixDate(cal));
             //Calendar.setup( {inputField : "dateFrom", trigger: "dateFrom", dateFormat:"%d.%m.%Y", timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){this.hide(); fixDate(this);}}).setLanguage(curLang);
             //Calendar.setup( {inputField : "dateTo", trigger: "dateTo", dateFormat:"%d.%m.%Y", timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){this.hide(); fixDate("dateTo");}}).setLanguage(curLang);
 
@@ -145,7 +143,6 @@
             url:'hotel/search',
             fetchData:function(service,lang,count,useCache){
                 var self=this;
-                //data:{count:count}
                 return $.ajax({
                     url:service.concat(self.url),
                     data:{limit:count, language:lang, searchType:"QUICK",sortType:"POPULARITY", sortDirection:"DESC"},
@@ -236,8 +233,10 @@
 
         this.initApplication=function(config){
           $("#ltemplate").load(config.mainTemplateUrl(),function(){
-                console.log("iApp init begins");
                 new iApp(config);
+                debugger;
+                $("#dateFrom").val(Calendar.printDate(config.get("curDate"),"%d.%m.%Y"));
+                $("#dateTo").val(Calendar.printDate(config.get("dayNext"),"%d.%m.%Y"));
                 Backbone.history.start();
             });
         };
@@ -250,6 +249,8 @@
                 "searchType":"quick",
                 "hotelsCount":10,
                 "use_jStoreCache":false,
+                "curDate":(function(){return new Date();})(),
+                "dayNext":(function(){return new Date(new Date().getTime()+1000*60*60*24*2);})(),
                 "statistics":new Statistics(),
                 "topDestinations":new TopDestinations(),
                 "srchLocations":new SearchLocations(),
@@ -260,7 +261,6 @@
             },
             initData:function(isRefresh,lang){
                 var self=this;
-		//debugger;
                 $.ajaxSetup({
                         async:self.get('ajaxMode'),
                         dataType:'json',
@@ -385,7 +385,6 @@
                 console.log("locations view");
                 //debugger;
                 _(self.model.toJSON()).each(function(location){
-                    //console.log("city "+location.city);
                     locations.append(ich.tdb_location_item(location));
                 });
                 return self;
@@ -411,7 +410,7 @@
                 getTemplate("langMenu_item",false,'<li><a href="#!/lang/{{id}}" class="lang" id="{{id}}" title="{{title}}">{{title}}</a> /</li>');
                 self.el.html(ich.langmenu());
                 var langdiv = self.el.find("#languageSwitcher");
-                _(this.model.toJSON()).each(function(langItem) {
+                _(self.model.toJSON()).each(function(langItem) {
                     langdiv.append(ich.langMenu_item(langItem));
                 });
                 return self;
@@ -424,8 +423,14 @@
          render:function(){
              var self=this;
              getTemplate("hotellist_tmpl");
-             //debugger;
+             getTemplate("hotellist_item_tmpl");
              self.el.html(ich.hotellist_tmpl());
+             var hotelDiv=self.el.find("#hotellist_holder");
+             debugger;
+             _(self.model.toJSON()).each(function(hotelItem){
+                console.log(hotelItem);
+                hotelDiv.append(ich.hotellist_item_tmpl());
+             });
              return self;
          }
         });
@@ -471,29 +476,20 @@
                     };
                     _index = new TopMenuView({model:_languages()});
                     _logoBar = new LogobarView();
-
                     _searchForm=new SearchView({model:_configuration.get("srchLocations")});
                     _topDestinations=new LocationsView({model:_configuration.get("topDestinations")});
                     _statistics=new StatisticsView({model:_configuration.get("statistics")});
                     _hotelsList=new HotelsView({model:_configuration.get('hotels')});
                     _footer = new FooterView();
-                     //debugger;
                      this.renderIndex();
-                    //suggestor();
                 }else{
                     //debugger;
                   $("#ltemplate").load(_configuration.mainTemplateUrl(),function(){
                       ich.clearAll();
                       //debugger;
-                       //_topDestinations.model=_configuration.get("topDestinations");
-                      //_statistics.model=_configuration.get("statistics");
-                      //_searchForm.model=_configuration.get("srchLocations");
-                      //debugger;
                       _index.render();
                       _logoBar.render();
-
                       _topDestinations.render();
-                      //debugger;
                       _statistics.render();
                       _hotelsList.render();
                       _searchForm.render();
@@ -516,13 +512,8 @@
 
                 _configuration.bind("change:searchType",function(model,name){
                     var st, searchType, city, defCity, dateFrom,dateTo;
-                    //st=$.jStore.get("locations_".concat(_configuration.get("lang")));
                     searchType=_configuration.get("searchType");
                     //todo get cached data from jstore
-                    /*alert(name);
-                    if(st===null || st===undefined){
-
-                    }*/
                     //todo save city, dates values while form switching
                     //debugger;
                     city=$("#city").val();
@@ -533,11 +524,6 @@
                     $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(searchType)]);
                     $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(_configuration.get("srchLocations")));
                     suggestor();
-                    //calendarSetup();
-                    /*if(searchType!=='quick'){
-                       $('#facilities').multiSelect();
-                    }*/
-                    //self.drawTemplates(_configuration, true);
                     self.drawTemplates(true);
                     return true;
                 });
