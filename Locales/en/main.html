@@ -34,17 +34,19 @@
           </div>
     </script>
     <script type="text/html" id="hotellist_item_tmpl">
-        <div class="hotel"><div class="opener"></div><div class="container">
-            <a href="#" title="Mega Nippel Beach hotel description"><img src="files/hotels/1-small.jpg" alt="Mega Nippel Beach" /></a>
-            <div class="hoteldescr">
-                <h3>Mega Nippel Beach</h3>
-                <div class="stars stars-5"><span>*****</span></div>
-                <p class="info"><a href="#" title="More hotels in Amsterdam">Amsterdam</a>, Holland</p>
-                <p class="info">from <strong>EUR 564</strong></p>
-                <p class="descr">Located on the El Camino Real, the Hotel is easily accessible to Hwy 101, I-280, Hwy 85 and the San Jose International Airport. Just minutes from Silicon Valley's prime destinations.</p>
-                <p class="noprint"><a href="main-hotelcard.html" title="Read more about this hotel" target="_blank">Read more</a> / <a href="#" title="Remove hotel from your Selected">Add to Selected</a></p>
-            </div>
-            </div>
+        <div class="hotel">
+            <div class="opener"></div>
+                <div class="container">
+                    <a href="#!/card/{{hotelId}}" title="{{name}}"><img src="{{#MainPhoto}}{{small}}{{/MainPhoto}}" alt="{{name}}" /></a>
+                        <div class="hoteldescr">
+                            <h3>{{name}}</h3>
+                            <div class="stars stars-{{stars}}"><span></span></div>
+                            <p class="info"><a href="#!/search/{{#Address}}{{#GeoLocation}}{{cityId}}{{/GeoLocation}}{{/Address}}" title="More hotels in {{#Address}}{{#GeoLocation}}{{city}}{{/GeoLocation}}{{/Address}}">{{#Address}}{{#GeoLocation}}{{city}}{{/GeoLocation}}{{/Address}}</a>,&nbsp;{{#Address}}{{#GeoLocation}}{{country}}{{/GeoLocation}}{{/Address}}</p>
+                            <p class="info">from <strong>{{currency}}&nbsp;{{minOfferPrice}}</strong></p>
+                            <p class="descr">{{description}}</p>
+                            <p class="noprint"><a href="/#!/card/{{hotelId}}" title="Read more about this hotel" target="_blank">Read more</a> / <a href="#!/select/{{hotelId}}" title="Add to Selected">Add to Selected</a></p>
+                        </div>
+                </div>
             <div class="closer"></div>
         </div>
     </script>

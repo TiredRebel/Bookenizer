@@ -100,8 +100,6 @@
             cal.manageFields("dateFrom", "dateFrom", "%d.%m.%Y");
             cal.manageFields("dateTo", "dateTo", "%d.%m.%Y");
             cal.setLanguage(curLang);
-            //Calendar.setup( {inputField : "dateFrom", trigger: "dateFrom", dateFormat:"%d.%m.%Y", timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){this.hide(); fixDate(this);}}).setLanguage(curLang);
-            //Calendar.setup( {inputField : "dateTo", trigger: "dateTo", dateFormat:"%d.%m.%Y", timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){this.hide(); fixDate("dateTo");}}).setLanguage(curLang);
 
             if(window._configuration.get("searchType")!=='quick'){
                 $('#facilities').multiSelect();
@@ -234,7 +232,6 @@
         this.initApplication=function(config){
           $("#ltemplate").load(config.mainTemplateUrl(),function(){
                 new iApp(config);
-                debugger;
                 $("#dateFrom").val(Calendar.printDate(config.get("curDate"),"%d.%m.%Y"));
                 $("#dateTo").val(Calendar.printDate(config.get("dayNext"),"%d.%m.%Y"));
                 Backbone.history.start();
@@ -247,7 +244,7 @@
                 "serviceUrl":"/bookenizer-stubs/hms-services/",
                 "lang":defLanguage,
                 "searchType":"quick",
-                "hotelsCount":10,
+                "hotelsCount":5,
                 "use_jStoreCache":false,
                 "curDate":(function(){return new Date();})(),
                 "dayNext":(function(){return new Date(new Date().getTime()+1000*60*60*24*2);})(),
@@ -379,7 +376,7 @@
             render:function(){
                 var self=this;
                 getTemplate('top_dest_block_tmpl');
-                getTemplate('tdb_location_item',false,'<li><a href="#!/">{{city}}</a>,&nbsp;{{country}}</li>');
+                getTemplate('tdb_location_item',false,'<li><a href="#!/search/{{cityId}}">{{city}}</a>,&nbsp;{{country}}</li>');
                 self.el.html(ich.top_dest_block_tmpl());
                 var locations=self.el.find('#locationsList');
                 console.log("locations view");
@@ -426,10 +423,10 @@
              getTemplate("hotellist_item_tmpl");
              self.el.html(ich.hotellist_tmpl());
              var hotelDiv=self.el.find("#hotellist_holder");
-             debugger;
+             //debugger;
              _(self.model.toJSON()).each(function(hotelItem){
                 console.log(hotelItem);
-                hotelDiv.append(ich.hotellist_item_tmpl());
+                hotelDiv.append(ich.hotellist_item_tmpl(hotelItem));
              });
              return self;
          }
