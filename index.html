@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/print.css" media="print">
     <link rel="stylesheet" type="text/css" href="/styles/jscal2.css" media="all">
     <link rel="stylesheet" type="text/css" href="/styles/jquery.multiSelect.css" media="screen">
+    <!--<link rel="stylesheet" type="text/css" href="/styles/pagination.css" media="screen">-->
 </head>
 <body class="popular">
 <div id="ltemplate"></div>
@@ -40,6 +41,7 @@
                 </div>
                 <div id="mainbar">
                     <span id="hotelslist" class="template_emb"></span>
+                    <div id="srPager" class="paging"></div>
                 </div>
                 <div class="closer"></div>
             </div>
@@ -66,6 +68,7 @@
 <script type="text/javascript" src="/scripts/debug/class.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.jstore.js"></script>
 <script type="text/javascript" src="/scripts/debug/gsuggest.js"></script>
+<script type="text/javascript" src="/scripts/debug/jquery.pagination.js"></script>
 <script type="text/javascript" src="/scripts/models.js"></script>
 
 
@@ -376,7 +379,7 @@
             render:function(){
                 var self=this;
                 getTemplate('top_dest_block_tmpl');
-                getTemplate('tdb_location_item',false,'<li><a href="#!/search/{{cityId}}">{{city}}</a>,&nbsp;{{country}}</li>');
+                getTemplate('tdb_location_item',false,'<li><a href="#!/lookup/{{cityId}}">{{city}}</a>,&nbsp;{{country}}</li>');
                 self.el.html(ich.top_dest_block_tmpl());
                 var locations=self.el.find('#locationsList');
                 console.log("locations view");
@@ -428,6 +431,7 @@
                 console.log(hotelItem);
                 hotelDiv.append(ich.hotellist_item_tmpl(hotelItem));
              });
+             $("#srPager").pagination(15,{items_per_page:5});
              return self;
          }
         });
@@ -445,7 +449,9 @@
             routes: {
                 "!/lang/:id":"language",
                 "!/search/:type":"search",
-                "!/selected":"card"
+                "!/lookup/:cityId":"cityLookup",
+                "!/card/:hotelId":"hotelCard",
+                "!/select/:hotelId":"addHotel"
             },
             renderIndex:function(){
                 _index.render();
@@ -535,11 +541,17 @@
                 });
                 this.initMain();
             },
-            card:function(){
-                debugger;
+            hotelCard:function(hotelId){
+                console.log("Hotel card selected hotelId" + hotelId);
+            },
+            addHotel:function(hotelId){
+                console.log("hotel selected with id"+hotelId);
             },
             language:function(lang){
                  _configuration.refreshData(lang);
+            },
+            cityLookup:function(cityId){
+                console.log("City lookup cityId"+cityId);
             },
             search:function(srcType){
                 //ich.refresh();
