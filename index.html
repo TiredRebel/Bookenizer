@@ -41,7 +41,6 @@
                 </div>
                 <div id="mainbar">
                     <span id="hotelslist" class="template_emb"></span>
-                    <div id="srPager" class="paging"></div>
                 </div>
                 <div class="closer"></div>
             </div>
@@ -142,6 +141,8 @@
         var HotelsList=Backbone.Collection.extend({
             model:Hotel,
             url:'hotel/search',
+            hotelsCount:0,
+            offersCount:0,
             fetchData:function(service,lang,count,useCache){
                 var self=this;
                 return $.ajax({
@@ -155,6 +156,8 @@
                        }else{
                            self.refresh(hotels.hotelList);
                        }
+                        self.hotelsCount=hotels.hotelCount;
+                        self.offersCount=hotels.offerCount;
                     }
                 });
             }
@@ -426,12 +429,15 @@
              getTemplate("hotellist_item_tmpl");
              self.el.html(ich.hotellist_tmpl());
              var hotelDiv=self.el.find("#hotellist_holder");
-             //debugger;
-             _(self.model.toJSON()).each(function(hotelItem){
+             var jsonModel=self.model.toJSON();
+             var hotelCount=self.model.hotelsCount;
+             var offerCount=self.model.offersCount;
+             _(jsonModel).each(function(hotelItem){
                 console.log(hotelItem);
                 hotelDiv.append(ich.hotellist_item_tmpl(hotelItem));
              });
-             $("#srPager").pagination(15,{items_per_page:5});
+
+             $("#srPager").pagination(offerCount,{items_per_page:5, prev_text:"←", next_text:"→"});
              return self;
          }
         });
