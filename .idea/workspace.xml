@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/ru/main.html" afterPath="$PROJECT_DIR$/Locales/ru/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/debug/gsuggest.js" afterPath="$PROJECT_DIR$/scripts/debug/gsuggest.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/calendar-ho.css" afterPath="$PROJECT_DIR$/styles/calendar-ho.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/style.css" afterPath="$PROJECT_DIR$/styles/style.css" />
     </list>
     <list id="4bdcc2f4-00d6-40ee-b450-34d69268308a" name="On master: Uncommitted changes before update operation at 23.04.11 21:06(cherry picked from commit a54405b3371eb181076ef0b1b00a85e6f0cc83ed)" comment="" />
     <list id="f8743774-3083-4128-93cb-73ea72964036" name="Issue #1 resolved(cherry picked from commit b98609113446ae548597b1d8aadba447885a6ecc)" comment="" />
@@ -20,7 +21,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="true" />
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="C:\my_projects\Bookenizer" />
     <option name="REVERSE_PATCH" value="false" />
   </component>
   <component name="DaemonCodeAnalyzer">
@@ -34,7 +35,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="439" column="95" selection-start="18426" selection-end="18426" vertical-scroll-proportion="10.958884">
+            <state line="10" column="67" selection-start="568" selection-end="568" vertical-scroll-proportion="0.2496329">
               <folding />
             </state>
           </provider>
@@ -43,7 +44,7 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="47" selection-start="1304" selection-end="1304" vertical-scroll-proportion="-8.346154">
+            <state line="31" column="47" selection-start="1304" selection-end="1304" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,21 +83,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Support/tomcat-server.conf" />
         <option value="$PROJECT_DIR$/Support/httpd-vhosts.conf" />
         <option value="$PROJECT_DIR$/README" />
         <option value="$PROJECT_DIR$/scripts/debug/jquery.rest.js" />
         <option value="$PROJECT_DIR$/scripts/debug/jquery.ajaxqueue.js" />
         <option value="$PROJECT_DIR$/styles/jquery.multiSelect.css" />
-        <option value="$PROJECT_DIR$/scripts/debug/gsuggest.js" />
-        <option value="$PROJECT_DIR$/styles/style.css" />
         <option value="$PROJECT_DIR$/scripts/models.js" />
         <option value="$PROJECT_DIR$/scripts/debug/calendar.js" />
         <option value="$PROJECT_DIR$/scripts/debug/xdate.js" />
         <option value="$PROJECT_DIR$/Locales/en/main.html" />
         <option value="$PROJECT_DIR$/Locales/de/main.html" />
         <option value="$PROJECT_DIR$/Locales/ru/main.html" />
+        <option value="$PROJECT_DIR$/styles/style.css" />
+        <option value="$PROJECT_DIR$/scripts/debug/gsuggest.js" />
+        <option value="$PROJECT_DIR$/styles/calendar-ho.css" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
@@ -163,6 +164,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -223,7 +225,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -241,15 +242,15 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="186" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1096" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1094" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1096" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="185" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="179" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -341,7 +342,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1913815" sideWeight="0.24410541" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12547529" sideWeight="0.50870144" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32953104" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32560706" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -370,7 +371,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Paging stuff added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Paging stuff" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -402,34 +403,15 @@
     <MESSAGE value="Jquery 1.6.1 min added" />
     <MESSAGE value="Initial search results template added for all languages" />
     <MESSAGE value="Paging stuff added" />
+    <MESSAGE value="Paging stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Locales/de/searchbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/debug/gsuggest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="235" column="0" selection-start="8748" selection-end="8748" vertical-scroll-proportion="0.024045262" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Locales/en/hotelslist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="18" selection-start="61" selection-end="332" vertical-scroll-proportion="0.02496329" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles/jscal2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/debug/jscal2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="25" selection-start="430" selection-end="445" vertical-scroll-proportion="0.11958998" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/debug/xdate.js">
@@ -442,42 +424,69 @@
         <state line="24" column="142" selection-start="1366" selection-end="1380" vertical-scroll-proportion="0.45080763" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="112" selection-start="2468" selection-end="2468" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="32" selection-start="1551" selection-end="1551" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/models.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="9" selection-start="225" selection-end="225" vertical-scroll-proportion="0.14166667" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.pagination.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="128" column="20" selection-start="3979" selection-end="3979" vertical-scroll-proportion="0.40138888" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/pagination.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="43" selection-start="60" selection-end="60" vertical-scroll-proportion="0.07083333" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="47" selection-start="1304" selection-end="1304" vertical-scroll-proportion="-8.346154">
+        <state line="31" column="47" selection-start="1304" selection-end="1304" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="112" selection-start="2468" selection-end="2468" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="32" selection-start="1551" selection-end="1551" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/debug/jscal2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="39" selection-start="430" selection-end="463" vertical-scroll-proportion="0.16527778">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/calendar-ho.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="241" column="72" selection-start="5426" selection-end="5426" vertical-scroll-proportion="0.50416666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/debug/gsuggest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="264" column="45" selection-start="10008" selection-end="10014" vertical-scroll-proportion="0.33239037">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/styles/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1294" column="12" selection-start="21958" selection-end="21961" vertical-scroll-proportion="0.51079136">
+        <state line="358" column="22" selection-start="5433" selection-end="5433" vertical-scroll-proportion="0.3489736">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/styles/layout.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="10" selection-start="619" selection-end="619" vertical-scroll-proportion="0.9527778">
+        <state line="40" column="13" selection-start="606" selection-end="608" vertical-scroll-proportion="0.90215826">
           <folding>
             <marker date="1299678546646" expanded="true" signature="204:265" placeholder="{...}" />
             <marker date="1299678546646" expanded="true" signature="287:349" placeholder="{...}" />
@@ -485,23 +494,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.pagination.js">
+    <entry file="file://$PROJECT_DIR$/styles/jscal2.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="20" selection-start="3979" selection-end="3979" vertical-scroll-proportion="0.40138888">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles/pagination.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="43" selection-start="60" selection-end="60" vertical-scroll-proportion="0.07083333">
+        <state line="2" column="16" selection-start="11" selection-end="27" vertical-scroll-proportion="0.047222223">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="439" column="95" selection-start="18426" selection-end="18426" vertical-scroll-proportion="10.958884">
+        <state line="10" column="67" selection-start="568" selection-end="568" vertical-scroll-proportion="0.2496329">
           <folding />
         </state>
       </provider>

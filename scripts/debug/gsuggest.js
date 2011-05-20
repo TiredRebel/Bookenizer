@@ -51,27 +51,27 @@ $.gsuggest.keydown =
 		clearTimeout($.gsuggest.suggestDelay);
 		var $obj = $(obj);
         if (e.which == 38 || e.which == 40){
-            $obj.next().children("div:eq("+$obj.prop("suggestPos")+")").focusout();
+            $obj.next().children("div:eq("+$obj.attr("suggestPos")+")").focusout();
         
             switch (e.which){
                 case 38: //up
-                    if (parseInt($obj.prop("suggestPos"))-1 < -1)
-                        $obj.prop("suggestPos", $obj.prop("suggestTtl"));
+                    if (parseInt($obj.attr("suggestPos"))-1 < -1)
+                        $obj.attr("suggestPos", $obj.attr("suggestTtl"));
                     else
-                        $obj.prop("suggestPos", Math.max(-2, parseInt($obj.prop("suggestPos"))-1));
+                        $obj.attr("suggestPos", Math.max(-2, parseInt($obj.attr("suggestPos"))-1));
                     break;
                     
                 case 40: //down
-                     if (parseInt($obj.prop("suggestPos"))+1 > parseInt($obj.prop("suggestTtl")))
-                        $obj.prop("suggestPos", "-1");
+                     if (parseInt($obj.attr("suggestPos"))+1 > parseInt($obj.attr("suggestTtl")))
+                        $obj.attr("suggestPos", "-1");
                      else   
-                        $obj.prop("suggestPos", Math.min($obj.prop("suggestTtl"), parseInt($obj.prop("suggestPos"))+1));
+                        $obj.attr("suggestPos", Math.min($obj.attr("suggestTtl"), parseInt($obj.attr("suggestPos"))+1));
         
                      break;
             }
         
             $.gsuggest.synctext = true;        
-            $obj.next().children("div:eq("+$obj.prop("suggestPos")+")").focusin();
+            $obj.next().children("div:eq("+$obj.attr("suggestPos")+")").focusin();
 				
 				e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
 				e.preventDefault ? e.preventDefault() : e.returnValue = false;
@@ -81,7 +81,7 @@ $.gsuggest.keydown =
 			  
 				if ($obj.next().css("display") == "block") { // do something if the suggestions are shown
 	
-					var id = $obj.next().children("div:eq("+$obj.prop("suggestPos")+")").prop("data-id");
+					var id = $obj.next().children("div:eq("+$obj.attr("suggestPos")+")").attr("data-id");
 //					if (id == undefined) id = -1;
 					
 					$.gsuggest.config.callback({id:id});
@@ -254,7 +254,7 @@ $.gsuggest.keyup =
 //console.log("children focus: " + $(this).text());																		
 				$(this).addClass("focus"); 
 				$.gsuggest.childHovered	= true;
-				if($.gsuggest.synctext)	$(this).parent().prev().prop("value", $(this).text());
+				if($.gsuggest.synctext)	$(this).parent().prev().attr("value", $(this).text());
 				return false;
 			});
 
@@ -262,7 +262,7 @@ $.gsuggest.keyup =
 //console.log("children blur: " + $(this).text());
 				$(this).removeClass("focus"); 
 				$.gsuggest.childHovered	= false;
-				$(this).parent().prev().prop("value", $(this).parent().prev().attr("suggestLast"));
+				$(this).parent().prev().attr("value", $(this).parent().prev().attr("suggestLast"));
 				return false;
 			});
 			
