@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="/styles/print.css" media="print">
     <link rel="stylesheet" type="text/css" href="/styles/jscal2.css" media="all">
     <link rel="stylesheet" type="text/css" href="/styles/jquery.multiSelect.css" media="screen">
-    <!--<link rel="stylesheet" type="text/css" href="/styles/pagination.css" media="screen">-->
 </head>
 <body class="popular">
 <div id="ltemplate"></div>
@@ -35,7 +34,7 @@
                 <div class="opener"></div>
 
                 <div id="sidebar">
-                    <span id="topdestblock" class="template_emb"></span>
+                    <span id="tdbHolder" class="template_emb"></span>
                     <div class="hr"></div>
                     <span id="statistics" class="template_emb"></span>
                 </div>
@@ -73,22 +72,34 @@
 
 <script type="text/javascript">
     (function(defLanguage) {
-        var nightsCount=function(elem){
-                    debugger;
-        };
+        var layoutTypes={INIT:0,SEARCH:1,PROFILE:2};
+
         var search=function(){
             var formToProcess=$("#searchform_".concat(window._configuration.get("searchType"))).ajaxForm();
-            debugger;
-            if(window._configuration.get("searchType")==="quick"){
-                  var strQuery=formToProcess.serializeArray();
-                  //formToProcess.ajaxSubmit();
-            }
-            else{
-                  var strQuery=formToProcess.serializeArray();
-                debugger;
-            }
-            return false;
-        }
+            //$.when(setLayout(layoutTypes.SEARCH)).done(function(){
+                //$("body").removeClass("popular").addClass("results");
+                if(window._configuration.get("searchType")==="quick"){
+                      var strQuery=formToProcess.serializeArray();
+                      //formToProcess.ajaxSubmit();
+                }
+                else{
+                      var strQuery=formToProcess.serializeArray();
+                    debugger;
+                }
+                return false;
+            //});
+        };
+
+        var setLayout=function(layout){
+             switch(layout){
+                 case layoutTypes.INIT:
+                 case layoutTypes.PROFILE:
+                 case layoutTypes.SEARCH:
+                         return $("#main").load("/Locales/searchResult.html");
+                 default:
+                    break;
+             }
+        };
 
         var suggestor=function(){
             var curLang=window._configuration.get("lang");
@@ -138,16 +149,31 @@
             return result;
         }
 
+
+        var handlePaginationClick=function(page_index, jq){
+          var offset=window._configuration.get("searchCriteria").offset;
+          //var svcUrl=window._configuration.get('serviceUrl');
+          //var useInternalCache=window._configuration.get('use_jStoreCache');
+          var hotelsCount=window._configuration.get("hotelsCount");
+          if(offset!==null && offset!==undefined){
+              window._configuration.get("searchCriteria").offset=page_index*hotelsCount;
+          }
+            else{
+              _.extend(window._configuration.get("searchCriteria"),{offset:page_index*hotelsCount})
+          }
+         //window._configuration.get("hotels").fetchData(svcUrl,window._configuration.get("searchCriteria"),useInternalCache);
+        };
+
         var HotelsList=Backbone.Collection.extend({
             model:Hotel,
             url:'hotel/search',
             hotelsCount:0,
             offersCount:0,
-            fetchData:function(service,lang,count,useCache){
+            fetchData:function(service,criteria,useCache){
                 var self=this;
                 return $.ajax({
                     url:service.concat(self.url),
-                    data:{limit:count, language:lang, searchType:"QUICK",sortType:"POPULARITY", sortDirection:"DESC"},
+                    data:criteria,
                     type:"POST",
                     success:function(hotels){
                        if(useCache){
@@ -237,11 +263,12 @@
 
         this.initApplication=function(config){
           $("#ltemplate").load(config.mainTemplateUrl(),function(){
-                new iApp(config);
-                $("#dateFrom").val(Calendar.printDate(config.get("curDate"),"%d.%m.%Y"));
-                $("#dateTo").val(Calendar.printDate(config.get("dayNext"),"%d.%m.%Y"));
-                Backbone.history.start();
-            });
+                    $("body").attr("class","").addClass("popular");
+                    new iApp(config);
+                    $("#dateFrom").val(Calendar.printDate(config.get("curDate"),"%d.%m.%Y"));
+                    $("#dateTo").val(Calendar.printDate(config.get("dayNext"),"%d.%m.%Y"));
+                    Backbone.history.start();
+                });
         };
 
         var Configuration=Backbone.Model.extend({
@@ -255,9 +282,11 @@
                 "curDate":(function(){return new Date();})(),
                 "dayNext":(function(){return new Date(new Date().getTime()+1000*60*60*24*2);})(),
                 "statistics":new Statistics(),
+                "searchCriteria":SearchCriteria,
                 "topDestinations":new TopDestinations(),
                 "srchLocations":new SearchLocations(),
                 "hotels":new HotelsList()
+
             },
             mainTemplateUrl:function(){
                 return "/Locales/".concat(this.get("lang"),"/main.html");
@@ -267,8 +296,10 @@
                 $.ajaxSetup({
                         async:self.get('ajaxMode'),
                         dataType:'json',
-                        contentTpe:'application/json; charset=utf-8'
+                        contentTpe:'application/json; charset=utf-8',
+                        cache:false
                     });
+
                 var svcUrl, curLang, useInternalCache;
                 if(lang!==undefined && lang!==""){
                    curLang=lang;
@@ -289,7 +320,6 @@
                        self.get('topDestinations').set(dsTopDest);
                        self.get('srchLocations').set(dsSrcLoc);
                        self.get('hotels').set(dsHotels);
-                       self
                         if(!isRefresh){
                             initApplication(self);
                         }else{
@@ -300,7 +330,7 @@
                             self.get('statistics').fetchData(svcUrl,useInternalCache),
                             self.get('topDestinations').fetchData(svcUrl,curLang,useInternalCache),
                             self.get('srchLocations').fetchData(svcUrl,curLang,useInternalCache),
-                            self.get('hotels').fetchData(svcUrl,curLang,self.get('hotelsCount'),useInternalCache)
+                            self.get('hotels').fetchData(svcUrl,self.get('searchCriteria'),useInternalCache)
                         ).done(function(){
                             if(!isRefresh){
                                 initApplication(self);
@@ -314,7 +344,7 @@
                         self.get('statistics').fetchData(svcUrl,useInternalCache),
                         self.get('topDestinations').fetchData(svcUrl,curLang,useInternalCache),
                         self.get('srchLocations').fetchData(svcUrl,curLang,useInternalCache),
-                        self.get('hotels').fetchData(svcUrl,curLang,self.get('hotelsCount'),useInternalCache)
+                        self.get('hotels').fetchData(svcUrl,self.get('searchCriteria'),useInternalCache)
                     ).done(function(){
                         console.log("deferred done");
                         if(!isRefresh){
@@ -327,12 +357,20 @@
             },
             initialize:function(){
                 var self=this;
+                self.initSearchCriteria();
                 self.initData(false);
             },
             refreshData:function(lang){
                 var self=this;
                 var svcUrl, curLang, useInternalCache;
                 self.initData(true,lang);
+            },
+            initSearchCriteria:function(){
+                (function(criteria,settings){
+                    criteria.limit=settings.hotelsCount;
+                    criteria.language=settings.lang;
+                    criteria.searchType=settings.searchType.toUpperCase();
+                })(this.defaults.searchCriteria,this.defaults);
             }
         });
 
@@ -378,7 +416,7 @@
         });
 
         var LocationsView=Backbone.View.extend({
-            el:$("#topdestblock"),
+            el:$("#tdbHolder"),
             render:function(){
                 var self=this;
                 getTemplate('top_dest_block_tmpl');
@@ -420,6 +458,23 @@
             }
         });
 
+        var PagedHotelsView=Backbone.View.extend({
+         el:$('#hotellist_holder'),
+         render:function(){
+             var self=this;
+             getTemplate("hotellist_item_tmpl");
+             self.el=$('#hotellist_holder').empty();
+             var jsonModel=self.model.toJSON();
+             var hotelCount=self.model.hotelsCount;
+             var offerCount=self.model.offersCount;
+             _(jsonModel).each(function(hotelItem){
+                //console.log(hotelItem);
+                self.el.append(ich.hotellist_item_tmpl(hotelItem));
+             });
+             return self;
+         }
+        });
+
         var HotelsView = Backbone.View.extend(
         {
          el:$('#hotelslist'),
@@ -433,11 +488,10 @@
              var hotelCount=self.model.hotelsCount;
              var offerCount=self.model.offersCount;
              _(jsonModel).each(function(hotelItem){
-                console.log(hotelItem);
+                //console.log(hotelItem);
                 hotelDiv.append(ich.hotellist_item_tmpl(hotelItem));
              });
-
-             $("#srPager").pagination(offerCount,{items_per_page:5, prev_text:"←", next_text:"→"});
+             $("#srPager").pagination(hotelCount,{items_per_page:5, prev_text:"←", next_text:"→",callback:handlePaginationClick});
              return self;
          }
         });
@@ -452,12 +506,15 @@
             _configuration:null,
             _statistics:null,
             _hotelsList:null,
+            _pagedHotelsList:null,
             routes: {
                 "!/lang/:id":"language",
                 "!/search/:type":"search",
                 "!/lookup/:cityId":"cityLookup",
                 "!/card/:hotelId":"hotelCard",
-                "!/select/:hotelId":"addHotel"
+                "!/select/:hotelId":"addHotel",
+                "!/search/do/:type":"makeSearch",
+                "!/page/:id":"pager"
             },
             renderIndex:function(){
                 _index.render();
@@ -489,6 +546,7 @@
                     _topDestinations=new LocationsView({model:_configuration.get("topDestinations")});
                     _statistics=new StatisticsView({model:_configuration.get("statistics")});
                     _hotelsList=new HotelsView({model:_configuration.get('hotels')});
+                    _pagedHotelsList=new PagedHotelsView({model:_configuration.get('hotels')});
                     _footer = new FooterView();
                      this.renderIndex();
                 }else{
@@ -496,6 +554,7 @@
                   $("#ltemplate").load(_configuration.mainTemplateUrl(),function(){
                       ich.clearAll();
                       //debugger;
+                      //_layout.render();
                       _index.render();
                       _logoBar.render();
                       _topDestinations.render();
@@ -558,10 +617,31 @@
             },
             cityLookup:function(cityId){
                 console.log("City lookup cityId"+cityId);
+                var lookupCriteria=_.extend(_configuration.get("searchCriteria"),{cityId:cityId});
+                var svcUrl=_configuration.get('serviceUrl');
+                var useInternalCache=_configuration.get('use_jStoreCache');
+                var hotels=_configuration.get("hotels");
+                $.when(hotels.fetchData(svcUrl,lookupCriteria,useInternalCache)).done(function(){
+                   _hotelsList.render();
+                });
+
             },
             search:function(srcType){
                 //ich.refresh();
                 _configuration.set({searchType:srcType});
+            },
+            makeSearch:function(srcType){
+                debugger;
+            },
+            pager:function(pageNum){
+                var svcUrl=_configuration.get('serviceUrl');
+                var useInternalCache=_configuration.get('use_jStoreCache');
+                var hotelsCount=window._configuration.get("hotelsCount");
+                $.when(_configuration.get("hotels").fetchData(svcUrl,window._configuration.get("searchCriteria"),useInternalCache)).done(function(){
+                    _pagedHotelsList.render();
+                });
+
+
             }
         });
 
