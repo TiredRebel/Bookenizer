@@ -76,16 +76,31 @@
 
         var search=function(){
             var formToProcess=$("#searchform_".concat(window._configuration.get("searchType"))).ajaxForm();
+            var criteria=window._configuration.get("searchCriteria");
+            //debugger;
             //$.when(setLayout(layoutTypes.SEARCH)).done(function(){
-                //$("body").removeClass("popular").addClass("results");
+                //$("body").attr("class","results");
                 if(window._configuration.get("searchType")==="quick"){
-                      var strQuery=formToProcess.serializeArray();
-                      //formToProcess.ajaxSubmit();
+                    var defCity=$("#city,formToProcess").attr("defValue"),city;
+                    var city=$("#city,formToProcess").val();
+                        criteria.searchType="QUICK";
+                        _.extend(criteria,{dateFrom:$("#dateFrom,formToProcess").val()});
+                        _.extend(criteria,{dateTo:$("#dateTo,formToProcess").val()});
                 }
                 else{
-                      var strQuery=formToProcess.serializeArray();
-                    debugger;
+                      criteria.searchType="ADVANCED";
+                      var fieldArray=_.compact(formToProcess.serializeArray());
+                      _.each(fieldArray,function(n){
+
+                      });
+                      //_.extend(criteria,{dateFrom:$("#dateFrom,formToProcess").val()});
+                      //_.extend(criteria,{dateTo:$("#dateTo,formToProcess").val()});
+                      //_.extend(criteria,{dateTo:$("#numberOfPersons,formToProcess").val()});
+
                 }
+                var options={
+
+                };
                 return false;
             //});
         };
@@ -107,7 +122,10 @@
             $.gsuggest({
                 inlineText: function(data) { return data.city + ", " + data.country },
                 inlineId: function(data) { return data.cityId },
-                dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); }
+                dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); },
+                callback:function(data){
+                    _.extend(window._configuration.get("searchCriteria"),{cityId:data.id});
+                }
             });
             var cal=Calendar.setup( {selectionType : Calendar.SEL_MULTIPLE, timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){fixDate(this.inputField.id);this.hide();}});
             cal.manageFields("dateFrom", "dateFrom", "%d.%m.%Y");
@@ -115,7 +133,7 @@
             cal.setLanguage(curLang);
 
             if(window._configuration.get("searchType")!=='quick'){
-                $('#facilities').multiSelect();
+                $('#facilities').multiSelect({selectAll:false,oneOrMoreSelected: '*'});
             }
             $("#mkSearch").bind("click",function(){
                             search();
@@ -152,8 +170,6 @@
 
         var handlePaginationClick=function(page_index, jq){
           var offset=window._configuration.get("searchCriteria").offset;
-          //var svcUrl=window._configuration.get('serviceUrl');
-          //var useInternalCache=window._configuration.get('use_jStoreCache');
           var hotelsCount=window._configuration.get("hotelsCount");
           if(offset!==null && offset!==undefined){
               window._configuration.get("searchCriteria").offset=page_index*hotelsCount;
@@ -161,7 +177,6 @@
             else{
               _.extend(window._configuration.get("searchCriteria"),{offset:page_index*hotelsCount})
           }
-         //window._configuration.get("hotels").fetchData(svcUrl,window._configuration.get("searchCriteria"),useInternalCache);
         };
 
         var HotelsList=Backbone.Collection.extend({
@@ -608,6 +623,7 @@
             },
             hotelCard:function(hotelId){
                 console.log("Hotel card selected hotelId" + hotelId);
+                $("body").attr("class","hotelcard");
             },
             addHotel:function(hotelId){
                 console.log("hotel selected with id"+hotelId);
