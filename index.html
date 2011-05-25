@@ -127,7 +127,7 @@
                     _.extend(window._configuration.get("searchCriteria"),{cityId:data.id});
                 }
             });
-            var cal=Calendar.setup( {selectionType : Calendar.SEL_MULTIPLE, timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){fixDate(this.inputField.id);this.hide();}});
+                var cal=Calendar.setup( {selectionType : Calendar.SEL_MULTIPLE, timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){fixDate(this.inputField.id);this.hide();}});
             cal.manageFields("dateFrom", "dateFrom", "%d.%m.%Y");
             cal.manageFields("dateTo", "dateTo", "%d.%m.%Y");
             cal.setLanguage(curLang);
@@ -135,9 +135,9 @@
             if(window._configuration.get("searchType")!=='quick'){
                 $('#facilities').multiSelect({selectAll:false,oneOrMoreSelected: '*'});
             }
-            $("#mkSearch").bind("click",function(){
+            /*$("#mkSearch").bind("click",function(){
                             search();
-                        });
+                        });*/
         };
 
        this.getTemplate=function(tmplName, isPartial,custom){
@@ -403,6 +403,7 @@
         });
 
         var SearchView=Backbone.View.extend({
+            events:{"submit #searchform":"handleSubmit"},
             el:$("#searchbar_ph"),
             render:function(){
                 var self=this;
@@ -418,6 +419,13 @@
                 $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(self.model));
                 suggestor();
                 return self;
+            },
+            handleSubmit:function(data){
+                debugger;
+                var searchType=window._configuration.get("searchType");
+                var loc="#!/search/do/".concat(searchType);
+                Backbone.history.saveLocation(loc);
+                this.trigger("searchForm:search",searchType);
             }
         });
 
@@ -558,6 +566,7 @@
                     _index = new TopMenuView({model:_languages()});
                     _logoBar = new LogobarView();
                     _searchForm=new SearchView({model:_configuration.get("srchLocations")});
+                    _searchForm.bind("searchForm:search",this.makeSearch);
                     _topDestinations=new LocationsView({model:_configuration.get("topDestinations")});
                     _statistics=new StatisticsView({model:_configuration.get("statistics")});
                     _hotelsList=new HotelsView({model:_configuration.get('hotels')});
@@ -589,6 +598,8 @@
             initialize:function(spec) {
                 var self=this;
                 _configuration=spec;
+                _.extend(self,Backbone.events);
+                _.bindAll(self,"search");
                 console.log("initialized "+_configuration);
                 //$.jStore.remove("topdest_ru");
                 //$.jStore.remove("topdest_en");

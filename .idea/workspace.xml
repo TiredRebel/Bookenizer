@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Locales/initLayout.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Locales/searchResult.html" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\de\hotelslist.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\de\searchbar.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\hotelslist.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\en\searchbar.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\hotelslist.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\my_projects\Bookenizer\Locales\ru\searchform.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/ru/main.html" afterPath="$PROJECT_DIR$/Locales/ru/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/debug/jquery.pagination.js" afterPath="$PROJECT_DIR$/scripts/debug/jquery.pagination.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/models.js" afterPath="$PROJECT_DIR$/scripts/models.js" />
     </list>
     <list id="4bdcc2f4-00d6-40ee-b450-34d69268308a" name="On master: Uncommitted changes before update operation at 23.04.11 21:06(cherry picked from commit a54405b3371eb181076ef0b1b00a85e6f0cc83ed)" comment="" />
     <list id="f8743774-3083-4128-93cb-73ea72964036" name="Issue #1 resolved(cherry picked from commit b98609113446ae548597b1d8aadba447885a6ecc)" comment="" />
@@ -44,16 +34,34 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="624" column="0" selection-start="26472" selection-end="26472" vertical-scroll-proportion="0.65051395">
+            <state line="603" column="50" selection-start="25414" selection-end="25414" vertical-scroll-proportion="0.5359765">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jquery.pagination.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.pagination.js">
+      <file leaf-file-name="jquery.multiSelect.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.multiSelect.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="28" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
+            <state line="1" column="18" selection-start="6" selection-end="24" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gsuggest.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/debug/gsuggest.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="13" selection-start="648" selection-end="656" vertical-scroll-proportion="-9.08">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/models.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="23" selection-start="432" selection-end="447" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -62,7 +70,7 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="32" selection-start="1211" selection-end="1211" vertical-scroll-proportion="-10.115385">
+            <state line="221" column="59" selection-start="11643" selection-end="11643" vertical-scroll-proportion="-19.0">
               <folding />
             </state>
           </provider>
@@ -71,7 +79,7 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="152" column="29" selection-start="8249" selection-end="8249" vertical-scroll-proportion="0.0">
+            <state line="152" column="29" selection-start="8249" selection-end="8249" vertical-scroll-proportion="-0.65384614">
               <folding />
             </state>
           </provider>
@@ -425,6 +433,7 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49129853" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1913815" sideWeight="0.24410541" order="1" side_tool="true" content_ui="tabs" />
@@ -437,7 +446,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32797858" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24951768" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -458,7 +466,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="quick search styling Hotels changed on 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="cityid handling, quick search parameters, multiselect changed" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -493,16 +501,13 @@
     <MESSAGE value="Paging stuff" />
     <MESSAGE value="some styling improvements, gsuggest improvement" />
     <MESSAGE value="quick search styling Hotels changed on 3" />
+    <MESSAGE value="paging, layout switching" />
+    <MESSAGE value="cityid handling, quick search parameters, multiselect changed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scripts/debug/xdate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="765" selection-end="765" vertical-scroll-proportion="0.14578588" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/styles/pagination.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="43" selection-start="60" selection-end="60" vertical-scroll-proportion="0.07083333" />
@@ -516,11 +521,6 @@
     <entry file="file://$PROJECT_DIR$/styles/calendar-ho.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="241" column="72" selection-start="5426" selection-end="5426" vertical-scroll-proportion="0.50416666" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/debug/gsuggest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="264" column="45" selection-start="10008" selection-end="10014" vertical-scroll-proportion="0.33239037" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/styles/style.css">
@@ -538,23 +538,9 @@
         <state line="2" column="16" selection-start="11" selection-end="27" vertical-scroll-proportion="0.047222223" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="29" selection-start="8249" selection-end="8249" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="149" column="29" selection-start="8514" selection-end="8514" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/models.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="828" selection-end="828" vertical-scroll-proportion="0.7083333">
           <folding />
         </state>
       </provider>
@@ -573,23 +559,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/debug/gsuggest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="13" selection-start="648" selection-end="656" vertical-scroll-proportion="-9.08">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.pagination.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="28" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
+        <state line="12" column="28" selection-start="441" selection-end="441" vertical-scroll-proportion="-0.2125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/models.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="23" selection-start="432" selection-end="447" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="152" column="29" selection-start="8249" selection-end="8249" vertical-scroll-proportion="-0.65384614">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.multiSelect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="18" selection-start="6" selection-end="24" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="32" selection-start="1211" selection-end="1211" vertical-scroll-proportion="-10.115385">
+        <state line="221" column="59" selection-start="11643" selection-end="11643" vertical-scroll-proportion="-19.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="624" column="0" selection-start="26472" selection-end="26472" vertical-scroll-proportion="0.65051395">
+        <state line="603" column="50" selection-start="25414" selection-end="25414" vertical-scroll-proportion="0.5359765">
           <folding />
         </state>
       </provider>
