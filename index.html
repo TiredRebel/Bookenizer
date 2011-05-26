@@ -74,24 +74,21 @@
     (function(defLanguage) {
         var layoutTypes={INIT:0,SEARCH:1,PROFILE:2};
 
-        var search=function(){
-            var formToProcess=$("#searchform_".concat(window._configuration.get("searchType"))).ajaxForm();
-            var criteria=window._configuration.get("searchCriteria");
-            //debugger;
-            //$.when(setLayout(layoutTypes.SEARCH)).done(function(){
-                //$("body").attr("class","results");
+        var search=function(searchType){
+            var formToProcess=$("#searchform_".concat(searchType)).ajaxForm();
+                var criteria=window._configuration.get("searchCriteria");
                 if(window._configuration.get("searchType")==="quick"){
-                    var defCity=$("#city,formToProcess").attr("defValue"),city;
-                    var city=$("#city,formToProcess").val();
-                        criteria.searchType="QUICK";
-                        _.extend(criteria,{dateFrom:$("#dateFrom,formToProcess").val()});
-                        _.extend(criteria,{dateTo:$("#dateTo,formToProcess").val()});
+                    criteria.searchType="QUICK";
+                    updateSearchCriteria(formToProcess,"dateFrom",$("#dateFrom,formToProcess").val());
+                    updateSearchCriteria(formToProcess,"dateTo",$("#dateTo,formToProcess").val());
                 }
                 else{
                       criteria.searchType="ADVANCED";
                       var fieldArray=_.compact(formToProcess.serializeArray());
                       _.each(fieldArray,function(n){
-
+                            switch(fieldArray[n].name){
+                                case "dateFrom":
+                            }
                       });
                       //_.extend(criteria,{dateFrom:$("#dateFrom,formToProcess").val()});
                       //_.extend(criteria,{dateTo:$("#dateTo,formToProcess").val()});
@@ -103,6 +100,17 @@
                 };
                 return false;
             //});
+        };
+
+        var updateSearchCriteria=function(form,fieldName,data){
+              var criteria=window._configuration.get("searchCriteria");
+              var keys=_.keys(criteria);
+            debugger;
+            if(!_.include(keys,fieldName)){
+                eval("_.extend(criteria,{"+fieldName+":data})");
+            }else{
+               eval("criteria."+fieldName+"=data");
+            }
         };
 
         var setLayout=function(layout){
@@ -124,7 +132,12 @@
                 inlineId: function(data) { return data.cityId },
                 dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); },
                 callback:function(data){
-                    _.extend(window._configuration.get("searchCriteria"),{cityId:data.id});
+                    var criteria=window._configuration.get("searchCriteria");
+                    if(criteria.cityId===undefined){
+                        _.extend(criteria,{cityId:data.id});
+                    }else{
+                        criteria.cityId=data.id;
+                    }
                 }
             });
                 var cal=Calendar.setup( {selectionType : Calendar.SEL_MULTIPLE, timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){fixDate(this.inputField.id);this.hide();}});
@@ -173,8 +186,7 @@
           var hotelsCount=window._configuration.get("hotelsCount");
           if(offset!==null && offset!==undefined){
               window._configuration.get("searchCriteria").offset=page_index*hotelsCount;
-          }
-            else{
+          }else{
               _.extend(window._configuration.get("searchCriteria"),{offset:page_index*hotelsCount})
           }
         };
@@ -421,10 +433,8 @@
                 return self;
             },
             handleSubmit:function(data){
-                debugger;
                 var searchType=window._configuration.get("searchType");
-                var loc="#!/search/do/".concat(searchType);
-                Backbone.history.saveLocation(loc);
+                Backbone.history.saveLocation("#!/search/do/".concat(searchType));
                 this.trigger("searchForm:search",searchType);
             }
         });
@@ -658,7 +668,7 @@
                 _configuration.set({searchType:srcType});
             },
             makeSearch:function(srcType){
-                debugger;
+                search(srcType);
             },
             pager:function(pageNum){
                 var svcUrl=_configuration.get('serviceUrl');
