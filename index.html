@@ -13,6 +13,7 @@
 </head>
 <body class="popular">
 <div id="ltemplate"></div>
+<div id="mtemplate"></div>
 <div id="container">
     <div id="wrapper">
         <div id="content">
@@ -105,7 +106,7 @@
         var updateSearchCriteria=function(form,fieldName,data){
               var criteria=window._configuration.get("searchCriteria");
               var keys=_.keys(criteria);
-            debugger;
+            //debugger;
             if(!_.include(keys,fieldName)){
                 eval("_.extend(criteria,{"+fieldName+":data})");
             }else{
@@ -118,7 +119,9 @@
                  case layoutTypes.INIT:
                  case layoutTypes.PROFILE:
                  case layoutTypes.SEARCH:
-                         return $("#main").load("/Locales/searchResult.html");
+                         //debugger;
+                         //$("#main").empty();
+                         return $("#main").empty().load("/Layouts/layoutSearchResult.html");
                  default:
                     break;
              }
@@ -288,6 +291,12 @@
             }
         });
 
+        var initSearchResults=function(config){
+            $("#mtemplate").load(config.searchResultsTemplateUrl(),function(){
+                $("body").attr("class","").addClass("results");
+            });
+        }
+
         this.initApplication=function(config){
           $("#ltemplate").load(config.mainTemplateUrl(),function(){
                     $("body").attr("class","").addClass("popular");
@@ -317,6 +326,9 @@
             },
             mainTemplateUrl:function(){
                 return "/Locales/".concat(this.get("lang"),"/main.html");
+            },
+            searchResultsTemplateUrl:function(){
+                return "/Locales/".concat(this.get("lang"),"/searchResults.html");
             },
             initData:function(isRefresh,lang){
                 var self=this;
@@ -472,6 +484,24 @@
                getTemplate('stats_block_tmpl');
                self.el.html(ich.stats_block_tmpl(self.model.toJSON()[0]));
                 return self;
+            },
+            reRender:function(){
+                var self=this;
+                self.el=$("#statistics");
+                self.render();
+            }
+        });
+
+        var SortBarView=Backbone.View.extend({
+            el:$("span#sortmenuholder"),
+            render:function(){
+                var self=this;
+                if(self.el.length<1){
+                    self.el=$("span#sortmenuholder");
+                }
+                getTemplate("sortmenu");
+                self.el.html(ich.sortmenu());
+                return self;
             }
         });
 
@@ -540,6 +570,7 @@
             _statistics:null,
             _hotelsList:null,
             _pagedHotelsList:null,
+            _sortBar:null,
             routes: {
                 "!/lang/:id":"language",
                 "!/search/:type":"search",
@@ -664,11 +695,18 @@
 
             },
             search:function(srcType){
-                //ich.refresh();
                 _configuration.set({searchType:srcType});
             },
             makeSearch:function(srcType){
                 search(srcType);
+                $.when(setLayout(layoutTypes.SEARCH),initSearchResults(_configuration)).then(function(){
+                    //ich.clearAll();
+                    _sortBar=new SortBarView();
+                    _statistics=new StatisticsView({model:_configuration.get("statistics")});
+                    debugger;
+                    _sortBar.render();
+                    _statistics.reRender();
+                });
             },
             pager:function(pageNum){
                 var svcUrl=_configuration.get('serviceUrl');
@@ -676,6 +714,7 @@
                 var hotelsCount=window._configuration.get("hotelsCount");
                 $.when(_configuration.get("hotels").fetchData(svcUrl,window._configuration.get("searchCriteria"),useInternalCache)).done(function(){
                     _pagedHotelsList.render();
+
                 });
 
 
