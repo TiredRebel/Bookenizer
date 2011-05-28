@@ -80,8 +80,8 @@
                 var criteria=window._configuration.get("searchCriteria");
                 if(window._configuration.get("searchType")==="quick"){
                     criteria.searchType="QUICK";
-                    updateSearchCriteria(formToProcess,"dateFrom",$("#dateFrom,formToProcess").val());
-                    updateSearchCriteria(formToProcess,"dateTo",$("#dateTo,formToProcess").val());
+                    updateSearchCriteria("dateFrom",$("#dateFrom,formToProcess").val());
+                    updateSearchCriteria("dateTo",$("#dateTo,formToProcess").val());
                 }
                 else{
                       criteria.searchType="ADVANCED";
@@ -96,14 +96,12 @@
                       //_.extend(criteria,{dateTo:$("#numberOfPersons,formToProcess").val()});
 
                 }
-                var options={
 
-                };
                 return false;
             //});
         };
 
-        var updateSearchCriteria=function(form,fieldName,data){
+        var updateSearchCriteria=function(fieldName,data){
               var criteria=window._configuration.get("searchCriteria");
               var keys=_.keys(criteria);
             //debugger;
@@ -119,13 +117,19 @@
                  case layoutTypes.INIT:
                  case layoutTypes.PROFILE:
                  case layoutTypes.SEARCH:
-                         //debugger;
-                         //$("#main").empty();
-                         return $("#main").empty().load("/Layouts/layoutSearchResult.html");
+                        getContent("/Layouts/layoutSearchResult.html",$("#main"));
+                        break;
                  default:
                     break;
              }
         };
+
+        var getContent=function(url,elemToLoad){
+            var dfd=$.Deferred();
+            elemToLoad.empty();
+            elemToLoad.load(url, function(){dfd.resolve});
+            return dfd.promise();
+        }
 
         var suggestor=function(){
             var curLang=window._configuration.get("lang");
@@ -151,9 +155,6 @@
             if(window._configuration.get("searchType")!=='quick'){
                 $('#facilities').multiSelect({selectAll:false,oneOrMoreSelected: '*'});
             }
-            /*$("#mkSearch").bind("click",function(){
-                            search();
-                        });*/
         };
 
        this.getTemplate=function(tmplName, isPartial,custom){
@@ -243,6 +244,25 @@
             }
         });
 
+        var RandomOffers=Backbone.Collection.extend({
+            model:Hotel,
+            url:'hotel/random/',
+            fetchData:function(service,lang,useCache){
+                var self=this;
+                return $.ajax({
+                        url:service.concat(self.url),
+                        data:{language:lang},
+                        success:function(randoffers){
+                               self.refresh(randoffers.hotelList);
+                        }
+                    });
+            },
+            set:function(data){
+              this.refresh(data);
+              return true;
+            }
+        });
+
         var Statistics=Backbone.Collection.extend({
             model:Statistic,
             url:'statistics/',
@@ -292,10 +312,13 @@
         });
 
         var initSearchResults=function(config){
+            var dfd=$.Deferred();
             $("#mtemplate").load(config.searchResultsTemplateUrl(),function(){
                 $("body").attr("class","").addClass("results");
+                dfd.resolve();
             });
-        }
+            return dfd.promise();
+        };
 
         this.initApplication=function(config){
           $("#ltemplate").load(config.mainTemplateUrl(),function(){
@@ -321,8 +344,10 @@
                 "searchCriteria":SearchCriteria,
                 "topDestinations":new TopDestinations(),
                 "srchLocations":new SearchLocations(),
-                "hotels":new HotelsList()
-
+                "hotels":new HotelsList(),
+                "randomOffers":new RandomOffers(),
+                "roCount":0,
+                "searchResult":new HotelsList()
             },
             mainTemplateUrl:function(){
                 return "/Locales/".concat(this.get("lang"),"/main.html");
@@ -353,7 +378,7 @@
                     dsStat=tryGetFromCache('statistics');
                     dsTopDest=tryGetFromCache('topDestinations_'.concat(curLang));
                     dsSrcLoc=tryGetFromCache('srchLocations'.concat(curLang));
-                    dsHotels=tryGetFromCache('hotelsList_'.concat(curLang))
+                    dsHotels=tryGetFromCache('hotelsList_'.concat(curLang));
                     if(dsStat!==null && dsTopDest !==null && dsSrcLoc!==null && dsHotels!==null){
                        self.get('statistics').set(dsStat);
                        self.get('topDestinations').set(dsTopDest);
@@ -401,7 +426,6 @@
             },
             refreshData:function(lang){
                 var self=this;
-                var svcUrl, curLang, useInternalCache;
                 self.initData(true,lang);
             },
             initSearchCriteria:function(){
@@ -410,6 +434,24 @@
                     criteria.language=settings.lang;
                     criteria.searchType=settings.searchType.toUpperCase();
                 })(this.defaults.searchCriteria,this.defaults);
+            },
+            initRandomOffers:function(){
+                var self=this;
+                var svcUrl, curLang, useInternalCache;
+                curLang=self.get("lang");
+                console.log("Configuration initRandomOffers " + " lang "+  curLang);
+                svcUrl=self.get('serviceUrl');
+                useInternalCache=self.get('use_jStoreCache');
+               return self.get('randomOffers').fetchData(svcUrl,curLang,useInternalCache);
+            },
+            makeSearch:function(){
+                var self=this;
+                var svcUrl, curLang, useInternalCache;
+                curLang=self.get("lang");
+                console.log("perform search ");
+                svcUrl=self.get('serviceUrl');
+                useInternalCache=self.get('use_jStoreCache');
+                return self.get('hotels').fetchData(svcUrl,self.get('searchCriteria'),useInternalCache);
             }
         });
 
@@ -469,12 +511,29 @@
                 self.el.html(ich.top_dest_block_tmpl());
                 var locations=self.el.find('#locationsList');
                 console.log("locations view");
-                //debugger;
                 _(self.model.toJSON()).each(function(location){
                     locations.append(ich.tdb_location_item(location));
                 });
                 return self;
             }
+        });
+
+        var RandomOffersView=Backbone.View.extend({
+           el:$('#randomsHolder'),
+            render:function(){
+             var self=this;
+             getTemplate("ro_block_tmpl");
+             getTemplate("ro_item_tmpl");
+             self.el=$('#randomsHolder').empty();
+             self.el.html(ich.ro_block_tmpl());
+             var roDiv=$("#randomslist");
+             var jsonModel=self.model.toJSON();
+             console.log("jsonModel count "+jsonModel.length);
+             _(jsonModel).each(function(hotelItem){
+                roDiv.append(ich.ro_item_tmpl(hotelItem));
+             });
+             return self;
+         }
         });
 
         var StatisticsView=Backbone.View.extend({
@@ -483,7 +542,7 @@
                var self=this;
                getTemplate('stats_block_tmpl');
                self.el.html(ich.stats_block_tmpl(self.model.toJSON()[0]));
-                return self;
+               return self;
             },
             reRender:function(){
                 var self=this;
@@ -493,14 +552,14 @@
         });
 
         var SortBarView=Backbone.View.extend({
-            el:$("span#sortmenuholder"),
+            el:$("#sortmenuholder"),
             render:function(){
                 var self=this;
                 if(self.el.length<1){
-                    self.el=$("span#sortmenuholder");
+                    self.el=$("#sortmenuholder");
                 }
                 getTemplate("sortmenu");
-                self.el.html(ich.sortmenu());
+                self.el.html(ich.sortmenu(self.model));
                 return self;
             }
         });
@@ -556,7 +615,12 @@
              });
              $("#srPager").pagination(hotelCount,{items_per_page:5, prev_text:"←", next_text:"→",callback:handlePaginationClick});
              return self;
-         }
+         },
+            reRender:function(){
+                var self=this;
+                self.el=$("#hotelslist");
+                self.render();
+                }
         });
 
         var iApp = Backbone.Controller.extend({
@@ -571,6 +635,7 @@
             _hotelsList:null,
             _pagedHotelsList:null,
             _sortBar:null,
+            _randomOffers:null,
             routes: {
                 "!/lang/:id":"language",
                 "!/search/:type":"search",
@@ -578,7 +643,8 @@
                 "!/card/:hotelId":"hotelCard",
                 "!/select/:hotelId":"addHotel",
                 "!/search/do/:type":"makeSearch",
-                "!/page/:id":"pager"
+                "!/page/:id":"pager",
+                "!/search/sortby/:type":"sortBy"
             },
             renderIndex:function(){
                 _index.render();
@@ -699,13 +765,18 @@
             },
             makeSearch:function(srcType){
                 search(srcType);
-                $.when(setLayout(layoutTypes.SEARCH),initSearchResults(_configuration)).then(function(){
-                    //ich.clearAll();
-                    _sortBar=new SortBarView();
-                    _statistics=new StatisticsView({model:_configuration.get("statistics")});
-                    debugger;
+                $.when(setLayout(layoutTypes.SEARCH),initSearchResults(_configuration),_configuration.initRandomOffers(),_configuration.makeSearch()).done(function(){
+                    $("body").attr("class","").addClass("results");
+                    var hotelModel=_configuration.get('hotels');
+                    _sortBar=new SortBarView({model:hotelModel});
+                    _randomOffers=new RandomOffersView({model:_configuration.get('randomOffers')});
+                    _hotelsList=new HotelsView({model:hotelModel});
+                    //debugger;
+                    console.log("ro length" + _hotelsList.model.length);
                     _sortBar.render();
                     _statistics.reRender();
+                    _randomOffers.render();
+                    _hotelsList.reRender();
                 });
             },
             pager:function(pageNum){
@@ -714,10 +785,11 @@
                 var hotelsCount=window._configuration.get("hotelsCount");
                 $.when(_configuration.get("hotels").fetchData(svcUrl,window._configuration.get("searchCriteria"),useInternalCache)).done(function(){
                     _pagedHotelsList.render();
-
                 });
-
-
+            },
+            sortBy:function(type){
+                //span id=sbt_type class=asc|desc|none
+                debugger;
             }
         });
 

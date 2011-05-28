@@ -1,6 +1,6 @@
 <script type="text/html" id="sortmenu">
  <h4 class="lookfor nodisplay">Looking for: rooms in 2, 3 or 5 star hotel, for 8 nights from 22.09.2008 to 29.09.2008, for 2 persons, with Full Board or Half Board meals, from 60 to 80 EUR per night, with Parking and Internet.</h4>
-			<h3 class="results-stat"><strong>172</strong> offers in <strong>14</strong> hotels found.<br />
+			<h3 class="results-stat"><strong>{{offersCount}}</strong> offers in <strong>{{hotelsCount}}</strong> hotels found.<br />
 			<span class="noprint"><a href="main-results.html#" class="noreload" onclick="$(this).parent().hide(); return switchSearchtype('advanced')">Tell us more</a> for better fit or </span>
 			<span class="host subscribehost noprint"><a href="main-results.html#" class="bt_subscribe noreload">Subscribe to similar offers</a>.
 
@@ -30,6 +30,25 @@
 
 			<div class="label sort noprint">
 				<span class="label">Sort by</span>
-				<a href="main-results.html#"><span class="asc"></span>Name</a> <a href="main-results.html#"><span class="none"></span>Popularity</a> <a href="main-results.html#"><span class="desc"></span>Stars</a> <a href="main-results.html#"><span class="none"></span>Price</a>
+				<a href="#!/search/sortby/name"><span class="asc" id="sbt_name"></span>Name</a> <a href="#!/search/sortby/popularity"><span class="none" id="sbt_popularity"></span>Popularity</a> <a href="#!/search/sortby/stars"><span class="desc" id="sbt_stars"></span>Stars</a> <a href="#!/search/sortby/price"><span class="none" id="sbt_price"></span>Price</a>
 			</div>
  </script>
+</div>
+<script type="text/html" id="ro_block_tmpl">
+        <div id="randomsblock" class="container">
+				<h2>Top popular</h2>
+				<p class="location">in <a href="main-results.html#">Amsterdam</a>, Holland </p>
+				<div id="randomslist"></div>
+        </div>
+</script>
+<script type="text/html" id="ro_item_tmpl">
+<div class="hotel">
+    <h3><a href="#!/card/{{hotelId}}" title="{{name}}">{{name}}</a></h3>
+    <a href="#!/card/{{hotelId}}" title="{{name}}"><img src="{{#MainPhoto}}{{small}}{{/MainPhoto}}" alt="{{name}}" /></a>
+    <div class="stars stars-{{stars}}"></div>
+    <p class="info">от <strong>{{currency}}&nbsp;{{minOfferPrice}}</strong></p>
+    <p class="info"><a href="main-results.html#">Add to Selected</a> /<br />
+    <a href="main-results.html#">Print hotel info</a></p>
+    <div class="clearer"></div>
+</div>
+</script>
