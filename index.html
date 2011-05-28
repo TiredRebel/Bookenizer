@@ -320,9 +320,10 @@
             return dfd.promise();
         };
 
-        this.initApplication=function(config){
+        var initApplication=function(config){
           $("#ltemplate").load(config.mainTemplateUrl(),function(){
                     $("body").attr("class","").addClass("popular");
+                    $("#mtemplate").empty();
                     new iApp(config);
                     $("#dateFrom").val(Calendar.printDate(config.get("curDate"),"%d.%m.%Y"));
                     $("#dateTo").val(Calendar.printDate(config.get("dayNext"),"%d.%m.%Y"));
@@ -385,6 +386,7 @@
                        self.get('srchLocations').set(dsSrcLoc);
                        self.get('hotels').set(dsHotels);
                         if(!isRefresh){
+                            console.log("init applcation with cache");
                             initApplication(self);
                         }else{
                            self.set({lang:curLang});
@@ -397,6 +399,7 @@
                             self.get('hotels').fetchData(svcUrl,self.get('searchCriteria'),useInternalCache)
                         ).done(function(){
                             if(!isRefresh){
+                                console.log("init applcation with cache empty ds");
                                 initApplication(self);
                             }else{
                                 self.set({lang:curLang});
@@ -410,8 +413,8 @@
                         self.get('srchLocations').fetchData(svcUrl,curLang,useInternalCache),
                         self.get('hotels').fetchData(svcUrl,self.get('searchCriteria'),useInternalCache)
                     ).done(function(){
-                        console.log("deferred done");
                         if(!isRefresh){
+                            console.log("init applcation w/o cache");
                            initApplication(self);
                         }else{
                            self.set({lang:curLang});
@@ -442,7 +445,7 @@
                 console.log("Configuration initRandomOffers " + " lang "+  curLang);
                 svcUrl=self.get('serviceUrl');
                 useInternalCache=self.get('use_jStoreCache');
-               return self.get('randomOffers').fetchData(svcUrl,curLang,useInternalCache);
+                return self.get('randomOffers').fetchData(svcUrl,curLang,useInternalCache);
             },
             makeSearch:function(){
                 var self=this;
@@ -552,6 +555,7 @@
         });
 
         var SortBarView=Backbone.View.extend({
+            //events:{"click .clickablesort":"handleClick"},
             el:$("#sortmenuholder"),
             render:function(){
                 var self=this;
@@ -561,6 +565,9 @@
                 getTemplate("sortmenu");
                 self.el.html(ich.sortmenu(self.model));
                 return self;
+            },
+            handleClick:function(){
+                debugger;
             }
         });
 
@@ -764,6 +771,7 @@
                 _configuration.set({searchType:srcType});
             },
             makeSearch:function(srcType){
+                var self=this;
                 search(srcType);
                 $.when(setLayout(layoutTypes.SEARCH),initSearchResults(_configuration),_configuration.initRandomOffers(),_configuration.makeSearch()).done(function(){
                     $("body").attr("class","").addClass("results");
@@ -774,6 +782,35 @@
                     //debugger;
                     console.log("ro length" + _hotelsList.model.length);
                     _sortBar.render();
+                    $(".clickablesort").bind("click",function(e){
+                        var elem=$(e.target).children(":first");
+                        var sortDirection=elem.attr("class");
+                        var sortName;
+
+                        var criteria=window._configuration.get("searchCriteria");
+                        if(sortDirection!=="none"){
+                                if(sortDirection==='asc'){
+                                   updateSearchCriteria("sortDirection","DESC");
+                                }else{
+                                   updateSearchCriteria("sortDirection","ASC");
+                                }
+                            sortDirection=criteria.sortDirection;
+                        }else{
+                            //default sortDirection!!!
+                            //TODO see above
+                            sortDirection=criteria.sortDirection;
+                        }
+                        try{
+                            sortName=elem.attr("id").split('_')[1];
+                        }catch(e){
+                            sortName=criteria.sortType;
+                        }
+                        updateSearchCriteria("sortType",sortName.toUpperCase());
+
+                        $("span[id^='sbt_']").attr("class","none");
+                        elem.attr("class",sortDirection.toLowerCase());
+
+                    });
                     _statistics.reRender();
                     _randomOffers.render();
                     _hotelsList.reRender();
@@ -790,6 +827,12 @@
             sortBy:function(type){
                 //span id=sbt_type class=asc|desc|none
                 debugger;
+                var svcUrl=_configuration.get('serviceUrl');
+                var useInternalCache=_configuration.get('use_jStoreCache');
+                var hotelsCount=window._configuration.get("hotelsCount");
+                $.when(_configuration.get("hotels").fetchData(svcUrl,window._configuration.get("searchCriteria"),useInternalCache)).done(function(){
+                    _pagedHotelsList.render();
+                });
             }
         });
 
