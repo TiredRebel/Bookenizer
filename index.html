@@ -200,16 +200,16 @@
             url:'hotel/search',
             hotelsCount:0,
             offersCount:0,
-            fetchData:function(service,criteria,useCache){
+            fetchData:function(args,criteria){
                 var self=this;
                 return $.ajax({
-                    url:service.concat(self.url),
+                    url:args.svcUrl.concat(self.url),
                     data:criteria,
                     type:"POST",
                     success:function(hotels){
-                       if(useCache){
-                            $.jStore.set('hotelsList_'.concat(lang),hotels.hotelList);
-                            self.refresh($.jStore.get('hotelsList_'.concat(lang)));
+                       if(args.useInternalCache){
+                            $.jStore.set('hotelsList_'.concat(args.curLang),hotels.hotelList);
+                            self.refresh($.jStore.get('hotelsList_'.concat(args.curLang)));
                        }else{
                            self.refresh(hotels.hotelList);
                        }
@@ -223,15 +223,15 @@
         var TopDestinations=Backbone.Collection.extend({
             model:TopDestination,
             url:'location/top/',
-            fetchData:function(service,lang,useCache){
+            fetchData:function(args){
                 var self=this;
                 return $.ajax({
-                        url:service.concat(self.url,lang),
+                        url:args.svcUrl.concat(self.url,args.curLang),
                         success:function(topdests){
                             //console.log('top destinations done');
-                           if(useCache){
-                                $.jStore.set('topDestinations_'.concat(lang),topdests.locationList);
-                                self.refresh($.jStore.get('topDestinations_'.concat(lang)));
+                           if(args.useInternalCache){
+                                $.jStore.set('topDestinations_'.concat(args.curLang),topdests.locationList);
+                                self.refresh($.jStore.get('topDestinations_'.concat(args.curLang)));
                            }else{
                                self.refresh(topdests.locationList);
                            }
@@ -247,11 +247,11 @@
         var RandomOffers=Backbone.Collection.extend({
             model:Hotel,
             url:'hotel/random/',
-            fetchData:function(service,lang,useCache){
+            fetchData:function(args){
                 var self=this;
                 return $.ajax({
-                        url:service.concat(self.url),
-                        data:{language:lang},
+                        url:args.svcUrl.concat(self.url),
+                        data:{language:args.curLang},
                         success:function(randoffers){
                                self.refresh(randoffers.hotelList);
                         }
@@ -266,13 +266,13 @@
         var Statistics=Backbone.Collection.extend({
             model:Statistic,
             url:'statistics/',
-            fetchData:function(service,useCache){
+            fetchData:function(args){
                 var self=this;
                 return $.ajax({
-                        url:service.concat(self.url),
+                        url:args.svcUrl.concat(self.url),
                         success:function(stat){
                            //console.log('done statistics');
-                           if(useCache){
+                           if(args.useInternalCache){
                                 $.jStore.set('statistics',stat);
                                 self.refresh($.jStore.get('statistics'));
                            }else{
@@ -290,15 +290,14 @@
         var SearchLocations=Backbone.Collection.extend({
             model:SearchLocation,
             url:'location/all/',
-            fetchData:function(service,lang,useCache){
+            fetchData:function(args){
                 var self=this;
                 return $.ajax({
-                        url:service.concat(self.url,lang),
+                        url:args.svcUrl.concat(self.url,args.curLang),
                         success:function(locations){
-                           //console.log('done searchLocations');
-                           if(useCache){
-                                $.jStore.set('srchLocations'.concat(lang),locations.locationList);
-                                self.refresh($.jStore.get('srchLocations'.concat(lang)));
+                           if(args.useInternalCache){
+                                $.jStore.set('srchLocations'.concat(args.curLang),locations.locationList);
+                                self.refresh($.jStore.get('srchLocations'.concat(args.curLang)));
                            }else{
                               self.refresh(locations.locationList);
                            }
@@ -354,10 +353,10 @@
         var fillInitDataStructures=function(args){
             var self=this;
                 $.when(
-                        self.defaults.statistics.fetchData(args.svcUrl,args.useInternalCache),
-                        self.defaults.topDestinations.fetchData(args.svcUrl,args.curLang,args.useInternalCache),
-                        self.defaults.srchLocations.fetchData(args.svcUrl,args.curLang,args.useInternalCache),
-                        self.defaults.hotels.fetchData(args.svcUrl,self.defaults.searchCriteria,args.useInternalCache)
+                        self.defaults.statistics.fetchData(args),
+                        self.defaults.topDestinations.fetchData(args),
+                        self.defaults.srchLocations.fetchData(args),
+                        self.defaults.hotels.fetchData(args,self.defaults.searchCriteria)
                         ).done(function(){
                             if(!args.isRefresh){
                                 console.log("init applcation with cache empty ds");
@@ -452,23 +451,13 @@
             },
             initRandomOffers:function(){
                 var self=this;
-                /*var svcUrl, curLang, useInternalCache;
-                curLang=self.defaults.lang;
-                console.log("Configuration initRandomOffers " + " lang "+  curLang);
-                svcUrl=self.defaults.serviceUrl;
-                useInternalCache=self.defaults.use_jStoreCache;*/
-                 var args=argumentsStruct.call(self);
-                return self.defaults.randomOffers.fetchData(args.svcUrl,args.curLang,args.useInternalCache);
+                var args=argumentsStruct.call(self);
+                return self.defaults.randomOffers.fetchData(args);
             },
             makeSearch:function(){
                 var self=this;
-               /* var svcUrl, curLang, useInternalCache;
-                curLang=self.defaults.lang;
-                console.log("Configuration initRandomOffers " + " lang "+  curLang);
-                svcUrl=self.defaults.serviceUrl;
-                useInternalCache=self.defaults.use_jStoreCache;*/
                 var args=argumentsStruct.call(self);
-                return self.defaults.hotels.fetchData(args.svcUrl,self.defaults.searchCriteria,args.useInternalCache);
+                return self.defaults.hotels.fetchData(args,self.defaults.searchCriteria);
             }
         });
 
@@ -773,10 +762,9 @@
             cityLookup:function(cityId){
                 console.log("City lookup cityId"+cityId);
                 var lookupCriteria=_.extend(_configuration.get("searchCriteria"),{cityId:cityId});
-                var svcUrl=_configuration.get('serviceUrl');
-                var useInternalCache=_configuration.get('use_jStoreCache');
+                var args=argumentsStruct.call(_configuration);
                 var hotels=_configuration.get("hotels");
-                $.when(hotels.fetchData(svcUrl,lookupCriteria,useInternalCache)).done(function(){
+                $.when(hotels.fetchData(args,lookupCriteria)).done(function(){
                    _hotelsList.render();
                 });
 
@@ -801,7 +789,7 @@
                         var sortDirection=elem.attr("class");
                         var sortName;
 
-                        var criteria=window._configuration.get("searchCriteria");
+                        var criteria=_configuration.get("searchCriteria");
                         if(sortDirection!=="none"){
                                 if(sortDirection==='asc'){
                                    updateSearchCriteria("sortDirection","DESC");
@@ -831,20 +819,15 @@
                 });
             },
             pager:function(pageNum){
-                var svcUrl=_configuration.get('serviceUrl');
-                var useInternalCache=_configuration.get('use_jStoreCache');
-                var hotelsCount=window._configuration.get("hotelsCount");
-                $.when(_configuration.get("hotels").fetchData(svcUrl,window._configuration.get("searchCriteria"),useInternalCache)).done(function(){
+                var args=argumentsStruct.call(_configuration);
+                $.when(_configuration.get("hotels").fetchData(args,_configuration.get("searchCriteria"))).done(function(){
                     _pagedHotelsList.render();
                 });
             },
             sortBy:function(type){
                 //span id=sbt_type class=asc|desc|none
-                debugger;
-                var svcUrl=_configuration.get('serviceUrl');
-                var useInternalCache=_configuration.get('use_jStoreCache');
-                var hotelsCount=window._configuration.get("hotelsCount");
-                $.when(_configuration.get("hotels").fetchData(svcUrl,window._configuration.get("searchCriteria"),useInternalCache)).done(function(){
+                var args=argumentsStruct.call(_configuration);
+                $.when(_configuration.get("hotels").fetchData(args,_configuration.get("searchCriteria"))).done(function(){
                     _pagedHotelsList.render();
                 });
             }
