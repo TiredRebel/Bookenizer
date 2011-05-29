@@ -331,6 +331,43 @@
                 });
         };
 
+        var argumentsStruct=function(isRefresh,lang){
+            var self=this;
+            var args={svcUrl:null,
+                        curLang:null,
+                        useInternalCache:null,
+                        isRefresh:false};
+
+          if(lang!==undefined && lang!==""){
+                   args.curLang=lang;
+                }else{
+                    args.curLang=self.defaults.lang;
+                }
+           args.svcUrl=self.defaults.serviceUrl;
+           args.useInternalCache=self.defaults.use_jStoreCache;
+           if(isRefresh!==undefined){
+               args.isRefresh=isRefresh;
+           }
+           return args;
+        };
+
+        var fillInitDataStructures=function(args){
+            var self=this;
+                $.when(
+                        self.defaults.statistics.fetchData(args.svcUrl,args.useInternalCache),
+                        self.defaults.topDestinations.fetchData(args.svcUrl,args.curLang,args.useInternalCache),
+                        self.defaults.srchLocations.fetchData(args.svcUrl,args.curLang,args.useInternalCache),
+                        self.defaults.hotels.fetchData(args.svcUrl,self.defaults.searchCriteria,args.useInternalCache)
+                        ).done(function(){
+                            if(!args.isRefresh){
+                                console.log("init applcation with cache empty ds");
+                                initApplication(self);
+                            }else{
+                                self.defaults.lang=args.curLang;
+                            };
+                        });
+        }
+
         var Configuration=Backbone.Model.extend({
             defaults:{
                 "ajaxMode":true,
@@ -350,11 +387,19 @@
                 "roCount":0,
                 "searchResult":new HotelsList()
             },
+            resetSearchCriteria:function(){
+                _.defaults(SearchCriteria,{
+                    language:defLanguage,
+                    searchType:"QUICK",
+                    limit:null,
+                    sortType:"NAME",
+                    sortDirection:"ASC"});
+            },
             mainTemplateUrl:function(){
-                return "/Locales/".concat(this.get("lang"),"/main.html");
+                return "/Locales/".concat(this.defaults.lang,"/main.html");
             },
             searchResultsTemplateUrl:function(){
-                return "/Locales/".concat(this.get("lang"),"/searchResults.html");
+                return "/Locales/".concat(this.defaults.lang,"/searchResults.html");
             },
             initData:function(isRefresh,lang){
                 var self=this;
@@ -364,62 +409,29 @@
                         contentTpe:'application/json; charset=utf-8',
                         cache:false
                     });
-
-                var svcUrl, curLang, useInternalCache;
-                if(lang!==undefined && lang!==""){
-                   curLang=lang;
-                }else{
-                  curLang=self.get("lang");
-                }
-                console.log("Configuration initData refresh "+ isRefresh + " lang "+  curLang);
-                svcUrl=self.get('serviceUrl');
-                useInternalCache=self.get('use_jStoreCache');
-                if(useInternalCache){
+                var args=argumentsStruct.call(self,isRefresh,lang);
+                if(args.useInternalCache){
                     var dsStat,dsTopDest,dsSrcLoc,dsHotels;
                     dsStat=tryGetFromCache('statistics');
-                    dsTopDest=tryGetFromCache('topDestinations_'.concat(curLang));
-                    dsSrcLoc=tryGetFromCache('srchLocations'.concat(curLang));
-                    dsHotels=tryGetFromCache('hotelsList_'.concat(curLang));
+                    dsTopDest=tryGetFromCache('topDestinations_'.concat(args.curLang));
+                    dsSrcLoc=tryGetFromCache('srchLocations'.concat(args.curLang));
+                    dsHotels=tryGetFromCache('hotelsList_'.concat(args.curLang));
                     if(dsStat!==null && dsTopDest !==null && dsSrcLoc!==null && dsHotels!==null){
-                       self.get('statistics').set(dsStat);
-                       self.get('topDestinations').set(dsTopDest);
-                       self.get('srchLocations').set(dsSrcLoc);
-                       self.get('hotels').set(dsHotels);
+                       self.defaults.statistics=dsStat;
+                       self.defaults.topDestinations=dsTopDest;
+                       self.defaults.srchLocations=dsSrcLoc;
+                       self.defaults.hotels=dsHotels;
                         if(!isRefresh){
                             console.log("init applcation with cache");
                             initApplication(self);
                         }else{
-                           self.set({lang:curLang});
+                            self.defaults.lang=args.curLang;
                         };
                     }else{
-                        $.when(
-                            self.get('statistics').fetchData(svcUrl,useInternalCache),
-                            self.get('topDestinations').fetchData(svcUrl,curLang,useInternalCache),
-                            self.get('srchLocations').fetchData(svcUrl,curLang,useInternalCache),
-                            self.get('hotels').fetchData(svcUrl,self.get('searchCriteria'),useInternalCache)
-                        ).done(function(){
-                            if(!isRefresh){
-                                console.log("init applcation with cache empty ds");
-                                initApplication(self);
-                            }else{
-                                self.set({lang:curLang});
-                            };
-                        });
+                        fillInitDataStructures.call(self,args);
                     }
                 }else{
-                    $.when(
-                        self.get('statistics').fetchData(svcUrl,useInternalCache),
-                        self.get('topDestinations').fetchData(svcUrl,curLang,useInternalCache),
-                        self.get('srchLocations').fetchData(svcUrl,curLang,useInternalCache),
-                        self.get('hotels').fetchData(svcUrl,self.get('searchCriteria'),useInternalCache)
-                    ).done(function(){
-                        if(!isRefresh){
-                            console.log("init applcation w/o cache");
-                           initApplication(self);
-                        }else{
-                           self.set({lang:curLang});
-                        };
-                    });
+                    fillInitDataStructures.call(self,args);
                 }
             },
             initialize:function(){
@@ -440,21 +452,23 @@
             },
             initRandomOffers:function(){
                 var self=this;
-                var svcUrl, curLang, useInternalCache;
-                curLang=self.get("lang");
+                /*var svcUrl, curLang, useInternalCache;
+                curLang=self.defaults.lang;
                 console.log("Configuration initRandomOffers " + " lang "+  curLang);
-                svcUrl=self.get('serviceUrl');
-                useInternalCache=self.get('use_jStoreCache');
-                return self.get('randomOffers').fetchData(svcUrl,curLang,useInternalCache);
+                svcUrl=self.defaults.serviceUrl;
+                useInternalCache=self.defaults.use_jStoreCache;*/
+                 var args=argumentsStruct.call(self);
+                return self.defaults.randomOffers.fetchData(args.svcUrl,args.curLang,args.useInternalCache);
             },
             makeSearch:function(){
                 var self=this;
-                var svcUrl, curLang, useInternalCache;
-                curLang=self.get("lang");
-                console.log("perform search ");
-                svcUrl=self.get('serviceUrl');
-                useInternalCache=self.get('use_jStoreCache');
-                return self.get('hotels').fetchData(svcUrl,self.get('searchCriteria'),useInternalCache);
+               /* var svcUrl, curLang, useInternalCache;
+                curLang=self.defaults.lang;
+                console.log("Configuration initRandomOffers " + " lang "+  curLang);
+                svcUrl=self.defaults.serviceUrl;
+                useInternalCache=self.defaults.use_jStoreCache;*/
+                var args=argumentsStruct.call(self);
+                return self.defaults.hotels.fetchData(args.svcUrl,self.defaults.searchCriteria,args.useInternalCache);
             }
         });
 
