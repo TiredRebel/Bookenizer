@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/ru/searchResults.html" afterPath="$PROJECT_DIR$/Locales/ru/searchResults.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/models.js" afterPath="$PROJECT_DIR$/scripts/models.js" />
     </list>
     <list id="4bdcc2f4-00d6-40ee-b450-34d69268308a" name="On master: Uncommitted changes before update operation at 23.04.11 21:06(cherry picked from commit a54405b3371eb181076ef0b1b00a85e6f0cc83ed)" comment="" />
     <list id="f8743774-3083-4128-93cb-73ea72964036" name="Issue #1 resolved(cherry picked from commit b98609113446ae548597b1d8aadba447885a6ecc)" comment="" />
@@ -33,7 +35,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="791" column="37" selection-start="32798" selection-end="32798" vertical-scroll-proportion="0.13871951">
+            <state line="78" column="40" selection-start="3275" selection-end="3275" vertical-scroll-proportion="0.24082232">
               <folding />
             </state>
           </provider>
@@ -42,7 +44,7 @@
       <file leaf-file-name="models.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/models.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="27" selection-start="788" selection-end="880" vertical-scroll-proportion="0.0">
+            <state line="7" column="38" selection-start="301" selection-end="301" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -60,7 +62,7 @@
       <file leaf-file-name="searchResults.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/ru/searchResults.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="100" selection-start="2184" selection-end="2192" vertical-scroll-proportion="0.0">
+            <state line="30" column="12" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -69,7 +71,7 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="79" selection-start="1232" selection-end="1232" vertical-scroll-proportion="0.0">
+            <state line="29" column="79" selection-start="1232" selection-end="1232" vertical-scroll-proportion="77.80769">
               <folding />
             </state>
           </provider>
@@ -78,7 +80,7 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="220" column="60" selection-start="11620" selection-end="11620" vertical-scroll-proportion="0.0">
+            <state line="220" column="60" selection-start="11620" selection-end="11620" vertical-scroll-proportion="-118.80769">
               <folding />
             </state>
           </provider>
@@ -119,9 +121,9 @@
         <option value="$PROJECT_DIR$/Locales/en/main.html" />
         <option value="$PROJECT_DIR$/Locales/de/main.html" />
         <option value="$PROJECT_DIR$/Layouts/layoutInit.html" />
-        <option value="$PROJECT_DIR$/scripts/models.js" />
         <option value="$PROJECT_DIR$/Locales/ru/main.html" />
         <option value="$PROJECT_DIR$/Layouts/layoutSearchResult.html" />
+        <option value="$PROJECT_DIR$/scripts/models.js" />
         <option value="$PROJECT_DIR$/Locales/ru/searchResults.html" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
@@ -153,43 +155,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane />
-        <subPane subId="Non-Project Files" />
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="bookenizer.c">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Bookenizer">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="bookenizer.c">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Bookenizer">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -246,6 +211,43 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
+      <pane id="Scope">
+        <subPane />
+        <subPane subId="Non-Project Files" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="bookenizer.c">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Bookenizer">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="bookenizer.c">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Bookenizer">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -263,16 +265,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="186" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1096" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1094" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1094" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1096" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="185" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="179" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig" promptOnRemoteOverwrite="CHECK_TIMESTAMP" serverName="Linode" serverId="f6f47fce-9f6f-4dd6-b5cb-6dd4be495821">
     <servers>
@@ -377,13 +379,12 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49129853" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296845" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1913815" sideWeight="0.24410541" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1802962" sideWeight="0.67469877" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18287186" sideWeight="0.67469877" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253012" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -391,6 +392,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32797858" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24951768" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -421,7 +423,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored config and defaults" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored data retrieving procedures" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -434,7 +436,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Examples configuration files for catalina and xammp added. Idea project tuning." />
     <MESSAGE value="Examples configuration files for catalina and xammp added. Idea project tuning. see README" />
     <MESSAGE value="Search menu switcher added and state saving" />
     <MESSAGE value="Forms switch which depends from search type and language. Suggest plugin initialization fixed." />
@@ -459,6 +460,7 @@
     <MESSAGE value="quick search implemented. search results layout almost finished." />
     <MESSAGE value="half-finished search result sorting. TODO: Notify Dennis about bug with dates handling(they are not displayed in tomcat's log)" />
     <MESSAGE value="Refactored config and defaults" />
+    <MESSAGE value="Refactored data retrieving procedures" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -509,6 +511,11 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/models.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="38" selection-start="301" selection-end="301" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Layouts/layoutSearchResult.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="9" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
@@ -518,21 +525,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Locales/ru/searchResults.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="100" selection-start="2184" selection-end="2192" vertical-scroll-proportion="0.0">
+        <state line="30" column="12" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.0">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="79" selection-start="1232" selection-end="1232" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="220" column="60" selection-start="11620" selection-end="11620" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
@@ -540,16 +535,23 @@
         <state line="19" column="129" selection-start="706" selection-end="706" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/models.js">
+    <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="27" selection-start="788" selection-end="880" vertical-scroll-proportion="0.0">
+        <state line="29" column="79" selection-start="1232" selection-end="1232" vertical-scroll-proportion="77.80769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="220" column="60" selection-start="11620" selection-end="11620" vertical-scroll-proportion="-118.80769">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="791" column="37" selection-start="32798" selection-end="32798" vertical-scroll-proportion="0.13871951">
+        <state line="78" column="40" selection-start="3275" selection-end="3275" vertical-scroll-proportion="0.24082232">
           <folding />
         </state>
       </provider>
