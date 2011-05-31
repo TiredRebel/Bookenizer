@@ -1,0 +1,54 @@
+<script type="text/html" id="sortmenu">
+ <h4 class="lookfor nodisplay">Looking for: rooms in 2, 3 or 5 star hotel, for 8 nights from 22.09.2008 to 29.09.2008, for 2 persons, with Full Board or Half Board meals, from 60 to 80 EUR per night, with Parking and Internet.</h4>
+			<h3 class="results-stat"><strong>{{offersCount}}</strong> offers in <strong>{{hotelsCount}}</strong> hotels found.<br />
+			<span class="noprint"><a href="main-results.html#" class="noreload" onclick="$(this).parent().hide(); return switchSearchtype('advanced')">Tell us more</a> for better fit or </span>
+			<span class="host subscribehost noprint"><a href="main-results.html#" class="bt_subscribe noreload">Subscribe to similar offers</a>.
+
+				<form class="subscribeform" action="../"><div class="container">
+					<input type="text" name="mail" class="subscribe_mail login" value="E-mail" defvalue="E-mail" />
+
+					<select name="periodic">
+						<option value="1">Daily</option>
+						<option value="2" selected="selected">Weekly</option>
+						<option value="3">Monthly</option>
+					</select>
+
+
+					<div class="diags">
+						<p id="sp_def">Get an actual search results to your E-mail. You can cancel subscription at any time using a link in confirmation or subscription letters.</p>
+						<p id="sp_signed_in">Get an actual search results to your E-mail. You can cancel subscription at any time using a link in subscription letters.</p>
+						<p id="sp_bad_mail">The specified e-mail seems to be incorrect. Please check it and try again.</p>
+						<p id="sp_no_mail">Please enter the valid e-mail address you wish to receive offers. We will send you a link to continue the subscription.</p>
+						<p id="sp_success">Subscription successful.<br />A confirmation letter has been sent to you. Please use provided links to confirm or cancel subscription.</p>
+					</div>
+
+					<a href="main-results.html#" class="bt_subscribe_action noreload" title="Subscribe to this search results">Subscribe</a>
+				</div></form>
+
+			</span>
+			</h3>
+
+			<div class="label sort noprint" id="sortBar">
+				<span class="label" id="sortHolder">Sort by</span>
+				<a href="#!/search/sortby/name" class="clickablesort"><span class="asc" id="sbt_name"></span>Name</a> <a href="#!/search/sortby/popularity" class="clickablesort"><span class="none" id="sbt_popularity"></span>Popularity</a> <a href="#!/search/sortby/stars"  class="clickablesort"><span class="desc" id="sbt_stars"></span>Stars</a> <a href="#!/search/sortby/price" class="clickablesort"><span class="none" id="sbt_price"></span>Price</a>
+			</div>
+ </script>
+</div>
+<script type="text/html" id="ro_block_tmpl">
+        <div id="randomsblock" class="container">
+				<h2>Top popular</h2>
+				<p class="location">in <a href="main-results.html#">Amsterdam</a>, Holland </p>
+				<div id="randomslist"></div>
+        </div>
+</script>
+<script type="text/html" id="ro_item_tmpl">
+<div class="hotel">
+    <h3><a href="#!/card/{{hotelId}}" title="{{name}}">{{name}}</a></h3>
+    <a href="#!/card/{{hotelId}}" title="{{name}}"><img src="{{#MainPhoto}}{{small}}{{/MainPhoto}}" alt="{{name}}" /></a>
+    <div class="stars stars-{{stars}}"></div>
+    <p class="info">от <strong>{{currency}}&nbsp;{{minOfferPrice}}</strong></p>
+    <p class="info"><a href="main-results.html#">Add to Selected</a> /<br />
+    <a href="main-results.html#">Print hotel info</a></p>
+    <div class="clearer"></div>
+</div>
+</script>

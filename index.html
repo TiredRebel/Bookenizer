@@ -76,7 +76,7 @@
         var layoutTypes={INIT:0,SEARCH:1,PROFILE:2};
 
         var setSearchParameters=function(searchType){
-            //TODO needs to save cityId value
+            var cityId=getCriteriaValue("cityId");
             window._configuration.initSearchCriteria();
             var formToProcess=$("#searchform").ajaxForm();
                 var criteria=window._configuration.get("searchCriteria");
@@ -108,21 +108,23 @@
                         }
                       });
                       if(facilities.length>0){
-                          updateSearchCriteria("facilities",JSON.stringify(facilities));
+                          updateSearchCriteria("facilities",facilities.join(','));
                       }
                       //_.extend(criteria,{dateFrom:$("#dateFrom,formToProcess").val()});
                       //_.extend(criteria,{dateTo:$("#dateTo,formToProcess").val()});
                       //_.extend(criteria,{dateTo:$("#numberOfPersons,formToProcess").val()});
 
                 }
-
+                if(cityId!==null){
+                    updateSearchCriteria("cityId",cityId);
+                }
                 return false;
             //});
         };
 
         var updateSearchCriteria=function(fieldName,data){
-              var criteria=window._configuration.get("searchCriteria");
-              var keys=_.keys(criteria);
+            var criteria=window._configuration.get("searchCriteria");
+            var keys=_.keys(criteria);
             //debugger;
             if(!_.include(keys,fieldName)){
                 eval("_.extend(criteria,{"+fieldName+":data})");
@@ -130,6 +132,15 @@
                eval("criteria."+fieldName+"=data");
             }
         };
+
+        var getCriteriaValue=function(key){
+            var criteria=window._configuration.get("searchCriteria");
+            var keys=_.keys(criteria);
+            if(!_.include(keys,key)){
+                return eval("criteria."+key);
+            }
+            return null;
+        }
 
         var setLayout=function(layout){
              switch(layout){
@@ -376,7 +387,7 @@
                                 console.log("init applcation with cache empty ds");
                                 initApplication(self);
                             }else{
-                                self.defaults.lang=args.curLang;
+                                self.set({"lang":args.curLang});
                             };
                         });
         }
@@ -412,10 +423,11 @@
                     sortDirection:this.defaults.defaultSortOrder});
             },
             mainTemplateUrl:function(){
-                return "/Locales/".concat(this.defaults.lang,"/main.html");
+                //debugger;
+                return "/Locales/".concat(this.get("lang"),"/main.html");
             },
             searchResultsTemplateUrl:function(){
-                return "/Locales/".concat(this.defaults.lang,"/searchResults.html");
+                return "/Locales/".concat(this.get("lang"),"/searchResults.html");
             },
             initData:function(isRefresh,lang){
                 var self=this;
@@ -441,7 +453,7 @@
                             console.log("init applcation with cache");
                             initApplication(self);
                         }else{
-                            self.defaults.lang=args.curLang;
+                            self.defaults.set({lang:args.curLang});
                         };
                     }else{
                         fillInitDataStructures.call(self,args);
@@ -452,12 +464,12 @@
             },
             initialize:function(){
                 var self=this;
-                self.initSearchCriteria();
-                self.initData(false);
+                self.initSearchCriteria.call(self);
+                self.initData.call(self,false);
             },
             refreshData:function(lang){
                 var self=this;
-                self.initData(true,lang);
+                self.initData.call(self,true,lang);
             },
             initSearchCriteria:function(){
                 (function(criteria,settings){
@@ -772,8 +784,9 @@
                     _footer = new FooterView();
                      this.renderIndex();
                 }else{
-                    //debugger;
+
                   $("#ltemplate").load(_configuration.mainTemplateUrl(),function(){
+                      console.log(_configuration.mainTemplateUrl());
                       ich.clearAll();
                       //debugger;
                       //_layout.render();
@@ -789,6 +802,7 @@
             },
             initMain:function(){
                   console.log('init main');
+                  updateSearchCriteria("cityId",0);
                   //self.drawTemplates(_configuration, false);
                   this.drawTemplates(false);
                   return true;
@@ -824,11 +838,13 @@
                 });
                 _configuration.bind("change:lang",function(model,name){
                 //todo move data retrieve here
-                    //debugger;
                     console.log('lang changed handler');
+                    //debugger;
 
                     console.log("draw templates after data resolved");
+                    console.log(_configuration.get("lang"));
                     self.drawTemplates(true);
+
                     return true;
                 });
                 this.initMain();
@@ -841,7 +857,8 @@
                 console.log("hotel selected with id"+hotelId);
             },
             language:function(lang){
-                 _configuration.refreshData(lang);
+                //_configuration.set({"lang":lang});
+                _configuration.refreshData(lang);
             },
             cityLookup:function(cityId){
                 console.log("City lookup cityId"+cityId);
