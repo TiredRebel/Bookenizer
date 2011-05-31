@@ -365,10 +365,10 @@
           if(lang!==undefined && lang!==""){
                    args.curLang=lang;
                 }else{
-                    args.curLang=self.defaults.lang;
+                    args.curLang=self.get("lang");
                 }
-           args.svcUrl=self.defaults.serviceUrl;
-           args.useInternalCache=self.defaults.use_jStoreCache;
+           args.svcUrl=self.get("serviceUrl");
+           args.useInternalCache==self.get("use_jStoreCache");
            if(isRefresh!==undefined){
                args.isRefresh=isRefresh;
            }
@@ -416,11 +416,11 @@
             resetSearchCriteria:function(){
                 SearchCriteria={};
                 _.defaults(SearchCriteria,{
-                    language:this.defaults.lang,
+                    language:this.get("lang"),
                     searchType:"QUICK",
-                    limit:this.defaults.hotelsCount,
-                    sortType:this.defaults.defaultSortType,
-                    sortDirection:this.defaults.defaultSortOrder});
+                    limit:this.get("hotelsCount"),
+                    sortType:this.get("defaultSortType"),
+                    sortDirection:this.get("defaultSortOrder")});
             },
             mainTemplateUrl:function(){
                 //debugger;
@@ -685,6 +685,7 @@
 
         var performSearchRequest=function(objectToRender){
             var args=argumentsStruct.call(_configuration);
+            debugger;
             $.when(_configuration.get("hotels").fetchData(args,_configuration.get("searchCriteria"))).done(function(){
                     objectToRender.render();
                 });
@@ -839,10 +840,7 @@
                 _configuration.bind("change:lang",function(model,name){
                 //todo move data retrieve here
                     console.log('lang changed handler');
-                    //debugger;
-
                     console.log("draw templates after data resolved");
-                    console.log(_configuration.get("lang"));
                     self.drawTemplates(true);
 
                     return true;
@@ -858,6 +856,7 @@
             },
             language:function(lang){
                 //_configuration.set({"lang":lang});
+                updateSearchCriteria("language",lang);
                 _configuration.refreshData(lang);
             },
             cityLookup:function(cityId){
@@ -870,7 +869,6 @@
             },
             makeSearch:function(srcType){
                 var self=this;
-                debugger;
                 setSearchParameters(srcType);
                 initSearchActivity.call(self);
             },
@@ -879,7 +877,6 @@
             },
             sortBy:function(type){
                 //span id=sbt_type class=asc|desc|none
-                debugger;
             }
         });
 
@@ -890,9 +887,11 @@
                 json: '/scripts/debug/json2.js'
             };
 
-            jStore.init('bookenizer', jStoreConfig, jStore.flavors.flash).engineReady(function (engine){
+
+
+            //jStore.init('bookenizer', jStoreConfig, jStore.flavors.flash).engineReady(function (engine){
                 var config=new Configuration();
-            });
+            //});
         });
     }).call(this,'ru');
 </script>
