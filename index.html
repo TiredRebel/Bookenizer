@@ -81,7 +81,6 @@
             var formToProcess=$("#searchform").ajaxForm();
                 var criteria=window._configuration.get("searchCriteria");
 
-                debugger;
                 if(window._configuration.get("searchType")==="quick"){
                     criteria.searchType="QUICK";
                     updateSearchCriteria("dateFrom",$("#dateFrom,formToProcess").val());
@@ -140,7 +139,7 @@
                 return eval("criteria."+key);
             }
             return null;
-        }
+        };
 
         var setLayout=function(layout){
              switch(layout){
@@ -157,17 +156,17 @@
         var getContent=function(url,elemToLoad){
             var dfd=$.Deferred();
             elemToLoad.empty();
-            elemToLoad.load(url, function(){dfd.resolve});
+            elemToLoad.load(url, function(){dfd.resolve();});
             return dfd.promise();
-        }
+        };
 
         var suggestor=function(){
             var curLang=window._configuration.get("lang");
             var self=this;
             $.gsuggest({
-                inlineText: function(data) { return data.city + ", " + data.country },
-                inlineId: function(data) { return data.cityId },
-                dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city == b.city) ? 0 : 1); },
+                inlineText: function(data) { return data.city + ", " + data.country; },
+                inlineId: function(data) { return data.cityId; },
+                dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city === b.city) ? 0 : 1); },
                 callback:function(data){
                     updateSearchCriteria("cityId",data.id);
                 }
@@ -193,11 +192,13 @@
                 try{
                     ich.addPartial(tmplName,tmplContent);
                 }
-                    catch(e){console.log(e)}
+                    catch(e){console.log(e);}
             }else{
                 try{
                     ich.addTemplate(tmplName,tmplContent);
-                }catch(e){console.log("Error template: "+e)}
+                }catch(e){
+                    console.log("Error template: "+e);
+                }
             }
         };
 
@@ -207,7 +208,7 @@
                 result=null;
             }
             return result;
-        }
+        };
 
 
         var handlePaginationClick=function(page_index, jq){
@@ -216,7 +217,7 @@
           if(offset!==null && offset!==undefined){
               window._configuration.get("searchCriteria").offset=page_index*hotelsCount;
           }else{
-              _.extend(window._configuration.get("searchCriteria"),{offset:page_index*hotelsCount})
+              _.extend(window._configuration.get("searchCriteria"),{offset:(page_index*hotelsCount)});
           }
         };
 
@@ -368,7 +369,7 @@
                     args.curLang=self.get("lang");
                 }
            args.svcUrl=self.get("serviceUrl");
-           args.useInternalCache==self.get("use_jStoreCache");
+           args.useInternalCache=self.get("use_jStoreCache");
            if(isRefresh!==undefined){
                args.isRefresh=isRefresh;
            }
@@ -388,9 +389,9 @@
                                 initApplication(self);
                             }else{
                                 self.set({"lang":args.curLang});
-                            };
+                            }
                         });
-        }
+        };
 
         var Configuration=Backbone.Model.extend({
             defaults:{
@@ -400,8 +401,8 @@
                 "searchType":"quick",
                 "hotelsCount":5,
                 "use_jStoreCache":false,
-                "curDate":(function(){return new Date();})(),
-                "dayNext":(function(){return new Date(new Date().getTime()+1000*60*60*24*2);})(),
+                "curDate":(function(curDate){return curDate;})(new Date()),
+                "dayNext":(function(curDate){return new Date(curDate.getTime()+1000*60*60*24*2);})(new Date()),
                 "statistics":new Statistics(),
                 "searchCriteria":SearchCriteria,
                 "topDestinations":new TopDestinations(),
@@ -454,7 +455,7 @@
                             initApplication(self);
                         }else{
                             self.defaults.set({lang:args.curLang});
-                        };
+                        }
                     }else{
                         fillInitDataStructures.call(self,args);
                     }
@@ -600,9 +601,6 @@
                 getTemplate("sortmenu");
                 self.el.html(ich.sortmenu(self.model));
                 return self;
-            },
-            handleClick:function(){
-                debugger;
             }
         });
 
