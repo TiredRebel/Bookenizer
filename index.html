@@ -192,12 +192,14 @@
                 try{
                     ich.addPartial(tmplName,tmplContent);
                 }
-                    catch(e){console.log(e);}
+                    catch(e){
+                        //console.log(e);
+                    }
             }else{
                 try{
                     ich.addTemplate(tmplName,tmplContent);
                 }catch(e){
-                    console.log("Error template: "+e);
+                    //console.log("Error template: "+e);
                 }
             }
         };
@@ -345,15 +347,25 @@
             return dfd.promise();
         };
 
-        var initApplication=function(config){
-          $("#ltemplate").load(config.mainTemplateUrl(),function(){
+        var initMainTemplate=function(){
+            var dfd=$.Deferred();
+            //debugger;
+            $("#ltemplate").load(this.mainTemplateUrl(),function(){
                     $("body").attr("class","").addClass("popular");
-                    $("#mtemplate").empty();
-                    new iApp(config);
-                    $("#dateFrom").val(Calendar.printDate(config.get("curDate"),"%d.%m.%Y"));
-                    $("#dateTo").val(Calendar.printDate(config.get("dayNext"),"%d.%m.%Y"));
-                    Backbone.history.start();
+                    dfd.resolve();
                 });
+            return dfd.promise();
+        };
+
+        var initApplication=function(){
+            var self=this;
+            $.when(initMainTemplate.call(self)).done(function(){
+                 $("#mtemplate").empty();
+                new iApp(self);
+                $("#dateFrom").val(Calendar.printDate(self.get("curDate"),"%d.%m.%Y"));
+                $("#dateTo").val(Calendar.printDate(self.get("dayNext"),"%d.%m.%Y"));
+                Backbone.history.start();
+            });
         };
 
         var argumentsStruct=function(isRefresh,lang){
@@ -385,8 +397,8 @@
                         self.defaults.hotels.fetchData(args,self.defaults.searchCriteria)
                         ).done(function(){
                             if(!args.isRefresh){
-                                console.log("init applcation with cache empty ds");
-                                initApplication(self);
+                                //console.log("init applcation with cache empty ds");
+                                initApplication.call(self);
                             }else{
                                 self.set({"lang":args.curLang});
                             }
@@ -451,8 +463,8 @@
                        self.defaults.srchLocations=dsSrcLoc;
                        self.defaults.hotels=dsHotels;
                         if(!isRefresh){
-                            console.log("init applcation with cache");
-                            initApplication(self);
+                            //console.log("init applcation with cache");
+                            initApplication.call(self);
                         }else{
                             self.defaults.set({lang:args.curLang});
                         }
@@ -550,7 +562,7 @@
                 getTemplate('tdb_location_item',false,'<li><a href="#!/lookup/{{cityId}}">{{city}}</a>,&nbsp;{{country}}</li>');
                 self.el.html(ich.top_dest_block_tmpl());
                 var locations=self.el.find('#locationsList');
-                console.log("locations view");
+                //console.log("locations view");
                 _(self.model.toJSON()).each(function(location){
                     locations.append(ich.tdb_location_item(location));
                 });
@@ -568,7 +580,7 @@
              self.el.html(ich.ro_block_tmpl());
              var roDiv=$("#randomslist");
              var jsonModel=self.model.toJSON();
-             console.log("jsonModel count "+jsonModel.length);
+             //console.log("jsonModel count "+jsonModel.length);
              _(jsonModel).each(function(hotelItem){
                 roDiv.append(ich.ro_item_tmpl(hotelItem));
              });
@@ -665,7 +677,6 @@
 
         var initSearchActivity=function(){
             var self=this;
-            debugger;
             $.when(setLayout(layoutTypes.SEARCH),initSearchResults(_configuration),_configuration.initRandomOffers(),_configuration.makeSearch()).done(function(){
                         $("body").attr("class","").addClass("results");
                          var hotelModel=_configuration.get('hotels');
@@ -683,7 +694,6 @@
 
         var performSearchRequest=function(objectToRender){
             var args=argumentsStruct.call(_configuration);
-            debugger;
             $.when(_configuration.get("hotels").fetchData(args,_configuration.get("searchCriteria"))).done(function(){
                     objectToRender.render();
                 });
@@ -785,7 +795,6 @@
                 }else{
 
                   $("#ltemplate").load(_configuration.mainTemplateUrl(),function(){
-                      console.log(_configuration.mainTemplateUrl());
                       ich.clearAll();
                       //debugger;
                       //_layout.render();
@@ -800,7 +809,6 @@
                 }
             },
             initMain:function(){
-                  console.log('init main');
                   updateSearchCriteria("cityId",0);
                   //self.drawTemplates(_configuration, false);
                   this.drawTemplates(false);
@@ -812,7 +820,6 @@
                 _.extend(self,Backbone.events);
                 _.bindAll(self,"search");
                 _sortOrderModel=new SortOrder({current:_configuration.get("defaultSortOrder")});
-                console.log("initialized "+_configuration);
                 //$.jStore.remove("topdest_ru");
                 //$.jStore.remove("topdest_en");
                 _sortOrderModel.bind("change",function(){
@@ -837,20 +844,16 @@
                 });
                 _configuration.bind("change:lang",function(model,name){
                 //todo move data retrieve here
-                    console.log('lang changed handler');
-                    console.log("draw templates after data resolved");
                     self.drawTemplates(true);
-
                     return true;
                 });
                 this.initMain();
             },
             hotelCard:function(hotelId){
-                console.log("Hotel card selected hotelId" + hotelId);
                 $("body").attr("class","hotelcard");
             },
             addHotel:function(hotelId){
-                console.log("hotel selected with id"+hotelId);
+
             },
             language:function(lang){
                 //_configuration.set({"lang":lang});
@@ -858,7 +861,6 @@
                 _configuration.refreshData(lang);
             },
             cityLookup:function(cityId){
-                console.log("City lookup cityId"+cityId);
                 updateSearchCriteria("cityId",cityId);
                 performSearchRequest.call(this,_hotelsList);
             },
