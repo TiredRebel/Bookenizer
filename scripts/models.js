@@ -30,5 +30,5 @@ var SearchCriteria = {
         searchType:"QUICK",
         limit:null,
         sortType:"NAME",
-        sortDirection:"ASC"
+        sortDirection:"DESC"
 };

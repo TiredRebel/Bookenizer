@@ -3,6 +3,15 @@
         </ul>
         {{>topbar_menu_tmpl}}
     </script>
+    <script type="text/html" id="ddlLangMenu_tmpl">
+        <li><a href="#!/lang/" class="trigger"><span>More languages</span></a>
+            <ul>
+                <li><a href="#!" title="На языке № раз">На языке № раз</a></li>
+                <li><a href="#!" title="Державною мовою">Державною мовою</a></li>
+                <li><a href="#!" title="На языке № три">На языке № три</a></li>
+            </ul>
+        </li>
+    </script>
     <script type="text/html" id="top_dest_block_tmpl">
         <div id="topdestblock" class="container">
             <h2>Топ городов</h2>
@@ -137,6 +146,7 @@
     <div class="label">
         <span class="label">1</span>
         <span class="host"><input type="text" id="city" name="city" class="dest" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine", countryId:1}]' nosubmit/>
+        <p class="no straight">Hey! You've just entered some weird information here. Check it carefully please!</p>
         <span class="diags">Извините, у нас нет предложений для этого города</span>
         </span>
     </div>

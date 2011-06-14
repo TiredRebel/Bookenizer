@@ -493,11 +493,13 @@
             },
             initRandomOffers:function(){
                 var self=this;
+                debugger;
                 var args=argumentsStruct.call(self);
                 return self.defaults.randomOffers.fetchData(args);
             },
             makeSearch:function(){
                 var self=this;
+                debugger;
                 var args=argumentsStruct.call(self);
                 return self.defaults.hotels.fetchData(args,self.defaults.searchCriteria);
             }
@@ -621,13 +623,15 @@
             render:function() {
                 var self = this;
                 getTemplate("langmenu");
+                getTemplate("ddlLangMenu_tmpl");
                 getTemplate("topbar_menu_tmpl",true);
-                getTemplate("langMenu_item",false,'<li><a href="#!/lang/{{id}}" class="lang" id="{{id}}" title="{{title}}">{{title}}</a> /</li>');
+                getTemplate("langMenu_item",false,'<li><a href="#!/lang/{{id}}" class="lang" id="{{id}}" title="{{title}}">{{title}}</a> {{divider}}</li>');
                 self.el.html(ich.langmenu());
                 var langdiv = self.el.find("#languageSwitcher");
-                _(self.model.toJSON()).each(function(langItem) {
-                    langdiv.append(ich.langMenu_item(langItem));
+                _(self.model.toJSON()).each(function(langItem,num) {
+                    langdiv.append(ich.langMenu_item( (num < self.model.length - 1)? _.extend(langItem,{divider:"/"}): _.extend(langItem,{divider:""})));
                 });
+                langdiv.append(ich.ddlLangMenu_tmpl());
                 return self;
             }
         });
@@ -694,6 +698,7 @@
 
         var performSearchRequest=function(objectToRender){
             var args=argumentsStruct.call(_configuration);
+            //debugger;
             $.when(_configuration.get("hotels").fetchData(args,_configuration.get("searchCriteria"))).done(function(){
                     objectToRender.render();
                 });
@@ -861,21 +866,26 @@
                 _configuration.refreshData(lang);
             },
             cityLookup:function(cityId){
+                updateSearchCriteria("sortType","POPULARITY");
+                updateSearchCriteria("sortDirection","DESC");
                 updateSearchCriteria("cityId",cityId);
                 performSearchRequest.call(this,_hotelsList);
             },
             search:function(srcType){
+                debugger;
                 _configuration.set({searchType:srcType});
             },
             makeSearch:function(srcType){
                 var self=this;
                 setSearchParameters(srcType);
+                debugger;
                 initSearchActivity.call(self);
             },
             pager:function(pageNum){
                 performSearchRequest.call(this,_pagedHotelsList);
             },
             sortBy:function(type){
+                debugger;
                 //span id=sbt_type class=asc|desc|none
             }
         });
