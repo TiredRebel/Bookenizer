@@ -654,35 +654,42 @@
         });
 
         var HotelsView = Backbone.View.extend(
-        {
-         el:$('#hotelslist'),
-         render:function(){
-             var self=this;
-             getTemplate("hotellist_tmpl");
-             getTemplate("hotellist_item_tmpl");
-             self.el.html(ich.hotellist_tmpl());
-             var hotelDiv=self.el.find("#hotellist_holder");
-             var jsonModel=self.model.toJSON();
-             var hotelCount=self.model.hotelsCount;
-             var offerCount=self.model.offersCount;
-             _(jsonModel).each(function(hotelItem){
-                //console.log(hotelItem);
-                hotelDiv.append(ich.hotellist_item_tmpl(hotelItem));
-             });
-             $("#srPager").pagination(hotelCount,{items_per_page:5, prev_text:"←", next_text:"→",callback:handlePaginationClick});
-             return self;
-         },
-            reRender:function(){
-                var self=this;
-                self.el=$("#hotelslist");
-                self.render();
-                }
-        });
+                {
+                    el:$('#hotelslist'),
+                    render:function(isResultsView) {
+                        var self = this;
+                        if (isResultsView === undefined || isResultsView !== true) {
+                            getTemplate("hotellist_tmpl");
+                            getTemplate("hotellist_item_tmpl");
+                            self.el.html(ich.hotellist_tmpl());
+                        } else {
+                            getTemplate("src_hotellist_tmpl");
+                            getTemplate("hotellist_item_tmpl");
+                            self.el.html(ich.src_hotellist_tmpl());
+                        }
+                        var hotelDiv = self.el.find("#hotellist_holder");
+                        var jsonModel = self.model.toJSON();
+                        var hotelCount = self.model.hotelsCount;
+                        var offerCount = self.model.offersCount;
+                        _(jsonModel).each(function(hotelItem) {
+                            //console.log(hotelItem);
+                            hotelDiv.append(ich.hotellist_item_tmpl(hotelItem));
+                        });
+                        $("#srPager").pagination(hotelCount, {items_per_page:5, prev_text:"←", next_text:"→",callback:handlePaginationClick});
+                        return self;
+                    },
+                    reRender:function(isResultsView) {
+                        var self = this;
+                        self.el = $("#hotelslist");
+                        self.render(isResultsView);
+                    }
+                });
 
         var initSearchActivity=function(){
             var self=this;
             $.when(setLayout(layoutTypes.SEARCH),initSearchResults(_configuration),_configuration.initRandomOffers(),_configuration.makeSearch()).done(function(){
                         $("body").attr("class","").addClass("results");
+                        //
                          var hotelModel=_configuration.get('hotels');
                         _sortBar=new SortBarView({model:hotelModel});
                         _randomOffers=new RandomOffersView({model:_configuration.get('randomOffers')});
@@ -690,7 +697,7 @@
                         _sortBar.render();
                         _statistics.reRender();
                         _randomOffers.render();
-                        _hotelsList.reRender();
+                        _hotelsList.reRender(true);
                         attachSearchEvents.call(self);
 
                     });
