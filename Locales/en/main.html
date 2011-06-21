@@ -148,7 +148,7 @@
         <span class="label">1</span>
         <span class="host"><input type="text" name="city" class="dest" value="City" defValue="City" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine",countryId:1}]' nosubmit/>
             <span class="diags">Sorry, we have no offers for this city</span>
-            <p class="no straight">Hey! You've just entered some weird information here. Check it carefully please!</p>
+            <span class="diags" id="error_city">Hey! You've just entered some weird information here. Check it carefully please!</span>
         </span>
     </div>
 
@@ -174,6 +174,7 @@
         <span class="label">Destination</span>
         <span class="host"><input type="text" name="city" class="dest" value="City" defValue="City" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country: "Ukraine"}]' nosubmit/>
         <span class="diags">Sorry, we have no offers for this city</span>
+        <span class="diags" id="error_city">Hey! You've just entered some weird information here. Check it carefully please!</span>
 	    </span>
     </div>
 

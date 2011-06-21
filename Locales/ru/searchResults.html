@@ -53,12 +53,14 @@
 </script>
 <script type="text/html" id="ro_item_tmpl">
 <div class="hotel">
-    <h3><a href="#!/card/{{hotelId}}" title="{{name}}">{{name}}</a></h3>
-    <a href="#!/card/{{hotelId}}" title="{{name}}"><img src="{{#MainPhoto}}{{small}}{{/MainPhoto}}" alt="{{name}}" /></a>
-    <div class="stars stars-{{stars}}"></div>
-    <p class="info">от <strong>{{currency}}&nbsp;{{minOfferPrice}}</strong></p>
-    <p class="info"><a href="main-results.html#">Add to Selected</a> /<br />
-    <a href="main-results.html#">Print hotel info</a></p>
-    <div class="clearer"></div>
+    <div class="hotel">
+        <h3><a href="#!/card/{{hotelId}}" title="{{name}}">{{name}}</a></h3>
+        <a href="#!/card/{{hotelId}}" title="{{name}}"><img src="{{#MainPhoto}}{{small}}{{/MainPhoto}}" alt="{{name}}" /></a>
+        <div class="stars stars-{{stars}}"><span></span></div>
+        <p class="info">от <strong>{{currency}}&nbsp;{{minOfferPrice}}</strong></p>
+        <p class="info"><a href="main-results.html#">Add to Selected</a> /<br />
+        <a href="main-results.html#">Print hotel info</a></p>
+        <div class="clearer"></div>
+    </div>
 </div>
 </script>
