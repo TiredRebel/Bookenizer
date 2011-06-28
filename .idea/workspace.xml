@@ -2,13 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/hotels/1-small.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/hotels/2-large.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/hotels/2-mapa.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/hotels/2-small.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/hotels/2/1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/hotels/2/2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/hotels/2/tn/1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/hotels/2/tn/2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/hotels/3-small.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/hotels/4-small.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/hotels/5-small.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Layouts/layoutHotelCard.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Locales/ru/hotelcard_original.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/debug/modernizr-2.0.6.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/debug/xcommon.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/modernizr.custom.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/de/main.html" afterPath="$PROJECT_DIR$/Locales/de/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/de/searchResults.html" afterPath="$PROJECT_DIR$/Locales/de/searchResults.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/en/main.html" afterPath="$PROJECT_DIR$/Locales/en/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/en/searchResults.html" afterPath="$PROJECT_DIR$/Locales/en/searchResults.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/ru/main.html" afterPath="$PROJECT_DIR$/Locales/ru/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/ru/searchResults.html" afterPath="$PROJECT_DIR$/Locales/ru/searchResults.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/ru/hotelcard.html" afterPath="$PROJECT_DIR$/Locales/ru/hotelcard.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/models.js" afterPath="$PROJECT_DIR$/scripts/models.js" />
     </list>
@@ -40,25 +51,16 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="0" selection-start="3313" selection-end="3313" vertical-scroll-proportion="0.05414013">
+            <state line="770" column="54" selection-start="32098" selection-end="32098" vertical-scroll-proportion="0.61937714">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/models.js">
+      <file leaf-file-name="xcommon.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/debug/xcommon.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="35" selection-start="8480" selection-end="8480" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -67,16 +69,43 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="177" column="43" selection-start="9483" selection-end="9483" vertical-scroll-proportion="0.0">
+            <state line="61" column="63" selection-start="3201" selection-end="3216" vertical-scroll-proportion="-4.27451">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
+      <file leaf-file-name="models.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/models.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="135" selection-start="8213" selection-end="8213" vertical-scroll-proportion="0.0">
+            <state line="5" column="36" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="searchResults.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Locales/ru/searchResults.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="25" selection-start="3122" selection-end="3122" vertical-scroll-proportion="-12.461538">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hotelcard_original.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Locales/ru/hotelcard_original.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="83" column="80" selection-start="4288" selection-end="4305" vertical-scroll-proportion="-18.961538">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hotelcard.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Locales/ru/hotelcard.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="157" selection-start="1391" selection-end="1391" vertical-scroll-proportion="-11.115385">
               <folding />
             </state>
           </provider>
@@ -97,21 +126,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/styles/calendar-ho.css" />
-        <option value="$PROJECT_DIR$/Locales/ru/searchResult.html" />
         <option value="$PROJECT_DIR$/Locales/initLayout.html" />
         <option value="$PROJECT_DIR$/Locales/searchResult.html" />
         <option value="$PROJECT_DIR$/scripts/debug/jquery.pagination.js" />
         <option value="$PROJECT_DIR$/Layouts/layoutInit.html" />
         <option value="$PROJECT_DIR$/Layouts/layoutSearchResult.html" />
-        <option value="$PROJECT_DIR$/Locales/ru/hotelcard.html" />
         <option value="$PROJECT_DIR$/Locales/ru/searchResults.html" />
         <option value="$PROJECT_DIR$/Locales/de/searchResults.html" />
         <option value="$PROJECT_DIR$/Locales/en/searchResults.html" />
-        <option value="$PROJECT_DIR$/scripts/models.js" />
         <option value="$PROJECT_DIR$/Locales/de/main.html" />
         <option value="$PROJECT_DIR$/Locales/ru/main.html" />
         <option value="$PROJECT_DIR$/Locales/en/main.html" />
+        <option value="$PROJECT_DIR$/scripts/models.js" />
+        <option value="$PROJECT_DIR$/Layouts/layoutHotelCard.html" />
+        <option value="$PROJECT_DIR$/Locales/ru/hotelcard_original.html" />
+        <option value="$PROJECT_DIR$/Locales/ru/hotelcard.html" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
@@ -159,6 +188,42 @@
     </navigator>
     <panes>
       <pane id="Favorites" />
+      <pane id="Scope">
+        <subPane />
+        <subPane subId="Non-Project Files" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="bookenizer.c">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Bookenizer">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="bookenizer.c">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Bookenizer">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -271,40 +336,18 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane />
-        <subPane subId="Non-Project Files" />
-        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="bookenizer.c">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Bookenizer">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="bookenizer.c">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Bookenizer">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -326,16 +369,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="186" />
-    <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1094" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1096" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1094" />
+    <property name="DefaultHtmlFileTemplate" value="Html" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="185" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="179" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" promptOnRemoteOverwrite="CHECK_TIMESTAMP" serverName="Linode" serverId="f6f47fce-9f6f-4dd6-b5cb-6dd4be495821">
     <servers>
@@ -352,9 +395,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\my_projects\Bookenizer\Locales\de" />
       <recent name="C:\my_projects\Bookenizer\Locales\en" />
-      <recent name="C:\my_projects\Bookenizer\styles" />
       <recent name="C:\my_projects\Bookenizer\scripts\debug" />
-      <recent name="C:\my_projects\Bookenizer\scripts" />
+      <recent name="C:\my_projects\Bookenizer" />
+      <recent name="C:\my_projects\Bookenizer\styles" />
     </key>
   </component>
   <component name="RunManager">
@@ -444,9 +487,10 @@
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.49129853" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296845" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32797858" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1913815" sideWeight="0.24410541" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20734063" sideWeight="0.50870144" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2105602" sideWeight="0.50870144" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32931727" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -454,7 +498,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32797858" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24951768" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -486,7 +529,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="New template (src_hotellist_tmpl) added in search results, method HotelsView" />
+    <option name="LAST_COMMIT_MESSAGE" value="City value validation" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -499,7 +542,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="New version of js calendar added. Search almost finished" />
     <MESSAGE value="Jquery 1.6.1 added" />
     <MESSAGE value="Jquery 1.6.1 min added" />
     <MESSAGE value="Initial search results template added for all languages" />
@@ -524,95 +566,98 @@
     <MESSAGE value="Fixed issue with FF 3.6. console.log commented because FF 3 does not understand this without firebug." />
     <MESSAGE value="Language selection dropdown added(#18). Top destinations block search request(/lookup) changed according to #20. Debug statements present in this commit also." />
     <MESSAGE value="New template (src_hotellist_tmpl) added in search results, method HotelsView" />
+    <MESSAGE value="City value validation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scripts/debug/gsuggest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="13" selection-start="648" selection-end="656" vertical-scroll-proportion="0.3328446" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Layouts/layoutInit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="26" selection-start="234" selection-end="234" vertical-scroll-proportion="0.17146975" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/debug/ICanHaz.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.jstore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="252" column="24" selection-start="3848" selection-end="3853" vertical-scroll-proportion="0.3323741" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/debug/backbone.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="4" selection-start="3632" selection-end="3632" vertical-scroll-proportion="0.3326316" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/ru/hotelcard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="12" selection-start="2054" selection-end="2054" vertical-scroll-proportion="0.02496329" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Layouts/layoutSearchResult.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="32" selection-start="289" selection-end="303" vertical-scroll-proportion="0.34075725" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/ru/searchResults.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="3231" selection-end="3231" vertical-scroll-proportion="0.9380734" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/de/searchResults.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="3231" selection-end="3231" vertical-scroll-proportion="0.9380734" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/en/searchResults.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="3238" selection-end="3238" vertical-scroll-proportion="2.1834862" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="3313" selection-end="3313" vertical-scroll-proportion="0.05414013">
+        <state line="7" column="26" selection-start="234" selection-end="234" vertical-scroll-proportion="0.17146975">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/models.js">
+    <entry file="file://$PROJECT_DIR$/Layouts/layoutHotelCard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="35" selection-start="8480" selection-end="8480" vertical-scroll-proportion="0.0">
+        <state line="9" column="79" selection-start="214" selection-end="214" vertical-scroll-proportion="0.2204611">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="43" selection-start="9483" selection-end="9483" vertical-scroll-proportion="0.0">
+        <state line="61" column="63" selection-start="3201" selection-end="3216" vertical-scroll-proportion="-4.27451">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
+    <entry file="file://$PROJECT_DIR$/Locales/ru/searchResults.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="135" selection-start="8213" selection-end="8213" vertical-scroll-proportion="0.0">
+        <state line="50" column="25" selection-start="3122" selection-end="3122" vertical-scroll-proportion="-12.461538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/models.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="36" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1726" column="29" selection-start="27906" selection-end="27914" vertical-scroll-proportion="0.3323741">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/ru/hotelcard_original.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="80" selection-start="4288" selection-end="4305" vertical-scroll-proportion="-18.961538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/debug/xcommon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/hotels/2/2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/hotels/2/tn/1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/hotels/2/1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/hotels/1-small.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/ru/hotelcard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="157" selection-start="1391" selection-end="1391" vertical-scroll-proportion="-11.115385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="770" column="54" selection-start="32098" selection-end="32098" vertical-scroll-proportion="0.61937714">
           <folding />
         </state>
       </provider>

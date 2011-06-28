@@ -49,7 +49,7 @@
     </div>
 </div>
 <div id="footer"></div>
-
+<script type="text/javascript" src="/scripts/debug/modernizr-2.0.6.js"></script>
 <script type="text/javascript" src="/scripts/debug/xdate.js"></script>
 <script type="text/javascript" src="/scripts/debug/jscal2.js"></script>
 <script type="text/javascript" src="/scripts/lang/en.js"></script>
@@ -68,12 +68,13 @@
 <script type="text/javascript" src="/scripts/debug/jquery.jstore.js"></script>
 <script type="text/javascript" src="/scripts/debug/gsuggest.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.pagination.js"></script>
+<script type="text/javascript" src="/scripts/debug/xcommon.js"></script>
 <script type="text/javascript" src="/scripts/models.js"></script>
 
 
 <script type="text/javascript">
     (function(defLanguage) {
-        var layoutTypes={INIT:0,SEARCH:1,PROFILE:2};
+        var layoutTypes={INIT:0,SEARCH:1,PROFILE:2,HOTELCARD:3};
 
         var setSearchParameters=function(searchType){
             var cityId=getCriteriaValue("cityId");
@@ -152,6 +153,9 @@
                  case layoutTypes.PROFILE:
                  case layoutTypes.SEARCH:
                         getContent("/Layouts/layoutSearchResult.html",$("#main"));
+                        break;
+                 case layoutTypes.HOTELCARD:
+                        getContent("/Layouts/layoutHotelCard.html",$("#main"));
                         break;
                  default:
                     break;
@@ -250,6 +254,21 @@
                         self.offersCount=hotels.offerCount;
                     }
                 });
+            }
+        });
+
+        var HotelCard=Backbone.Collection.extend({
+            model:Hotel,
+            url:'hotel/card/',
+            fetchData:function(args){
+                var self=this;
+                return $.ajax({
+                        url:args.svcUrl.concat(self.url),
+                        data:{"id":0,"language":args.curLang},
+                        success:function(cards){
+                            self.refresh(cards);
+                        }
+                    });
             }
         });
 
@@ -357,9 +376,16 @@
             return dfd.promise();
         };
 
+        var initHotelCardTemplate=function(config){
+            var dfd=$.Deferred();
+            $("#mtemplate").load(config.hotelCardTemplateUrl(),function(){
+                dfd.resolve();
+            });
+            return dfd.promise();
+        }
+
         var initMainTemplate=function(){
             var dfd=$.Deferred();
-            //debugger;
             $("#ltemplate").load(this.mainTemplateUrl(),function(){
                     $("body").attr("class","").addClass("popular");
                     dfd.resolve();
@@ -434,6 +460,7 @@
                 "srchLocations":new SearchLocations(),
                 "hotels":new HotelsList(),
                 "randomOffers":new RandomOffers(),
+                "hotelCard":new HotelCard(),
                 "roCount":0,
                 "searchResult":new HotelsList(),
                 "defaultSortOrder":"ASC",
@@ -449,18 +476,20 @@
                     sortDirection:this.get("defaultSortOrder")});
             },
             mainTemplateUrl:function(){
-                //debugger;
                 return "/Locales/".concat(this.get("lang"),"/main.html");
             },
             searchResultsTemplateUrl:function(){
                 return "/Locales/".concat(this.get("lang"),"/searchResults.html");
+            },
+            hotelCardTemplateUrl:function(){
+                return "/Locales/".concat(this.get("lang"),"/hotelcard.html");
             },
             initData:function(isRefresh,lang){
                 var self=this;
                 $.ajaxSetup({
                         async:self.get('ajaxMode'),
                         dataType:'json',
-                        contentTpe:'application/json; charset=utf-8',
+                        //contentType:'application/json; charset=utf-8',
                         cache:false
                     });
                 var args=argumentsStruct.call(self,isRefresh,lang);
@@ -476,7 +505,6 @@
                        self.defaults.srchLocations=dsSrcLoc;
                        self.defaults.hotels=dsHotels;
                         if(!isRefresh){
-                            //console.log("init applcation with cache");
                             initApplication.call(self);
                         }else{
                             self.defaults.set({lang:args.curLang});
@@ -496,6 +524,11 @@
             refreshData:function(lang){
                 var self=this;
                 self.initData.call(self,true,lang);
+            },
+            initHotelCard:function(){
+                var self=this;
+                var args=argumentsStruct.call(self);
+                return self.defaults.hotelCard.fetchData(args);
             },
             initSearchCriteria:function(){
                 (function(criteria,settings){
@@ -698,6 +731,55 @@
                     }
                 });
 
+        var HotelCardView=Backbone.View.extend(
+                {
+                    el:$('#hotel_info_holder'),
+                    render:function(){
+                        var self=this;
+                        getTemplate("hotelcard_tmpl");
+                        if(self.el!==undefined && self.el.length<1){
+                            self.el=$('#hotel_info_holder');
+                        }
+                        getTemplate("ro_item_tmpl");
+                        getTemplate("gallery_tmpl");
+                        getTemplate("hc_contacts_tmpl",true);
+                        getTemplate("dl-item-tmpl",true);
+                        getTemplate("ro_ratings_tmpl");
+                        getTemplate("user_review_tmpl",true);
+                        getTemplate("user_rating_tmpl",true);
+                        self.el.html(ich.hotelcard_tmpl());
+                        var hotelDiv=$(".info-1",self.el);
+                        var ratingsDiv=$(".info-2",self.el);
+                        var footerDiv=$("#footer");
+                        _(self.model.toJSON()).each(function(hotelItem) {
+                            var currency=hotelItem.currency;
+                            var hi = _.extend(hotelItem, {calc:function() {
+                                return function(text, render) {
+                                    var arg = 8;
+                                    try {
+                                        arg = parseFloat(render(text));
+                                        if (arg > 8)
+                                            arg = 8;
+                                    } catch(e) {
+                                        arg = 8;
+                                    }
+                                    return parseInt(arg * 12.5)
+                                };
+                            }},{hcPrice:function() {
+                                return function(text, render) {
+
+                                    return currency+" " + render(text);
+                                };
+                            }});
+                            hotelDiv.append(ich.ro_item_tmpl(hotelItem));
+                            ratingsDiv.append(ich.ro_ratings_tmpl(hi));
+                            ich.gallery_tmpl(hi).insertAfter(footerDiv);
+                        });
+                        return self;
+                    }
+                }
+        );
+
         var initSearchActivity=function(){
             var self=this;
             $.when(setLayout(layoutTypes.SEARCH),initSearchResults(_configuration),_configuration.initRandomOffers(),_configuration.makeSearch()).done(function(){
@@ -712,6 +794,18 @@
                         _hotelsList.reRender(true);
                         attachSearchEvents.call(self);
                     });
+        };
+
+        var initHolelCardActivity=function(){
+            var self=this;
+            $.when(setLayout(layoutTypes.HOTELCARD),initHotelCardTemplate(_configuration),_configuration.initHotelCard()).done(function(){
+                $("body").attr("class","").addClass("hotelcard");
+                var hcModel=_configuration.get('hotelCard');
+                _hotelCard=new HotelCardView({model:hcModel});
+                debugger;
+                _hotelCard.render();
+                _statistics.reRender();
+            });
         };
 
         var performSearchRequest=function(objectToRender){
@@ -769,6 +863,7 @@
             _sortBar:null,
             _randomOffers:null,
             _srtOrderModel:null,
+            _hotelCard:null,
             routes: {
                 "!/lang/:id":"language",
                 "!/search/:type":"search",
@@ -872,7 +967,8 @@
                 this.initMain();
             },
             hotelCard:function(hotelId){
-                $("body").attr("class","hotelcard");
+                //$("body").attr("class","hotelcard");
+                initHolelCardActivity.call(self);
             },
             addHotel:function(hotelId){
 

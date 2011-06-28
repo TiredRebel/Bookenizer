@@ -1,134 +1,146 @@
 <script type="text/html" id="hotelcard_tmpl">
-    <div class="hotel info-1">
-				<div class="stars stars-5"><span>*****</span></div>
-				<h1>Mega Nippel Beach</h1>
-				<p class="noprint"><a href="main-hotelcard.html#" class="noreload">Add to Selected</a> / <a href="main-hotelcard.html#" class="noreload" onclick="window.print(); return false;">Print hotel info</a></p>
+    <div class="hotel info-1"></div>
+    <div class="hotel info-2"></div>
+</script>
+<script type="text/html" id="ro_item_tmpl">
+    <div class="stars stars-{{stars}}"><span></span></div>
+    <h1>{{name}}</h1>
 
+    <p class="noprint"><a href="main-hotelcard.html#" class="noreload">Добавить в избранное</a> / <a
+            href="main-hotelcard.html#" class="noreload" onclick="window.print(); return false;">Print hotel info</a>
+    </p>
 
-				<div class="contacts">
-					<p>213, Mushrooms str., Amsterdam, Holland<br />
-						Phone: +43 (0754) 699-2419, 699-2421<br />
-						Fax: +43 (0754) 699-2418<br />
-						E-mail: info@meganippelbeachhotel.com</p>
-				</div>
+    <div class="contacts" style="display:none;">
+        {{#Address}}
+            {{>hc_contacts_tmpl}}
+        {{/Address}}
+    </div>
 
-				<p class="noprint"><a href="main-hotelcard.html#" class="noreload" onclick="tttemp = this; $('.hotel .contacts').toggle('fast', function(){ $(tttemp).text( ($('.hotel .contacts').css('display') == 'block') ? 'Hide contacts' : 'Show contacts') }); return false;">Show contacts</a> /
-					<a href="main-hotelcard.html#" class="noreload" id="bt_showmap">Show map</a></p>
-				<div class="descr">
-					<p>Located on the El Camino Real, the Hotel is easily accessible to Hwy 101, I-280, Hwy 85 and the San Jose International Airport.</p>
-					<p>Just minutes from Silicon Valley's prime destinations. Located on the El Camino Real, the Hotel is easily accessible to Hwy 101, I-280, Hwy 85 and the San Jose International Airport. Just minutes from Silicon Valley's prime destinations.</p>
-				</div>
+    <p class="noprint"><a href="main-hotelcard.html#" class="noreload"
+                          onclick="tttemp = this; $('.hotel .contacts').toggle('fast', function(){ $(tttemp).text( ($('.hotel .contacts').css('display') == 'block') ? 'Hide contacts' : 'Show contacts') }); return false;">Show
+        contacts</a> /
+        <a href="main-hotelcard.html#" class="noreload" id="bt_showmap">Show map</a></p>
 
-				<h3>Prices per night</h3>
-				<table class="price"><tbody>
-					<tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showapt1gallery">Single</a></td><td class="price">EUR 450</td></tr>
-					<tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showapt2gallery">Double (left wing)</a></td><td class="price">EUR 750</td></tr>
-					<tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showapt3gallery">Double (right wing)</a></td><td class="price">EUR 790</td></tr>
-					<tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showapt4gallery">Triple</a></td><td class="price">EUR 950</td></tr>
-				</tbody></table>
+    <div class="descr">
+        {{description}}
+    </div>
 
-				<h3>Facilities</h3>
-				<dl>
-					<dt>General</dt>
-					<dd>Restaurant, Bar, 24-Hour Front Desk, Non-Smoking Rooms, Rooms/Facilities for Disabled Guests, Elevator, Safety Deposit Box, Heating, Luggage Storage.</dd>
+    <h3>Prices per night</h3>
+    <table class="price">
+        <tbody>
+            {{#RoomCategories}}
+                {{#roomCategoryList}}
+                    <tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showapt1gallery">{{name}}</a></td><td class="price">{{#hcPrice}}{{minPrice}}{{/hcPrice}}</td></tr>
+                {{/roomCategoryList}}
+            {{/RoomCategories}}
+		</tbody>
+    </table>
 
-					<dt>Activities</dt>
-					<dd>Sauna, Fitness Centre.</dd>
+    <h3>Facilities</h3>
+    <dl>
+        {{#Facilities}}
+           {{#facilityList}}
+                {{>dl-item-tmpl}}
+           {{/facilityList}}
+        {{/Facilities}}
+    </dl>
 
-					<dt>Services</dt>
-					<dd>Room Service, Meeting/Banquet Facilities, Business Centre, Laundry, Dry Cleaning, Ironing Service, Currency Exchange, Car Rental, Tour Desk, Fax/Photocopying.</dd>
+    <div class="clearer"></div>
 
-					<dt>Internet</dt>
-					<dd>Wired internet is available in the hotel rooms and is free of charge.</dd>
+    <h3>Policies</h3>
+    <dl>
+    {{#Policies}}
+           {{#policyList}}
+                {{>dl-item-tmpl}}
+           {{/policyList}}
+    {{/Policies}}
+    </dl>
+    <div class="clearer"></div>
+    <p class="noprint"><a href="main-hotelcard.html#" class="noreload">Add to Selected</a> / <a href="main-hotelcard.html#" class="noreload" onclick="window.print(); return false;">Print hotel info</a></p>
+</script>
+<script type="text/html" id="hc_contacts_tmpl" class="partial">
+       <p>
+            {{address}}<br/>
+            Phone: {{phone}}<br/>
+            Fax: {{fax}}<br/>
+            Email: {{email}}
+        </p>
+</script>
+<script type="text/html" id="dl-item-tmpl" class="partial">
+    <dt>{{displayName}}</dt>
+    <dd>{{description}}</dd>
+</script>
+<script type="text/html" id="table-row-tmpl" class="partial">
 
-					<dt>Parking</dt>
-					<dd>Private parking is possible on site and costs EUR 30.00 per day.</dd>
-				</dl>
+</script>
+<script type="text/html" id="ro_ratings_tmpl">
+    <a href="main-hotelcard.html#" class="nou" id="bt_showgalleryAlt"><img class="main" src="{{#MainPhoto}}{{large}}{{/MainPhoto}}" width="211" height="211" alt="{{name}}" /></a>
+    <p class="noprint"><a href="main-hotelcard.html#" class="noreload" id="bt_showgallery">View all 13 photos</a></p>
 
-				<div class="clearer"></div>
+     {{>user_rating_tmpl}}
 
-				<h3>Policies</h3>
-				<dl>
-					<dt>Check-In</dt>
-					<dd>14:00 - 00:00 hours</dd>
+    <h3>Visitors’ reviews</h3>
+     {{#Reviews}}
+        {{#reviewList}}
+            {{>user_review_tmpl}}
+        {{/reviewList}}
+    {{/Reviews}}
 
-					<dt>Check-Out</dt>
-					<dd>07:00 - 12:00 hours</dd>
+</script>
+<script type="text/html" id="user_review_tmpl" class="partial">
+<div class="comment">
+    <p class="date">{{reviewDate}}</p>
+    <p>{{comment}}</p>
+    <table class="rate"><tr><td width="1%">Rate</td><td class="rate"><div><span style="width:{{#calc}}{{rate}}{{/calc}}%">{{rate}}</span></div></td></tr></table>
+    <p class="author">{{author}} from {{#GeoLocation}}{{city}}, {{country}}{{/GeoLocation}}</p>
+</div>
+</script>
+<script type="text/html" id="user_rating_tmpl" class="partial">
+    {{#Rating}}
+    <h3>Rating<span>
+    <strong>{{avgValue}}</strong> of 8</span></h3>
+    <div class="rating-bar"><span style="width:{{#calc}}{{avgValue}}{{/calc}}%">5.2 of 8</span></div>
+    {{#rateItemList}}
+        <h5>{{displayName}}<span><strong>{{value}}</strong> of 8</span></h5>
+    {{/rateItemList}}
+    {{/Rating}}
+</script>
 
-					<dt>Cancellation</dt>
-					<dd>If cancelled up to 1 day before the date of arrival, no fee will be charged.	If cancelled later or in case of no-show, the first night will be charged.</dd>
+<script type="text/html" id="gallery_tmpl">
+<!-- common hotel photos gallery -->
 
-					<dt>Children and extra beds</dt>
-					<dd>All children under 11 years stay free of charge when using existing bedding.<br />
-						All children under 2 years stay free of charge for cots.<br />
-						All older children or adults are charged EUR 40.00 per night and person for extra beds.<br />
-						Maximum capacity of extra beds/babycots in a room is 1.<br />
-						Extra beds and baby cots are upon request and need to be confirmed by the hotel.<br />
-						Supplements will not be calculated automatically in the total costs and have to be paid separately in the hotel.</dd>
+<div class="fdialog gallerydialog" id="galleryform">
+	<div class="image">
+		<img class="current" src="files/hotels/2/1.jpg" />
+		<img class="preload" src="files/hotels/2/1.jpg" />
+	</div>
 
-					<dt>Pets</dt>
-					<dd>Pets are allowed on request. No extra charges.</dd>
+	<div class="imagedescr hotel">
+		<div class="stars stars-5"><span>*****</span></div>
+		<h3>{{name}}</h3>
 
-					<dt>Credit cards</dt>
-					<dd>American Express, Visa, Euro / Mastercard, Diners Club, JCB, Maestro<br />
-						The hotel reserves the right to pre-authorise credit cards prior to arrival.</dd>
-				</dl>
+		<div class="gallery">
+            {{#Photos}}
+            {{#photoList}}
+			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou current">
+				<img src="files/hotels/2/tn/1.jpg" />
+			</a>
+            {{/photoList}}
+			{{/Photos}}
+			<div class="clearer"></div>
+		</div>
 
-				<div class="clearer"></div>
+		<div class="descr">
+			<p>Located on the El Camino Real, the Hotel is easily accessible to Hwy 101, I-280, Hwy 85 and the San Jose International Airport.</p>
+			<p>Just minutes from Silicon Valley's prime destinations. Located on the El Camino Real, the Hotel is easily accessible to Hwy 101, I-280, Hwy 85 and the San Jose International Airport. Just minutes from Silicon Valley's prime destinations.</p>
+		</div>
 
-				<p class="noprint"><a href="main-hotelcard.html#" class="noreload">Add to Selected</a> / <a href="main-hotelcard.html#" class="noreload">Print hotel info</a></p>
+		<div class="links">
+			<p><a href="main-hotelcard.html#" class="close noreload">Close window</a></p>
+		</div>
 
-			</div>
-
-			<div class="info-2">
-				<a href="main-hotelcard.html#" class="nou" id="bt_showgalleryAlt"><img class="main" src="files/hotels/2-large.jpg" width="211" height="211" alt="Mega Nippel Beach" /></a>
-				<p class="noprint"><a href="main-hotelcard.html#" class="noreload" id="bt_showgallery">View all 13 photos</a></p>
-
-				<h3>Rating<span><strong>5.2</strong> of 8</span></h3>
-				<div class="rating-bar"><span style="width:65%">5.2 of 8</span></div>
-				<h5>Cleanness<span><strong>3</strong> of 8</span></h5>
-				<h5>Personnel<span><strong>5</strong> of 8</span></h5>
-				<h5>Atmosphere<span><strong>4</strong> of 8</span></h5>
-				<h5>Location<span><strong>1</strong> of 8</span></h5>
-				<h5>Entertainment<span><strong>9</strong> of 8</span></h5>
-
-				<h3>Visitors’ reviews</h3>
-
-				<div class="comment">
-					<p class="date">Sep 14, 2008</p>
-					<p>Given that some bendy bus contracts end before then, does that mean that we are not going to see the kind of phased introduction that was promised? And if not, what will happen in the meantime?</p>
-					<table class="rate"><tr><td width="1%">Rate</td><td class="rate"><div><span style="width:37.5%">3 of 8</span></div></td></tr></table>
-					<p class="author">torytroll from Berdichev, Ukraine</p>
-				</div>
-
-				<div class="comment">
-					<p class="date">Sep 14, 2008</p>
-					<p>I am no Brownite, indeed, no Labourite either. But the present administration is struggling with a duff international economy, created by the free marketeers across the pond.
-Naturally the Tories are delighted at Brown's plight.</p>
-					<table class="rate"><tr><td width="1%">Rate</td><td class="rate"><div><span style="width:75%">6 of 8</span></div></td></tr></table>
-					<p class="author">jessowen from London, UK</p>
-				</div>
-
-				<div class="comment">
-					<p class="date">Sep 14, 2008</p>
-					<p>+1</p>
-					<table class="rate"><tr><td width="1%">Rate</td><td class="rate"><div><span style="width:12.5%">1 of 8</span></div></td></tr></table>
-					<p class="author">Vasya from New York, US</p>
-				</div>
-
-				<div class="paging">
-					<a href="main-hotelcard.html#" title="Page 2" class="nou">←</a>
-					<a href="main-hotelcard.html#" title="Page 3">3</a>
-					<a href="main-hotelcard.html#" title="Page 4">4</a>
-					<a href="main-hotelcard.html#" title="Page 5">5</a>
-					<a href="main-hotelcard.html#" title="Page 6">6</a>
-					7
-					<a href="main-hotelcard.html#" title="Page 8">8</a>
-					<a href="main-hotelcard.html#" title="Page 9">9</a>
-					<a href="main-hotelcard.html#" title="Page 10">10</a>
-					<a href="main-hotelcard.html#" title="Page 11">11</a>
-					<a href="main-hotelcard.html#" title="Page 12" class="nou">→</a>
-				</div>
-
-			</div>
+	</div>
+	<div class="clearer"></div>
+	<a href="main-hotelcard.html#" class="close xclose" title="Close gallery"><span>Close</span></a>
+</div>
 </script>
