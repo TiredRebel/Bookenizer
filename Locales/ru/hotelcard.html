@@ -30,7 +30,7 @@
         <tbody>
             {{#RoomCategories}}
                 {{#roomCategoryList}}
-                    <tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showapt1gallery">{{name}}</a></td><td class="price">{{#hcPrice}}{{minPrice}}{{/hcPrice}}</td></tr>
+                    <tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showapt{{hcRoomCategory}}gallery">{{name}}</a></td><td class="price">{{#hcPrice}}{{minPrice}}{{/hcPrice}}</td></tr>
                 {{/roomCategoryList}}
             {{/RoomCategories}}
 		</tbody>
@@ -75,7 +75,7 @@
 </script>
 <script type="text/html" id="ro_ratings_tmpl">
     <a href="main-hotelcard.html#" class="nou" id="bt_showgalleryAlt"><img class="main" src="{{#MainPhoto}}{{large}}{{/MainPhoto}}" width="211" height="211" alt="{{name}}" /></a>
-    <p class="noprint"><a href="main-hotelcard.html#" class="noreload" id="bt_showgallery">View all 13 photos</a></p>
+    <p class="noprint"><a href="main-hotelcard.html#" class="noreload" id="bt_showgallery">View all {{hcPhotos}} photos</a></p>
 
      {{>user_rating_tmpl}}
 
@@ -99,7 +99,7 @@
     {{#Rating}}
     <h3>Rating<span>
     <strong>{{avgValue}}</strong> of 8</span></h3>
-    <div class="rating-bar"><span style="width:{{#calc}}{{avgValue}}{{/calc}}%">5.2 of 8</span></div>
+    <div class="rating-bar"><span style="width:{{#calc}}{{avgValue}}{{/calc}}%">{{avgValue}} of 8</span></div>
     {{#rateItemList}}
         <h5>{{displayName}}<span><strong>{{value}}</strong> of 8</span></h5>
     {{/rateItemList}}
@@ -116,16 +116,16 @@
 	</div>
 
 	<div class="imagedescr hotel">
-		<div class="stars stars-5"><span>*****</span></div>
+		<div class="stars stars-{{stars}}"><span></span></div>
 		<h3>{{name}}</h3>
 
 		<div class="gallery">
             {{#Photos}}
-            {{#photoList}}
-			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou current">
-				<img src="files/hotels/2/tn/1.jpg" />
-			</a>
-            {{/photoList}}
+                {{#photoList}}
+                    <a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou current">
+                        <img src="files/hotels/2/tn/1.jpg" />
+                    </a>
+                {{/photoList}}
 			{{/Photos}}
 			<div class="clearer"></div>
 		</div>

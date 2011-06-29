@@ -752,25 +752,30 @@
                         var ratingsDiv=$(".info-2",self.el);
                         var footerDiv=$("#footer");
                         _(self.model.toJSON()).each(function(hotelItem) {
-                            var currency=hotelItem.currency;
+                            var currency = hotelItem.currency;
+                            var photosCount = hotelItem.Photos.photoList.length;
+                            var roomIterator = 0;
                             var hi = _.extend(hotelItem, {calc:function() {
-                                return function(text, render) {
-                                    var arg = 8;
-                                    try {
-                                        arg = parseFloat(render(text));
-                                        if (arg > 8)
-                                            arg = 8;
-                                    } catch(e) {
-                                        arg = 8;
-                                    }
-                                    return parseInt(arg * 12.5)
-                                };
-                            }},{hcPrice:function() {
-                                return function(text, render) {
-
-                                    return currency+" " + render(text);
-                                };
-                            }});
+                                        return function(text, render) {
+                                            var arg = 8;
+                                            try {
+                                                arg = parseFloat(render(text));
+                                                if (arg > 8)
+                                                    arg = 8;
+                                            } catch(e) {
+                                                arg = 8;
+                                            }
+                                            return parseInt(arg * 12.5)
+                                        };
+                                    }}, {hcPrice:function() {
+                                        return function(text, render) {
+                                            return currency + " " + render(text);
+                                        };
+                                    }}, {hcPhotos:function() {
+                                        return photosCount;
+                                    }}, {hcRoomCategory:function() {
+                                        return ++roomIterator;
+                                    }});
                             hotelDiv.append(ich.ro_item_tmpl(hotelItem));
                             ratingsDiv.append(ich.ro_ratings_tmpl(hi));
                             ich.gallery_tmpl(hi).insertAfter(footerDiv);
