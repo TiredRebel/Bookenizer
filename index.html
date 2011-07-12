@@ -75,6 +75,7 @@
 <script type="text/javascript">
     (function(defLanguage) {
         var layoutTypes={INIT:0,SEARCH:1,PROFILE:2,HOTELCARD:3};
+        var xGallery;
 
         var setSearchParameters=function(searchType){
             var cityId=getCriteriaValue("cityId");
@@ -755,6 +756,7 @@
                             var currency = hotelItem.currency;
                             var photosCount = hotelItem.Photos.photoList.length;
                             var roomIterator = 0;
+                            var photoIterator=0;
                             var hi = _.extend(hotelItem, {calc:function() {
                                         return function(text, render) {
                                             var arg = 8;
@@ -775,11 +777,20 @@
                                         return photosCount;
                                     }}, {hcRoomCategory:function() {
                                         return ++roomIterator;
-                                    }});
+                                    }},
+                                    {hcPhotoId:function(){
+                                            if(photoIterator > 1){
+                                                photoIterator=0;
+                                            }
+                                            return ++photoIterator;
+                                        }
+                                    });
                             hotelDiv.append(ich.ro_item_tmpl(hotelItem));
                             ratingsDiv.append(ich.ro_ratings_tmpl(hi));
                             ich.gallery_tmpl(hi).insertAfter(footerDiv);
+                            $("div.gallery > a.nou:first").addClass("current")
                         });
+                        xGallery = new iGallery({id:"#galleryform", btActivator:"#bt_showgallery", btActivatorAlt:"#bt_showgalleryAlt", btAction:"#galleryform a.close"});
                         return self;
                     }
                 }
