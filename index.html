@@ -778,12 +778,23 @@
                                     }}, {hcRoomCategory:function() {
                                         return ++roomIterator;
                                     }},
-                                    {hcPhotoId:function(){
-                                            if(photoIterator > 1){
-                                                photoIterator=0;
+                                    {hcPhotoId:function() {
+                                        return function(text, render) {
+                                            var img = render(text);
+                                            if (img.length > 0) {
+                                                var hotelId,imgName,imgPath,arrLen,tnName;
+                                                imgPath = img.split('/');
+                                                arrLen = imgPath.length;
+                                                hotelId = imgPath[arrLen - 2];
+                                                imgName = imgPath[arrLen - 1];
+                                                tnName = "files/hotels/".concat(hotelId, "/", imgName);
+                                                return "<a href='" + tnName + "' rel='" + tnName + "' class='nou'><img src='files/hotels/" + hotelId + "/tn/" + imgName + "' /></a>";
+                                            } else {
+                                                //No image;
+                                                return "";
                                             }
-                                            return ++photoIterator;
                                         }
+                                    }
                                     });
                             hotelDiv.append(ich.ro_item_tmpl(hotelItem));
                             ratingsDiv.append(ich.ro_ratings_tmpl(hi));

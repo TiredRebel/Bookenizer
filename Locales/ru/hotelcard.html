@@ -122,17 +122,14 @@
 		<div class="gallery">
             {{#Photos}}
                 {{#photoList}}
-                    <a href="{{large}}" rel="{{large}}" class="nou">
-                        <img src="files/hotels/2/tn/{{hcPhotoId}}.jpg" />
-                    </a>
+                    {{#hcPhotoId}}{{large}}{{/hcPhotoId}}
                 {{/photoList}}
 			{{/Photos}}
 			<div class="clearer"></div>
 		</div>
 
 		<div class="descr">
-			<p>Located on the El Camino Real, the Hotel is easily accessible to Hwy 101, I-280, Hwy 85 and the San Jose International Airport.</p>
-			<p>Just minutes from Silicon Valley's prime destinations. Located on the El Camino Real, the Hotel is easily accessible to Hwy 101, I-280, Hwy 85 and the San Jose International Airport. Just minutes from Silicon Valley's prime destinations.</p>
+			{{description}}
 		</div>
 
 		<div class="links">
