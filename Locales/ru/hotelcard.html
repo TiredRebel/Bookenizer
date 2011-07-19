@@ -106,19 +106,18 @@
     {{/Rating}}
 </script>
 
+
+
 <script type="text/html" id="gallery_tmpl">
 <!-- common hotel photos gallery -->
-
 <div class="fdialog gallerydialog" id="galleryform">
 	<div class="image">
-		<img class="current" src="files/hotels/2/1.jpg" />
-		<img class="preload" src="files/hotels/2/1.jpg" />
+		<img class="current" src="{{#MainPhoto}}{{large}}{{/MainPhoto}}" />
+		<img class="preload" src="{{#MainPhoto}}{{large}}{{/MainPhoto}}" />
 	</div>
-
 	<div class="imagedescr hotel">
 		<div class="stars stars-{{stars}}"><span></span></div>
 		<h3>{{name}}</h3>
-
 		<div class="gallery">
             {{#Photos}}
                 {{#photoList}}
@@ -127,17 +126,43 @@
 			{{/Photos}}
 			<div class="clearer"></div>
 		</div>
-
 		<div class="descr">
 			{{description}}
 		</div>
-
 		<div class="links">
 			<p><a href="main-hotelcard.html#" class="close noreload">Close window</a></p>
 		</div>
-
 	</div>
 	<div class="clearer"></div>
 	<a href="main-hotelcard.html#" class="close xclose" title="Close gallery"><span>Close</span></a>
 </div>
+</script>
+
+<script type="text/html" id="mapa_tmpl">
+<div class="fdialog" id="mapaform">
+    <div id="geocoords" style="display:none">
+        {{#Address}}{{#GeoLocation}}{{gmapLink}}{{/GeoLocation}}{{/Address}}
+    </div>
+    <div id="mapa" style="width: 274px; height: 274px">
+		<!--<img src="files/hotels/2-mapa.jpg" width="274" height="274" />-->
+	</div>
+
+	<div id="mapadescr" class="hotel">
+		<h3>{{name}}</h3>
+		<div class="stars stars-{{stars}}"><span></span></div>
+
+		<div class="contacts">
+			{{#Address}}
+               {{>hc_contacts_tmpl}}
+            {{/Address}}
+		</div>
+
+		<div class="descr">
+			<p>{{description}}</p>
+		</div>
+		<div class="clearer"></div>
+	</div>
+	<div class="clearer"></div>
+	<a href="main-hotelcard.html#" class="close xclose" title="Close map"><span>Close</span></a>
+ </div>
 </script>

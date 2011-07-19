@@ -1,3 +1,4 @@
+var map, geocoder;
 
 function validateMail(s) {	return (new RegExp('^[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+@[-!#$%&\'*+\\/0-9=?A-Z^_`a-z{|}~]+\.[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+$')).test(s); }
 
@@ -80,7 +81,35 @@ l18n = new (function() {
 	}
 })();
 
+function GmapInit() {
+    if (GBrowserIsCompatible()) {
+        map = new GMap2(document.getElementById("mapa"));
+        map.setCenter(new GLatLng(37.4419, -122.1419), 1);
+        map.setUIToDefault();
+        geocoder = new GClientGeocoder();
+      }
+}
 
+function showAddress(address) {
+  if (geocoder) {
+    geocoder.getLatLng(
+      address,
+      function(point) {
+        if (!point) {
+          alert(address + " not found");
+        } else {
+          map.setCenter(point, 13);
+          var marker = new GMarker(point);
+          map.addOverlay(marker);
+
+          // As this is user-generated content, we display it as
+          // text rather than HTML to reduce XSS vulnerabilities.
+          marker.openInfoWindow(document.createTextNode(address));
+        }
+      }
+    );
+  }
+}
 /*  (x) Sb, 2k8
  * ---------------------------------------------------------------------------
  *
@@ -629,7 +658,7 @@ iSignIn.prototype.processPassBlur = function (e) {
 
 iMapa = function (params) {
 	this.superClass.init.call(this, params);
-
+    GmapInit();
 	this.me = $(this.id);
 	this.h = this.me.height();
 	this.w = this.me.width();
@@ -652,7 +681,9 @@ iMapa.prototype.phase = function(p) {
 
 iMapa.prototype.show = function(e) {
 	var self = (e && e.data && e.data.self) || this;
-
+    //var address=$("#geocoords").text().trim();
+    var address="пр. Победы 49, Киев, Украина";
+    showAddress(address);
 	self.centerMe();
 	self.superClass.show.call(self, e);
 
