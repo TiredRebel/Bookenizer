@@ -70,8 +70,8 @@
 <script type="text/javascript" src="/scripts/debug/xcommon.js"></script>
 <script type="text/javascript" src="/scripts/models.js"></script>
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>
-<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>-->
+<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>-->
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>
 <script type="text/javascript">
     (function(defLanguage) {
         var layoutTypes={INIT:0,SEARCH:1,PROFILE:2,HOTELCARD:3};
@@ -746,6 +746,7 @@
                         getTemplate("ro_item_tmpl");
                         getTemplate("gallery_tmpl");
                         getTemplate("mapa_tmpl");
+                        getTemplate("calc_template");
                         getTemplate("hc_contacts_tmpl",true);
                         getTemplate("dl-item-tmpl",true);
                         getTemplate("ro_ratings_tmpl");
@@ -755,6 +756,7 @@
                         var hotelDiv=$(".info-1",self.el);
                         var ratingsDiv=$(".info-2",self.el);
                         var footerDiv=$("#footer");
+                        var calcHolder=$("#calcHolder");
                         _(self.model.toJSON()).each(function(hotelItem) {
                             var currency = hotelItem.currency;
                             var photosCount = hotelItem.Photos.photoList.length;
@@ -800,6 +802,7 @@
                                         }
                                     }
                                     });
+                            calcHolder.append(ich.calc_template());
                             hotelDiv.append(ich.ro_item_tmpl(hotelItem));
                             ratingsDiv.append(ich.ro_ratings_tmpl(hi));
                             ich.gallery_tmpl(hi).insertAfter(footerDiv);
@@ -836,7 +839,6 @@
                 $("body").attr("class","").addClass("hotelcard");
                 var hcModel=_configuration.get('hotelCard');
                 _hotelCard=new HotelCardView({model:hcModel});
-                debugger;
                 _hotelCard.render();
                 _statistics.reRender();
             });

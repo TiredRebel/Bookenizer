@@ -166,3 +166,83 @@
 	<a href="main-hotelcard.html#" class="close xclose" title="Close map"><span>Close</span></a>
  </div>
 </script>
+<script type="text/html" id="calc_template">
+				<h2>Order now</h2>
+				<form action="../" id="orderform">
+
+					<div class="sideblock opener active orderDates">
+						<h3>Dates</h3>
+						<div class="label">
+							<label><span>from</span><input type="text" name="order_from" id="order_from" class="date" value="22.10.2008" onchange="fixDate(this); xOrder.calcPrice();" /></label>
+						</div>
+						<div class="label">
+							<label><span>to</span><input type="text" name="order_to" id="order_to" class="date" value="24.10.2008" onchange="fixDate(this); xOrder.calcPrice();" /></label>
+							for <span class="search_nights_num">2</span> <span class="search_nights_word">nights</span>
+						</div>
+						<div class="closer"></div>
+						<!--<script type="text/javascript">
+							 Calendar.setup({ inputField : "order_from", ifFormat : dformat, firstDay :	0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate });
+							 Calendar.setup({ inputField : "order_to", ifFormat : dformat, firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate });
+						</script>-->
+					</div>
+
+					<div class="apt-template">
+						<div class="apt-room-type">
+							<h3>Room type</h3>
+							<select name="roomtype1">
+								<option value="1" selected="selected">Single</option>
+								<option value="2">Double (left wing)</option>
+								<option value="3">Double (right wing)</option>
+								<option value="4">Triple</option>
+							</select>
+							<p class="available"><span class="yes number">7</span> <span class="yes">available</span> for chosen period</p>
+							<p class="unavailable"><span class="no">Not available</span> for chosen period.<br />
+						Try another room type.</p>
+						</div>
+
+						<div class="apt-room-number">
+							<h3>Number of rooms</h3>
+							<input type="text" name="rooms1" value="2" class="short" />
+						</div>
+
+						<div class="apt-room-extrabed">
+							<h3>Extra beds</h3>
+							<select name="extrabeds1">
+								<option value="1">1</option>
+								<option value="2" selected="selected">2</option>
+							</select>
+						</div>
+
+						<p><a href="main-hotelcard.html#" class="remove" title="Remove this apartment from order">Remove from order</a></p>
+
+						<div class="closer"></div>
+					</div>
+
+					<div class="sideblock"><input type="button" class="add2order" value="Add an apartment"></div>
+
+					<div class="sideblock opener active orderMeals">
+						<h3>Meals</h3>
+						<select name="meals">
+							<option value="1">Full Board</option>
+							<option value="2" selected="selected">Half Board</option>
+							<option value="3">No Meals</option>
+						</select>
+
+						<h3>Number of persons</h3>
+
+						<input type="text" name="mealsnum" class="short" value="2" />
+
+						<div class="closer"></div>
+					</div>
+
+					<div class="sideblock opener inactive">
+						<h3>Total cost: <span id="orderCurrency" class="important">EUR</span> <span id="orderTotal" class="important">1,885</span></h3>
+
+						<div class="label last">
+							<span class="label">Order</span><input type="submit" name="submit" value="Confirm" class="submit" />
+						</div>
+
+					</div>
+
+				</form>
+</script>
