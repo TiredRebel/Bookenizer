@@ -101,9 +101,6 @@ function showAddress(address) {
           map.setCenter(point, 13);
           var marker = new GMarker(point);
           map.addOverlay(marker);
-
-          // As this is user-generated content, we display it as
-          // text rather than HTML to reduce XSS vulnerabilities.
           marker.openInfoWindow(document.createTextNode(address));
         }
       }
@@ -681,8 +678,7 @@ iMapa.prototype.phase = function(p) {
 
 iMapa.prototype.show = function(e) {
 	var self = (e && e.data && e.data.self) || this;
-    //var address=$("#geocoords").text().trim();
-    var address="пр. Победы 49, Киев, Украина";
+    var address=$("#geocoords").text().trim();
     showAddress(address);
 	self.centerMe();
 	self.superClass.show.call(self, e);
