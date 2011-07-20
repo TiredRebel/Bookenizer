@@ -75,7 +75,8 @@
 <script type="text/javascript">
     (function(defLanguage) {
         var layoutTypes={INIT:0,SEARCH:1,PROFILE:2,HOTELCARD:3};
-        var xGallery, xMapa;
+        var xGallery, xMapa, xSignIn;
+
 
         //function
         var setSearchParameters=function(searchType){
@@ -680,6 +681,7 @@
                     langdiv.append(ich.langMenu_item( (num < self.model.length - 1)? _.extend(langItem,{divider:"/"}): _.extend(langItem,{divider:""})));
                 });
                 langdiv.append(ich.ddlLangMenu_tmpl());
+                xSignIn = new iSignIn({id:"#loginform", btActivator:"#bt_login", btRegister:"#bt_register", btAction:"#bt_login_action",  pre:"#lp", idMail:"#mail", idPass:"#pass", idPassOpen:"#pass_open"});
                 return self;
             }
         });
@@ -812,6 +814,7 @@
                         });
                         xGallery = new iGallery({id:"#galleryform", btActivator:"#bt_showgallery", btActivatorAlt:"#bt_showgalleryAlt", btAction:"#galleryform a.close"});
                         xMapa = new iMapa({id:"#mapaform", btActivator:"#bt_showmap", btAction:"#mapaform a.close"});
+                        //xSignIn = new iSignIn({id:"#loginform", btActivator:"#bt_login", btRegister:"#bt_register", btAction:"#bt_login_action",  pre:"#lp", idMail:"#mail", idPass:"#pass", idPassOpen:"#pass_open"});
                         return self;
                     }
                 }
@@ -1044,7 +1047,7 @@
                 flash: '/scripts/debug/jStore.Flash.html',
                 json: '/scripts/debug/json2.js'
             };
-
+            //xData.user = {id:123, name:"Konstantinopulo"};
 
 
             //jStore.init('bookenizer', jStoreConfig, jStore.flavors.flash).engineReady(function (engine){

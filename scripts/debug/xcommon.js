@@ -1,4 +1,4 @@
-var map, geocoder;
+var map, geocoder, xData={};
 
 function validateMail(s) {	return (new RegExp('^[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+@[-!#$%&\'*+\\/0-9=?A-Z^_`a-z{|}~]+\.[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+$')).test(s); }
 
