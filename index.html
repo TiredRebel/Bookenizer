@@ -70,12 +70,12 @@
 <script type="text/javascript" src="/scripts/debug/xcommon.js"></script>
 <script type="text/javascript" src="/scripts/models.js"></script>
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>
-<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>-->
+<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>-->
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>
 <script type="text/javascript">
     (function(defLanguage) {
         var layoutTypes={INIT:0,SEARCH:1,PROFILE:2,HOTELCARD:3};
-        var xGallery, xMapa, xSignIn;
+        var  xSignIn;//xGallery, xMapa, xApt;
 
 
         //function
@@ -748,6 +748,7 @@
                         getTemplate("ro_item_tmpl");
                         getTemplate("gallery_tmpl");
                         getTemplate("mapa_tmpl");
+                        getTemplate("apt_gallery_template");
                         getTemplate("calc_template");
                         getTemplate("hc_contacts_tmpl",true);
                         getTemplate("dl-item-tmpl",true);
@@ -809,12 +810,19 @@
                             ratingsDiv.append(ich.ro_ratings_tmpl(hi));
                             ich.gallery_tmpl(hi).insertAfter(footerDiv);
                             ich.mapa_tmpl(hotelItem).insertAfter(footerDiv);
+                            ich.apt_gallery_template().insertAfter(footerDiv);
                             GmapInit();
                             $("div.gallery > a.nou:first").addClass("current")
                         });
-                        xGallery = new iGallery({id:"#galleryform", btActivator:"#bt_showgallery", btActivatorAlt:"#bt_showgalleryAlt", btAction:"#galleryform a.close"});
-                        xMapa = new iMapa({id:"#mapaform", btActivator:"#bt_showmap", btAction:"#mapaform a.close"});
-                        //xSignIn = new iSignIn({id:"#loginform", btActivator:"#bt_login", btRegister:"#bt_register", btAction:"#bt_login_action",  pre:"#lp", idMail:"#mail", idPass:"#pass", idPassOpen:"#pass_open"});
+                        var xGallery = new iGallery({id:"#galleryform", btActivator:"#bt_showgallery", btActivatorAlt:"#bt_showgalleryAlt", btAction:"#galleryform a.close"});
+                        var xMapa = new iMapa({id:"#mapaform", btActivator:"#bt_showmap", btAction:"#mapaform a.close"});
+                        var apt_gallery=$("table.price > tbody > tr > td > a[id^=bt_showapt]").bind('click',function(e){
+                            var targetName=e.target.id.split('_');
+                            var targetId=targetName[targetName.length-1];
+                            var xApt = new iGallery({id:"#apt".concat(targetId,"form"), btActivator:'#'.concat(e.target.id), btAction:"#apt".concat(targetId,"form a.close"), aptId:targetId});
+                            xApt.show();
+                            return false;
+                        });
                         return self;
                     }
                 }

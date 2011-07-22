@@ -30,7 +30,7 @@
         <tbody>
             {{#RoomCategories}}
                 {{#roomCategoryList}}
-                    <tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showapt{{hcRoomCategory}}gallery">{{name}}</a></td><td class="price">{{#hcPrice}}{{minPrice}}{{/hcPrice}}</td></tr>
+                    <tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showaptgallery_{{hcRoomCategory}}">{{name}}</a></td><td class="price">{{#hcPrice}}{{minPrice}}{{/hcPrice}}</td></tr>
                 {{/roomCategoryList}}
             {{/RoomCategories}}
 		</tbody>
@@ -245,4 +245,101 @@
 					</div>
 
 				</form>
+</script>
+<script type="text/html" id="apt_gallery_template">
+<!-- apartments photos galleries -->
+<div class="fdialog gallerydialog aptform" id="apt1form" rel="1">
+	<div class="image">
+		<img class="current" src="files/hotels/2/1.jpg" />
+		<img class="preload" src="files/hotels/2/1.jpg" />
+	</div>
+
+	<div class="imagedescr">
+		<h3>Single</h3>
+		<div class="price">EUR 450 per night</div>
+
+		<div class="gallery">
+			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou current">
+				<img src="files/hotels/2/tn/1.jpg" />
+			</a>
+			<a href="files/hotels/2/2.jpg" rel="files/hotels/2/2.jpg" class="nou">
+				<img src="files/hotels/2/tn/2.jpg" />
+			</a>
+			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou">
+				<img src="files/hotels/2/tn/1.jpg" />
+			</a>
+			<a href="files/hotels/2/2.jpg" rel="files/hotels/2/2.jpg" class="nou">
+				<img src="files/hotels/2/tn/2.jpg" />
+			</a>
+			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou">
+				<img src="files/hotels/2/tn/1.jpg" />
+			</a>
+			<a href="files/hotels/2/2.jpg" rel="files/hotels/2/2.jpg" class="nou">
+				<img src="files/hotels/2/tn/2.jpg" />
+			</a>
+			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou">
+				<img src="files/hotels/2/tn/1.jpg" />
+			</a>
+			<a href="files/hotels/2/2.jpg" rel="files/hotels/2/2.jpg" class="nou">
+				<img src="files/hotels/2/tn/2.jpg" />
+			</a>
+			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou">
+				<img src="files/hotels/2/tn/1.jpg" />
+			</a>
+			<a href="files/hotels/2/2.jpg" rel="files/hotels/2/2.jpg" class="nou">
+				<img src="files/hotels/2/tn/2.jpg" />
+			</a>
+			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou">
+				<img src="files/hotels/2/tn/1.jpg" />
+			</a>
+			<a href="files/hotels/2/2.jpg" rel="files/hotels/2/2.jpg" class="nou">
+				<img src="files/hotels/2/tn/2.jpg" />
+			</a>
+			<div class="clearer"></div>
+		</div>
+
+		<div class="descr">
+			<p>Here comes that particular apartment description.</p>
+			<p>Tell the user about how nice is the landscape and how soft are beds etc.</p>
+		</div>
+
+		<div class="links">
+			<p class="available"><span class="yes number">7</span> <span class="yes">available</span> for chosen period</p>
+			<p class="unavailable"><span class="no">Not available</span> for chosen period.<br />Try another room type.</p>
+			<p><span class="available"><a href="main-hotelcard.html#" class="noreload add2order">Add to order</a> / </span>
+
+			<span class="host subscribehost"><a href="main-hotelcard.html#" class="bt_subscribe noreload">Subscribe to this offer</a>
+
+				<form class="subscribeform" action="../"><div class="container">
+					<input type="text" name="mail" class="subscribe_mail login" value="E-mail" defvalue="E-mail" />
+
+					<select name="periodic">
+						<option value="1">Daily</option>
+						<option value="2" selected="selected">Weekly</option>
+						<option value="3">Monthly</option>
+					</select>
+
+
+					<div class="diags">
+						<p class="sp_def">Get an actual search results to your E-mail. You can cancel subscription at any time using a link in confirmation or subscription letters.</p>
+						<p class="sp_signed_in">Get an actual search results to your E-mail. You can cancel subscription at any time using a link in subscription letters.</p>
+						<p class="sp_bad_mail">The specified e-mail seems to be incorrect. Please check it and try again.</p>
+						<p class="sp_no_mail">Please enter the valid e-mail address you wish to receive offers. We will send you a link to continue the subscription.</p>
+						<p class="sp_success">Subscription successful.<br />A confirmation letter has been sent to you. Please use provided links to confirm or cancel subscription.</p>
+					</div>
+
+					<p><a href="main-hotelcard.html#" class="bt_subscribe_action noreload" title="Subscribe to this search results">Subscribe</a></p>
+					<div class="clearer"></div>
+				</div></form>
+
+			</span>
+
+			</p>
+<!--			<p><a href="#" class="noreload close">Close window</a></p>-->
+		</div>
+
+	</div>
+	<div class="clearer"></div>
+	<a href="main-hotelcard.html#" class="close xclose" title="Close gallery"><span>Close</span></a>
+</div>
 </script>
