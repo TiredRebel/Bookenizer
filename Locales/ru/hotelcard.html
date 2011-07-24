@@ -106,8 +106,6 @@
     {{/Rating}}
 </script>
 
-
-
 <script type="text/html" id="gallery_tmpl">
 <!-- common hotel photos gallery -->
 <div class="fdialog gallerydialog" id="galleryform">
@@ -121,7 +119,9 @@
 		<div class="gallery">
             {{#Photos}}
                 {{#photoList}}
-                    {{#hcPhotoId}}{{large}}{{/hcPhotoId}}
+                    <a href="{{large}}" rel="{{large}}" class="nou">
+				        <img src="{{small}}" />
+			        </a>
                 {{/photoList}}
 			{{/Photos}}
 			<div class="clearer"></div>
@@ -166,6 +166,7 @@
 	<a href="main-hotelcard.html#" class="close xclose" title="Close map"><span>Close</span></a>
  </div>
 </script>
+
 <script type="text/html" id="calc_template">
 				<h2>Order now</h2>
 				<form action="../" id="orderform">
@@ -246,61 +247,32 @@
 
 				</form>
 </script>
+
 <script type="text/html" id="apt_gallery_template">
 <!-- apartments photos galleries -->
-<div class="fdialog gallerydialog aptform" id="apt1form" rel="1">
-	<div class="image">
+    <div class="fdialog gallerydialog aptform" id="apt{{targetId}}form" rel="{{targetId}}">
+	<div class="image" id="aptgalimg_{{targetId}}">
 		<img class="current" src="files/hotels/2/1.jpg" />
 		<img class="preload" src="files/hotels/2/1.jpg" />
 	</div>
 
 	<div class="imagedescr">
-		<h3>Single</h3>
-		<div class="price">EUR 450 per night</div>
+		<h3>{{name}}</h3>
+		<div class="price">{{currency}}&nbsp;{{minPrice}} per night</div>
 
 		<div class="gallery">
-			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou current">
-				<img src="files/hotels/2/tn/1.jpg" />
-			</a>
-			<a href="files/hotels/2/2.jpg" rel="files/hotels/2/2.jpg" class="nou">
-				<img src="files/hotels/2/tn/2.jpg" />
-			</a>
-			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou">
-				<img src="files/hotels/2/tn/1.jpg" />
-			</a>
-			<a href="files/hotels/2/2.jpg" rel="files/hotels/2/2.jpg" class="nou">
-				<img src="files/hotels/2/tn/2.jpg" />
-			</a>
-			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou">
-				<img src="files/hotels/2/tn/1.jpg" />
-			</a>
-			<a href="files/hotels/2/2.jpg" rel="files/hotels/2/2.jpg" class="nou">
-				<img src="files/hotels/2/tn/2.jpg" />
-			</a>
-			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou">
-				<img src="files/hotels/2/tn/1.jpg" />
-			</a>
-			<a href="files/hotels/2/2.jpg" rel="files/hotels/2/2.jpg" class="nou">
-				<img src="files/hotels/2/tn/2.jpg" />
-			</a>
-			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou">
-				<img src="files/hotels/2/tn/1.jpg" />
-			</a>
-			<a href="files/hotels/2/2.jpg" rel="files/hotels/2/2.jpg" class="nou">
-				<img src="files/hotels/2/tn/2.jpg" />
-			</a>
-			<a href="files/hotels/2/1.jpg" rel="files/hotels/2/1.jpg" class="nou">
-				<img src="files/hotels/2/tn/1.jpg" />
-			</a>
-			<a href="files/hotels/2/2.jpg" rel="files/hotels/2/2.jpg" class="nou">
-				<img src="files/hotels/2/tn/2.jpg" />
-			</a>
+            {{#Photos}}
+                {{#photoList}}
+                    <a href="{{large}}" rel="{{large}}" class="nou">
+                        <img src="{{small}}" />
+                    </a>
+                {{/photoList}}
+            {{/Photos}}
 			<div class="clearer"></div>
 		</div>
 
 		<div class="descr">
-			<p>Here comes that particular apartment description.</p>
-			<p>Tell the user about how nice is the landscape and how soft are beds etc.</p>
+              {{description}}
 		</div>
 
 		<div class="links">
@@ -333,9 +305,7 @@
 				</div></form>
 
 			</span>
-
 			</p>
-<!--			<p><a href="#" class="noreload close">Close window</a></p>-->
 		</div>
 
 	</div>
@@ -343,3 +313,4 @@
 	<a href="main-hotelcard.html#" class="close xclose" title="Close gallery"><span>Close</span></a>
 </div>
 </script>
+

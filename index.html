@@ -763,6 +763,7 @@
                         _(self.model.toJSON()).each(function(hotelItem) {
                             var currency = hotelItem.currency;
                             var photosCount = hotelItem.Photos.photoList.length;
+                            var categoriesEnum={};
                             var roomIterator = 0;
                             var photoIterator=0;
                             //var geoInfo=getCoordinates();
@@ -786,40 +787,30 @@
                                         return photosCount;
                                     }}, {hcRoomCategory:function() {
                                         return ++roomIterator;
-                                    }},
-                                    {hcPhotoId:function() {
-                                        return function(text, render) {
-                                            var img = render(text);
-                                            if (img.length > 0) {
-                                                var hotelId,imgName,imgPath,arrLen,tnName;
-                                                imgPath = img.split('/');
-                                                arrLen = imgPath.length;
-                                                hotelId = imgPath[arrLen - 2];
-                                                imgName = imgPath[arrLen - 1];
-                                                tnName = "files/hotels/".concat(hotelId, "/", imgName);
-                                                return "<a href='" + tnName + "' rel='" + tnName + "' class='nou'><img src='files/hotels/" + hotelId + "/tn/" + imgName + "' /></a>";
-                                            } else {
-                                                //No image;
-                                                return "";
-                                            }
-                                        }
-                                    }
-                                    });
+                                    }});
                             calcHolder.append(ich.calc_template());
                             hotelDiv.append(ich.ro_item_tmpl(hotelItem));
                             ratingsDiv.append(ich.ro_ratings_tmpl(hi));
                             ich.gallery_tmpl(hi).insertAfter(footerDiv);
                             ich.mapa_tmpl(hotelItem).insertAfter(footerDiv);
-                            ich.apt_gallery_template().insertAfter(footerDiv);
                             GmapInit();
                             $("div.gallery > a.nou:first").addClass("current")
                         });
                         var xGallery = new iGallery({id:"#galleryform", btActivator:"#bt_showgallery", btActivatorAlt:"#bt_showgalleryAlt", btAction:"#galleryform a.close"});
                         var xMapa = new iMapa({id:"#mapaform", btActivator:"#bt_showmap", btAction:"#mapaform a.close"});
                         var apt_gallery=$("table.price > tbody > tr > td > a[id^=bt_showapt]").bind('click',function(e){
+                            var arrImages;
                             var targetName=e.target.id.split('_');
                             var targetId=targetName[targetName.length-1];
+                            var attribs=self.model.models[0].attributes;
+                            var obj=attribs.RoomCategories.roomCategoryList[targetId-1];
+                            if(obj!==null && obj!==undefined){
+                                _.extend(obj,{targetId:targetId},{currency:attribs.currency});
+                            }
+                            ich.apt_gallery_template(obj).insertAfter(footerDiv);
                             var xApt = new iGallery({id:"#apt".concat(targetId,"form"), btActivator:'#'.concat(e.target.id), btAction:"#apt".concat(targetId,"form a.close"), aptId:targetId});
+                            $("#aptgalimg_"+targetId+" > img").attr("src",obj.MainPhoto.large);
+                            $("div.gallery > a.nou:first").addClass("current")
                             xApt.show();
                             return false;
                         });
