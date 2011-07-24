@@ -75,7 +75,7 @@
 <script type="text/javascript">
     (function(defLanguage) {
         var layoutTypes={INIT:0,SEARCH:1,PROFILE:2,HOTELCARD:3};
-        var  xSignIn;//xGallery, xMapa, xApt;
+        var  xSignIn;
 
 
         //function
@@ -809,6 +809,7 @@
                             }
                             ich.apt_gallery_template(obj).insertAfter(footerDiv);
                             var xApt = new iGallery({id:"#apt".concat(targetId,"form"), btActivator:'#'.concat(e.target.id), btAction:"#apt".concat(targetId,"form a.close"), aptId:targetId});
+                            var xSubscribe = new iSubscribe({id:"#apt"+targetId+"form .subscribeform", btActivator:"#apt"+targetId+"form .bt_subscribe", btAction:"#apt"+targetId+"form .bt_subscribe_action", pre:".sp", idMail:"#apt"+targetId+"form .subscribe_mail", parent:xApt});
                             $("#aptgalimg_"+targetId+" > img").attr("src",obj.MainPhoto.large);
                             $("div.gallery > a.nou:first").addClass("current")
                             xApt.show();
@@ -1046,8 +1047,6 @@
                 flash: '/scripts/debug/jStore.Flash.html',
                 json: '/scripts/debug/json2.js'
             };
-            //xData.user = {id:123, name:"Konstantinopulo"};
-
 
             //jStore.init('bookenizer', jStoreConfig, jStore.flavors.flash).engineReady(function (engine){
                 var config=new Configuration();

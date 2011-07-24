@@ -138,7 +138,7 @@ switchHotellist = function (s) {
 
 	return false;
 }
-
+/*
 switchSearchtype = function (s) {
 	var v = $("#searchbar form.advanced .dest").attr("defValue");
 	var sta = ((s == "quick") || ($("#searchbar form.quick").css('display') == "none")) ? "advanced" : "quick";
@@ -189,7 +189,7 @@ switchSearchtype = function (s) {
 
 	return false;
 }
-
+*/
 
 /*  (x) Sb, 2k8
  * ---------------------------------------------------------------------------
@@ -379,10 +379,15 @@ log("iDlg.init", this, $(this.btActivator).length);
  */
 
 iSubscribe = function (params) {
-	var name = xData.user && xData.user.name;
+    if(xData.user!==null && xData.user!==undefined){
+        var name = xData.user && xData.user.name;
 
-	if (!params.ph && name)
-		params.ph = "signed_in";
+        if (!params.ph && name){
+            params.ph = "signed_in";
+        }
+    }else{
+      params.ph = "not_signed_in";
+    }
 
 	this.superClass.init.call(this, params);
 	$(this.idMail).click(this.processInputClick).focus(this.processInputClick).blur(this.processInputBlur);
