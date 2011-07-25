@@ -1,6 +1,7 @@
 <script type="text/html" id="hotelcard_tmpl">
     <div class="hotel info-1"></div>
     <div class="hotel info-2"></div>
+    <div id="reviewsCache"></div>
 </script>
 <script type="text/html" id="ro_item_tmpl">
     <div class="stars stars-{{stars}}"><span></span></div>
@@ -80,12 +81,15 @@
      {{>user_rating_tmpl}}
 
     <h3>Visitors’ reviews</h3>
+    <span id="reviewsHolder"></span>
+    <div id="srPager" class="paging"></div>
+</script>
+<script type="text/html" id="reviews_tmpl">
      {{#Reviews}}
         {{#reviewList}}
             {{>user_review_tmpl}}
         {{/reviewList}}
     {{/Reviews}}
-
 </script>
 <script type="text/html" id="user_review_tmpl" class="partial">
 <div class="comment">
@@ -95,6 +99,7 @@
     <p class="author">{{author}} from {{#GeoLocation}}{{city}}, {{country}}{{/GeoLocation}}</p>
 </div>
 </script>
+
 <script type="text/html" id="user_rating_tmpl" class="partial">
     {{#Rating}}
     <h3>Rating<span>

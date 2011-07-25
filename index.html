@@ -70,15 +70,13 @@
 <script type="text/javascript" src="/scripts/debug/xcommon.js"></script>
 <script type="text/javascript" src="/scripts/models.js"></script>
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>
-<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>-->
+<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>-->
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>
 <script type="text/javascript">
     (function(defLanguage) {
         var layoutTypes={INIT:0,SEARCH:1,PROFILE:2,HOTELCARD:3};
         var  xSignIn;
 
-
-        //function
         var setSearchParameters=function(searchType){
             var cityId=getCriteriaValue("cityId");
             if(cityId<=0){
@@ -149,7 +147,15 @@
             }
             return null;
         };
+        /*
+        var storeReviews=function(objReviews){
+            $.data("#reviewsCache",JSON.stringify(objReviews));
+        };
 
+        var getReviews=function(){
+
+        };
+        */
         var setLayout=function(layout){
              switch(layout){
                  case layoutTypes.INIT:
@@ -233,6 +239,10 @@
           }else{
               _.extend(window._configuration.get("searchCriteria"),{offset:(page_index*hotelsCount)});
           }
+        };
+
+        var handleReviewsPagination=function(page_index, jq){
+            debugger;
         };
 
         var HotelsList=Backbone.Collection.extend({
@@ -320,8 +330,6 @@
               return true;
             }
         });
-
-
 
         var Statistics=Backbone.Collection.extend({
             model:Statistic,
@@ -696,7 +704,6 @@
              var hotelCount=self.model.hotelsCount;
              var offerCount=self.model.offersCount;
              _(jsonModel).each(function(hotelItem){
-                //console.log(hotelItem);
                 self.el.append(ich.hotellist_item_tmpl(hotelItem));
              });
              return self;
@@ -722,7 +729,6 @@
                         var hotelCount = self.model.hotelsCount;
                         var offerCount = self.model.offersCount;
                         _(jsonModel).each(function(hotelItem) {
-                            //console.log(hotelItem);
                             hotelDiv.append(ich.hotellist_item_tmpl(hotelItem));
                         });
                         $("#srPager").pagination(hotelCount, {items_per_page:5, prev_text:"←", next_text:"→",callback:handlePaginationClick});
@@ -753,6 +759,7 @@
                         getTemplate("hc_contacts_tmpl",true);
                         getTemplate("dl-item-tmpl",true);
                         getTemplate("ro_ratings_tmpl");
+                        getTemplate("reviews_tmpl");
                         getTemplate("user_review_tmpl",true);
                         getTemplate("user_rating_tmpl",true);
                         self.el.html(ich.hotelcard_tmpl());
@@ -760,12 +767,15 @@
                         var ratingsDiv=$(".info-2",self.el);
                         var footerDiv=$("#footer");
                         var calcHolder=$("#calcHolder");
+                        var reviewsHolder;
+                        var reviews={};
                         _(self.model.toJSON()).each(function(hotelItem) {
                             var currency = hotelItem.currency;
                             var photosCount = hotelItem.Photos.photoList.length;
                             var categoriesEnum={};
                             var roomIterator = 0;
                             var photoIterator=0;
+                            _.extend(reviews,{Reviews:hotelItem.Reviews});
                             //var geoInfo=getCoordinates();
                             var hi = _.extend(hotelItem, {calc:function() {
                                         return function(text, render) {
@@ -793,9 +803,37 @@
                             ratingsDiv.append(ich.ro_ratings_tmpl(hi));
                             ich.gallery_tmpl(hi).insertAfter(footerDiv);
                             ich.mapa_tmpl(hotelItem).insertAfter(footerDiv);
-                            GmapInit();
-                            $("div.gallery > a.nou:first").addClass("current")
+                            reviewsHolder=$("#reviewsHolder");
                         });
+                        GmapInit();
+                        $("div.gallery > a.nou:first").addClass("current");
+                        _.extend(reviews,{calc:function() {
+                                        return function(text, render) {
+                                            var arg = 8;
+                                            try {
+                                                arg = parseFloat(render(text));
+                                                if (arg > 8)
+                                                    arg = 8;
+                                            } catch(e) {
+                                                arg = 8;
+                                            }
+                                            return parseInt(arg * 12.5)
+                                        };
+                                    }});
+                        $("#reviewsCache").data('reviews',reviews);
+                        var revs=$("#reviewsCache").data('reviews');
+                        $("#srPager").pagination(revs.Reviews.reviewList.length, {load_first_page:true, items_per_page:2, prev_text:"←", next_text:"→",callback:function(page_index,jq){
+                            var self=this;
+                            var dataLength=revs.Reviews.reviewList.length;
+                            var max_elem=Math.min((page_index+1)*self.items_per_page,dataLength);
+                            var tempReviews= $.extend(true,{},revs);
+                            tempReviews.Reviews.reviewList=[];
+                            for(var i=page_index*self.items_per_page;i<max_elem;i++){
+                                 tempReviews.Reviews.reviewList.push($.extend({},revs.Reviews.reviewList[i]));
+                            }
+                            reviewsHolder.html(ich.reviews_tmpl(tempReviews));
+                        }});
+
                         var xGallery = new iGallery({id:"#galleryform", btActivator:"#bt_showgallery", btActivatorAlt:"#bt_showgalleryAlt", btAction:"#galleryform a.close"});
                         var xMapa = new iMapa({id:"#mapaform", btActivator:"#bt_showmap", btAction:"#mapaform a.close"});
                         var apt_gallery=$("table.price > tbody > tr > td > a[id^=bt_showapt]").bind('click',function(e){
