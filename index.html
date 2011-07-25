@@ -848,8 +848,12 @@
                             ich.apt_gallery_template(obj).insertAfter(footerDiv);
                             var xApt = new iGallery({id:"#apt".concat(targetId,"form"), btActivator:'#'.concat(e.target.id), btAction:"#apt".concat(targetId,"form a.close"), aptId:targetId});
                             var xSubscribe = new iSubscribe({id:"#apt"+targetId+"form .subscribeform", btActivator:"#apt"+targetId+"form .bt_subscribe", btAction:"#apt"+targetId+"form .bt_subscribe_action", pre:".sp", idMail:"#apt"+targetId+"form .subscribe_mail", parent:xApt});
-                            $("#aptgalimg_"+targetId+" > img").attr("src",obj.Photos.photoList[0].large);
-                            $("div.gallery > a.nou:first").addClass("current")
+                            try{
+                                $("#aptgalimg_"+targetId+" > img").attr("src",obj.Photos.photoList[0].large);
+                                $("div.gallery > a.nou:first").addClass("current");
+                            }catch(e){
+                                //log no photo
+                            }
                             xApt.show();
                             return false;
                         });
