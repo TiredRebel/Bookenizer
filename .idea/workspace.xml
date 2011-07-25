@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/ru/hotelcard.html" afterPath="$PROJECT_DIR$/Locales/ru/hotelcard.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/debug/jquery.pagination.js" afterPath="$PROJECT_DIR$/scripts/debug/jquery.pagination.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/pagination.css" afterPath="$PROJECT_DIR$/styles/pagination.css" />
     </list>
     <list id="4bdcc2f4-00d6-40ee-b450-34d69268308a" name="On master: Uncommitted changes before update operation at 23.04.11 21:06(cherry picked from commit a54405b3371eb181076ef0b1b00a85e6f0cc83ed)" comment="" />
     <list id="f8743774-3083-4128-93cb-73ea72964036" name="Issue #1 resolved(cherry picked from commit b98609113446ae548597b1d8aadba447885a6ecc)" comment="" />
@@ -36,7 +33,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="822" column="24" selection-start="35348" selection-end="35348" vertical-scroll-proportion="0.69756097">
+            <state line="74" column="91" selection-start="3535" selection-end="3535" vertical-scroll-proportion="0.46896553">
               <folding />
             </state>
           </provider>
@@ -45,7 +42,7 @@
       <file leaf-file-name="jquery.pagination.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.pagination.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="212" column="43" selection-start="8879" selection-end="8883" vertical-scroll-proportion="-10.96">
+            <state line="212" column="43" selection-start="8879" selection-end="8883" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -54,7 +51,7 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="73" selection-start="2004" selection-end="2005" vertical-scroll-proportion="-6.27451">
+            <state line="48" column="73" selection-start="2004" selection-end="2005" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -63,7 +60,7 @@
       <file leaf-file-name="xcommon.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/debug/xcommon.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="390" column="4" selection-start="10351" selection-end="10351" vertical-scroll-proportion="-26.08">
+            <state line="390" column="4" selection-start="10351" selection-end="10351" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -72,7 +69,7 @@
       <file leaf-file-name="hotelcard.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/ru/hotelcard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="4" selection-start="3069" selection-end="3069" vertical-scroll-proportion="-13.730769">
+            <state line="84" column="4" selection-start="3069" selection-end="3069" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -279,16 +276,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="186" />
-    <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1094" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1096" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1094" />
+    <property name="DefaultHtmlFileTemplate" value="Html" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="185" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="179" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" promptOnRemoteOverwrite="CHECK_TIMESTAMP" serverName="Linode" serverId="f6f47fce-9f6f-4dd6-b5cb-6dd4be495821">
     <servers>
@@ -400,15 +397,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32931727" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32931727" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296845" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1913815" sideWeight="0.24410541" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2234385" sideWeight="0.6706827" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22665808" sideWeight="0.6706827" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32931727" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -417,6 +413,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32797858" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24951768" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -447,7 +444,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Room type dialog 98% finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Paging for user reviews finished. New jquery pagination library attached." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -460,7 +457,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="half-finished search result sorting. TODO: Notify Dennis about bug with dates handling(they are not displayed in tomcat's log)" />
     <MESSAGE value="Refactored config and defaults" />
     <MESSAGE value="Refactored data retrieving procedures" />
     <MESSAGE value="Search 90% complete." />
@@ -485,6 +481,7 @@
     <MESSAGE value="Room categories popup template started(only first)" />
     <MESSAGE value="Gmap key for deploy changed" />
     <MESSAGE value="Room type dialog 98% finished" />
+    <MESSAGE value="Paging for user reviews finished. New jquery pagination library attached." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -512,84 +509,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.rest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/debug/json2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.9833333">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.9833333" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Layouts/layoutSearchResult.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Layouts/layoutInit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/styles/pagination.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="1" selection-start="531" selection-end="531" vertical-scroll-proportion="0.7083333">
-          <folding />
-        </state>
+        <state line="30" column="1" selection-start="531" selection-end="531" vertical-scroll-proportion="0.7083333" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Locales/en/searchResults.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="72" selection-start="3154" selection-end="3154" vertical-scroll-proportion="1.1556535">
+        <state line="51" column="72" selection-start="3154" selection-end="3154" vertical-scroll-proportion="1.1556535" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/ru/hotelcard_original.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="85" selection-start="2930" selection-end="2930" vertical-scroll-proportion="-0.79735684" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.pagination.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="212" column="43" selection-start="8879" selection-end="8883" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="73" selection-start="2004" selection-end="2005" vertical-scroll-proportion="-6.27451">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/ru/hotelcard_original.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="85" selection-start="2930" selection-end="2930" vertical-scroll-proportion="-0.79735684">
+        <state line="48" column="73" selection-start="2004" selection-end="2005" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/debug/xcommon.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="390" column="4" selection-start="10351" selection-end="10351" vertical-scroll-proportion="-26.08">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.pagination.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="212" column="43" selection-start="8879" selection-end="8883" vertical-scroll-proportion="-10.96">
+        <state line="390" column="4" selection-start="10351" selection-end="10351" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Locales/ru/hotelcard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="4" selection-start="3069" selection-end="3069" vertical-scroll-proportion="-13.730769">
+        <state line="84" column="4" selection-start="3069" selection-end="3069" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="822" column="24" selection-start="35348" selection-end="35348" vertical-scroll-proportion="0.69756097">
+        <state line="74" column="91" selection-start="3535" selection-end="3535" vertical-scroll-proportion="0.46896553">
           <folding />
         </state>
       </provider>
