@@ -70,7 +70,7 @@
             }
             else {
                 lnk = $("<a>" + appendopts.text + "</a>")
-                    .attr('href', this.opts.link_to.replace(/__id__/, page_id));
+                    .attr('href', this.opts.link_to.replace(/__id__/, page_id+1));
             }
             if (appendopts.classes) {
                 lnk.addClass(appendopts.classes);

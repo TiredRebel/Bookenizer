@@ -179,17 +179,14 @@
 					<div class="sideblock opener active orderDates">
 						<h3>Dates</h3>
 						<div class="label">
-							<label><span>from</span><input type="text" name="order_from" id="order_from" class="date" value="22.10.2008" onchange="fixDate(this); xOrder.calcPrice();" /></label>
+							<label><span>from</span><input type="text" name="order_from" id="order_from" class="date" value="31.07.2011" onchange="fixDate(this); xOrder.calcPrice();" /></label>
 						</div>
 						<div class="label">
-							<label><span>to</span><input type="text" name="order_to" id="order_to" class="date" value="24.10.2008" onchange="fixDate(this); xOrder.calcPrice();" /></label>
+							<label><span>to</span><input type="text" name="order_to" id="order_to" class="date" value="02.08.2011" onchange="fixDate(this); xOrder.calcPrice();" /></label>
 							for <span class="search_nights_num">2</span> <span class="search_nights_word">nights</span>
 						</div>
+                         <div class="sideblock"><input type="button" id="findoffers" value="Find an apartment"></div
 						<div class="closer"></div>
-						<!--<script type="text/javascript">
-							 Calendar.setup({ inputField : "order_from", ifFormat : dformat, firstDay :	0, weekNumbers : false, showOthers:true, dateStatusFunc:disableFromDate });
-							 Calendar.setup({ inputField : "order_to", ifFormat : dformat, firstDay : 0, weekNumbers : false, showOthers:true, dateStatusFunc:disableToDate });
-						</script>-->
 					</div>
 
 					<div class="apt-template">
@@ -281,7 +278,14 @@
 		</div>
 
 		<div class="links">
-			<p class="available"><span class="yes number">7</span> <span class="yes">available</span> for chosen period</p>
+            <span id="offersList">
+                <p class="available"><span class="yes number">7</span> <span class="yes">available</span> for chosen period</p>
+                 {{#Offers}}
+                    {{#offerList}}
+                        <div id="offer">с&nbsp;{{dateFrom}}&nbsp;по&nbsp;{{dateTo}}&nbsp;-&nbsp;{{currency}}&nbsp;{{price}}</div>
+                    {{/offerList}}
+                 {{/Offers}}
+            </span>
 			<p class="unavailable"><span class="no">Not available</span> for chosen period.<br />Try another room type.</p>
 			<p><span class="available"><a href="main-hotelcard.html#" class="noreload add2order">Add to order</a> / </span>
 
@@ -318,4 +322,3 @@
 	<a href="main-hotelcard.html#" class="close xclose" title="Close gallery"><span>Close</span></a>
 </div>
 </script>
-

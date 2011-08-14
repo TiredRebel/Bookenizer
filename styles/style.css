@@ -452,7 +452,7 @@ form.searchform div.label {
 	margin:0 36px 20px 0;
 	padding:0;
 	height:25px;
-	line-height:25px;
+	/*line-height:25px;*/
 	border:0 none;
 	color:#000;
 	white-space:nowrap;

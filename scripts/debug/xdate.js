@@ -54,30 +54,29 @@ function fixDate(field) {
 			break;
 
 		case 'order_from':
-		
-			if (!(dfrom = checkDate(field)) || (dfrom.getTime() < today.getTime())) 
+			if (!(dfrom = checkDate(field)) || (dfrom.getTime() < today.getTime()))
 				dfrom = today;
 
-			el.value = dfrom.print(dformat);
+			//el.value = dfrom.print(dformat);
 	
-			if (!(dto = checkDate("order_to")) || (dto.getTime() < dfrom.getTime() + Calendar.Date.DAY)) {
-				dto = new Date(dfrom.getTime() + Calendar.Date.DAY);
+			if (!(dto = checkDate("order_to")) || (dto.getTime() < dfrom.getTime() + dayConst)) {
+				dto = new Date(dfrom.getTime() + dayConst);
 			}
-			document.getElementById("order_to").value = dto.print(dformat);
+			document.getElementById("order_to").value = Calendar.printDate(dto,dformat);
 			
 			break;
 
 		case 'order_to':
 		
-			if (!(dto = checkDate(field)) || (dto.getTime() < today.getTime() + Calendar.Date.DAY))
-				dto = new Date(today.getTime() + Calendar.Date.DAY);
+			if (!(dto = checkDate(field)) || (dto.getTime() < today.getTime() + dayConst))
+				dto = new Date(today.getTime() + dayConst);
 
-			el.value = dto.print(dformat);
+			//el.value = dto.print(dformat);
 	
-			if (!(dfrom = checkDate("order_from")) || (dfrom.getTime() > dto.getTime() - Calendar.Date.DAY)) {
-				dfrom = new Date(dto.getTime() - Calendar.Date.DAY);
+			if (!(dfrom = checkDate("order_from")) || (dfrom.getTime() > dto.getTime() - dayConst)) {
+				dfrom = new Date(dto.getTime() - dayConst);
 			}
-			document.getElementById("order_from").value = dfrom.print(dformat);
+			document.getElementById("order_from").value = Calendar.printDate(dfrom,dformat);
 			
 			break;
 

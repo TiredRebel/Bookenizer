@@ -755,7 +755,6 @@ iGallery.prototype.phase = function(p) {
 
 iGallery.prototype.show = function(e) {
 	var self = (e && e.data && e.data.self) || this, temp;
-
 	self.centerMe();
 /*
 	if (self.aptId && xData.apt[self.aptId]) {
@@ -882,7 +881,6 @@ iArray.prototype = {
 		this.__ = u;
 		this.__max = 0;
 		this.__assoc = false;
-
 		if (params)
 			for (var i in params)
 				if (typeof(params[i]) != "function")
@@ -981,7 +979,6 @@ iOrder = function (params) {
 iOrder.prototype = {
 
 	init : function (params) {
-
 		if (params)
 			for (var i in params)
 				if (typeof(params[i]) != "function")
