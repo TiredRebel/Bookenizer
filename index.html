@@ -1075,6 +1075,7 @@ $.webshims.polyfill('lightweight');
                                   });
                               });
                              fillCalcData(_configuration.get("offers").toJSON());
+                             fixDate($("#order_to"));
                              calcHolder.empty().html(ich.calc_template());
                              cal=initCalcCalendar();
                              xOrder= new iOrder({id:"#orderblock", btActivator:".add2order"});

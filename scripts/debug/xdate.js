@@ -67,7 +67,6 @@ function fixDate(field) {
 			break;
 
 		case 'order_to':
-		
 			if (!(dto = checkDate(field)) || (dto.getTime() < today.getTime() + dayConst))
 				dto = new Date(today.getTime() + dayConst);
 
