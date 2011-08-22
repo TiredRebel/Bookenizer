@@ -72,8 +72,8 @@
 <script type="text/javascript" src="/scripts/debug/xcommon.js"></script>
 <script type="text/javascript" src="/scripts/models.js"></script>
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>
-<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>-->
+<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>-->
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>
 <script type="text/javascript">
 //$.webshims.setOptions('datepicker', { dateFormat: 'dd.mm.yy'});
 //$.webshims.debug=true;
@@ -159,31 +159,49 @@ $.webshims.polyfill('lightweight');
             return store;
         })(caching || {});
 
-         /*xData.meals = new iArray({
-                            0:{name:"No Meals", price:0 },
-                            1:{name:"Half Meals", price:10 },
-                            2:{name:"Full Meals", price:20 }
-                        });
 
-                        xData.order = new iArray({
-                            1:{type:1, num:2, extrabeds:1},
-                            2:{type:3, num:1, extrabeds:0},
-                            3:{type:2, num:1, extrabeds:0},
-                            meals:{type:1, persons:2}
-                        });*/
+
+        var fillMealsPrice=function(mealItem){
+            var index=0;
+          _.each(mealItem,function(m){
+                var ms={name:"",price:0,sysId:""};
+                ms.name=m.displayName;
+                ms.price=Number(m.price);
+                ms.sysId=m.meal;
+                xData.meals.addIndex(++index,ms);
+          });
+        }
 
         var fillCalcData=function(hotelItem){
-           /* var index=0;
-            _.each(hotelItem.RoomCategories.roomCategoryList,function(obj,i){
-                var roomObject={};
-                var extrabeds=[];
-                _.extend(roomObject,{name:obj.name});
-                _.each(obj.Offers.offerList,function(offer,n){
-                      extrabeds.push({num:offer.offerId,price:offer.extraBedPrice});
-                });
-                _.extend(roomObject,{avail:offer.ountAvailable,extrabeds:extrabeds,price:offer.price});
-                 xData.apt.addIndex(index++,roomObject);
-            });*/
+            var index=0,rcl;
+            if(hotelItem.MealPrice!==undefined){
+                fillMealsPrice(hotelItem.MealPrice.mealPriceItemList);
+            }
+            if(hotelItem.RoomCategories!==undefined){
+                rcl=hotelItem.RoomCategories.roomCategoryList;
+            }else{
+                rcl=hotelItem[0].roomCategoryList;
+            }
+            _.each(rcl,function(r){
+                  var roomObject={
+                      categoryId:-1,
+                      name:"",
+                      avail:0,
+                      price:0,
+                      extrabeds:{num:0,price:0}
+                  };
+                  roomObject.categoryId=r.categoryId;
+                  roomObject.name=r.name;
+                  if(r.Offers.offerList.length>0){
+                      roomObject.avail=r.Offers.offerList.length;
+                      _.each(r.Offers.offerList,function(o){
+                           roomObject.price+=Number(o.price);
+                           roomObject.extrabeds.num=Number(o.countAvailable);
+                           roomObject.extrabeds.price=Number(o.extraBedPrice);
+                      });
+                  }
+                xData.apt.addIndex(++index,roomObject);
+            });
         };
 
         var updateSearchCriteria=function(fieldName,data){
@@ -207,25 +225,28 @@ $.webshims.polyfill('lightweight');
         };
 
         var setLayout=function(layout){
+            var dfr=$.Deferred();
              switch(layout){
                  case layoutTypes.INIT:
                  case layoutTypes.PROFILE:
                  case layoutTypes.SEARCH:
                         getContent("/Layouts/layoutSearchResult.html",$("#main"));
+                        dfr.resolve();
                         break;
                  case layoutTypes.HOTELCARD:
                         getContent("/Layouts/layoutHotelCard.html",$("#main"));
+                            dfr.resolve();
                         break;
                  default:
+                    dfr.resolve();
                     break;
              }
+            return dfr.promise();
         };
 
         var getContent=function(url,elemToLoad){
-            var dfd=$.Deferred();
             elemToLoad.empty();
-            elemToLoad.load(url, function(){dfd.resolve();});
-            return dfd.promise();
+            elemToLoad.load(url);
         };
 
         var suggestor=function(){
@@ -242,6 +263,7 @@ $.webshims.polyfill('lightweight');
             var cal=Calendar.setup( {selectionType : Calendar.SEL_MULTIPLE, timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){fixDate(this.inputField.id);this.hide();}});
             cal.manageFields("dateFrom", "dateFrom", "%d.%m.%Y");
             cal.manageFields("dateTo", "dateTo", "%d.%m.%Y");
+            initCalendar.call(self,{dtStart:{fldName:"#dateFrom"},dtEnd:{fldName:"#dateTo"}});
             cal.setLanguage(curLang);
 
             if(window._configuration.get("searchType")!=='quick'){
@@ -307,9 +329,8 @@ $.webshims.polyfill('lightweight');
                     data:{"id":_configuration.get("searchCriteria").hotelId,"dateFrom":_configuration.get("searchCriteria").dateFrom,"dateTo":_configuration.get("searchCriteria").dateTo,"language":args.curLang},
                     type:"GET",
                     success:function(offers){
-                        debugger;
                         self.refresh(offers);
-                        dfr.resolve();
+                        dfr.resolveWith(offers);
                     }
                 });
                 return dfr.promise();
@@ -486,28 +507,46 @@ $.webshims.polyfill('lightweight');
         }
 
         var initMainTemplate=function(){
-            var dfd=$.Deferred();
             $("#ltemplate").load(this.mainTemplateUrl(),function(){
                     $("body").attr("class","").addClass("popular");
-                    dfd.resolve();
                 });
-            return dfd.promise();
         };
+
+        var initCalendar=function(dts){
+            var dtStart,dtEnd,srcCriteria;
+            srcCriteria=_configuration.get("searchCriteria");
+            if(srcCriteria.dateFrom!==undefined && srcCriteria.dateFrom!==""){
+                dtStart=Calendar.parseDate(srcCriteria.dateFrom,false);
+                dtEnd=Calendar.parseDate(srcCriteria.dateTo,false);
+            }else{
+                dtStart=_configuration.get("curDate");
+                dtEnd=_configuration.get("dayNext");
+            }
+            $(dts.dtStart.fldName).val(Calendar.printDate(dtStart,"%d.%m.%Y"));
+            $(dts.dtEnd.fldName).val(Calendar.printDate(dtEnd,"%d.%m.%Y"));
+        };
+
+        var initCalcCalendar=function(){
+            var cal=Calendar.setup( {selectionType : Calendar.SEL_MULTIPLE, timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){fixDate(this.inputField.id);this.hide();}});
+             initCalendar.call(self,{dtStart:{fldName:"#order_from"},dtEnd:{fldName:"#order_to"}});
+             cal.manageFields("order_from", "order_from", "%d.%m.%Y");
+             cal.manageFields("order_to", "order_to", "%d.%m.%Y");
+             cal.setLanguage(_configuration.get("lang"));
+            return cal;
+        }
 
         var initApplication=function(){
             var self=this;
-            $.when(initMainTemplate.call(self)).done(function(){
+            $.when(initMainTemplate.call(self)).then(function(){
                  $("#mtemplate").empty();
                 new iApp(self);
-                $("#dateFrom").val(Calendar.printDate(self.get("curDate"),"%d.%m.%Y"));
-                $("#dateTo").val(Calendar.printDate(self.get("dayNext"),"%d.%m.%Y"));
                 Backbone.history.start();
             });
         };
 
         var wait = function(time) {
              return $.Deferred(function(dfd) {
-            setTimeout(dfd.resolve, time);
+            setTimeout(dfd.resolve(), time);
         });
 }
         var argumentsStruct = function(isRefresh, lang, isSearchRequest) {
@@ -546,7 +585,6 @@ $.webshims.polyfill('lightweight');
                     ).then(function(){
                         debugger;
                         if(!args.isRefresh){
-                            //console.log("init applcation with cache empty ds");
                             initApplication.call(self);
                         }else{
                             self.set({"lang":args.curLang});
@@ -874,7 +912,7 @@ $.webshims.polyfill('lightweight');
                         if(self.el!==undefined && self.el.length<1){
                             self.el=$('#hotel_info_holder');
                         }
-                        getTemplate("ro_item_tmpl");
+                        getTemplate("hc_ro_item_tmpl");
                         getTemplate("gallery_tmpl");
                         getTemplate("mapa_tmpl");
                         getTemplate("apt_gallery_template");
@@ -894,13 +932,12 @@ $.webshims.polyfill('lightweight');
                         var calcHolder=$("#orderblock");
                         var reviewsHolder;
                         var reviews={};
-                        xData.apt=new iArray();
-//                        xData.apt = new iArray({
-//                            1:{name:"Single", avail:7, extrabeds:{num:1, price:10}, price:450 },
-//                            2:{name:"Double (Left Wing)", avail:0, extrabeds:{num:2, price:10}, price:750 },
-//                            3:{name:"Double (Right Wing)", avail:3, extrabeds:{num:2, price:10}, price:790 },
-//                            4:{name:"Triple", avail:4, extrabeds:{num:3, price:10}, price:950 }
-//                        });
+                         xData.apt=new iArray();
+                         xData.meals = new iArray();
+                         xData.order = new iArray({
+                            1:{type:1, num:1, extrabeds:0},
+                            meals:{type:1, persons:2}
+                         });
                         _(self.model.toJSON()).each(function(hotelItem) {
                             var currency = hotelItem.currency;
                             var photosCount = hotelItem.Photos.photoList.length;
@@ -932,9 +969,8 @@ $.webshims.polyfill('lightweight');
                                     }}, {hcRoomCategory:function() {
                                         return ++roomIterator;
                                     }});
-                            //calcHolder.append(ich.calc_template());
                             calcHolder.html(ich.calc_template());
-                            hotelDiv.append(ich.ro_item_tmpl(hotelItem));
+                            hotelDiv.append(ich.hc_ro_item_tmpl(hotelItem));
                             ratingsDiv.append(ich.ro_ratings_tmpl(hi));
                             ich.gallery_tmpl(hi).insertAfter(footerDiv);
                             ich.mapa_tmpl(hotelItem).insertAfter(footerDiv);
@@ -978,11 +1014,28 @@ $.webshims.polyfill('lightweight');
                             var attribs=self.model.models[0].attributes;
                             var obj=attribs.RoomCategories.roomCategoryList[targetId-1];
                             if(obj!==null && obj!==undefined){
-                                _.extend(obj,{targetId:targetId},{currency:attribs.currency});
+                                offersCount=obj.Offers.offerList.length;
+                                var price=0,startDate,endDate;
+                                $.each(obj.Offers.offerList,function(i,offer){
+                                    if(i===0){
+                                        startDate=offer.dateFrom;
+                                        endDate=offer.dateTo;
+                                    }else{
+                                        if(startDate>offer.dateFrom){
+                                            startDate=offer.dateFrom;
+                                        }
+                                        if(endDate<offer.dateTo){
+                                            endDate=offer.dateTo;
+                                        }
+                                    }
+                                    debugger;
+                                    price+=parseFloat(offer.price);
+                                });
+                                var offer=_.extend({},{startDate:startDate},{endDate:endDate},{offerPrice:price});
+                                _.extend(obj,{targetId:targetId},{currency:attribs.currency},{offer:offer});
                             }
                             ich.apt_gallery_template(obj).insertAfter(footerDiv);
                             if(obj!==null && obj!==undefined){
-                                offersCount=obj.Offers.offerList.length;
                                 if(offersCount>0){
                                     $("#offersList").show();
                                     $(".number").text(offersCount);
@@ -1004,18 +1057,30 @@ $.webshims.polyfill('lightweight');
                             xApt.show();
                             return false;
                         });
-                         var cal=Calendar.setup( {selectionType : Calendar.SEL_MULTIPLE, timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){fixDate(this.inputField.id);this.hide();}});
+                         /*var cal=Calendar.setup( {selectionType : Calendar.SEL_MULTIPLE, timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){fixDate(this.inputField.id);this.hide();}});
+                         initCalendar.call(self,{dtStart:{fldName:"#order_from"},dtEnd:{fldName:"#order_to"}});
                          cal.manageFields("order_from", "order_from", "%d.%m.%Y");
                          cal.manageFields("order_to", "order_to", "%d.%m.%Y");
-                         cal.setLanguage(_configuration.get("lang"));
-                         $("#findoffers").click(function(){
-                              var args=argumentsStruct.call(_configuration);
-                             $.when(_configuration.get("offers").fetchData(args)).done(function(){
-                                 debugger;
-                             });
+                         cal.setLanguage(_configuration.get("lang")); */
+                        //TODO needs tob refactored!!!
+                        var cal=initCalcCalendar();
+                        var xOrder= new iOrder({id:"#orderblock", btActivator:".add2order"});
+                         $("#findoffers").live('click',function(){
+                             updateSearchCriteria("dateFrom",$("#order_from").val());
+                             updateSearchCriteria("dateTo",$("#order_to").val());
+                             $.when(_configuration.getOffers()).done(function(data){
+                                 xData.apt=new iArray();
+                                 xData.order = new iArray({
+                                    1:{type:1, num:1, extrabeds:0},
+                                    meals:{type:1, persons:2}
+                                  });
+                              });
+                             fillCalcData(_configuration.get("offers").toJSON());
+                             calcHolder.empty().html(ich.calc_template());
+                             cal=initCalcCalendar();
+                             xOrder= new iOrder({id:"#orderblock", btActivator:".add2order"});
                          });
 
-                         //var xOrder= new iOrder({id:"#orderblock", btActivator:".add2order"});
                         return self;
                     }
                 }

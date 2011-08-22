@@ -3,7 +3,7 @@
     <div class="hotel info-2"></div>
     <div id="reviewsCache"></div>
 </script>
-<script type="text/html" id="ro_item_tmpl">
+<script type="text/html" id="hc_ro_item_tmpl">
     <div class="stars stars-{{stars}}"><span></span></div>
     <h1>{{name}}</h1>
 
@@ -31,7 +31,7 @@
         <tbody>
             {{#RoomCategories}}
                 {{#roomCategoryList}}
-                    <tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showaptgallery_{{hcRoomCategory}}">{{name}}</a></td><td class="price">{{#hcPrice}}{{minPrice}}{{/hcPrice}}</td></tr>
+                    <tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showaptgallery_{{hcRoomCategory}}">{{name}}</a></td><td class="price">from&nbsp;{{#hcPrice}}{{minPrice}}{{/hcPrice}}</td></tr>
                 {{/roomCategoryList}}
             {{/RoomCategories}}
 		</tbody>
@@ -280,11 +280,9 @@
 		<div class="links">
             <span id="offersList">
                 <p class="available"><span class="yes number">7</span> <span class="yes">available</span> for chosen period</p>
-                 {{#Offers}}
-                    {{#offerList}}
-                        <div id="offer">с&nbsp;{{dateFrom}}&nbsp;по&nbsp;{{dateTo}}&nbsp;-&nbsp;{{currency}}&nbsp;{{price}}</div>
-                    {{/offerList}}
-                 {{/Offers}}
+                    {{#offer}}
+                    <div id="offer">с&nbsp;{{startDate}}&nbsp;по&nbsp;{{endDate}}&nbsp;-&nbsp;{{currency}}&nbsp;{{offerPrice}}</div>
+                    {{/offer}}
             </span>
 			<p class="unavailable"><span class="no">Not available</span> for chosen period.<br />Try another room type.</p>
 			<p><span class="available"><a href="main-hotelcard.html#" class="noreload add2order">Add to order</a> / </span>
