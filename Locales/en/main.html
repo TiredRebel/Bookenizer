@@ -146,9 +146,9 @@
     <input type="hidden" name="cityId" value="0"/>
     <div class="label">
         <span class="label">1</span>
-        <span class="host"><input type="text" name="city" class="dest" value="City" defValue="City" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine",countryId:1}]' nosubmit/>
+        <span class="host"><input type="text" name="city" required data-errormessage="Hey! You've just entered some weird information here. Check it carefully please!" class="dest" value="City" defValue="City" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine",countryId:1}]' nosubmit/>
             <span class="diags">Sorry, we have no offers for this city</span>
-            <span class="diags" id="error_city">Hey! You've just entered some weird information here. Check it carefully please!</span>
+            <!--<span class="diags" id="error_city">Hey! You've just entered some weird information here. Check it carefully please!</span>-->
         </span>
     </div>
 
@@ -172,9 +172,9 @@
 
     <div class="label">
         <span class="label">Destination</span>
-        <span class="host"><input type="text" name="city" class="dest" value="City" defValue="City" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country: "Ukraine"}]' nosubmit/>
+        <span class="host"><input type="text" required data-errormessage="Hey! You've just entered some weird information here. Check it carefully please!" name="city" class="dest" value="City" defValue="City" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country: "Ukraine"}]' nosubmit/>
         <span class="diags">Sorry, we have no offers for this city</span>
-        <span class="diags" id="error_city">Hey! You've just entered some weird information here. Check it carefully please!</span>
+        <!--<span class="diags" id="error_city">Hey! You've just entered some weird information here. Check it carefully please!</span>-->
 	    </span>
     </div>
 
