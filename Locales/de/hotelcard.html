@@ -7,8 +7,8 @@
     <div class="stars stars-{{stars}}"><span></span></div>
     <h1>{{name}}</h1>
 
-    <p class="noprint"><a href="main-hotelcard.html#" class="noreload">Добавить в избранное</a> / <a
-            href="main-hotelcard.html#" class="noreload" onclick="window.print(); return false;">Print hotel info</a>
+    <p class="noprint"><a href="main-hotelcard.html#" class="noreload">Add to Selected</a> / <a
+            href="main-hotelcard.html#" class="noreload" onclick="window.print(); return false;">Print Hotel Info</a>
     </p>
 
     <div class="contacts" style="display:none;">
@@ -18,26 +18,26 @@
     </div>
 
     <p class="noprint"><a href="main-hotelcard.html#" class="noreload"
-                          onclick="tttemp = this; $('.hotel .contacts').toggle('fast', function(){ $(tttemp).text( ($('.hotel .contacts').css('display') == 'block') ? 'Hide contacts' : 'Show contacts') }); return false;">Show
-        contacts</a> /
-        <a href="main-hotelcard.html#" class="noreload" id="bt_showmap">Show map</a></p>
+                          onclick="tttemp = this; $('.hotel .contacts').toggle('fast', function(){ $(tttemp).text( ($('.hotel .contacts').css('display') == 'block') ? 'Hide Kontakte' : 'Zeige Kontakte') }); return false;">Zeige
+        Kontakte</a> /
+        <a href="main-hotelcard.html#" class="noreload" id="bt_showmap">Karte anzeigen</a></p>
 
     <div class="descr">
         {{description}}
     </div>
 
-    <h3>Prices per night</h3>
+    <h3>Preise pro Nacht</h3>
     <table class="price">
         <tbody>
             {{#RoomCategories}}
                 {{#roomCategoryList}}
-                    <tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showaptgallery_{{hcRoomCategory}}">{{name}}</a></td><td class="price">from&nbsp;{{#hcPrice}}{{minPrice}}{{/hcPrice}}</td></tr>
+                    <tr><td><a href="main-hotelcard.html#" class="noreload" id="bt_showaptgallery_{{hcRoomCategory}}">{{name}}</a></td><td class="price">aus&nbsp;{{#hcPrice}}{{minPrice}}{{/hcPrice}}</td></tr>
                 {{/roomCategoryList}}
             {{/RoomCategories}}
 		</tbody>
     </table>
 
-    <h3>Facilities</h3>
+    <h3>Anlagen</h3>
     <dl>
         {{#Facilities}}
            {{#facilityList}}
@@ -57,14 +57,14 @@
     {{/Policies}}
     </dl>
     <div class="clearer"></div>
-    <p class="noprint"><a href="main-hotelcard.html#" class="noreload">Add to Selected</a> / <a href="main-hotelcard.html#" class="noreload" onclick="window.print(); return false;">Print hotel info</a></p>
+    <p class="noprint"><a href="main-hotelcard.html#" class="noreload">Add to Selected</a> / <a href="main-hotelcard.html#" class="noreload" onclick="window.print(); return false;">Print Hotel Info</a></p>
 </script>
 <script type="text/html" id="hc_contacts_tmpl" class="partial">
        <p>
             {{address}}<br/>
-            Phone: {{phone}}<br/>
+            Telefon: {{phone}}<br/>
             Fax: {{fax}}<br/>
-            Email: {{email}}
+            E-mail: {{email}}
         </p>
 </script>
 <script type="text/html" id="dl-item-tmpl" class="partial">
@@ -76,11 +76,11 @@
 </script>
 <script type="text/html" id="ro_ratings_tmpl">
     <a href="main-hotelcard.html#" class="nou" id="bt_showgalleryAlt"><img class="main" src="{{#MainPhoto}}{{large}}{{/MainPhoto}}" width="211" height="211" alt="{{name}}" /></a>
-    <p class="noprint"><a href="main-hotelcard.html#" class="noreload" id="bt_showgallery">View all {{hcPhotos}} photos</a></p>
+    <p class="noprint"><a href="main-hotelcard.html#" class="noreload" id="bt_showgallery">Alle {{hcPhotos}} Bilder</a></p>
 
      {{>user_rating_tmpl}}
 
-    <h3>Visitors’ reviews</h3>
+    <h3>Besucher Rezensionen</h3>
     <span id="reviewsHolder"></span>
     <div id="srPager" class="paging"></div>
 </script>
@@ -96,17 +96,17 @@
     <p class="date">{{reviewDate}}</p>
     <p>{{comment}}</p>
     <table class="rate"><tr><td width="1%">Rate</td><td class="rate"><div><span style="width:{{#calc}}{{rate}}{{/calc}}%">{{rate}}</span></div></td></tr></table>
-    <p class="author">{{author}} from {{#GeoLocation}}{{city}}, {{country}}{{/GeoLocation}}</p>
+    <p class="author">{{author}} aus {{#GeoLocation}}{{city}}, {{country}}{{/GeoLocation}}</p>
 </div>
 </script>
 
 <script type="text/html" id="user_rating_tmpl" class="partial">
     {{#Rating}}
     <h3>Rating<span>
-    <strong>{{avgValue}}</strong> of 8</span></h3>
-    <div class="rating-bar"><span style="width:{{#calc}}{{avgValue}}{{/calc}}%">{{avgValue}} of 8</span></div>
+    <strong>{{avgValue}}</strong> von 8</span></h3>
+    <div class="rating-bar"><span style="width:{{#calc}}{{avgValue}}{{/calc}}%">{{avgValue}} von 8</span></div>
     {{#rateItemList}}
-        <h5>{{displayName}}<span><strong>{{value}}</strong> of 8</span></h5>
+        <h5>{{displayName}}<span><strong>{{value}}</strong> von 8</span></h5>
     {{/rateItemList}}
     {{/Rating}}
 </script>
@@ -135,11 +135,11 @@
 			{{description}}
 		</div>
 		<div class="links">
-			<p><a href="main-hotelcard.html#" class="close noreload">Close window</a></p>
+			<p><a href="main-hotelcard.html#" class="close noreload">Fenster schliessen</a></p>
 		</div>
 	</div>
 	<div class="clearer"></div>
-	<a href="main-hotelcard.html#" class="close xclose" title="Close gallery"><span>Close</span></a>
+	<a href="main-hotelcard.html#" class="close xclose" title="Close Galerie"><span>Close</span></a>
 </div>
 </script>
 
@@ -168,70 +168,70 @@
 		<div class="clearer"></div>
 	</div>
 	<div class="clearer"></div>
-	<a href="main-hotelcard.html#" class="close xclose" title="Close map"><span>Close</span></a>
+	<a href="main-hotelcard.html#" class="close xclose" title="Karte schließen"><span>Close</span></a>
  </div>
 </script>
 
 <script type="text/html" id="calc_template">
-				<h2>Order now</h2>
+				<h2>Bestellen Sie jetzt</h2>
 				<form action="../" id="orderform">
 
 					<div class="sideblock opener active orderDates">
-						<h3>Dates</h3>
+						<h3>Termine</h3>
 						<div class="label">
-							<label><span>from</span><input type="text" name="order_from" id="order_from" class="date" value="31.07.2011" onchange="fixDate(this); xOrder.calcPrice();" /></label>
+							<label><span>aus</span><input type="text" name="order_from" id="order_from" class="date" value="31.07.2011" onchange="fixDate(this); xOrder.calcPrice();" /></label>
 						</div>
 						<div class="label">
-							<label><span>to</span><input type="text" name="order_to" id="order_to" class="date" value="02.08.2011" onchange="fixDate(this); xOrder.calcPrice();" /></label>
-							for <span class="search_nights_num">2</span> <span class="search_nights_word">nights</span>
+							<label><span>bis</span><input type="text" name="order_to" id="order_to" class="date" value="02.08.2011" onchange="fixDate(this); xOrder.calcPrice();" /></label>
+							für <span class="search_nights_num">2</span> <span class="search_nights_word">nacht(e)</span>
 						</div>
-                         <div class="sideblock"><input type="button" id="findoffers" value="Find an apartment"></div
+                         <div class="sideblock"><input type="button" id="findoffers" value="Update bietet"></div
 						<div class="closer"></div>
 					</div>
 
 					<div class="apt-template">
 						<div class="apt-room-type">
-							<h3>Room type</h3>
+							<h3>Art des Zimmers</h3>
 							<select name="roomtype1">
 								<option value="1" selected="selected">Single</option>
-								<option value="2">Double (left wing)</option>
-								<option value="3">Double (right wing)</option>
-								<option value="4">Triple</option>
+								<option value="2">Double (linker Flügel)</option>
+								<option value="3">Double (rechter Flügel)</option>
+								<option value="4">Dreifach</option>
 							</select>
-							<p class="available"><span class="yes number">7</span> <span class="yes">available</span> for chosen period</p>
-							<p class="unavailable"><span class="no">Not available</span> for chosen period.<br />
-						Try another room type.</p>
+							<p class="available"><span class="yes number">7</span> <span class="yes">verfügbar</span> für die gewählte Periode</p>
+							<p class="unavailable"><span class="no">Nicht verfügbar</span> für die gewählte Periode.<br />
+						Versuchen Sie eine andere Zimmerkategorie.</p>
 						</div>
 
 						<div class="apt-room-number">
-							<h3>Number of rooms</h3>
+							<h3>Anzahl der Zimmer</h3>
 							<input type="text" name="rooms1" value="2" class="short" />
 						</div>
 
 						<div class="apt-room-extrabed">
-							<h3>Extra beds</h3>
+							<h3>Zustellbetten</h3>
 							<select name="extrabeds1">
 								<option value="1">1</option>
 								<option value="2" selected="selected">2</option>
 							</select>
 						</div>
 
-						<p><a href="main-hotelcard.html#" class="remove" title="Remove this apartment from order">Remove from order</a></p>
+						<p><a href="main-hotelcard.html#" class="remove" title="Entfernen Sie diese Wohnung aus">Entfernen Sie von der Bestellung</a></p>
 
 						<div class="closer"></div>
 					</div>
 
-					<div class="sideblock"><input type="button" class="add2order" value="Add an apartment"></div>
+					<div class="sideblock"><input type="button" class="add2order" value="Add Apartment"></div>
 
 					<div class="sideblock opener active orderMeals">
-						<h3>Meals</h3>
+						<h3>Küche</h3>
 						<select name="meals">
-							<option value="1">Full Board</option>
-							<option value="2" selected="selected">Half Board</option>
-							<option value="3">No Meals</option>
+							<option value="1">Vollpension</option>
+							<option value="2" selected="selected">Halbpension</option>
+							<option value="3">Keine Board</option>
 						</select>
 
-						<h3>Number of persons</h3>
+						<h3>Anzahl der Personen</h3>
 
 						<input type="text" name="mealsnum" class="short" value="2" />
 
@@ -239,10 +239,10 @@
 					</div>
 
 					<div class="sideblock opener inactive">
-						<h3>Total cost: <span id="orderCurrency" class="important">EUR</span> <span id="orderTotal" class="important">1,885</span></h3>
+						<h3>Gesamtkosten: <span id="orderCurrency" class="important">EUR</span> <span id="orderTotal" class="important">1,885</span></h3>
 
 						<div class="label last">
-							<span class="label">Order</span><input type="submit" name="submit" value="Confirm" class="submit" />
+							<span class="label">Bestellen</span><input type="submit" name="submit" value="Bestätigen" class="submit" />
 						</div>
 
 					</div>
@@ -260,7 +260,7 @@
 
 	<div class="imagedescr">
 		<h3>{{name}}</h3>
-		<div class="price">{{currency}}&nbsp;{{minPrice}} per night</div>
+		<div class="price">{{currency}}&nbsp;{{minPrice}} pro Nacht</div>
 
 		<div class="gallery">
             {{#Photos}}
@@ -279,35 +279,35 @@
 
 		<div class="links">
             <span id="offersList">
-                <p class="available"><span class="yes number">7</span> <span class="yes">available</span> for chosen period</p>
+                <p class="available"><span class="yes number">7</span> <span class="yes">verfügbar</span> für die gewählte Periode</p>
                     {{#offer}}
-                    <div id="offer">с&nbsp;{{startDate}}&nbsp;по&nbsp;{{endDate}}&nbsp;-&nbsp;{{currency}}&nbsp;{{offerPrice}}</div>
+                    <div id="offer">aus&nbsp;{{startDate}}&nbsp;bis&nbsp;{{endDate}}&nbsp;-&nbsp;{{currency}}&nbsp;{{offerPrice}}</div>
                     {{/offer}}
             </span>
-			<p class="unavailable"><span class="no">Not available</span> for chosen period.<br />Try another room type.</p>
-			<p><span class="available"><a href="main-hotelcard.html#" class="noreload add2order">Add to order</a> / </span>
+			<p class="unavailable"><span class="no">Nicht verfügbar</span> für die gewählte Periode.<br />Versuchen Sie eine andere Zimmerkategorie.</p>
+			<p><span class="available"><a href="main-hotelcard.html#" class="noreload add2order">Zur Bestellung hinzufügen</a> / </span>
 
-			<span class="host subscribehost"><a href="main-hotelcard.html#" class="bt_subscribe noreload">Subscribe to this offer</a>
+			<span class="host subscribehost"><a href="main-hotelcard.html#" class="bt_subscribe noreload">Abonnieren Sie dieses Angebot</a>
 
 				<form class="subscribeform" action="../"><div class="container">
 					<input type="text" name="mail" class="subscribe_mail login" value="E-mail" defvalue="E-mail" />
 
 					<select name="periodic">
-						<option value="1">Daily</option>
-						<option value="2" selected="selected">Weekly</option>
-						<option value="3">Monthly</option>
+						<option value="1">Täglich</option>
+						<option value="2" selected="selected">Wöchentlich</option>
+						<option value="3">Monatlich</option>
 					</select>
 
 
 					<div class="diags">
-						<p class="sp_def">Get an actual search results to your E-mail. You can cancel subscription at any time using a link in confirmation or subscription letters.</p>
-						<p class="sp_signed_in">Get an actual search results to your E-mail. You can cancel subscription at any time using a link in subscription letters.</p>
-						<p class="sp_bad_mail">The specified e-mail seems to be incorrect. Please check it and try again.</p>
-						<p class="sp_no_mail">Please enter the valid e-mail address you wish to receive offers. We will send you a link to continue the subscription.</p>
-						<p class="sp_success">Subscription successful.<br />A confirmation letter has been sent to you. Please use provided links to confirm or cancel subscription.</p>
+						<p class="sp_def">Holen Sie sich einen tatsächlichen Suchergebnisse auf Ihre E-Mail. Sie können Abonnement jederzeit über einen Link zur Bestätigung oder zur Zeichnung Briefe aufzuheben.</p>
+						<p class="sp_signed_in">Holen Sie sich einen tatsächlichen Suchergebnisse auf Ihre E-Mail. Sie können Abonnement jederzeit über einen Link zur Bestätigung oder zur Zeichnung Briefe aufzuheben.</p>
+						<p class="sp_bad_mail">Die angegebene E-Mail scheint falsch zu sein. Bitte überprüfen Sie es und versuchen Sie es erneut.</p>
+						<p class="sp_no_mail">Bitte geben Sie die gültige E-Mail-Adresse, die Sie Angebote zu erhalten. Wir senden Ihnen einen Link, um das Abonnement fortzusetzen.</p>
+						<p class="sp_success">Abonnement erfolgreich.<br /> Ein Bestätigungsschreiben wurde Ihnen gesendet. Bitte verwenden Sie bereitgestellten Links, um zu bestätigen oder kündigen.</p>
 					</div>
 
-					<p><a href="main-hotelcard.html#" class="bt_subscribe_action noreload" title="Subscribe to this search results">Subscribe</a></p>
+					<p><a href="main-hotelcard.html#" class="bt_subscribe_action noreload" title="Abonnieren Sie dieses Angebot">Zeichnen</a></p>
 					<div class="clearer"></div>
 				</div></form>
 
@@ -317,6 +317,6 @@
 
 	</div>
 	<div class="clearer"></div>
-	<a href="main-hotelcard.html#" class="close xclose" title="Close gallery"><span>Close</span></a>
+	<a href="main-hotelcard.html#" class="close xclose" title="Close Galerie"><span>Close</span></a>
 </div>
 </script>
