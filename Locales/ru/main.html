@@ -4,7 +4,7 @@
         {{>topbar_menu_tmpl}}
     </script>
     <script type="text/html" id="ddlLangMenu_tmpl">
-        <li><a href="#!" class="trigger"><span>More languages</span></a>
+        <li><a href="#!" class="trigger"><span>Другие языки</span></a>
             <ul>
                 <li><a href="#!" title="На языке № раз">На языке № раз</a></li>
                 <li><a href="#!" title="Державною мовою">Державною мовою</a></li>
@@ -31,7 +31,7 @@
 			<h2>Отели</h2>
 			<ul id="hotellistSwitcher" class="switcher">
 				<li class="popular">популярные</li>
-				<li class="selected noprint"><a href="#" class="noreload" onclick="return switchHotellist()" title="Отели выбранные Вами ранее">выбранные</a></li>
+				<li class="selected noprint"><a href="#" class="noreload" onclick="return switchHotellist()" title="Отели отобранные Вами ранее">избранные</a></li>
 			</ul>
             <div id="hotellist" class="popular">
                 <div class="wrapper">
@@ -50,10 +50,10 @@
                         <div class="hoteldescr">
                             <h3>{{name}}</h3>
                             <div class="stars stars-{{stars}}"><span></span></div>
-                            <p class="info"><a href="#!/lookup/{{#Address}}{{#GeoLocation}}{{cityId}}{{/GeoLocation}}{{/Address}}" title="Еще отели в {{#Address}}{{#GeoLocation}}{{city}}{{/GeoLocation}}{{/Address}}">{{#Address}}{{#GeoLocation}}{{city}}{{/GeoLocation}}{{/Address}}</a>,&nbsp;{{#Address}}{{#GeoLocation}}{{country}}{{/GeoLocation}}{{/Address}}</p>
+                            <p class="info"><a href="#!/lookup/{{#Address}}{{#GeoLocation}}{{cityId}}{{/GeoLocation}}{{/Address}}" title="Ещё отели в {{#Address}}{{#GeoLocation}}{{city}}{{/GeoLocation}}{{/Address}}">{{#Address}}{{#GeoLocation}}{{city}}{{/GeoLocation}}{{/Address}}</a>,&nbsp;{{#Address}}{{#GeoLocation}}{{country}}{{/GeoLocation}}{{/Address}}</p>
                             <p class="info">от <strong>{{currency}}&nbsp;{{minOfferPrice}}</strong></p>
                             <p class="descr">{{description}}</p>
-                            <p class="noprint"><a href="/#!/card/{{hotelId}}" title="Подробнее об отеле">Подробнее об отеле</a> / <a href="#!/select/{{hotelId}}" title="Добавить к отобранным">Добавить к отобранным</a></p>
+                            <p class="noprint"><a href="/#!/card/{{hotelId}}" title="Подробнее об отеле">Подробнее об отеле</a> / <a href="#!/select/{{hotelId}}" title="Добавить в Избранные">Добавить в Избранные</a></p>
                         </div>
                     </div>
             <div class="closer"></div>
@@ -61,7 +61,7 @@
     </script>
     <script type="text/html" id="topbar_menu_tmpl" class="partial">
         <ul class="topblock right">
-            <li class="selected"><a href="#selected" title="Выбранные отели" id="lbl_Selected"
+            <li class="selected"><a href="#selected" title="Избранные отели" id="lbl_Selected"
                                     class="noreload">Выбрано(9)</a> /
             </li>
             <li><a href="#" title="FAQ и более" id="lbl_Help">Помощь</a> /</li>
@@ -84,31 +84,31 @@
                             <p id="lp_def"><a href="#" id="forgot" title="Получить новый пароль на e-mail">Забыли
                                 пароль?</a></p>
 
-                            <p id="lp_bad_mail">Указанный e-mail не зарегистрирован в системе. Попробуйте
+                            <p id="lp_bad_mail">Указанный E-mail не зарегистрирован в системе. Попробуйте
                                 другой или <a href="#">создайте нового пользователя</a>.</p>
 
                             <p id="lp_bad_pass">Пароль неверен. Попробуйте ещё раз или <a
                                     href="#">переустановите пароль</a>.</p>
 
-                            <p id="lp_no_mail_to_reset">Пожалуйста, введите Ваш регистрационный e-mail. Мы вышлем
+                            <p id="lp_no_mail_to_reset">Пожалуйста, введите Ваш регистрационный E-mail. Мы вышлем
                                 вам новый пароль.</p>
 
-                            <p id="lp_reset_pass_sent">Письмо с новым паролем выслано на указанный Вами e-mail.</p>
+                            <p id="lp_reset_pass_sent">Письмо с новым паролем выслано на указанный Вами E-mail.</p>
 
-                            <p id="lp_no_mail_to_register">Пожалуйста, введите корректный e-mail для регистрации.
+                            <p id="lp_no_mail_to_register">Пожалуйста, введите корректный E-mail для регистрации.
                                 Мы вышлем Вам письмо со ссылкой на продолжение регистрации.</p>
 
                             <p id="lp_already_registered">Этот e-mail уже используется. Если Вы забыли пароль
-                                вы можете <a href="#" title="Получить новый пароль на Ваш e-mail">переустановить
-                                    пароль</a> или ввести другой e-mail и <a href="#">создать нового пользователя</a>.</p>
+                                вы можете <a href="#" title="Получить новый пароль на Ваш E-mail">переустановить
+                                    пароль</a> или ввести другой E-mail и <a href="#">создать нового пользователя</a>.</p>
 
                             <p id="lp_do_register"><strong>Поздравляем!</strong><br/>Подтверждающее письмо выслано
-                                на e-mail который Вы указали. Используйте данные в нём для продолжения регистрации.</p>
+                                на E-mail который Вы указали. Используйте данные в нём для продолжения регистрации.</p>
                         </div>
 
                         <div class="clearer"></div>
                         <a href="#" id="bt_login_action" class="important"
-                           title="Получить доступ ко всем функциям системы.">Войти</a>
+                           title="Получить доступ ко всем возможностям системы.">Войти</a>
 
                         <div class="clearer"></div>
                     </div>
@@ -117,16 +117,16 @@
         </ul>
     </script>
     <script type="text/html" id="logobar_tmpl">
-        <a id="logo" href="/"><img src="/img/logo.png" alt="Bookenizer"/></a>
+        <a id="logo" href="/" title="Сервис бронирования номеров в отелях"><img src="/img/logo.png" alt="Bookenizer"/></a>
         <a id="contactus" href="#" title="Контакты">Контакты</a>
-        <strong>Система Он-Лайн бронирования</strong>
+        <strong>Сервис Он-Лайн Бронирования</strong>
     </script>
     <script type="text/html" id="searchType_switcher_quick">
         <li class="search">быстрый</li>
-		<li><a href="#!/search/advanced" class="noreload search" title="More search parameters">расширенный</a></li>
+		<li><a href="#!/search/advanced" class="noreload search" title="Больше параметров для поиска">расширенный</a></li>
     </script>
     <script type="text/html" id="searchType_switcher_advanced">
-		<li><a href="#!/search/quick" class="noreload search" title="More search parameters">быстрый</a></li>
+		<li><a href="#!/search/quick" class="noreload search" title="Меньше параметров для поиска">быстрый</a></li>
         <li class="search">расширенный</li>
     </script>
     <script type="text/html" id="searchbar_tmpl">
@@ -145,10 +145,10 @@
 
     <div class="label">
         <span class="label">1</span>
-        <span class="host"><input type="text" id="city" name="city" required="required" class="dest form-ui-invalid" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine", countryId:1}]' nosubmit/>
+        <span class="host"><input type="text" id="city" name="city" class="dest" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine", countryId:1}]' nosubmit/>
         <span class="diags" id="error_city">
-            <!--Hey! You've just entered some weird information here. Check it carefully please!</span>-->
-        <span class="diags">Извините, у нас нет предложений для этого города</span>
+            Некорректное имя города.</span>
+        <span class="diags">Извините, у нас нет предложений для этого города.</span>
         </span>
     </div>
 
@@ -174,8 +174,8 @@
     <div class="label">
         <span class="label">Город</span>
         <span class="host"><input type="text" id="city" name="city" class="dest" value="Город" defValue="Город" suggest="yes" suggest_value='[{city:"Kiev", cityId:0}]' nosubmit/>
-            <span class="diags">Извините, у нас нет предложений для этого города</span>
-        <span class="diags" id="error_city">Hey! You've just entered some weird information here. Check it carefully please!</span>
+            <span class="diags">Извините, у нас нет предложений для этого города.</span>
+        <span class="diags" id="error_city">Вы ввели некорректное имя города. Проверьте его пожалуйста!</span>
         </span>
     </div>
 
@@ -225,7 +225,7 @@
             <option value="INTERNET"> Интернет</option>
             <option value="CONFERENCE_HALL"> Конференц-зал</option>
             <option value="POOL"> Бассейн</option>
-            <option value="SKI_RENTAL"> Ski Rental</option>
+            <option value="SKI_RENTAL"> Прокат лыж</option>
             <option value="PETS_ALLOWED"> Животные</option>
         </select>
     </div>

@@ -4,11 +4,11 @@
         {{>topbar_menu_tmpl}}
     </script>
     <script type="text/html" id="ddlLangMenu_tmpl">
-        <li><a href="#!" class="trigger"><span>More languages</span></a>
+        <li><a href="#!" class="trigger"><span>Weitere Sprachen</span></a>
             <ul>
-                <li><a href="#!" title="На языке № раз">На языке № раз</a></li>
-                <li><a href="#!" title="Державною мовою">Державною мовою</a></li>
-                <li><a href="#!" title="На языке № три">На языке № три</a></li>
+                <li><a href="#!" title="Sprache №1">Sprache №1</a></li>
+                <li><a href="#!" title="Sprache №2">Sprache №2</a></li>
+                <li><a href="#!" title="Sprache №3">Sprache №3</a></li>
             </ul>
         </li>
     </script>
@@ -32,7 +32,7 @@
 			<h2>Hotels</h2>
             <ul id="hotellistSwitcher" class="switcher">
               <li class="popular">beliebt</li>
-              <li class="selected noprint"><a href="#" class="noreload" onclick="return switchHotellist()" title="Hotels haben Sie früher gewählt">ausgewählt</a></li>
+              <li class="selected noprint"><a href="#" class="noreload" onclick="return switchHotellist()" title="Hotels haben Sie früher gewählt">selected</a></li>
           </ul>
             <div id="hotellist" class="popular">
                 <div class="wrapper">
@@ -62,7 +62,7 @@
     <script type="text/html" id="topbar_menu_tmpl" class="partial">
         <ul class="topblock right">
     <li class="selected"><a href="#selected" title="Zeigen Sie Ihre Selected Hotels" id="lbl_Selected"
-                            class="noreload">Ausgewählt(9)</a>
+                            class="noreload">Selected(9)</a>
     /</li>
     <li><a href="#" title="FAQ und mehr" id="lbl_Help">Hilfe</a> /</li>
    <li class="switch">
@@ -118,7 +118,7 @@
     </script>
     <script type="text/html" id="logobar_tmpl">
         <a id="logo" href="/"><img src="/img/logo.png" alt="Bookenizer"/></a>
-        <a id="contactus" href="#" title="Kontakt Mit Uns">Kontakt Mit Uns</a>
+        <a id="contactus" href="#" title="Uns Kontakt">Uns Kontakt</a>
         <strong>Online Reservierungsservice</strong>
     <script type="text/html" id="searchbar_tmpl">
         <div id="searchbar" class="open-full">
@@ -145,7 +145,7 @@
         <span class="label">1</span>
         <span class="host"><input type="text" id="city" name="city" class="dest" value="Stadt" defValue="Stadt" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country:"Ukraine",countryId:1}]' nosubmit/>
             <span class="diags">Leider haben wir keine Angebote für diese Stadt</span>
-            <span class="diags" id="error_city">Hey! You've just entered some weird information here. Check it carefully please!</span>
+            <span class="diags" id="error_city">Falsche Namen der Stadt</span>
         </span>
     </div>
 
@@ -171,7 +171,7 @@
         <span class="label">Reiseziel</span>
         <span class="host"><input type="text" id="city" name="city" class="dest" value="Stadt" defValue="Stadt" suggest="yes" suggest_value='[{city:"Kiev", cityId:0, country: "Ukraine"}]' nosubmit/>
         <span class="diags">Leider haben wir keine Angebote für diese Stadt</span>
-         <span class="diags" id="error_city">Hey! You've just entered some weird information here. Check it carefully please!</span>
+         <span class="diags" id="error_city">Falsche Namen der Stadt</span>
 	    </span>
     </div>
 
@@ -210,8 +210,8 @@
 
     <div class="label">
         <span class="label">Preis pro Nacht</span>
-        <label>from <input type="text" name="pricePerNightLow" id="pricePerNightLow" class="price_per_night_low" value=""/></label>
-        <label>to <input type="text" name="pricePerNightHigh" id="pricePerNightHigh" class="price_per_night_high" value=""/></label>
+        <label>aus <input type="text" name="pricePerNightLow" id="pricePerNightLow" class="price_per_night_low" value=""/></label>
+        <label>bis <input type="text" name="pricePerNightHigh" id="pricePerNightHigh" class="price_per_night_high" value=""/></label>
     </div>
 
     <div class="label">
