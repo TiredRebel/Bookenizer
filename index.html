@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/print.css" media="print">
     <link rel="stylesheet" type="text/css" href="/styles/jscal2.css" media="all">
     <link rel="stylesheet" type="text/css" href="/styles/jquery.multiSelect.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/styles/jquery-atocomplete.css" media="screen">
 </head>
 <body class="popular">
 <div id="ltemplate"></div>
@@ -68,13 +69,14 @@
 <script type="text/javascript" src="/scripts/debug/mustache.js"></script>
 <script type="text/javascript" src="/scripts/debug/ICanHaz.js"></script>
 <script type="text/javascript" src="/scripts/debug/class.js"></script>
-<script type="text/javascript" src="/scripts/debug/gsuggest.js"></script>
+<!--<script type="text/javascript" src="/scripts/debug/gsuggest.js"></script>-->
+<script type="text/javascript" src="scripts/debug/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="/scripts/debug/jquery.pagination.js"></script>
 <script type="text/javascript" src="/scripts/debug/xcommon.js"></script>
 <script type="text/javascript" src="/scripts/models.js"></script>
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>
-<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>-->
+<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>-->
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>
 <script type="text/javascript">
 //$.webshims.setOptions('forms', { overrideMessages: true });
 $.webshims.polyfill('lightweight');
@@ -248,18 +250,46 @@ $.webshims.polyfill('lightweight');
             elemToLoad.empty();
             elemToLoad.load(url);
         };
-
-        var suggestor=function(){
+       /*
+        var formatSuggest=function(value,data,currentValue){
+            var reEscape = new RegExp('(\\' + ['/', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '\\'].join('|\\') + ')', 'g');
+            var pattern = '(' + currentValue.replace(reEscape, '\\$1') + ')';
+            return value.replace(new RegExp(pattern, 'gi'), '<strong>$1<\/strong>');
+        };
+         */
+        var suggestor=function(model){
             var curLang=window._configuration.get("lang");
             var self=this;
-            $.gsuggest({
+            var data=JSON.parse(model);
+            var arrCities=[],arrData=[];
+
+            var cities=_.map(data,function(item,key){
+               arrCities.push(item.city.concat(', ',item.country));
+               arrData.push(_.extend({},{elem:item.city.concat(', ',item.country),id:item.cityId}));
+            });
+
+            $("#city").autocomplete({
+                lookup : arrCities,
+                data:arrData,
+                delimiter: /(:)\s*/,
+                onSelect:function(value,data){
+                    _.detect(arrData,function(num){
+                          if(num.elem === value){
+                              updateSearchCriteria("cityId",num.id);
+                              return num.id;
+                          }
+                    });
+                }
+            });
+
+            /*$.gsuggest({
                 inlineText: function(data) { return data.city + ", " + data.country; },
                 inlineId: function(data) { return data.cityId; },
                 dataSort: function(a,b) { return (a.city < b.city) ? -1 : ((a.city === b.city) ? 0 : 1); },
                 callback:function(data){
                     updateSearchCriteria("cityId",data.id);
                 }
-            });
+            });*/
             var cal=Calendar.setup( {selectionType : Calendar.SEL_MULTIPLE, timeFormat:24, firstDay : 0, weekNumbers : false, showOthers:true, onSelect:function(){fixDate(this.inputField.id);this.hide();}});
             cal.manageFields("dateFrom", "dateFrom", "%d.%m.%Y");
             cal.manageFields("dateTo", "dateTo", "%d.%m.%Y");
@@ -736,7 +766,8 @@ $.webshims.polyfill('lightweight');
             events:{"submit #searchform":"handleSubmit"},
             el:$("#searchbar_ph"),
             render:function(){
-                var self=this;
+                var self=this,
+                    model=JSON.stringify(self.model);
                 getTemplate("searchbar_tmpl");
                 getTemplate("searchform_tmpl_quick");
                 getTemplate("searchform_tmpl_advanced");
@@ -746,8 +777,10 @@ $.webshims.polyfill('lightweight');
                 var searchType=window._configuration.get("searchType");
                 $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(searchType)]);
                 $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(searchType)]);
-                $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(self.model));
-                suggestor();
+                debugger;
+
+//                $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(self.model));
+                suggestor(model);
                 return self;
             },
             handleSubmit:function(data){
@@ -1266,8 +1299,8 @@ $.webshims.polyfill('lightweight');
 
                     $("#srchMenu").empty().html(ich.templates["searchType_switcher_".concat(name)]);
                     $("#srchFrm").empty().html(ich.templates["searchform_tmpl_".concat(searchType)]);
-                    $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(_configuration.get("srchLocations")));
-                    suggestor();
+//                    $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(_configuration.get("srchLocations")));
+                    suggestor(JSON.stringify(_configuration.get("srchLocations")));
                     self.drawTemplates(true);
                     return true;
                 });
@@ -1345,6 +1378,11 @@ $.webshims.polyfill('lightweight');
         //$(document).ready(function() {
 
         $.webshims.ready('DOM',function(){
+              $('city-selector').autocomplete({
+                  minChars:1,
+                  delimiter: /(,|;)\s*/,
+                  noCache:true
+              });
               var config=new Configuration();
                 $("#logo").live('click',function(){
                   //debugger;
