@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="" />
+    <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/debug/xcommon.js" afterPath="$PROJECT_DIR$/scripts/debug/xcommon.js" />
+    </list>
     <list id="4bdcc2f4-00d6-40ee-b450-34d69268308a" name="On master: Uncommitted changes before update operation at 23.04.11 21:06(cherry picked from commit a54405b3371eb181076ef0b1b00a85e6f0cc83ed)" comment="On master: Uncommitted changes before update operation at 23.04.11 21:06(cherry picked from commit a54405b3371eb181076ef0b1b00a85e6f0cc83ed)" />
     <list id="f8743774-3083-4128-93cb-73ea72964036" name="Issue #1 resolved(cherry picked from commit b98609113446ae548597b1d8aadba447885a6ecc)" comment="" />
     <ignored path="bookenizer.c.iws" />
@@ -29,19 +33,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="xdate.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/debug/xdate.js">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="0" selection-start="2457" selection-end="2457" vertical-scroll-proportion="0.0">
+            <state line="79" column="99" selection-start="3981" selection-end="3981" vertical-scroll-proportion="0.643026">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file leaf-file-name="xcommon.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/debug/xcommon.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1302" column="82" selection-start="59252" selection-end="59252" vertical-scroll-proportion="-4.490196">
+            <state line="1027" column="0" selection-start="27349" selection-end="27349" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -74,10 +78,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="146" selection-start="8173" selection-end="8173" vertical-scroll-proportion="0.28132388">
+            <state line="162" column="63" selection-start="8617" selection-end="8617" vertical-scroll-proportion="-45.76923">
               <folding />
             </state>
           </provider>
@@ -86,7 +90,7 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="145" column="101" selection-start="8085" selection-end="8085" vertical-scroll-proportion="-0.65384614">
+            <state line="145" column="101" selection-start="8085" selection-end="8085" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -95,7 +99,7 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="177" column="102" selection-start="9385" selection-end="9385" vertical-scroll-proportion="-18.961538">
+            <state line="177" column="102" selection-start="9385" selection-end="9385" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -140,16 +144,16 @@
         <option value="$PROJECT_DIR$/Layouts/layoutHotelCard.html" />
         <option value="$PROJECT_DIR$/scripts/debug/jquery.pagination.js" />
         <option value="$PROJECT_DIR$/styles/style.css" />
-        <option value="$PROJECT_DIR$/scripts/debug/xcommon.js" />
         <option value="$PROJECT_DIR$/scripts/models.js" />
         <option value="$PROJECT_DIR$/Locales/ru/hotelcard.html" />
         <option value="$PROJECT_DIR$/scripts/debug/xdate.js" />
         <option value="$PROJECT_DIR$/scripts/jquery-1.6.min.js" />
         <option value="$PROJECT_DIR$/scripts/debug/jquery.autocomplete.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/Locales/de/main.html" />
         <option value="$PROJECT_DIR$/Locales/ru/main.html" />
         <option value="$PROJECT_DIR$/Locales/en/main.html" />
+        <option value="$PROJECT_DIR$/scripts/debug/xcommon.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -195,7 +199,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
@@ -325,6 +328,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -462,24 +466,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1598" height="858" extended-state="1" />
+    <frame x="1" y="1" width="1598" height="858" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32921812" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296845" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32784638" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34006515" sideWeight="0.21399178" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19869708" sideWeight="0.6707819" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20456026" sideWeight="0.6707819" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921812" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3196159" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31824416" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32784638" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24951768" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -553,11 +557,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Locales/en/hotelcard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="148" selection-start="6504" selection-end="6511" vertical-scroll-proportion="0.30564263" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/styles/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="448" column="2" selection-start="6630" selection-end="6632" vertical-scroll-proportion="-5.1595273" />
@@ -578,9 +577,14 @@
         <state line="3" column="26421" selection-start="91667" selection-end="91667" vertical-scroll-proportion="0.118329465" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/debug/xdate.js">
+    <entry file="file://$PROJECT_DIR$/scripts/jquery.autocomplete-min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="2457" selection-end="2457" vertical-scroll-proportion="0.0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.autocomplete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="19" selection-start="3127" selection-end="3127" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Locales/en/searchResults.html">
@@ -593,6 +597,23 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="162" column="63" selection-start="8617" selection-end="8617" vertical-scroll-proportion="-45.76923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="145" column="101" selection-start="8085" selection-end="8085" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="102" selection-start="9385" selection-end="9385" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Locales/ru/searchResults.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="53" column="41" selection-start="3196" selection-end="3208" vertical-scroll-proportion="0.0" />
@@ -603,44 +624,23 @@
         <state line="185" column="62" selection-start="6575" selection-end="6592" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/jquery.autocomplete-min.js">
+    <entry file="file://$PROJECT_DIR$/scripts/debug/xdate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="26" column="5" selection-start="727" selection-end="727" vertical-scroll-proportion="0.09686609">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.autocomplete.js">
+    <entry file="file://$PROJECT_DIR$/scripts/debug/xcommon.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="19" selection-start="3127" selection-end="3127" vertical-scroll-proportion="0.0">
+        <state line="1027" column="0" selection-start="27349" selection-end="27349" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1302" column="82" selection-start="59252" selection-end="59252" vertical-scroll-proportion="-4.490196">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="101" selection-start="8085" selection-end="8085" vertical-scroll-proportion="-0.65384614">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="102" selection-start="9385" selection-end="9385" vertical-scroll-proportion="-18.961538">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="146" selection-start="8173" selection-end="8173" vertical-scroll-proportion="0.28132388">
+        <state line="79" column="99" selection-start="3981" selection-end="3981" vertical-scroll-proportion="0.643026">
           <folding />
         </state>
       </provider>

@@ -1025,10 +1025,9 @@ iOrder.prototype = {
 					s.push('<option value="' + i + '" selected="selected">' + xData.meals[i].name + '</option>');
 				else
 					s.push('<option value="' + i + '">' + xData.meals[i].name + '</option>');
-
 		$(this.id + " .orderMeals")
 			.children("select").html(s.join('')).end()
-			.children("input").val(xData.order.meals.num);
+			.children("input").val(xData.order.meals.persons);
 
 		this.calcPrice();
 	},
@@ -1157,7 +1156,6 @@ iOrder.prototype = {
 	},
 	
 	calcPrice : function() {
-		
 		this.total = 0;
 		this.nights = reallyInt($(this.id + " .search_nights_num").text());
 
