@@ -30,6 +30,9 @@ var SearchCriteria = {
         searchType:"QUICK",
         limit:null,
         sortType:"NAME",
-        sortDirection:"DESC"
+        sortDirection:"ASC"
 };
 var HotelCard = Backbone.Model.extend();
+var History = {
+    route : null
+};

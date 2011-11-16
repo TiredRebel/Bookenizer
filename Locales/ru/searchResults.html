@@ -1,7 +1,7 @@
-<script type="text/html" id="sortmenu">
+﻿<script type="text/html" id="sortmenu">
  <h4 class="lookfor nodisplay">Параметры поиска: комнаты в 2, 3 или 5 звёздном отеле, на 8 ночи(ей) с 22.09.2008 по 29.09.2008, для 2 человек, питание Полный Пансион или Полупансион, от 60 до 80 EUR за ночь, а также Паркинг и Интернет.</h4>
 			<h3 class="results-stat">Найдено <strong>{{offersCount}}</strong> предложений в <strong>{{hotelsCount}}</strong> отелях.<br />
-			<span class="noprint"><a href="main-results.html#" class="noreload" onclick="$(this).parent().hide(); return switchSearchtype('advanced')">Воспользуйтесь расширенным поиском</a> для уточнения результата или </span>
+			<span class="noprint"><a href="main-results.html#" class="noreload" id="lnkSwitchSType">Воспользуйтесь расширенным поиском</a> для уточнения результата или </span>
 			<span class="host subscribehost noprint"><a href="main-results.html#" class="bt_subscribe noreload">Подпишитесь на подобные предложения</a>.
 
 				<form class="subscribeform" action="../"><div class="container">
@@ -58,8 +58,8 @@
         <a href="#!/card/{{hotelId}}" title="{{name}}"><img src="{{#MainPhoto}}{{small}}{{/MainPhoto}}" alt="{{name}}" /></a>
         <div class="stars stars-{{stars}}"><span></span></div>
         <p class="info">от <strong>{{currency}}&nbsp;{{minOfferPrice}}</strong></p>
-        <p class="info"><a href="main-results.html#">Добавить в Избранные</a> /<br />
-        <a href="main-results.html#">Печать информации об отеле</a></p>
+        <p class="info"><a href="main-results.html#">В Избранные</a> /<br />
+        <a href="main-results.html#">Печать информации</a></p>
         <div class="clearer"></div>
     </div>
 </div>

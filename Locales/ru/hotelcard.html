@@ -1,4 +1,4 @@
-<script type="text/html" id="hotelcard_tmpl">
+﻿<script type="text/html" id="hotelcard_tmpl">
     <div class="hotel info-1"></div>
     <div class="hotel info-2"></div>
     <div id="reviewsCache"></div>
@@ -7,8 +7,8 @@
     <div class="stars stars-{{stars}}"><span></span></div>
     <h1>{{name}}</h1>
 
-    <p class="noprint"><a href="main-hotelcard.html#" class="noreload">Добавить в Избранные</a> / <a
-            href="main-hotelcard.html#" class="noreload" onclick="window.print(); return false;">Печать информации об отеле</a>
+    <p class="noprint"><a href="main-hotelcard.html#" class="noreload">В Избранные</a> / <a
+            href="main-hotelcard.html#" class="noreload" onclick="window.print(); return false;">Печать информации</a>
     </p>
 
     <div class="contacts" style="display:none;">
@@ -57,7 +57,7 @@
     {{/Policies}}
     </dl>
     <div class="clearer"></div>
-    <p class="noprint"><a href="main-hotelcard.html#" class="noreload">Добавить в Избранные</a> / <a href="main-hotelcard.html#" class="noreload" onclick="window.print(); return false;">Печать информации об отеле</a></p>
+    <p class="noprint"><a href="main-hotelcard.html#" class="noreload">В Избранные</a> / <a href="main-hotelcard.html#" class="noreload" onclick="window.print(); return false;">Печать информации</a></p>
 </script>
 <script type="text/html" id="hc_contacts_tmpl" class="partial">
        <p>
@@ -102,7 +102,7 @@
 
 <script type="text/html" id="user_rating_tmpl" class="partial">
     {{#Rating}}
-    <h3>Рейтинг<span>
+    <h3>Оценка<span>
     <strong>{{avgValue}}</strong> из 8</span></h3>
     <div class="rating-bar"><span style="width:{{#calc}}{{avgValue}}{{/calc}}%">{{avgValue}} из 8</span></div>
     {{#rateItemList}}
@@ -200,7 +200,7 @@
 							</select>
 							<p class="available"><span class="yes number">7</span> <span class="yes">доступно</span> для заданного периода</p>
 							<p class="unavailable"><span class="no">Не доступно</span> для заданного периода.<br />
-						Попробуйте другие категории номеров.</p>
+						Попробуйте другие категории.</p>
 						</div>
 
 						<div class="apt-room-number">
@@ -209,7 +209,7 @@
 						</div>
 
 						<div class="apt-room-extrabed">
-							<h3>Дополнительные места</h3>
+							<h3>Дополн. места</h3>
 							<select name="extrabeds1">
 								<option value="1">1</option>
 								<option value="2" selected="selected">2</option>
@@ -239,10 +239,10 @@
 					</div>
 
 					<div class="sideblock opener inactive">
-						<h3>Итого: <span id="orderCurrency" class="important">EUR</span> <span id="orderTotal" class="important">1,885</span></h3>
+						<h3>Всего: <span id="orderCurrency" class="important">EUR</span> <span id="orderTotal" class="important">1,885</span></h3>
 
 						<div class="label last">
-							<span class="label">Оформить</span><input type="submit" name="submit" value="Далее" class="submit" />
+							<span class="label">Оформить</span><input type="submit" name="submit" value="Ок" class="submit" />
 						</div>
 
 					</div>

@@ -55,8 +55,8 @@
 <script type="text/javascript" src="/scripts/lang/ru.js"></script>
 <script type="text/javascript" src="/scripts/lang/de.js"></script>
 <script type="text/javascript" src="/scripts/debug/json2.js"></script>
-<!--Current version 1.6.4-->
-<script type="text/javascript" src="/scripts/jquery-1.6.min.js"></script>
+<!--Current version 1.7-->
+<script type="text/javascript" src="/scripts/jquery-1.7.min.js"></script>
 <script type="text/javascript" src="/scripts/js-webshim/minified/extras/modernizr-custom.js"></script>
 <script type="text/javascript" src="/scripts/js-webshim/minified/extras/loaders/yepnope.min.js"></script>
 <script type="text/javascript" src="/scripts/js-webshim/minified/extras/mousepress.js"></script>
@@ -226,19 +226,24 @@ $.webshims.polyfill('lightweight');
             return null;
         };
 
+        var updateHistory = function(route){
+            var history=window._configuration.get("history");
+            history.route = route;
+        };
+
         var setLayout=function(layout){
             var dfr=$.Deferred();
              switch(layout){
                  case layoutTypes.INIT:
                  case layoutTypes.PROFILE:
                  case layoutTypes.SEARCH:
-                        getContent("/Layouts/layoutSearchResult.html",$("#main"));
-                        dfr.resolve();
-                        break;
+                        return getContent("/Layouts/layoutSearchResult.html",$("#main"));
+                        //dfr.resolve();
+                        //break;
                  case layoutTypes.HOTELCARD:
-                        getContent("/Layouts/layoutHotelCard.html",$("#main"));
-                            dfr.resolve();
-                        break;
+                        return getContent("/Layouts/layoutHotelCard.html",$("#main"));
+                            //dfr.resolve();
+                        //break;
                  default:
                     dfr.resolve();
                     break;
@@ -247,8 +252,12 @@ $.webshims.polyfill('lightweight');
         };
 
         var getContent=function(url,elemToLoad){
+            var defer = $.Deferred();
             elemToLoad.empty();
-            elemToLoad.load(url);
+            elemToLoad.load(url,function(){
+                return defer.resolve();
+            });
+            return defer.promise();
         };
 
         var suggestor=function(model){
@@ -558,7 +567,7 @@ $.webshims.polyfill('lightweight');
                  $("#mtemplate").empty();
                 new iApp(self);
                 _configuration.initSearchCriteria();
-                Backbone.history.start();
+                Backbone.history.start({pushState: true});
             });
         };
 
@@ -626,6 +635,7 @@ $.webshims.polyfill('lightweight');
                 "dayNext":(function(curDate){return new Date(curDate.getTime()+1000*60*60*24*2);})(new Date()),
                 "statistics":new Statistics(),
                 "searchCriteria":SearchCriteria,
+                "history":History,
                 "topDestinations":new TopDestinations(),
                 "srchLocations":new SearchLocations(),
                 "hotels":new HotelsList(),
@@ -693,12 +703,19 @@ $.webshims.polyfill('lightweight');
             },
             initialize:function(){
                 var self=this;
+                //console.log("initialize")
                 self.initSearchCriteria.call(self);
+                self.initHistory.call(self);
                 self.initData.call(self,false);
             },
             refreshData:function(lang){
                 var self=this;
                 self.initData.call(self,true,lang);
+            },
+            initHistory:function(){
+                 (function(hist){
+                    hist.route = "";
+                 })(this.defaults.history);
             },
             initHotelCard:function(){
                 var self=this;
@@ -1084,7 +1101,7 @@ $.webshims.polyfill('lightweight');
                         //TODO needs tob refactored!!!
                         var cal=initCalcCalendar();
                         var xOrder= new iOrder({id:"#orderblock", btActivator:".add2order"});
-                         $("#findoffers").live('click',function(){
+                         $("#findoffers").on('click',function(){
                              updateSearchCriteria("dateFrom",$("#order_from").val());
                              updateSearchCriteria("dateTo",$("#order_to").val());
                              $.when(_configuration.getOffers()).done(function(data){
@@ -1124,6 +1141,7 @@ $.webshims.polyfill('lightweight');
 
         var initHolelCardActivity=function(){
             var self=this;
+            debugger;
             $.when(setLayout(layoutTypes.HOTELCARD),initHotelCardTemplate(_configuration),_configuration.initHotelCard()).done(function(){
                 $("body").attr("class","").addClass("hotelcard");
                 var hcModel=_configuration.get('hotelCard');
@@ -1137,6 +1155,7 @@ $.webshims.polyfill('lightweight');
         var performSearchRequest=function(objectToRender){
             var args=argumentsStruct.call(_configuration);
              _.extend(_configuration.get("searchCriteria"),{pageIndex:0});
+            debugger;
             $.when(_configuration.get("hotels").fetchData(args,_configuration.get("searchCriteria"))).done(function(){
                     objectToRender.render();
                 });
@@ -1146,8 +1165,14 @@ $.webshims.polyfill('lightweight');
           //var self=this;
           $("span[id^='sbt_']").attr("class","none");
           $("#sbt_".concat(_configuration.get("defaultSortType").toLowerCase())).attr("class",_configuration.get("defaultSortOrder").toLowerCase());
+          $("#lnkSwitchSType").on('click',function(e){
+             var cityName = $("#city").val();
+            _configuration.set({searchType:'advanced'});
+            $("#city").val(cityName);
+              return false;
+          });
 
-          $(".clickablesort").bind("click",function(e){
+          $(".clickablesort").on("click",function(e){
                         var elem=$(e.target).children(":first");
                         var sortDirection=elem.attr("class");
                         var sortName,hrefVal;
@@ -1192,6 +1217,7 @@ $.webshims.polyfill('lightweight');
             _srtOrderModel:null,
             _hotelCard:null,
             routes: {
+                "":"startup",
                 "!/lang/:id":"language",
                 "!/search/:type":"search",
                 "!/lookup/:cityId":"cityLookup",
@@ -1264,6 +1290,7 @@ $.webshims.polyfill('lightweight');
                   return true;
             },
             initialize:function(spec) {
+                debugger;
                 var self=this;
                 _configuration=spec;
                 _.extend(self,Backbone.events);
@@ -1291,10 +1318,20 @@ $.webshims.polyfill('lightweight');
                 });
                 _configuration.bind("change:lang",function(model,name){
                 //todo move data retrieve here
+                    debugger;
                     self.drawTemplates(true);
+                    if(_configuration.get("history")!==""){
+                        window.location.href = "#" + _configuration.get("history").route;
+                    }//else{
+
+                    //}
                     return true;
                 });
                 this.initMain();
+            },
+            startup:function(){
+                //debugger;
+                 updateHistory("");
             },
             hotelCard:function(hotelId){
                 //$("body").attr("class","hotelcard");
@@ -1308,21 +1345,23 @@ $.webshims.polyfill('lightweight');
             },
             language:function(lang){
                 updateSearchCriteria("language",lang);
+
                 _configuration.refreshData(lang);
             },
             cityLookup:function(cityId){
                 updateSearchCriteria("sortType","POPULARITY");
-                updateSearchCriteria("sortDirection","DESC");
+                updateSearchCriteria("sortDirection","ASC");
                 updateSearchCriteria("cityId",cityId);
                 performSearchRequest.call(this,_hotelsList);
             },
             search:function(srcType){
-                //debugger;
+                debugger;
                 _configuration.set({searchType:srcType});
             },
             makeSearch:function(srcType){
                 var self=this;
-                //debugger;
+                debugger;
+                updateHistory("!/search/do/".concat(srcType));
                 if(setSearchParameters(srcType)){
                     initSearchActivity.call(self);
                 }
@@ -1369,7 +1408,7 @@ $.webshims.polyfill('lightweight');
                   noCache:true
               });
               var config=new Configuration();
-                $("#logo").live('click',function(){
+                $("#logo").on('click',function(){
                   //debugger;
                   config.resetSearchCriteria();
                   config.refreshData();
