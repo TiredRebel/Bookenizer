@@ -75,8 +75,8 @@
 <script type="text/javascript" src="/scripts/debug/xcommon.js"></script>
 <script type="text/javascript" src="/scripts/models.js"></script>
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>
-<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>-->
+<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>-->
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>
 <script type="text/javascript">
 //$.webshims.setOptions('forms', { overrideMessages: true });
 $.webshims.polyfill('lightweight');
@@ -1030,28 +1030,34 @@ $.webshims.polyfill('lightweight');
                         $("#reviewsCache").data('reviews',reviews);
                         var revs=$("#reviewsCache").data('reviews');
                         $("#srPager").pagination(revs.Reviews.reviewList.length, {load_first_page:true, items_per_page:Number(_configuration.get("hotelsCount")), prev_text:"←", next_text:"→",callback:function(page_index,jq){
-                            var self=this;
-                            var dataLength=revs.Reviews.reviewList.length;
-                            var max_elem=Math.min((page_index+1)*self.items_per_page,dataLength);
-                            var tempReviews= $.extend(true,{},revs);
+                                var self=this,
+                                    dataLength=revs.Reviews.reviewList.length,
+                                    max_elem=Math.min((page_index+1)*self.items_per_page,dataLength),
+                                    tempReviews= $.extend(true,{},revs),
+                                    revsCount = page_index * self.items_per_page;
                             tempReviews.Reviews.reviewList=[];
+                            tempReviews.Reviews.reviewList = revs.Reviews.reviewList.slice(revsCount,max_elem);
+                            /*tempReviews.Reviews.reviewList=[];
                             for(var i=page_index*self.items_per_page;i<max_elem;i++){
                                  tempReviews.Reviews.reviewList.push($.extend({},revs.Reviews.reviewList[i]));
-                            }
+                            }*/
                             reviewsHolder.html(ich.reviews_tmpl(tempReviews));
                         }});
 
-                        var xGallery = new iGallery({id:"#galleryform", btActivator:"#bt_showgallery", btActivatorAlt:"#bt_showgalleryAlt", btAction:"#galleryform a.close"});
-                        var xMapa = new iMapa({id:"#mapaform", btActivator:"#bt_showmap", btAction:"#mapaform a.close"});
-                        var apt_gallery=$("table.price > tbody > tr > td > a[id^=bt_showapt]").bind('click',function(e){
-                            var offersCount,arrImages;
-                            var targetName=e.target.id.split('_');
-                            var targetId=targetName[targetName.length-1];
-                            var attribs=self.model.models[0].attributes;
-                            var obj=attribs.RoomCategories.roomCategoryList[targetId-1];
+                            var xGallery = new iGallery({id:"#galleryform", btActivator:"#bt_showgallery", btActivatorAlt:"#bt_showgalleryAlt", btAction:"#galleryform a.close"}),
+                                xMapa = new iMapa({id:"#mapaform", btActivator:"#bt_showmap", btAction:"#mapaform a.close"}),
+                                apt_gallery=$("table.price > tbody > tr > td > a[id^=bt_showapt]").bind('click',function(e){
+                                    var offersCount,arrImages,
+                                        targetName=e.target.id.split('_'),
+                                        targetId=targetName[targetName.length-1],
+                                        attribs = self.model.models[0].attributes,
+                                        obj = attribs.RoomCategories.roomCategoryList[targetId-1];
+
                             if(obj!==null && obj!==undefined){
                                 offersCount=obj.Offers.offerList.length;
-                                var price=0,startDate,endDate;
+                                    var price=0,
+                                        startDate = null,
+                                        endDate = null;
                                 $.each(obj.Offers.offerList,function(i,offer){
                                     if(i===0){
                                         startDate=offer.dateFrom;
@@ -1067,7 +1073,9 @@ $.webshims.polyfill('lightweight');
                                     //debugger;
                                     price+=parseFloat(offer.price);
                                 });
+
                                 var offer=_.extend({},{startDate:startDate},{endDate:endDate},{offerPrice:price});
+
                                 _.extend(obj,{targetId:targetId},{currency:attribs.currency},{offer:offer});
                             }
                             ich.apt_gallery_template(obj).insertAfter(footerDiv);
@@ -1082,8 +1090,8 @@ $.webshims.polyfill('lightweight');
                             }else{
                                 $("#offersList").hide();
                             }
-                            var xApt = new iGallery({id:"#apt".concat(targetId,"form"), btActivator:'#'.concat(e.target.id), btAction:"#apt".concat(targetId,"form a.close"), aptId:targetId});
-                            var xSubscribe = new iSubscribe({id:"#apt"+targetId+"form .subscribeform", btActivator:"#apt"+targetId+"form .bt_subscribe", btAction:"#apt"+targetId+"form .bt_subscribe_action", pre:".sp", idMail:"#apt"+targetId+"form .subscribe_mail", parent:xApt});
+                            var xApt = new iGallery({id:"#apt".concat(targetId,"form"), btActivator:'#'.concat(e.target.id), btAction:"#apt".concat(targetId,"form a.close"), aptId:targetId}),
+                                xSubscribe = new iSubscribe({id:"#apt"+targetId+"form .subscribeform", btActivator:"#apt"+targetId+"form .bt_subscribe", btAction:"#apt"+targetId+"form .bt_subscribe_action", pre:".sp", idMail:"#apt"+targetId+"form .subscribe_mail", parent:xApt});
                             try{
                                 $("#aptgalimg_"+targetId+" > img").attr("src",obj.Photos.photoList[0].large);
                                 $("div.gallery > a.nou:first").addClass("current");
@@ -1099,8 +1107,8 @@ $.webshims.polyfill('lightweight');
                          cal.manageFields("order_to", "order_to", "%d.%m.%Y");
                          cal.setLanguage(_configuration.get("lang")); */
                         //TODO needs tob refactored!!!
-                        var cal=initCalcCalendar();
-                        var xOrder= new iOrder({id:"#orderblock", btActivator:".add2order"});
+                        var cal=initCalcCalendar(),
+                            xOrder= new iOrder({id:"#orderblock", btActivator:".add2order"});
                          $("#findoffers").on('click',function(){
                              updateSearchCriteria("dateFrom",$("#order_from").val());
                              updateSearchCriteria("dateTo",$("#order_to").val());
@@ -1173,9 +1181,9 @@ $.webshims.polyfill('lightweight');
           });
 
           $(".clickablesort").on("click",function(e){
-                        var elem=$(e.target).children(":first");
-                        var sortDirection=elem.attr("class");
-                        var sortName,hrefVal;
+                        var elem=$(e.target).children(":first"),
+                            sortDirection=elem.attr("class"),
+                            sortName,hrefVal;
                         hrefVal=$(e.target).attr("href");
                         var criteria= _configuration.get("searchCriteria");
                         if(sortDirection!=="none"){
@@ -1335,6 +1343,7 @@ $.webshims.polyfill('lightweight');
             },
             hotelCard:function(hotelId){
                 //$("body").attr("class","hotelcard");
+                updateHistory("!/card/".concat(hotelId));
                 updateSearchCriteria("hotelId",hotelId);
                 updateSearchCriteria("dateFrom",$("#dateFrom").val());
                 updateSearchCriteria("dateTo",$("#dateTo").val());
@@ -1373,23 +1382,22 @@ $.webshims.polyfill('lightweight');
                 }
             },
             hotelListPager:function(pageNum){
-                var args=argumentsStruct.call(_configuration);
-                var pn=Number(pageNum);
+                var args=argumentsStruct.call(_configuration),
+                    pn=Number(pageNum);
                 _.extend(_configuration.get("searchCriteria"),{pageIndex:pn-1});
                 if(!args.useInternalCache){
                     performSearchRequest.call(this,_hotelsList);
                 }else{
-                    var data=caching.get('hotelsList_'.concat(args.curLang));
-                    var dataLength=Number(data['hotelCount']);
-                    var items_per_page=Number(_configuration.get("hotelsCount"));
-                    var max_elem=Math.min(pn*items_per_page,dataLength);
-                    var model=_configuration.get('hotels');
-                    var pagedList={};
+                    var data=caching.get('hotelsList_'.concat(args.curLang)),
+                        dataLength=Number(data['hotelCount']),
+                        items_per_page=Number(_configuration.get("hotelsCount")),
+                        max_elem=Math.min(pn*items_per_page,dataLength),
+                        model=_configuration.get('hotels'),
+                        pagedList={},
+                        piCount = (pn-1)*items_per_page;
                     _.extend(pagedList,data);
-                    pagedList['hotelList']=[];
-                    for(var i=((pn-1)*items_per_page);i<max_elem;i++){
-                        pagedList['hotelList'].push($.extend({},data['hotelList'][i]));
-                    }
+                    pagedList['hotelList']=new Array();
+                    pagedList['hotelList']=data['hotelList'].slice(piCount,max_elem);
                     model.refresh(pagedList);
                     _hotelsList.render();
                 }
