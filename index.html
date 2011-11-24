@@ -492,6 +492,11 @@ $.webshims.polyfill('lightweight');
         var SearchLocations=Backbone.Collection.extend({
             model:SearchLocation,
             url:'location/all/',
+            findCityById:function(cityId){
+                return this.find(function(data){
+                    return data.get('cityId') == cityId;
+                });
+            },
             fetchData:function(args){
                 var self=this;
                 var dfr=$.Deferred();
@@ -1161,9 +1166,10 @@ $.webshims.polyfill('lightweight');
         };
 
         var performSearchRequest=function(objectToRender){
-            var args=argumentsStruct.call(_configuration);
-             _.extend(_configuration.get("searchCriteria"),{pageIndex:0});
+            var cities, srchObject, args=argumentsStruct.call(_configuration);
             debugger;
+
+             _.extend(_configuration.get("searchCriteria"),{pageIndex:0});
             $.when(_configuration.get("hotels").fetchData(args,_configuration.get("searchCriteria"))).done(function(){
                     objectToRender.render();
                 });
@@ -1358,18 +1364,37 @@ $.webshims.polyfill('lightweight');
                 _configuration.refreshData(lang);
             },
             cityLookup:function(cityId){
+                var srchArg = null,
+                        srchObject = null,
+                        cities = null,
+                        srcType = 'quick';
+
                 updateSearchCriteria("sortType","POPULARITY");
                 updateSearchCriteria("sortDirection","ASC");
                 updateSearchCriteria("cityId",cityId);
-                performSearchRequest.call(this,_hotelsList);
+                srchObject = _configuration.get("searchCriteria");
+                cities=_configuration.get("srchLocations").findCityById(srchObject.cityId);
+                srchArg = cities.get('city').concat(', ', cities.get('country'));
+                $("#city").val(srchArg);
+                updateHistory('!/lookup/'.concat(cityId));
+                if(setSearchParameters(srcType)){
+                    initSearchActivity.call(self);
+                }
+                //performSearchRequest.call(this,_hotelsList);
             },
             search:function(srcType){
                 debugger;
                 _configuration.set({searchType:srcType});
             },
             makeSearch:function(srcType){
-                var self=this;
-                debugger;
+                var self=this,
+                    srchObject = null,
+                    srchArg = null,
+                    cities = null;
+                srchObject = _configuration.get("searchCriteria");
+                cities=_configuration.get("srchLocations").findCityById(srchObject.cityId);
+                srchArg = cities.get('city').concat(', ', cities.get('country'));
+                $("#city").val(srchArg);
                 updateHistory("!/search/do/".concat(srcType));
                 if(setSearchParameters(srcType)){
                     initSearchActivity.call(self);
@@ -1384,6 +1409,7 @@ $.webshims.polyfill('lightweight');
             hotelListPager:function(pageNum){
                 var args=argumentsStruct.call(_configuration),
                     pn=Number(pageNum);
+                debugger;
                 _.extend(_configuration.get("searchCriteria"),{pageIndex:pn-1});
                 if(!args.useInternalCache){
                     performSearchRequest.call(this,_hotelsList);
