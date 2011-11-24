@@ -1315,6 +1315,7 @@ $.webshims.polyfill('lightweight');
                 });
                 _configuration.bind("change:searchType",function(model,name){
                     var st, searchType, city, defCity, dateFrom,dateTo;
+                    debugger;
                     searchType=_configuration.get("searchType");
                     //todo get cached data from jstore
                     //todo save city, dates values while form switching
@@ -1328,6 +1329,7 @@ $.webshims.polyfill('lightweight');
 //                    $("form.searchform."+searchType+" .dest").attr("suggest_value", JSON.stringify(_configuration.get("srchLocations")));
                     suggestor(JSON.stringify(_configuration.get("srchLocations")));
                     self.drawTemplates(true);
+                    $("#city").val(city);
                     return true;
                 });
                 _configuration.bind("change:lang",function(model,name){
