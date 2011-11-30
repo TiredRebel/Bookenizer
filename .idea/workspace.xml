@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="Gmail key changed">
+    <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/de/main.html" afterPath="$PROJECT_DIR$/Locales/de/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/en/main.html" afterPath="$PROJECT_DIR$/Locales/en/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <list id="4bdcc2f4-00d6-40ee-b450-34d69268308a" name="On master: Uncommitted changes before update operation at 23.04.11 21:06(cherry picked from commit a54405b3371eb181076ef0b1b00a85e6f0cc83ed)" comment="On master: Uncommitted changes before update operation at 23.04.11 21:06(cherry picked from commit a54405b3371eb181076ef0b1b00a85e6f0cc83ed)" />
@@ -35,25 +37,7 @@
       <file leaf-file-name="hotelcard.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/de/hotelcard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="searchResults.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Locales/en/searchResults.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="99" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="searchResults.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Locales/de/searchResults.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="99" selection-start="474" selection-end="493" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -62,25 +46,25 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="162" column="63" selection-start="8617" selection-end="8617" vertical-scroll-proportion="0.0">
+            <state line="41" column="54" selection-start="1751" selection-end="1751" vertical-scroll-proportion="-8.156863">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="55" selection-start="1766" selection-end="1766" vertical-scroll-proportion="1.0452261">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="72" selection-start="3979" selection-end="3979" vertical-scroll-proportion="0.5641026">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/models.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="20" selection-start="990" selection-end="990" vertical-scroll-proportion="0.0">
+            <state line="1122" column="111" selection-start="50346" selection-end="50346" vertical-scroll-proportion="-7.1923075">
               <folding />
             </state>
           </provider>
@@ -89,7 +73,7 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="215" column="70" selection-start="11483" selection-end="11483" vertical-scroll-proportion="0.0">
+            <state line="40" column="32" selection-start="1701" selection-end="1740" vertical-scroll-proportion="-4.1568627">
               <folding />
             </state>
           </provider>
@@ -98,7 +82,16 @@
       <file leaf-file-name="searchResults.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/ru/searchResults.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="112" selection-start="1091" selection-end="1091" vertical-scroll-proportion="0.0">
+            <state line="42" column="21" selection-start="2968" selection-end="2968" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layoutSearchResult.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Layouts/layoutSearchResult.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="29" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -133,9 +126,7 @@
         <option value="$PROJECT_DIR$/scripts/debug/xdate.js" />
         <option value="$PROJECT_DIR$/scripts/jquery-1.6.min.js" />
         <option value="$PROJECT_DIR$/scripts/debug/jquery.autocomplete.js" />
-        <option value="$PROJECT_DIR$/Locales/de/main.html" />
         <option value="$PROJECT_DIR$/Locales/ru/main.html" />
-        <option value="$PROJECT_DIR$/Locales/en/main.html" />
         <option value="$PROJECT_DIR$/scripts/debug/xcommon.js" />
         <option value="$PROJECT_DIR$/scripts/jquery-1.7.min.js" />
         <option value="$PROJECT_DIR$/scripts/debug/jquery-1.7.js" />
@@ -144,6 +135,8 @@
         <option value="$PROJECT_DIR$/Locales/en/searchResults.html" />
         <option value="$PROJECT_DIR$/scripts/models.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/Locales/en/main.html" />
+        <option value="$PROJECT_DIR$/Locales/de/main.html" />
       </list>
     </option>
   </component>
@@ -189,8 +182,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -266,6 +259,10 @@
               <option name="myItemId" value="Locales" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="de" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -314,16 +311,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="172" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1004" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1002" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1002" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1004" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="171" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="165" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig" promptOnRemoteOverwrite="CHECK_TIMESTAMP" serverName="Linode" serverId="f6f47fce-9f6f-4dd6-b5cb-6dd4be495821">
     <servers>
@@ -435,14 +432,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1598" height="858" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921812" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32921812" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296845" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32784638" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34006515" sideWeight="0.21399178" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22736156" sideWeight="0.67215365" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23713355" sideWeight="0.6707819" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921812" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -482,7 +479,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gmail key changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Search criteria keeps its value during search type switching" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -495,8 +492,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Geocoding 95% finished" />
-    <MESSAGE value="Geocoding  finished" />
     <MESSAGE value="gmap key changed to linode" />
     <MESSAGE value="gmap key changed to linode. script fixed" />
     <MESSAGE value="Calc implementation started" />
@@ -520,16 +515,13 @@
     <MESSAGE value="JQuery 1.7 added&#10;Fixed issue with improper layout switching when language changes for Search results page&#10;Added history model&#10;Refactored setLayout function" />
     <MESSAGE value="Hotel card incorrect behaviour during language switching fixed" />
     <MESSAGE value="Gmail key changed" />
+    <MESSAGE value="Seach (lookup) from landing page&#10;Correct language switching on search results page&#10;Search parameter keeps correctly during language switching" />
+    <MESSAGE value="Search criteria keeps its value during search type switching" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scripts/jquery.autocomplete-min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/debug/xdate.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="5" selection-start="727" selection-end="727" vertical-scroll-proportion="0.09686609" />
@@ -555,44 +547,18 @@
         <state line="9300" column="0" selection-start="249157" selection-end="249157" vertical-scroll-proportion="0.96952105" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="31" selection-start="7381" selection-end="7390" vertical-scroll-proportion="0.3322884" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/de/hotelcard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/en/searchResults.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="99" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/de/searchResults.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="99" selection-start="474" selection-end="493" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="63" selection-start="8617" selection-end="8617" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/models.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="20" selection-start="990" selection-end="990" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="70" selection-start="11483" selection-end="11483" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Locales/ru/searchResults.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="112" selection-start="1091" selection-end="1091" vertical-scroll-proportion="0.0" />
+        <state line="42" column="21" selection-start="2968" selection-end="2968" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Layouts/layoutSearchResult.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="29" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Locales/ru/hotelcard.html">
@@ -600,9 +566,56 @@
         <state line="185" column="62" selection-start="6605" selection-end="6605" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/en/searchResults.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="99" selection-start="486" selection-end="486" vertical-scroll-proportion="0.026356589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/de/searchResults.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="99" selection-start="474" selection-end="493" vertical-scroll-proportion="0.025641026">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/de/hotelcard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/models.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="20" selection-start="990" selection-end="990" vertical-scroll-proportion="0.83048433">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="72" selection-start="3979" selection-end="3979" vertical-scroll-proportion="0.5641026">
+        <state line="1122" column="111" selection-start="50346" selection-end="50346" vertical-scroll-proportion="-7.1923075">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="32" selection-start="1701" selection-end="1740" vertical-scroll-proportion="-4.1568627">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="54" selection-start="1751" selection-end="1751" vertical-scroll-proportion="-8.156863">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="55" selection-start="1766" selection-end="1766" vertical-scroll-proportion="1.0452261">
           <folding />
         </state>
       </provider>

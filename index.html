@@ -75,8 +75,8 @@
 <script type="text/javascript" src="/scripts/debug/xcommon.js"></script>
 <script type="text/javascript" src="/scripts/models.js"></script>
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>
-<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>-->
+<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>-->
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>
 <script type="text/javascript">
 //$.webshims.setOptions('forms', { overrideMessages: true });
 $.webshims.polyfill('lightweight');
@@ -909,7 +909,7 @@ $.webshims.polyfill('lightweight');
                     el:$('#hotelslist'),
                     render:function(isResultsView) {
                         var self = this;
-                        if (isResultsView === undefined || isResultsView !== true) {
+                        if (isResultsView === void(0) || isResultsView !== true) {
                             getTemplate("hotellist_tmpl");
                             getTemplate("hotellist_item_tmpl");
                             self.el.html(ich.hotellist_tmpl());
@@ -924,12 +924,12 @@ $.webshims.polyfill('lightweight');
                         var hotelCount = jsonModel['hotelCount'];
                         var offerCount = jsonModel['offerCount'];
                         _(jsonModel['hotelList']).each(function(hotelItem,i) {
-                            if(i<hc){
+                            if(i < hc){
                                 hotelDiv.append(ich.hotellist_item_tmpl(hotelItem));
                             }
                         });
                         var page_index=_configuration.get("searchCriteria").pageIndex;
-                        if(page_index===undefined){
+                        if(page_index===void(0)){
                             page_index=0;
                         }
                         $("#srPager").pagination(hotelCount, {items_per_page:hc, current_page:Number(page_index), prev_text:"←", link_to:"#!/hl/page/__id__", next_text:"→",callback:handlePaginationClick});
@@ -1167,8 +1167,6 @@ $.webshims.polyfill('lightweight');
 
         var performSearchRequest=function(objectToRender){
             var cities, srchObject, args=argumentsStruct.call(_configuration);
-            debugger;
-
              _.extend(_configuration.get("searchCriteria"),{pageIndex:0});
             $.when(_configuration.get("hotels").fetchData(args,_configuration.get("searchCriteria"))).done(function(){
                     objectToRender.render();
