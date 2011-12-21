@@ -1,4 +1,3 @@
-/* https://github.com/aFarkas/webshim/issues#issue/16 */
 jQuery.webshims.register('form-native-fix', function($, webshims, window, doc, undefined){
 	
 	if(!Modernizr.formvalidation || Modernizr.bugfreeformvalidation){return;}
@@ -8,9 +7,9 @@ jQuery.webshims.register('form-native-fix', function($, webshims, window, doc, u
 	var invalids = [],
 		firstInvalidEvent,
 		form,
-		fromSubmit,
 		fromCheckValidity
 	;
+	
 	
 	//opera/chrome fix (this will double all invalid events in opera, we have to stop them!)
 	//opera throws a submit-event and then the invalid events,
@@ -23,12 +22,33 @@ jQuery.webshims.register('form-native-fix', function($, webshims, window, doc, u
 		};
 		window.addEventListener('submit', function(e){
 			if(!formnovalidate.prevented && e.target.checkValidity && $.attr(e.target, 'novalidate') == null){
-				fromSubmit = true;
-				
-				$(e.target).checkValidity();
-				fromSubmit = false;
+				if(window.opera){
+					
+					if($(':invalid', e.target).length){
+						$(e.target)
+							.unbind('submit.preventInvalidSubmit')
+							.bind('submit.preventInvalidSubmit', function(submitEvent){
+								if( $.attr(e.target, 'novalidate') == null ){
+									submitEvent.stopImmediatePropagation();
+									if(badWebkit){
+										submitEvent.preventDefault();
+									}
+								}
+								if(e.target){
+									$(e.target).unbind('submit.preventInvalidSubmit');
+								}
+							})
+						;
+						webshims.moveToFirstEvent(e.target, 'submit');
+					}
+				} else {
+					webshims.fromSubmit = true;
+					$(e.target).checkValidity();
+					webshims.fromSubmit = false;
+				}
 			}
 		}, true);
+		
 		var preventValidityTest = function(e){
 			if($.attr(e.target, 'formnovalidate') == null){return;}
 			if(formnovalidate.timer){
@@ -51,22 +71,24 @@ jQuery.webshims.register('form-native-fix', function($, webshims, window, doc, u
 			firstInvalidEvent = false;
 			invalids = [];
 			
-			var submitEvents = $(form)
+			$(form)
 				.unbind('submit.preventInvalidSubmit')
 				.bind('submit.preventInvalidSubmit', function(submitEvent){
 					if( $.attr(form, 'novalidate') == null ){
 						submitEvent.stopImmediatePropagation();
-						return false;
+						if(badWebkit){
+							submitEvent.preventDefault();
+						}
+					}
+					if(form){
+						$(form).unbind('submit.preventInvalidSubmit');
 					}
 				})
-				.data('events').submit
 			;
-			//add this handler as first executing handler
-			if (submitEvents && submitEvents.length > 1) {
-				submitEvents.unshift(submitEvents.pop());
-			}
+			webshims.moveToFirstEvent(form, 'submit');
 			
-			if(!fromSubmit){return;}
+			
+			if(!webshims.fromSubmit){return;}
 			firstInvalidEvent = data;
 		})
 		.bind('invalid', function(e){
@@ -95,8 +117,8 @@ jQuery.webshims.register('form-native-fix', function($, webshims, window, doc, u
 	if(xBadWebkit){
 		var submitTimer;
 		var trueInvalid;
-		var invalidEvent = $(document).bind('invalid', function(e){
-			if(e.originalEvent && !fromSubmit && !fromCheckValidity && ($.prop(e.target, 'validity') || {}).valid){
+		$(document).bind('invalid', function(e){
+			if(e.originalEvent && !webshims.fromSubmit && !fromCheckValidity && ($.prop(e.target, 'validity') || {}).valid){
 				e.originalEvent.wrongWebkitInvalid = true;
 				e.wrongWebkitInvalid = true;
 				e.stopImmediatePropagation();
@@ -113,12 +135,9 @@ jQuery.webshims.register('form-native-fix', function($, webshims, window, doc, u
 				}
 				trueInvalid = false;
 			}, 1);
-		})
-		.data('events').invalid;
-		//add this handler as first executing handler
-		if (invalidEvent && invalidEvent.length > 1) {
-			invalidEvent.unshift(invalidEvent.pop());
-		}
+		});
+		
+		webshims.moveToFirstEvent(document, 'invalid');
 		
 		$(document).bind('firstinvalidsystem', function(e, data){
 			if(fromCheckValidity){return;}
@@ -132,7 +151,7 @@ jQuery.webshims.register('form-native-fix', function($, webshims, window, doc, u
 		
 	(function(){
 		//safari 5.0.x has serious issues with checkValidity in combination with setCustomValidity so we mimic checkValidity using validity-property (webshims.fix.checkValidity)
-		if(!badWebkit){return;}
+		if(!badWebkit || webshims.browserVersion > 534.5){return;}
 		['input', 'textarea', 'select'].forEach(function(name){
 			var desc = webshims.defineNodeNameProperty(name, 'checkValidity', {
 				prop: {
@@ -177,6 +196,8 @@ jQuery.webshims.register('form-native-fix', function($, webshims, window, doc, u
 	})();
 	
 	(function(){
+		//stupid Opera hasn't fixed this issue right, it's buggy
+		// || webshims.browserVersion > 11.59
 		if(!$.browser.opera){return;}
 		var preventDefault = function(e){
 			e.preventDefault();
@@ -186,13 +207,13 @@ jQuery.webshims.register('form-native-fix', function($, webshims, window, doc, u
 			var desc = webshims.defineNodeNameProperty(name, 'checkValidity', {
 				prop: {
 					value: function(){
-						if(!fromSubmit){
+						if(!webshims.fromSubmit){
 							$(this).bind('invalid', preventDefault);
 						}
 						
 						fromCheckValidity = true;
 						var ret = desc.prop._supvalue.apply(this, arguments);
-						if(!fromSubmit){
+						if(!webshims.fromSubmit){
 							$(this).unbind('invalid', preventDefault);
 						}
 						fromCheckValidity = false;
@@ -238,5 +259,157 @@ jQuery.webshims.register('form-native-fix', function($, webshims, window, doc, u
 			});
 		});
 	}
+
+	//simply copied from form-shim-extend without novalidate for safari 5.0.1
+if( !('formTarget' in document.createElement('input')) ){
+	(function(){
+		
+		var submitterTypes = {submit: 1, button: 1, image: 1};
+		var formSubmitterDescriptors = {};
+		[
+			{
+				name: "enctype",
+				limitedTo: {
+					"application/x-www-form-urlencoded": 1,
+					"multipart/form-data": 1,
+					"text/plain": 1
+				},
+				defaultProp: "application/x-www-form-urlencoded",
+				proptype: "enum"
+			},
+			{
+				name: "method",
+				limitedTo: {
+					"get": 1,
+					"post": 1
+				},
+				defaultProp: "get",
+				proptype: "enum"
+			},
+			{
+				name: "action",
+				proptype: "url"
+			},
+			{
+				name: "target"
+			}
+		].forEach(function(desc){
+			var propName = 'form'+ (desc.propName || desc.name).replace(/^[a-z]/, function(f){
+				return f.toUpperCase();
+			});
+			var attrName = 'form'+ desc.name;
+			var formName = desc.name;
+			var eventName = 'click.webshimssubmittermutate'+formName;
+			
+			var changeSubmitter = function(){
+				var elem = this;
+				if( !('form' in elem) || !submitterTypes[elem.type] ){return;}
+				var form = $.prop(elem, 'form');
+				if(!form){return;}
+				var attr = $.attr(elem, attrName);
+				if(attr != null && ( !desc.limitedTo || attr.toLowerCase() === $.prop(elem, propName))){
+					
+					var oldAttr = $.attr(form, formName);
+					
+					$.attr(form, formName, attr);
+					setTimeout(function(){
+						if(oldAttr != null){
+							$.attr(form, formName, oldAttr);
+						} else {
+							$(form).removeAttr(formName);
+						}
+					}, 9);
+				}
+			};
+			
+			
+		
+		switch(desc.proptype) {
+				case "url":
+					var urlForm = document.createElement('form');
+					formSubmitterDescriptors[propName] = {
+						prop: {
+							set: function(value){
+								$.attr(this, attrName, value);
+							},
+							get: function(){
+								var value = $.attr(this, attrName);
+								if(value == null){return '';}
+								urlForm.setAttribute('action', value);
+								return urlForm.action;
+							}
+						}
+					};
+					break;
+				case "boolean":
+					formSubmitterDescriptors[propName] = {
+						prop: {
+							set: function(val){
+								val = !!val;
+								if(val){
+									$.attr(this, 'formnovalidate', 'formnovalidate');
+								} else {
+									$(this).removeAttr('formnovalidate');
+								}
+							},
+							get: function(){
+								return $.attr(this, 'formnovalidate') != null;
+							}
+						}
+					};
+					break;
+				case "enum":
+					formSubmitterDescriptors[propName] = {
+						prop: {
+							set: function(value){
+								$.attr(this, attrName, value);
+							},
+							get: function(){
+								var value = $.attr(this, attrName);
+								return (!value || ( (value = value.toLowerCase()) && !desc.limitedTo[value] )) ? desc.defaultProp : value;
+							}
+						}
+				};
+				break;
+				default:
+					formSubmitterDescriptors[propName] = {
+						prop: {
+							set: function(value){
+								$.attr(this, attrName, value);
+							},
+							get: function(){
+								var value = $.attr(this, attrName);
+								return (value != null) ? value : "";
+							}
+						}
+					};
+			}
+		
+		
+			if(!formSubmitterDescriptors[attrName]){
+				formSubmitterDescriptors[attrName] = {};
+			}
+			formSubmitterDescriptors[attrName].attr = {
+				set: function(value){
+					formSubmitterDescriptors[attrName].attr._supset.call(this, value);
+					$(this).unbind(eventName).bind(eventName, changeSubmitter);
+				},
+				get: function(){
+					return formSubmitterDescriptors[attrName].attr._supget.call(this);
+				}
+			};
+			formSubmitterDescriptors[attrName].initAttr = true;
+			formSubmitterDescriptors[attrName].removeAttr = {
+				value: function(){
+					$(this).unbind(eventName);
+					formSubmitterDescriptors[attrName].removeAttr._supvalue.call(this);
+				}
+			};
+		});
+		
+		webshims.defineNodeNamesProperties(['input', 'button'], formSubmitterDescriptors);
+	})();
+}	
+
 	
 });

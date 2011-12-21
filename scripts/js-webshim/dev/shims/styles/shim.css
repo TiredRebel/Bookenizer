@@ -1,28 +1,30 @@
-.polyfill-important.polyfill-remove-fouc.loading-polyfills body {
-	visibility: hidden;
-}
-.polyfill-important.polyfill-remove-fouc.long-loading-polyfills {
-	background-image: url(polyfill-loader.gif);
-	background-position: center 240px;
-	background-repeat: no-repeat;
-}
 article,aside,canvas,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section,summary { 
     display:block;
 }
-audio.controls,
+audio {
+	display: none;
+	height: 0;
+	width: 0;
+}
+audio.webshims-controls,
 video {
 	display: inline-block;
-	width: 300px;
-	height: 150px;
-}
-audio {
-	height: 30px;
+	min-height: 45px;
+	min-width: 40px;
 }
 audio[controls] {
 	display: inline-block;
-	width: 300px;
-	height: 30px;
+	min-height: 45px;
+	min-width: 40px;
+}
+video *,
+audio * {
+	display: none !important;
+}
+.flashblocker-assumed {
+	min-height: 20px;
+	min-width: 20px;
 }
 mark {
     background-color: #ff9;
@@ -229,7 +231,6 @@ img.ui-datepicker-trigger {
 	height: 9px;
 	width: 155px;
 	border-radius: 1px;
-	-moz-border-radius: 1px;
 	background: url(forms.png) 0 -43px no-repeat;
 	cursor: pointer;
 	font-size: 0;
@@ -307,12 +308,9 @@ img.ui-datepicker-trigger {
 	z-index: 100;
 	overflow: visible;
 	padding: 5px;
-	font-family: "Lucida Grande", "MS Shell Dlg", "Calibri", sans-serif;
+	font-family: "MS Shell Dlg", "Lucida Grande", "Calibri", sans-serif;
 	font-size: 14px;
 	border: 1px solid #333;
-	-moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-	-webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
 .input-date-datepicker-control .ui-datepicker-header {
@@ -383,15 +381,12 @@ img.ui-datepicker-trigger {
 	text-align: right;
 	border: 1px solid #fff;
 	border-radius: 2px;
-	-moz-border-radius: 2px;
 }
 
 .input-date-datepicker-control td.ui-datepicker-current-day {
 	background-color: #adf;
 	color: #000;
 	border-color: #06c;
-	-moz-box-shadow: 0 3px 9px rgba(255, 255, 255, 0.9) inset;
-	box-shadow: 0 3px 9px rgba(255, 255, 255, 0.9) inset;
 }
 .input-date-datepicker-control td.ui-datepicker-today{
 	border-color: #06c;
@@ -407,8 +402,6 @@ img.ui-datepicker-trigger {
 .input-date-datepicker-control td:hover {
 	background-color: #bef;
 	border-color: #06c;
-	-moz-box-shadow: 0 3px 9px rgba(255, 255, 255, 0.9) inset;
-	box-shadow: 0 3px 9px rgba(255, 255, 255, 0.9) inset;
 }
 .input-date-datepicker-control td.ui-state-disabled {
 	cursor: default;
@@ -450,10 +443,6 @@ datalist {
 	overflow: hidden;
 	overflow-x: hidden !important;
 	overflow-y: auto;
-	
-	-moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-	-webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
 .datalist-polyfill.datalist-visible{
 	display: block;
@@ -489,25 +478,26 @@ datalist {
 	cursor: default;
 }
 
-.validity-alert {
-	position: absolute;
-	display: inline-block;
-	padding: 8px 0 0;
-	z-index: 10000;
+.validity-alert-wrapper {
+	position: absolute !important;
+	overflow: hidden;
+	padding: 0 6px 6px 0;
+	z-index: 99999;
 	
 }
-.validity-alert span.va-box {
+.validity-alert {
 	display: inline-block;
+	padding: 8px 0 0;
+}
+.validity-alert .va-box {
+	display: inline-block !important;
 	background: #fafafa;
 	color: #000;
 	border: 1px solid #000;
 	padding: 5px;
-	-moz-border-radius: 2px;
 	border-radius: 2px;
-	zoom: 1;
+	zoom: 1 !important;
 	min-width: 60px;
-	-moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
-	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
 }
 
 .validity-alert .va-arrow {
@@ -519,10 +509,19 @@ datalist {
 	height: 0;
 	border-left: 9px solid transparent;
     border-right: 9px solid transparent;
+	
 	border-bottom: 7px solid #000;
 	border-top: none;
 	zoom: 1;
 	font-size: 0;
+}
+html .validity-alert span.va-arrow {
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+.polyfill-important .validity-alert span.va-arrow {
+	border-left-color: transparent !important;
+	border-right-color: transparent !important;
 }
 * html .validity-alert .va-arrow {display: none;}
 .validity-alert .va-arrow .va-arrow-box {

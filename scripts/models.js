@@ -4,7 +4,7 @@ var Statistic = Backbone.Model.extend();
 var SearchLocation = Backbone.Model.extend();
 var Language = Backbone.Model.extend();
 var Hotel = Backbone.Model.extend();
-var SortOrder=Backbone.Model.extend();
+//var SortOrder=Backbone.Model.extend();
 var Offers=Backbone.Model.extend();
 var SearchCriteria = {
         language:null,

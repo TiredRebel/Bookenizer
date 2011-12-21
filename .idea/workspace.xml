@@ -2,10 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dbc75fe-a80a-4663-86cf-e4866ae4b482" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Locales/ru/main-top-destinations.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/de/main.html" afterPath="$PROJECT_DIR$/Locales/de/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Locales/en/main.html" afterPath="$PROJECT_DIR$/Locales/en/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/extras/custom-validity.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/extras/custom-validity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/extras/modernizr-custom.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/extras/modernizr-custom.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/extras/mousepress.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/extras/mousepress.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/polyfiller.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/polyfiller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/details.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/details.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/dom-extend.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/dom-extend.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/es5.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/es5.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/form-core.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/form-core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/form-native-extend.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/form-native-extend.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/form-native-fix.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/form-native-fix.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/form-shim-extend.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/form-shim-extend.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/json-storage.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/json-storage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/styles/shim.css" afterPath="$PROJECT_DIR$/scripts/js-webshim/dev/shims/styles/shim.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/extras/custom-validity.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/extras/custom-validity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/extras/modernizr-custom.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/extras/modernizr-custom.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/polyfiller.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/polyfiller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/details.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/details.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/dom-extend.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/dom-extend.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/es5.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/es5.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/excanvas.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/excanvas.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/form-core.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/form-core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/form-native-extend.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/form-native-extend.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/form-native-fix.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/form-native-fix.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/form-shim-extend.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/form-shim-extend.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/json-storage.js" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/json-storage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/styles/shim.css" afterPath="$PROJECT_DIR$/scripts/js-webshim/minified/shims/styles/shim.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/models.js" afterPath="$PROJECT_DIR$/scripts/models.js" />
     </list>
     <list id="4bdcc2f4-00d6-40ee-b450-34d69268308a" name="On master: Uncommitted changes before update operation at 23.04.11 21:06(cherry picked from commit a54405b3371eb181076ef0b1b00a85e6f0cc83ed)" comment="On master: Uncommitted changes before update operation at 23.04.11 21:06(cherry picked from commit a54405b3371eb181076ef0b1b00a85e6f0cc83ed)" />
     <list id="f8743774-3083-4128-93cb-73ea72964036" name="Issue #1 resolved(cherry picked from commit b98609113446ae548597b1d8aadba447885a6ecc)" comment="" />
@@ -34,28 +60,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="hotelcard.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Locales/de/hotelcard.html">
+      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="41" column="54" selection-start="1751" selection-end="1751" vertical-scroll-proportion="-0.65384614">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="54" selection-start="1751" selection-end="1751" vertical-scroll-proportion="-8.156863">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="55" selection-start="1766" selection-end="1766" vertical-scroll-proportion="1.0452261">
+            <state line="26" column="63" selection-start="1083" selection-end="1083" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -64,7 +81,37 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1122" column="111" selection-start="50346" selection-end="50346" vertical-scroll-proportion="-7.1923075">
+            <state line="1131" column="118" selection-start="50778" selection-end="50778" vertical-scroll-proportion="-5.1153846">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="searchResults.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Locales/en/searchResults.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="77" selection-start="3094" selection-end="3094" vertical-scroll-proportion="-13.076923">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main-top-destinations.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Locales/ru/main-top-destinations.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="14" selection-start="3291" selection-end="3291" vertical-scroll-proportion="1.630137">
+              <folding>
+                <element signature="tag#div#1;tag#div#1;tag#div#0;tag#div#0;tag#div#0;tag#script#1" expanded="false" />
+                <element signature="tag#div#0;tag#div#1;tag#div#1;tag#div#0;tag#div#0;tag#div#0;tag#script#1" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/models.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="63" selection-start="364" selection-end="364" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -73,7 +120,7 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="32" selection-start="1701" selection-end="1740" vertical-scroll-proportion="-4.1568627">
+            <state line="40" column="32" selection-start="1701" selection-end="1740" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,25 +129,7 @@
       <file leaf-file-name="searchResults.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Locales/ru/searchResults.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="21" selection-start="2968" selection-end="2968" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layoutSearchResult.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Layouts/layoutSearchResult.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="29" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hotelcard.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Locales/ru/hotelcard.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="185" column="62" selection-start="6605" selection-end="6605" vertical-scroll-proportion="0.0">
+            <state line="40" column="114" selection-start="2931" selection-end="2931" vertical-scroll-proportion="-6.5384617">
               <folding />
             </state>
           </provider>
@@ -121,7 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/styles/style.css" />
         <option value="$PROJECT_DIR$/Locales/ru/hotelcard.html" />
         <option value="$PROJECT_DIR$/scripts/debug/xdate.js" />
         <option value="$PROJECT_DIR$/scripts/jquery-1.6.min.js" />
@@ -133,10 +161,11 @@
         <option value="$PROJECT_DIR$/Locales/de/searchResults.html" />
         <option value="$PROJECT_DIR$/Locales/ru/searchResults.html" />
         <option value="$PROJECT_DIR$/Locales/en/searchResults.html" />
-        <option value="$PROJECT_DIR$/scripts/models.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/Locales/en/main.html" />
         <option value="$PROJECT_DIR$/Locales/de/main.html" />
+        <option value="$PROJECT_DIR$/scripts/models.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/Locales/ru/main-top-destinations.html" />
       </list>
     </option>
   </component>
@@ -182,8 +211,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
       <pane id="Scope" />
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -207,6 +236,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js-webshim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bookenizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="debug" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -431,23 +496,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1598" height="858" extended-state="0" />
+    <frame x="1" y="0" width="1598" height="860" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32921812" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32831737" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296845" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32784638" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34006515" sideWeight="0.21399178" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23713355" sideWeight="0.6707819" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21563518" sideWeight="0.67168266" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921812" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31824416" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31737345" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32784638" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32784638" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24951768" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -479,7 +544,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Search criteria keeps its value during search type switching" />
+    <option name="LAST_COMMIT_MESSAGE" value="GMaps key changed" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -492,8 +557,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="gmap key changed to linode" />
-    <MESSAGE value="gmap key changed to linode. script fixed" />
     <MESSAGE value="Calc implementation started" />
     <MESSAGE value="Login/register control attached" />
     <MESSAGE value="Room categories popup template started(only first)" />
@@ -517,21 +580,13 @@
     <MESSAGE value="Gmail key changed" />
     <MESSAGE value="Seach (lookup) from landing page&#10;Correct language switching on search results page&#10;Search parameter keeps correctly during language switching" />
     <MESSAGE value="Search criteria keeps its value during search type switching" />
+    <MESSAGE value="Pager for English and German templates added. It was disappeared from these templates (hotellist_tmpl) was incorrect." />
+    <MESSAGE value="GMaps key changed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scripts/debug/xdate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="5" selection-start="727" selection-end="727" vertical-scroll-proportion="0.09686609" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/debug/xcommon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1027" column="0" selection-start="27349" selection-end="27349" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/debug/jquery.autocomplete.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="97" column="19" selection-start="3127" selection-end="3127" vertical-scroll-proportion="0.0" />
@@ -547,37 +602,14 @@
         <state line="9300" column="0" selection-start="249157" selection-end="249157" vertical-scroll-proportion="0.96952105" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/ru/searchResults.html">
+    <entry file="file://$PROJECT_DIR$/Locales/de/searchResults.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="21" selection-start="2968" selection-end="2968" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Layouts/layoutSearchResult.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="29" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="3" column="99" selection-start="474" selection-end="493" vertical-scroll-proportion="0.025641026" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Locales/ru/hotelcard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="185" column="62" selection-start="6605" selection-end="6605" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/en/searchResults.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="99" selection-start="486" selection-end="486" vertical-scroll-proportion="0.026356589">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/de/searchResults.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="99" selection-start="474" selection-end="493" vertical-scroll-proportion="0.025641026">
-          <folding />
-        </state>
+        <state line="185" column="62" selection-start="6605" selection-end="6605" vertical-scroll-proportion="6.6351037" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Locales/de/hotelcard.html">
@@ -585,38 +617,70 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/models.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="20" selection-start="990" selection-end="990" vertical-scroll-proportion="0.83048433">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1122" column="111" selection-start="50346" selection-end="50346" vertical-scroll-proportion="-7.1923075">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="32" selection-start="1701" selection-end="1740" vertical-scroll-proportion="-4.1568627">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Locales/en/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="54" selection-start="1751" selection-end="1751" vertical-scroll-proportion="-8.156863">
+        <state line="41" column="54" selection-start="1751" selection-end="1751" vertical-scroll-proportion="-0.65384614">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Locales/de/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="55" selection-start="1766" selection-end="1766" vertical-scroll-proportion="1.0452261">
+        <state line="26" column="63" selection-start="1083" selection-end="1083" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/models.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="63" selection-start="364" selection-end="364" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/ru/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="32" selection-start="1701" selection-end="1740" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Layouts/layoutHotelCard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="75" selection-start="418" selection-end="418" vertical-scroll-proportion="0.36060607">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1131" column="118" selection-start="50778" selection-end="50778" vertical-scroll-proportion="-5.1153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Layouts/layoutSearchResult.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="112" selection-start="437" selection-end="437" vertical-scroll-proportion="0.3259587">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/en/searchResults.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="77" selection-start="3094" selection-end="3094" vertical-scroll-proportion="-13.076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/ru/searchResults.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="114" selection-start="2931" selection-end="2931" vertical-scroll-proportion="-6.5384617">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Locales/ru/main-top-destinations.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="14" selection-start="3291" selection-end="3291" vertical-scroll-proportion="1.630137">
+          <folding>
+            <element signature="tag#div#1;tag#div#1;tag#div#0;tag#div#0;tag#div#0;tag#script#1" expanded="false" />
+            <element signature="tag#div#0;tag#div#1;tag#div#1;tag#div#0;tag#div#0;tag#div#0;tag#script#1" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

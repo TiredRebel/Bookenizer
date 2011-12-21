@@ -35,17 +35,7 @@
 			return e.childNodes;
 		}
 	;
-	if(webshims.fn && webshims.fn.init){
-		var oldInit = webshims.fn.init;
-		webshims.fn.init = function(sel){
-			if(sel && htmlExp.exec(sel)){
-				arguments[0] = webshims.fixHTML5(sel);
-			}
-			return oldInit.apply(this, arguments);
-		};
-		webshims.fn.init.prototype = oldInit.prototype;
-	}
-	
+
 })(jQuery);
 
 //DOM-Extension helper
@@ -95,13 +85,14 @@ jQuery.webshims.register('dom-extend', function($, webshims, window, document, u
 		});
 	};
 	
+	var dataID = '_webshimsLib'+ (Math.round(Math.random() * 1000));
 	var elementData = function(elem, key, val){
 		elem = elem.jquery ? elem[0] : elem;
 		if(!elem){return val || {};}
-		var data = $.data(elem, '_webshimsLib');
+		var data = $.data(elem, dataID);
 		if(val !== undefined){
 			if(!data){
-				data = $.data(elem, '_webshimsLib', {});
+				data = $.data(elem, dataID, {});
 			}
 			if(key){
 				data[key] = val;
@@ -389,16 +380,44 @@ jQuery.webshims.register('dom-extend', function($, webshims, window, document, u
 				var id = elem.attr('id');
 				if(!id){
 					ID++;
-					id = 'elem-id-'+ ID;
+					id = 'ID-'+ ID;
 					elem.attr('id', id);
 				}
 				return id;
 			};
 		})(),
-		
+		extendUNDEFProp: function(obj, props){
+			$.each(props, function(name, prop){
+				if( !(name in obj) ){
+					obj[name] = prop;
+				}
+			});
+		},
 		//http://www.w3.org/TR/html5/common-dom-interfaces.html#reflect
 		createPropDefault: createPropDefault,
 		data: elementData,
+		moveToFirstEvent: (function(){
+			var getData = $._data ? '_data' : 'data';
+			return function(elem, eventType, bindType){
+				var events = ($[getData](elem, 'events') || {})[eventType];
+				var fn;
+				
+				if(events && events.length > 1){
+					fn = events.pop();
+					if(!bindType){
+						bindType = 'bind';
+					}
+					if(bindType == 'bind' && events.delegateCount){
+						events.splice( events.delegateCount, 0, fn);
+					} else {
+						events.unshift( fn );
+					}
+					
+					
+				}
+				elem = null;
+			};
+		})(),
 		addShadowDom: function(nativeElem, shadowElem, opts){
 			opts = opts || {};
 			if(nativeElem.jquery){
@@ -410,8 +429,8 @@ jQuery.webshims.register('dom-extend', function($, webshims, window, document, u
 			if(!opts.shadowFocusElement){
 				opts.shadowFocusElement = shadowElem;
 			}
-			var nativeData = $.data(nativeElem, '_webshimsLib') || $.data(nativeElem, '_webshimsLib', {});
-			var shadowData = $.data(shadowElem, '_webshimsLib') || $.data(shadowElem, '_webshimsLib', {});
+			var nativeData = $.data(nativeElem, dataID) || $.data(nativeElem, dataID, {});
+			var shadowData = $.data(shadowElem, dataID) || $.data(shadowElem, dataID, {});
 			nativeData.hasShadow = shadowElem;
 			shadowData.nativeElement = nativeElem;
 			shadowData.shadowData = nativeData.shadowData = {
@@ -463,21 +482,6 @@ jQuery.webshims.register('dom-extend', function($, webshims, window, document, u
 				};
 			}
 			
-//			,url: (function(){
-//				var anchor = document.createElement('a');
-//				return function(descs){
-//					descs.prop = {
-//						set: function(val){
-//							descs.attr.set.call(this, "" + val);
-//						},
-//						get: function(){
-//							var tmpanchor = (this.ownerDocument === document) ? anchor : this.ownerDocument.createElement('a');
-//							tmpanchor.setAttribute('href', descs.attr.get.call(this));
-//							return tmpanchor[0];
-//						}
-//					};
-//				};
-//			})()
 //			,enumarated: $.noop
 //			,unsignedLong: $.noop
 //			,"doubble": $.noop
@@ -504,10 +508,7 @@ jQuery.webshims.register('dom-extend', function($, webshims, window, document, u
 		},
 		defineNodeNameProperty: function(nodeName, prop, descs){
 			havePolyfill[prop] = true;
-			if(descs.get || descs.value){
-				webshims.warn(nodeName +'['+ prop +']'+ 'old API');
-			}
-			
+						
 			if(descs.reflect){
 				webshims.propTypes[descs.propType || 'standard'](descs);
 			}
@@ -620,6 +621,9 @@ jQuery.webshims.register('dom-extend', function($, webshims, window, document, u
 			});
 		},
 		defineNodeNamesBooleanProperty: function(elementNames, prop, descs){
+			if(!descs){
+				descs = {};
+			}
 			if($.isFunction(descs)){
 				descs.set = descs;
 			}
@@ -646,7 +650,7 @@ jQuery.webshims.register('dom-extend', function($, webshims, window, document, u
 				},
 				reflect: true,
 				propType: 'boolean',
-				initAttr: descs.initAttr
+				initAttr: descs.initAttr || false
 			});
 		},
 		contentAttr: function(elem, name, val){
@@ -666,65 +670,110 @@ jQuery.webshims.register('dom-extend', function($, webshims, window, document, u
 				elem.setAttribute(name, val);
 			}
 		},
-				
+		
+//		set current Lang:
+//			- webshims.activeLang(lang:string);
+//		get current lang
+//			- webshims.activeLang();
+//		get current lang
+//			webshims.activeLang({
+//				register: moduleName:string,
+//				callback: callback:function
+//			});
+//		get/set including removeLang
+//			- webshims.activeLang({
+//				module: moduleName:string,
+//				callback: callback:function,
+//				langObj: languageObj:array/object
+//			});
 		activeLang: (function(){
-			var langs = [navigator.browserLanguage || navigator.language || ''];
-			var paLang = $('html').attr('lang');
-			var timer;
-			
-			if(paLang){
-				langs.push(paLang);
-			}
-			return function(lang, module, fn, noChangeFn){
-				if(lang){
-					if(!module || !fn){
-						if(lang !== langs[0]){
-							langs[0] = lang;
-							$(document).triggerHandler('webshimLocalizationReady', langs);
-						}
-					} else {
-						module = modules[module].options;
-						var langObj = lang,
-							remoteLangs = module && module.availabeLangs,
-							loadRemoteLang = function(lang){
-								if($.inArray(lang, remoteLangs) !== -1){
-									webshims.loader.loadScript(module.langSrc+lang+'.js', function(){
-										if(langObj[lang]){
-											fn(langObj[lang]);
-										} else {
-											$(function(){
-												if(langObj[lang]){
-													fn(langObj[lang]);
-												}
-											});
-										}
-									});
-									return true;
+			var callbacks = [];
+			var registeredCallbacks = {};
+			var currentLang;
+			var shortLang;
+			var notLocal = /:\/\/|^\.*\//;
+			var loadRemoteLang = function(data, lang, options){
+				var langSrc;
+				if(lang && options && $.inArray(lang, options.availabeLangs || []) !== -1){
+					data.loading = true;
+					langSrc = options.langSrc;
+					if(!notLocal.test(langSrc)){
+						langSrc = webshims.cfg.basePath+langSrc;
+					}
+					webshims.loader.loadScript(langSrc+lang+'.js', function(){
+						if(data.langObj[lang]){
+							data.loading = false;
+							callLang(data, true);
+						} else {
+							$(function(){
+								if(data.langObj[lang]){
+									callLang(data, true);
 								}
-								return false;
-							},
-							langChanges
-						;
-						
-						$.each(langs, function(i, lang){
-							var shortLang = lang.split('-')[0];
-							if(langObj[lang] || langObj[shortLang]){
-								langChanges = true;
-								fn(langObj[lang] || langObj[shortLang]);
-								return false;
-							}
-							if(remoteLangs && module.langSrc && (loadRemoteLang(lang) || loadRemoteLang(shortLang))){
-								langChanges = true;
-								return false;
-							}
-						});
-						if(!langChanges && noChangeFn){
-							noChangeFn();
+								data.loading = false;
+							});
 						}
+					});
+					return true;
+				}
+				return false;
+			};
+			var callRegister = function(module){
+				if(registeredCallbacks[module]){
+					registeredCallbacks[module].forEach(function(data){
+						data.callback();
+					});
+				}
+			};
+			var callLang = function(data, _noLoop){
+				if(data.activeLang != currentLang && data.activeLang !== shortLang){
+					var options = modules[data.module].options;
+					if( data.langObj[currentLang] || (shortLang && data.langObj[shortLang]) ){
+						data.activeLang = currentLang;
+						data.callback(data.langObj[currentLang] || data.langObj[shortLang], currentLang);
+						callRegister(data.module);
+					} else if( !_noLoop &&
+						!loadRemoteLang(data, currentLang, options) && 
+						!loadRemoteLang(data, shortLang, options) && 
+						data.langObj[''] && data.activeLang !== '' ) {
+						data.activeLang = '';
+						data.callback(data.langObj[''], currentLang);
+						callRegister(data.module);
 					}
 				}
-				return langs;
 			};
+			
+			
+			var activeLang = function(lang){
+				
+				if(typeof lang == 'string' && lang !== currentLang){
+					currentLang = lang;
+					shortLang = currentLang.split('-')[0];
+					if(currentLang == shortLang){
+						shortLang = false;
+					}
+					$.each(callbacks, function(i, data){
+						callLang(data);
+					});
+				} else if(typeof lang == 'object'){
+					
+					if(lang.register){
+						if(!registeredCallbacks[lang.register]){
+							registeredCallbacks[lang.register] = [];
+						}
+						registeredCallbacks[lang.register].push(lang);
+						lang.callback();
+					} else {
+						if(!lang.activeLang){
+							lang.activeLang = '';
+						}
+						callbacks.push(lang);
+						callLang(lang);
+					}
+				}
+				return currentLang;
+			};
+			
+			return activeLang;
 		})()
 	});
 	
@@ -749,8 +798,9 @@ jQuery.webshims.register('dom-extend', function($, webshims, window, document, u
 });
 //html5a11y
 (function($, document){
-	var browserVersion = parseFloat($.browser.version, 10);
-	if (($.browser.msie && browserVersion < 10 && browserVersion > 7) || ($.browser.mozilla && browserVersion < 2) || ($.browser.webkit && browserVersion < 535)) {
+	var browserVersion = $.webshims.browserVersion;
+	if($.browser.mozilla && browserVersion > 5){return;}
+	if (!$.browser.msie || (browserVersion < 12 && browserVersion > 7)) {
 		var elemMappings = {
 			article: "article",
 			aside: "complementary",

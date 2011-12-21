@@ -75,8 +75,8 @@
 <script type="text/javascript" src="/scripts/debug/xcommon.js"></script>
 <script type="text/javascript" src="/scripts/models.js"></script>
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>
-<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>-->
+<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>-->
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>
 <script type="text/javascript">
 //$.webshims.setOptions('forms', { overrideMessages: true });
 $.webshims.polyfill('lightweight');
@@ -649,6 +649,8 @@ $.webshims.polyfill('lightweight');
                 "hotelCard":new HotelCard(),
                 "roCount":0,
                 "searchResult":new HotelsList(),
+                "sortType":"NAME",
+                "sortOrder":"ASC",
                 "defaultSortOrder":"ASC",
                 "defaultSortType":"NAME"
             },
@@ -709,6 +711,8 @@ $.webshims.polyfill('lightweight');
             initialize:function(){
                 var self=this;
                 //console.log("initialize")
+                //_sortOrderModel=new SortOrder({current:_configuration.get("defaultSortOrder")});
+                //self.initSortOrder.call(self);
                 self.initSearchCriteria.call(self);
                 self.initHistory.call(self);
                 self.initData.call(self,false);
@@ -734,6 +738,11 @@ $.webshims.polyfill('lightweight');
                     criteria.searchType=settings.searchType.toUpperCase();
                 })(this.defaults.searchCriteria,this.defaults);
             },
+//            initSortOrder:function(){
+//                 (function(criteria,settings){
+//                    criteria.current
+//                 })(this.defaults.sortOrder, this.defaults);
+//            },
             initRandomOffers:function(){
                 var self=this;
                 var args=argumentsStruct.call(self);
@@ -758,9 +767,9 @@ $.webshims.polyfill('lightweight');
             model:Language
         });
 
-        var SortOrderCollection=Backbone.Collection.extend({
-            model:SortOrder
-        });
+//        var SortOrderCollection=Backbone.Collection.extend({
+//            model:SortOrder
+//        });
 
         var LogobarView = Backbone.View.extend({
             el:$("#logobar"),
@@ -1175,6 +1184,8 @@ $.webshims.polyfill('lightweight');
 
         var attachSearchEvents=function(){
           //var self=this;
+          var criteria= _configuration.get("searchCriteria");
+
           $("span[id^='sbt_']").attr("class","none");
           $("#sbt_".concat(_configuration.get("defaultSortType").toLowerCase())).attr("class",_configuration.get("defaultSortOrder").toLowerCase());
           $("#lnkSwitchSType").on('click',function(e){
@@ -1187,9 +1198,14 @@ $.webshims.polyfill('lightweight');
           $(".clickablesort").on("click",function(e){
                         var elem=$(e.target).children(":first"),
                             sortDirection=elem.attr("class"),
-                            sortName,hrefVal;
+                            sortName=null,
+                            hrefVal=null,
+                            curDirection = criteria.sortDirection,
+                            curType = criteria.sortType;
+
+
                         hrefVal=$(e.target).attr("href");
-                        var criteria= _configuration.get("searchCriteria");
+
                         if(sortDirection!=="none"){
                                 if(sortDirection==='asc'){
                                    updateSearchCriteria("sortDirection","DESC");
@@ -1209,7 +1225,15 @@ $.webshims.polyfill('lightweight');
                         updateSearchCriteria("sortType",sortName.toUpperCase());
                         $("span[id^='sbt_']").attr("class","none");
                         elem.attr("class",sortDirection.toLowerCase());
-                        _sortOrderModel.set({current:sortDirection.toLowerCase()});
+                        updateSearchCriteria("sortDirection",sortDirection.toUpperCase());
+
+                        if(curDirection !== sortDirection.toUpperCase()){
+                            _configuration.set({sortOrder:sortDirection.toUpperCase()});
+                        }else if(curType !== sortName){
+                            _configuration.set({sortType:sortName});
+                        }
+
+                        //_sortOrderModel.set({current:sortDirection.toLowerCase()});
                     });
         };
 
@@ -1307,10 +1331,17 @@ $.webshims.polyfill('lightweight');
                 _configuration=spec;
                 _.extend(self,Backbone.events);
                 _.bindAll(self,"search");
-                _sortOrderModel=new SortOrder({current:_configuration.get("defaultSortOrder")});
-                _sortOrderModel.bind("change",function(){
-                    performSearchRequest.call(self,_pagedHotelsList);
+                //_sortOrderModel=new SortOrder({current:_configuration.get("defaultSortOrder")});
+//                _sortOrderModel.bind("change:current",function(){
+//                    console.log("sortOrder change");
+//                    performSearchRequest.call(self,_pagedHotelsList);
+//                });
+                _configuration.bind("change:sortType",function(){
+                   initSearchActivity.call(this);
                 });
+                 _configuration.bind("change:sortOrder",function(){
+                    initSearchActivity.call(this);
+                 });
                 _configuration.bind("change:searchType",function(model,name){
                     var st, searchType, city, defCity, dateFrom,dateTo;
                     debugger;
