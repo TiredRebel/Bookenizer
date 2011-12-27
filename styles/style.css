@@ -666,6 +666,13 @@ form.searchform .price_per_night_low, form.searchform .price_per_night_high {
 	background:transparent url(/img/bar-close-main-results.png) no-repeat left top;
 	height:10px;
 }
+.results #main #sidebar #topdestblock ul {
+	list-style:none none;
+	margin:0 0 0 4px;
+	padding:0;
+	line-height:24px;
+	color:#000;
+}
 
 
 /* main (hotelcard) */

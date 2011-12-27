@@ -75,13 +75,13 @@
 <script type="text/javascript" src="/scripts/debug/xcommon.js"></script>
 <script type="text/javascript" src="/scripts/models.js"></script>
 
-<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>-->
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRlrZjuTPwvKSUZIF0_dsu12LmfuBQXsvcXvfazwWVzCQlwG4CP2O6mBQ" type="text/javascript"></script>
+<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAue-p4aGvO8316p45wNBlhBRIrSlBPavw7Ifq7KLBpU4q9tB4eBSDxh9Cn5W60dBeurP_D8-QpTvthg" type="text/javascript"></script>-->
 <script type="text/javascript">
 //$.webshims.setOptions('forms', { overrideMessages: true });
 $.webshims.polyfill('lightweight');
     (function(defLanguage) {
-        var layoutTypes={INIT:0,SEARCH:1,PROFILE:2,HOTELCARD:3};
+        var layoutTypes={INIT:0,SEARCH:1,PROFILE:2,HOTELCARD:3,LOOKUP:4};
         var  xSignIn;
 
         var setSearchParameters=function(searchType){
@@ -244,6 +244,8 @@ $.webshims.polyfill('lightweight');
                         return getContent("/Layouts/layoutHotelCard.html",$("#main"));
                             //dfr.resolve();
                         //break;
+                 case layoutTypes.LOOKUP:
+                        return getContent("/Layouts/layoutLookupResults.html",$("#main"));
                  default:
                     dfr.resolve();
                     break;
@@ -344,181 +346,14 @@ $.webshims.polyfill('lightweight');
             debugger;
         };
 
-        var OffersCalc=Backbone.Collection.extend({
-            model:Offers,
-            url:'hotel/categories',
-            fetchData:function(args){
-                var self=this;
-                var dfr=$.Deferred();
-                $.ajax({
-                    url:args.svcUrl.concat(self.url),
-                    data:{"id":_configuration.get("searchCriteria").hotelId,"dateFrom":_configuration.get("searchCriteria").dateFrom,"dateTo":_configuration.get("searchCriteria").dateTo,"language":args.curLang},
-                    type:"GET",
-                    success:function(offers){
-                        self.refresh(offers);
-                        dfr.resolveWith(offers);
-                    }
-                });
-                return dfr.promise();
-            }
-        });
-
-        var HotelsList=Backbone.Collection.extend({
-            model:Hotel,
-            url:'hotel/search',
-            hotelsCount:0,
-            offersCount:0,
-            fetchData:function(args,criteria){
-                var self=this;
-                var dfr=$.Deferred();
-                $.ajax({url:args.svcUrl.concat(self.url),
-                    data:criteria,
-                    type:"POST",
-                    success:function(hotels){
-                           if(args.useInternalCache){
-                               self.refresh(caching.add('hotelsList_'.concat(args.curLang),JSON.stringify(hotels)));
-                           }else{
-                               self.refresh(hotels);
-                           }
-
-                        self.hotelsCount=hotels.hotelCount;
-                        self.offersCount=hotels.offerCount;
-                        dfr.resolve();
-                    }
-                });
-                return dfr.promise();
-            }
-        });
-
-        var HotelCard=Backbone.Collection.extend({
-            model:Hotel,
-            url:'hotel/card/',
-            fetchData:function(args){
-                var self=this;
-                var dfr=$.Deferred();
-                    $.ajax({
-                        url:args.svcUrl.concat(self.url),
-                        type:"GET",
-                        data:{"id":_configuration.get("searchCriteria").hotelId,"dateFrom":_configuration.get("searchCriteria").dateFrom,"dateTo":_configuration.get("searchCriteria").dateTo,"language":args.curLang},
-                        success:function(cards){
-                            self.refresh(cards);
-                            dfr.resolve();
-                        },
-                        error:function(){
-                            alert("error");
-                        }
-                    });
-                return dfr.promise();
-            }
-        });
-
-        var RandomOffers=Backbone.Collection.extend({
-            model:Hotel,
-            url:'hotel/search',
-            hotelsCount:0,
-            offersCount:0,
-            fetchData:function(args,criteria){
-                var self=this;
-                return $.ajax({
-                        url:args.svcUrl.concat(self.url),
-                        data:criteria,
-                        type:"POST",
-                        success:function(randoffers){
-                               self.refresh(randoffers.hotelList);
-                        }
-                    });
-            },
-            set:function(data){
-              this.refresh(data);
-              return true;
-            }
-        });
-
-        var TopDestinations=Backbone.Collection.extend({
-            model:TopDestination,
-            url:'location/top/',
-            fetchData:function(args){
-                var self=this;
-                var dfr=$.Deferred();
-                $.ajax({
-                        url:args.svcUrl.concat(self.url,args.curLang),
-                        type:"GET",
-                        success:function(topdests){
-                            //console.log('top destinations done');
-                           if(args.useInternalCache){
-                                self.refresh(caching.add('topDestinations_'.concat(args.curLang),JSON.stringify(topdests.locationList)));
-                           }else{
-                               self.refresh(topdests.locationList);
-                           }
-                           dfr.resolve();
-                        }
-                    });
-                return dfr.promise();
-
-            },
-            set:function(data){
-              this.refresh(data);
-              return true;
-            }
-        });
-
-        var Statistics=Backbone.Collection.extend({
-            model:Statistic,
-            url:'statistics/',
-            fetchData:function(args){
-                var self=this;
-                var dfr=$.Deferred();
-                $.ajax({
-                        url:args.svcUrl.concat(self.url),
-                        type:"GET",
-                        success:function(stat){
-                           //console.log('done statistics');
-                           if(args.useInternalCache){
-                               self.refresh(caching.add('statistics',JSON.stringify(stat)));
-                           }else{
-                              self.refresh(stat);
-                           }
-                            dfr.resolve();
-                        }
-                });
-                return dfr.promise();
-            },
-            set:function(data){
-              this.refresh(data);
-              return true;
-            }
-        });
-
-        var SearchLocations=Backbone.Collection.extend({
-            model:SearchLocation,
-            url:'location/all/',
-            findCityById:function(cityId){
-                return this.find(function(data){
-                    return data.get('cityId') == cityId;
-                });
-            },
-            fetchData:function(args){
-                var self=this;
-                var dfr=$.Deferred();
-                $.ajax({
-                        url:args.svcUrl.concat(self.url,args.curLang),
-                        type:"GET",
-                        success:function(locations){
-                           if(args.useInternalCache){
-                               self.refresh(caching.add('srchLocations_'.concat(args.curLang),JSON.stringify(locations.locationList)));
-                           }else{
-                              self.refresh(locations.locationList);
-                           }
-                            dfr.resolve();
-                        }
-                    });
-                return dfr.promise();
-            },
-            set:function(data){
-                this.refresh(data);
-                return true;
-            }
-        });
+        var initLookupResults = function(config){
+            var dfd=$.Deferred();
+            $("#mtemplate").load(config.lookupResultsTemlateUrl(),function(){
+                            //$("body").attr("class","").addClass("results");
+                            dfd.resolve();
+                        });
+            return dfd.promise();
+        }
 
         var initSearchResults=function(config){
             var dfd=$.Deferred();
@@ -627,146 +462,331 @@ $.webshims.polyfill('lightweight');
             //.then(function(){$.noop()});
         };
 
-        var Configuration=Backbone.Model.extend({
-            defaults:{
-                "ajaxMode":false,
-                "serviceUrl":"/bookenizer-stubs/hms-services/",
-                "lang":defLanguage,
-                "searchType":"quick",
-                "hotelsCount":5,
-                "randomHotelsCount":3,
-                "use_jStoreCache":true,
-                "curDate":(function(curDate){return curDate;})(new Date()),
-                "dayNext":(function(curDate){return new Date(curDate.getTime()+1000*60*60*24*2);})(new Date()),
-                "statistics":new Statistics(),
-                "searchCriteria":SearchCriteria,
-                "history":History,
-                "topDestinations":new TopDestinations(),
-                "srchLocations":new SearchLocations(),
-                "hotels":new HotelsList(),
-                "offers":new  OffersCalc(),
-                "randomOffers":new RandomOffers(),
-                "hotelCard":new HotelCard(),
-                "roCount":0,
-                "searchResult":new HotelsList(),
-                "sortType":"NAME",
-                "sortOrder":"ASC",
-                "defaultSortOrder":"ASC",
-                "defaultSortType":"NAME"
-            },
-            resetSearchCriteria:function(){
-                var self=this;
-                SearchCriteria={};
-                _.defaults(SearchCriteria,{
-                    cityId:0,
-                    language:this.get("lang"),
-                    searchType:"QUICK",
-                    limit:this.get("use_jStoreCache")?-1:this.get("hotelsCount"),
-                    sortType:this.get("defaultSortType"),
-                    sortDirection:this.get("defaultSortOrder")});
-            },
-            mainTemplateUrl:function(){
-                return "/Locales/".concat(this.get("lang"),"/main.html");
-            },
-            searchResultsTemplateUrl:function(){
-                return "/Locales/".concat(this.get("lang"),"/searchResults.html");
-            },
-            hotelCardTemplateUrl:function(){
-                return "/Locales/".concat(this.get("lang"),"/hotelcard.html");
-            },
-            initData:function(isRefresh,lang){
-                var self=this;
-                $.ajaxSetup({
-                        async:self.get('ajaxMode'),
-                        dataType:'json',
-                        //contentType:'application/json; charset=utf-8',
-                        cache:false
-                    });
-                var args=argumentsStruct.call(self,isRefresh,lang);
-                if(args.useInternalCache && !args.isRefresh){
-                    var dsStat,dsTopDest,dsSrcLoc,dsHotels;
-                    //TODO remove tryGetFromCache
-                    dsStat=tryGetFromCache('statistics');
-                    dsTopDest=tryGetFromCache('topDestinations_'.concat(args.curLang));
-                    dsSrcLoc=tryGetFromCache('srchLocations_'.concat(args.curLang));
-                    dsHotels=tryGetFromCache('hotelsList_'.concat(args.curLang));
 
-                    if(dsStat!==null && dsTopDest !==null && dsSrcLoc!==null && dsHotels!==null){
-                       self.defaults.statistics.add(dsStat);
-                       self.defaults.topDestinations.add(dsTopDest);
-                       self.defaults.srchLocations.add(dsSrcLoc);
-                       self.defaults.hotels.add(dsHotels);
-                        if(!isRefresh){
-                            initApplication.call(self);
-                        }else{
-                            self.set({"lang":args.curLang});
-                        }
-                    }else{
-                        fillInitDataStructures.call(self,args);
-                    }
-                }else{
-                       fillInitDataStructures.call(self,args);
-                }
-            },
-            initialize:function(){
-                var self=this;
-                //console.log("initialize")
-                //_sortOrderModel=new SortOrder({current:_configuration.get("defaultSortOrder")});
-                //self.initSortOrder.call(self);
-                self.initSearchCriteria.call(self);
-                self.initHistory.call(self);
-                self.initData.call(self,false);
-            },
-            refreshData:function(lang){
-                var self=this;
-                self.initData.call(self,true,lang);
-            },
-            initHistory:function(){
-                 (function(hist){
-                    hist.route = "";
-                 })(this.defaults.history);
-            },
-            initHotelCard:function(){
-                var self=this;
-                var args=argumentsStruct.call(self);
-                return self.defaults.hotelCard.fetchData(args);
-            },
-            initSearchCriteria:function(){
-                (function(criteria,settings){
-                    criteria.limit= settings.use_jStoreCache? -1: settings.hotelsCount;
-                    criteria.language=settings.lang;
-                    criteria.searchType=settings.searchType.toUpperCase();
-                })(this.defaults.searchCriteria,this.defaults);
-            },
-//            initSortOrder:function(){
-//                 (function(criteria,settings){
-//                    criteria.current
-//                 })(this.defaults.sortOrder, this.defaults);
-//            },
-            initRandomOffers:function(){
-                var self=this;
-                var args=argumentsStruct.call(self);
-                var sCriteria=_.clone(self.defaults.searchCriteria);
-                _.extend(sCriteria,{limit:3,sortType:"POPULARITY"});
-                return self.defaults.randomOffers.fetchData(args,sCriteria);
-            },
-            makeSearch:function(){
-                var self=this;
-                var args=argumentsStruct.call(self);
-                args.isSearchRequest=true;
-                return self.defaults.hotels.fetchData(args,self.defaults.searchCriteria);
-            },
-            getOffers:function(){
-                var self=this;
-                var args=argumentsStruct.call(self);
-                return self.defaults.offers.fetchData(args);
-            }
-        });
 
         var langCollection = Backbone.Collection.extend({
-            model:Language
-        });
+                   model:Language
+               });
 
+        var OffersCalc=Backbone.Collection.extend({
+                    model:Offers,
+                    url:'hotel/categories',
+                    fetchData:function(args){
+                        var self=this;
+                        var dfr=$.Deferred();
+                        $.ajax({
+                            url:args.svcUrl.concat(self.url),
+                            data:{"id":_configuration.get("searchCriteria").hotelId,"dateFrom":_configuration.get("searchCriteria").dateFrom,"dateTo":_configuration.get("searchCriteria").dateTo,"language":args.curLang},
+                            type:"GET",
+                            success:function(offers){
+                                self.refresh(offers);
+                                dfr.resolveWith(offers);
+                            }
+                        });
+                        return dfr.promise();
+                    }
+                });
+
+                var HotelsList=Backbone.Collection.extend({
+                    model:Hotel,
+                    url:'hotel/search',
+                    hotelsCount:0,
+                    offersCount:0,
+                    fetchData:function(args,criteria){
+                        var self=this;
+                        var dfr=$.Deferred();
+                        $.ajax({url:args.svcUrl.concat(self.url),
+                            data:criteria,
+                            type:"POST",
+                            success:function(hotels){
+                                   if(args.useInternalCache){
+                                       self.refresh(caching.add('hotelsList_'.concat(args.curLang),JSON.stringify(hotels)));
+                                   }else{
+                                       self.refresh(hotels);
+                                   }
+
+                                self.hotelsCount=hotels.hotelCount;
+                                self.offersCount=hotels.offerCount;
+                                dfr.resolve();
+                            }
+                        });
+                        return dfr.promise();
+                    }
+                });
+
+                var HotelCard=Backbone.Collection.extend({
+                    model:Hotel,
+                    url:'hotel/card/',
+                    fetchData:function(args){
+                        var self=this;
+                        var dfr=$.Deferred();
+                            $.ajax({
+                                url:args.svcUrl.concat(self.url),
+                                type:"GET",
+                                data:{"id":_configuration.get("searchCriteria").hotelId,"dateFrom":_configuration.get("searchCriteria").dateFrom,"dateTo":_configuration.get("searchCriteria").dateTo,"language":args.curLang},
+                                success:function(cards){
+                                    self.refresh(cards);
+                                    dfr.resolve();
+                                },
+                                error:function(){
+                                    alert("error");
+                                }
+                            });
+                        return dfr.promise();
+                    }
+                });
+
+                var RandomOffers=Backbone.Collection.extend({
+                    model:Hotel,
+                    url:'hotel/search',
+                    hotelsCount:0,
+                    offersCount:0,
+                    fetchData:function(args,criteria){
+                        var self=this;
+                        return $.ajax({
+                                url:args.svcUrl.concat(self.url),
+                                data:criteria,
+                                type:"POST",
+                                success:function(randoffers){
+                                       self.refresh(randoffers.hotelList);
+                                }
+                            });
+                    },
+                    set:function(data){
+                      this.refresh(data);
+                      return true;
+                    }
+                });
+
+                var TopDestinations=Backbone.Collection.extend({
+                    model:TopDestination,
+                    url:'location/top/',
+                    excludeCityId:function(cityId){
+                        return this.reject(function(data){
+                                                    return data.get('cityId') == cityId;
+                                                });
+                    },
+                   fetchData:function(args){
+                        var self=this;
+                        var dfr=$.Deferred();
+                        $.ajax({
+                                url:args.svcUrl.concat(self.url,args.curLang),
+                                type:"GET",
+                                success:function(topdests){
+                                    //console.log('top destinations done');
+                                   if(args.useInternalCache){
+                                        self.refresh(caching.add('topDestinations_'.concat(args.curLang),JSON.stringify(topdests.locationList)));
+                                   }else{
+                                       self.refresh(topdests.locationList);
+                                   }
+                                   dfr.resolve();
+                                }
+                            });
+                        return dfr.promise();
+
+                    },
+                    set:function(data){
+                      this.refresh(data);
+                      return true;
+                    }
+                });
+
+                var Statistics=Backbone.Collection.extend({
+                    model:Statistic,
+                    url:'statistics/',
+                    fetchData:function(args){
+                        var self=this;
+                        var dfr=$.Deferred();
+                        $.ajax({
+                                url:args.svcUrl.concat(self.url),
+                                type:"GET",
+                                success:function(stat){
+                                   //console.log('done statistics');
+                                   if(args.useInternalCache){
+                                       self.refresh(caching.add('statistics',JSON.stringify(stat)));
+                                   }else{
+                                      self.refresh(stat);
+                                   }
+                                    dfr.resolve();
+                                }
+                        });
+                        return dfr.promise();
+                    },
+                    set:function(data){
+                      this.refresh(data);
+                      return true;
+                    }
+                });
+
+                var SearchLocations=Backbone.Collection.extend({
+                    model:SearchLocation,
+                    url:'location/all/',
+                    findCityById:function(cityId){
+                        return this.find(function(data){
+                            return data.get('cityId') == cityId;
+                        });
+                    },
+                    fetchData:function(args){
+                        var self=this;
+                        var dfr=$.Deferred();
+                        $.ajax({
+                                url:args.svcUrl.concat(self.url,args.curLang),
+                                type:"GET",
+                                success:function(locations){
+                                   if(args.useInternalCache){
+                                       self.refresh(caching.add('srchLocations_'.concat(args.curLang),JSON.stringify(locations.locationList)));
+                                   }else{
+                                      self.refresh(locations.locationList);
+                                   }
+                                    dfr.resolve();
+                                }
+                            });
+                        return dfr.promise();
+                    },
+                    set:function(data){
+                        this.refresh(data);
+                        return true;
+                    }
+                });
+
+        var Configuration=Backbone.Model.extend({
+                    defaults:{
+                        "ajaxMode":false,
+                        "serviceUrl":"/bookenizer-stubs/hms-services/",
+                        "lang":defLanguage,
+                        "searchType":"quick",
+                        "hotelsCount":5,
+                        "randomHotelsCount":3,
+                        "use_jStoreCache":true,
+                        "curDate":(function(curDate){return curDate;})(new Date()),
+                        "dayNext":(function(curDate){return new Date(curDate.getTime()+1000*60*60*24*2);})(new Date()),
+                        "statistics":new Statistics(),
+                        "searchCriteria":SearchCriteria,
+                        "history":History,
+                        "topDestinations":new TopDestinations(),
+                        "srchLocations":new SearchLocations(),
+                        "hotels":new HotelsList(),
+                        "offers":new  OffersCalc(),
+                        "randomOffers":new RandomOffers(),
+                        "hotelCard":new HotelCard(),
+                        "roCount":0,
+                        "searchResult":new HotelsList(),
+                        "sortType":"NAME",
+                        "sortOrder":"ASC",
+                        "defaultSortOrder":"ASC",
+                        "defaultSortType":"NAME"
+                    },
+                    resetSearchCriteria:function(){
+                        var self=this;
+                        SearchCriteria={};
+                        _.defaults(SearchCriteria,{
+                            cityId:0,
+                            language:this.get("lang"),
+                            searchType:"QUICK",
+                            limit:this.get("use_jStoreCache")?-1:this.get("hotelsCount"),
+                            sortType:this.get("defaultSortType"),
+                            sortDirection:this.get("defaultSortOrder")});
+                    },
+                    mainTemplateUrl:function(){
+                        return "/Locales/".concat(this.get("lang"),"/main.html");
+                    },
+                    searchResultsTemplateUrl:function(){
+                        return "/Locales/".concat(this.get("lang"),"/searchResults.html");
+                    },
+                    hotelCardTemplateUrl:function(){
+                        return "/Locales/".concat(this.get("lang"),"/hotelcard.html");
+                    },
+                    lookupResultsTemlateUrl:function(){
+                        return "/Locales/".concat(this.get("lang"),"/main-top-destinations.html");
+                    },
+                    initData:function(isRefresh,lang){
+                        var self=this;
+                        $.ajaxSetup({
+                                async:self.get('ajaxMode'),
+                                dataType:'json',
+                                //contentType:'application/json; charset=utf-8',
+                                cache:false
+                            });
+                        var args=argumentsStruct.call(self,isRefresh,lang);
+                        if(args.useInternalCache && !args.isRefresh){
+                            var dsStat,dsTopDest,dsSrcLoc,dsHotels;
+                            //TODO remove tryGetFromCache
+                            dsStat=tryGetFromCache('statistics');
+                            dsTopDest=tryGetFromCache('topDestinations_'.concat(args.curLang));
+                            dsSrcLoc=tryGetFromCache('srchLocations_'.concat(args.curLang));
+                            dsHotels=tryGetFromCache('hotelsList_'.concat(args.curLang));
+
+                            if(dsStat!==null && dsTopDest !==null && dsSrcLoc!==null && dsHotels!==null){
+                               self.defaults.statistics.add(dsStat);
+                               self.defaults.topDestinations.add(dsTopDest);
+                               self.defaults.srchLocations.add(dsSrcLoc);
+                               self.defaults.hotels.add(dsHotels);
+                                if(!isRefresh){
+                                    initApplication.call(self);
+                                }else{
+                                    self.set({"lang":args.curLang});
+                                }
+                            }else{
+                                fillInitDataStructures.call(self,args);
+                            }
+                        }else{
+                               fillInitDataStructures.call(self,args);
+                        }
+                    },
+                    initialize:function(){
+                        var self=this;
+                        //console.log("initialize")
+                        //_sortOrderModel=new SortOrder({current:_configuration.get("defaultSortOrder")});
+                        //self.initSortOrder.call(self);
+                        self.initSearchCriteria.call(self);
+                        self.initHistory.call(self);
+                        self.initData.call(self,false);
+                    },
+                    refreshData:function(lang){
+                        var self=this;
+                        self.initData.call(self,true,lang);
+                    },
+                    initHistory:function(){
+                         (function(hist){
+                            hist.route = "";
+                         })(this.defaults.history);
+                    },
+                    initHotelCard:function(){
+                        var self=this;
+                        var args=argumentsStruct.call(self);
+                        return self.defaults.hotelCard.fetchData(args);
+                    },
+                    initSearchCriteria:function(){
+                        (function(criteria,settings){
+                            criteria.limit= settings.use_jStoreCache? -1: settings.hotelsCount;
+                            criteria.language=settings.lang;
+                            criteria.searchType=settings.searchType.toUpperCase();
+                        })(this.defaults.searchCriteria,this.defaults);
+                    },
+        //            initSortOrder:function(){
+        //                 (function(criteria,settings){
+        //                    criteria.current
+        //                 })(this.defaults.sortOrder, this.defaults);
+        //            },
+                    initRandomOffers:function(){
+                        var self=this;
+                        var args=argumentsStruct.call(self);
+                        var sCriteria=_.clone(self.defaults.searchCriteria);
+                        _.extend(sCriteria,{limit:3,sortType:"POPULARITY"});
+                        return self.defaults.randomOffers.fetchData(args,sCriteria);
+                    },
+                    makeSearch:function(){
+                        var self=this;
+                        var args=argumentsStruct.call(self);
+                        args.isSearchRequest=true;
+                        return self.defaults.hotels.fetchData(args,self.defaults.searchCriteria);
+                    },
+                    getOffers:function(){
+                        var self=this;
+                        var args=argumentsStruct.call(self);
+                        return self.defaults.offers.fetchData(args);
+                    }
+                });
 //        var SortOrderCollection=Backbone.Collection.extend({
 //            model:SortOrder
 //        });
@@ -818,6 +838,10 @@ $.webshims.polyfill('lightweight');
             el:$("#tdbHolder"),
             render:function(){
                 var self=this;
+                if(self.el!== void(0) && self.el.length<1)
+                {
+                    self.el=$('#tdbHolder');
+                }
                 getTemplate('top_dest_block_tmpl');
                 getTemplate('tdb_location_item',false,'<li><a href="#!/lookup/{{cityId}}">{{city}}</a>,&nbsp;{{country}}</li>');
                 self.el.html(ich.top_dest_block_tmpl());
@@ -827,6 +851,11 @@ $.webshims.polyfill('lightweight');
                     locations.append(ich.tdb_location_item(location));
                 });
                 return self;
+            },
+            reRender:function(){
+                var self=this;
+                self.el=$("#tdbHolder");
+                self.render();
             }
         });
 
@@ -911,6 +940,35 @@ $.webshims.polyfill('lightweight');
              });
              return self;
          }
+        });
+
+        var LookupView = Backbone.View.extend({
+            el:$('#hotelslist_lc'),
+            render:function(){
+                var self=this;
+                if(self.el!== void(0) && self.el.length<1)
+                {
+                    self.el=$('#hotelslist_lc');
+                }
+                getTemplate("mtd_hotels_list_tmpl");
+                getTemplate("td_localized_caption");
+                getTemplate("mtd_hotel_item_tmpl");
+                var city = _configuration.get("srchLocations").findCityById(_configuration.get("searchCriteria").cityId);
+                self.el.html(ich.mtd_hotels_list_tmpl({city:city.get("city"),country:city.get("country")}));
+                $("#topdestblock > h2").replaceWith(ich.td_localized_caption());
+                var jsonModel=self.model.toJSON()[0];
+                var wrapperEl=$("#hotellist > .wrapper");
+                _(jsonModel['hotelList']).each(function(hotelItem){
+                               wrapperEl.append(ich.mtd_hotel_item_tmpl(hotelItem));
+                 });
+                var page_index=_configuration.get("searchCriteria").pageIndex;
+                var hotelCount = jsonModel['hotelCount'];
+                if(page_index===void(0)){
+                    page_index=0;
+                }
+                $("#srPager").pagination(hotelCount, {items_per_page:10, current_page:Number(page_index), prev_text:"←", link_to:"#!/hl/page/__id__", next_text:"→",callback:handlePaginationClick});
+            },
+            reRender:function(){}
         });
 
         var HotelsView = Backbone.View.extend(
@@ -1161,9 +1219,25 @@ $.webshims.polyfill('lightweight');
                     });
         };
 
+        var initLookupActivity=function(){
+            var self=this;
+            $.when(setLayout(layoutTypes.LOOKUP),initLookupResults(_configuration),_configuration.initRandomOffers(),_configuration.makeSearch()).done(function(){
+                                    $("body").attr("class","").addClass("results");
+                                    var hotelModel=_configuration.get('hotels');
+                                    var destinationsModel=_configuration.get("topDestinations").excludeCityId(_configuration.get("searchCriteria").cityId);
+                                    var dm=new Backbone.Collection;
+                                    dm.add(destinationsModel,{silent:true});
+                                    _topDestinations=new LocationsView({model:dm});
+                                    _lookupList=new LookupView({model:hotelModel});
+                                    _statistics.reRender();
+                                    _topDestinations.reRender();
+                                    _lookupList.render();
+                                    //attachSearchEvents.call(self);
+                                });
+        };
+
         var initHolelCardActivity=function(){
             var self=this;
-            debugger;
             $.when(setLayout(layoutTypes.HOTELCARD),initHotelCardTemplate(_configuration),_configuration.initHotelCard()).done(function(){
                 $("body").attr("class","").addClass("hotelcard");
                 var hcModel=_configuration.get('hotelCard');
@@ -1247,6 +1321,7 @@ $.webshims.polyfill('lightweight');
             _configuration:null,
             _statistics:null,
             _hotelsList:null,
+            _lookupList:null,
             _pagedHotelsList:null,
             _sortBar:null,
             _randomOffers:null,
@@ -1257,6 +1332,7 @@ $.webshims.polyfill('lightweight');
                 "!/lang/:id":"language",
                 "!/search/:type":"search",
                 "!/lookup/:cityId":"cityLookup",
+                "!/lookup/:cityId/page/:id":"cityLookupPager",
                 "!/card/:hotelId":"hotelCard",
                 "!/select/:hotelId":"addHotel",
                 "!/search/do/:type":"makeSearch",
@@ -1300,13 +1376,13 @@ $.webshims.polyfill('lightweight');
                     _topDestinations=new LocationsView({model:_configuration.get("topDestinations")});
                     _statistics=new StatisticsView({model:_configuration.get("statistics")});
                     _hotelsList=new HotelsView({model:_configuration.get('hotels')});
+                    _lookupList=new LookupView({model: _configuration.get('hotels')});
                     _pagedHotelsList=new PagedHotelsView({model:_configuration.get('hotels')});
                     _footer = new FooterView();
                      this.renderIndex();
                 }else{
 
                   $("#ltemplate").load(_configuration.mainTemplateUrl(),function(){
-                      ich.clearAll();
                       //debugger;
                       //_layout.render();
                       _index.render();
@@ -1314,6 +1390,7 @@ $.webshims.polyfill('lightweight');
                       _topDestinations.render();
                       _statistics.render();
                       _hotelsList.render();
+                      //_lookupList.render();
                       _searchForm.render();
                       _footer.render();
                  });
@@ -1391,7 +1468,7 @@ $.webshims.polyfill('lightweight');
             },
             language:function(lang){
                 updateSearchCriteria("language",lang);
-
+                ich.clearAll();
                 _configuration.refreshData(lang);
             },
             cityLookup:function(cityId){
@@ -1401,7 +1478,7 @@ $.webshims.polyfill('lightweight');
                         srcType = 'quick';
 
                 updateSearchCriteria("sortType","POPULARITY");
-                updateSearchCriteria("sortDirection","ASC");
+                updateSearchCriteria("sortDirection","DESC");
                 updateSearchCriteria("cityId",cityId);
                 srchObject = _configuration.get("searchCriteria");
                 cities=_configuration.get("srchLocations").findCityById(srchObject.cityId);
@@ -1409,7 +1486,7 @@ $.webshims.polyfill('lightweight');
                 $("#city").val(srchArg);
                 updateHistory('!/lookup/'.concat(cityId));
                 if(setSearchParameters(srcType)){
-                    initSearchActivity.call(self);
+                    initLookupActivity.call(self);
                 }
                 //performSearchRequest.call(this,_hotelsList);
             },

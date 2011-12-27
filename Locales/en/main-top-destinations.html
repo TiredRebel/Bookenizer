@@ -1,0 +1,29 @@
+<script type="text/html" id="td_localized_caption">
+    <h2>Most popular</h2>
+</script>
+<script type="text/html" id="mtd_hotels_list_tmpl">
+    <div class="container">
+		<h2>Top popular (En)</h2>
+        <h3 class="dest">in <strong>{{city}}</strong>, {{country}}</h3>
+                    <div id="hotellist" class="popular">
+                        <div class="wrapper"></div>
+                    </div>
+        </div>
+</script>
+<script type="text/html" id="mtd_hotel_item_tmpl">
+    <div class="hotel">
+                <div class="opener"></div>
+                    <div class="container">
+                        <a href="#!/card/{{hotelId}}" title="{{name}}"><img src="{{#MainPhoto}}{{small}}{{/MainPhoto}}" alt="{{name}}" /></a>
+                        <div class="hoteldescr">
+                              <h3>{{name}}</h3>
+                              <div class="stars stars-{{stars}}"><span></span></div>
+                              <p class="info"><a href="#!/lookup/{{#Address}}{{#GeoLocation}}{{cityId}}{{/GeoLocation}}{{/Address}}" title="More hotels in {{#Address}}{{#GeoLocation}}{{city}}{{/GeoLocation}}{{/Address}}">{{#Address}}{{#GeoLocation}}{{city}}{{/GeoLocation}}{{/Address}}</a>,&nbsp;{{#Address}}{{#GeoLocation}}{{country}}{{/GeoLocation}}{{/Address}}</p>
+                              <p class="info">from <strong>{{currency}}&nbsp;{{minOfferPrice}}</strong></p>
+                              <p class="descr">{{description}}</p>
+                              <p class="noprint"><a href="/#!/card/{{hotelId}}" title="Read more about this hotel">Read more</a> / <a href="#!/select/{{hotelId}}" title="Add to Selected">Add to Selected</a></p>
+                          </div>
+                    </div>
+                <div class="closer"></div>
+            </div>
+</script>
