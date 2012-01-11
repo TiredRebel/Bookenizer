@@ -961,12 +961,14 @@ $.webshims.polyfill('lightweight');
                 _(jsonModel['hotelList']).each(function(hotelItem){
                                wrapperEl.append(ich.mtd_hotel_item_tmpl(hotelItem));
                  });
-                var page_index=_configuration.get("searchCriteria").pageIndex;
                 var hotelCount = jsonModel['hotelCount'];
+                var offerCount = jsonModel['offerCount'];
+                var hc=_configuration.get("hotelsCount");
+                var page_index=_configuration.get("searchCriteria").pageIndex;
                 if(page_index===void(0)){
                     page_index=0;
                 }
-                $("#srPager").pagination(hotelCount, {items_per_page:10, current_page:Number(page_index), prev_text:"←", link_to:"#!/hl/page/__id__", next_text:"→",callback:handlePaginationClick});
+                $("#srPager").pagination(hotelCount, {items_per_page:hc, current_page:Number(page_index), prev_text:"←", link_to:"#!/lookup/page/__id__", next_text:"→",callback:handlePaginationClick});
             },
             reRender:function(){}
         });
@@ -1332,7 +1334,7 @@ $.webshims.polyfill('lightweight');
                 "!/lang/:id":"language",
                 "!/search/:type":"search",
                 "!/lookup/:cityId":"cityLookup",
-                "!/lookup/:cityId/page/:id":"cityLookupPager",
+                "!/lookup/page/:id":"lookupPager",
                 "!/card/:hotelId":"hotelCard",
                 "!/select/:hotelId":"addHotel",
                 "!/search/do/:type":"makeSearch",
@@ -1421,7 +1423,6 @@ $.webshims.polyfill('lightweight');
                  });
                 _configuration.bind("change:searchType",function(model,name){
                     var st, searchType, city, defCity, dateFrom,dateTo;
-                    debugger;
                     searchType=_configuration.get("searchType");
                     //todo get cached data from jstore
                     //todo save city, dates values while form switching
@@ -1475,20 +1476,27 @@ $.webshims.polyfill('lightweight');
                 var srchArg = null,
                         srchObject = null,
                         cities = null,
-                        srcType = 'quick';
+                        srcType = 'quick',
+                        args=argumentsStruct.call(_configuration);
 
                 updateSearchCriteria("sortType","POPULARITY");
                 updateSearchCriteria("sortDirection","DESC");
+                if(!args.useInternalCache){
+                    updateSearchCriteria("limit",-1);
+                }else{
+                    updateSearchCriteria("limit",_configuration.get("hotelsCount"));
+                }
                 updateSearchCriteria("cityId",cityId);
                 srchObject = _configuration.get("searchCriteria");
                 cities=_configuration.get("srchLocations").findCityById(srchObject.cityId);
                 srchArg = cities.get('city').concat(', ', cities.get('country'));
                 $("#city").val(srchArg);
                 updateHistory('!/lookup/'.concat(cityId));
-                if(setSearchParameters(srcType)){
-                    initLookupActivity.call(self);
-                }
-                //performSearchRequest.call(this,_hotelsList);
+                updateSearchCriteria("dateFrom",null);
+                updateSearchCriteria("dateTo",null);
+
+                initLookupActivity.call(self);
+
             },
             search:function(srcType){
                 debugger;
@@ -1513,6 +1521,20 @@ $.webshims.polyfill('lightweight');
                 if(!args.useInternalCache){
                     performSearchRequest.call(this,_hotelsList);
                 }
+            },
+            lookupPager:function(pageNum){
+                var pn=Number(pageNum),
+                   srchObject = null,
+                    cities = null,
+                    srchArg = null,
+                   sCriteria = _configuration.get("searchCriteria");
+                _.extend(sCriteria,{pageIndex:pn-1});
+                srchObject = _configuration.get("searchCriteria");
+                cities=_configuration.get("srchLocations").findCityById(srchObject.cityId);
+                srchArg = cities.get('city').concat(', ', cities.get('country'));
+                $("#city").val(srchArg);
+                updateHistory('!/lookup/page/'.concat(pn));
+                initLookupActivity.call(this);
             },
             hotelListPager:function(pageNum){
                 var args=argumentsStruct.call(_configuration),

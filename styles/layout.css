@@ -37,6 +37,10 @@ html, body {
 	margin: 0 auto;
 }
 
+.paging{
+    text-align: center
+}
+
 .clearer {
 	display:block;
 	float:none !important;
